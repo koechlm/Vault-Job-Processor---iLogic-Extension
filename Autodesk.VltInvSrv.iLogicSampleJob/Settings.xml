@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  
+  <!-- The name/value pair of a setting -->
+    <SettingName>Value</SettingName>
+  
+  <!-- Output Path -->
+  <!--<OutputPath>C:\Temp\SD124422\</OutputPath>-->
+
+</settings>
