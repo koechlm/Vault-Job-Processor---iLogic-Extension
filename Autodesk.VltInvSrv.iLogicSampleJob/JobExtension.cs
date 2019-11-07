@@ -17,7 +17,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 {
     public class JobExtension : IJobHandler
     {
-        private static string JOB_TYPE = "MyCompany.JobName";
+        private static string JOB_TYPE = "Autodesk.VltInvSrv.iLogicSampleJob";
 
         #region IJobHandler Implementation
         public bool CanProcess(string jobType)
@@ -30,6 +30,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             try
             {
                 MessageBox.Show("Hello World", "Job-Template-Messenger", MessageBoxButtons.OK);
+
                 return JobOutcome.Success;
             }
             catch (Exception ex)
