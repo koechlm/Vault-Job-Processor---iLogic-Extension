@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("API Onboarding - Custom Job")]
-[assembly: AssemblyDescription("API Introduction Sample 02 - Custom Job")]
+[assembly: AssemblyDescription("API Sample - iLogic Rule Execution for Job Processing")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Autodesk")]
 [assembly: AssemblyProduct("Autodesk Vault Professional - API Sample")]
-[assembly: AssemblyCopyright("Copyright © Autodesk 2019")]
+[assembly: AssemblyCopyright("Copyright © Autodesk 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("25.0.66.0")]
-[assembly: AssemblyFileVersion("25.0.66.0")]
+[assembly: AssemblyVersion("25.2.83.0")]
+[assembly: AssemblyFileVersion("25.2.83.0")]

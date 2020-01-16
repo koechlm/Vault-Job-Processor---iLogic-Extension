@@ -22,13 +22,15 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
     [XmlRoot("settings")]
     public class Settings
     {
-        [XmlElement("SettingName")]
-        public string mSettingName;
+        [XmlElement("ExternalRuleDirectory")]
+        public string ExternalRuleDirectory;
 
-        #region for future use
-        //[XmlElement("OutputPath")]
-        //public string mOutPutPath;
-        #endregion for future use
+        [XmlElement("ExternalRuleName")]
+        public string ExternalRuleName;
+
+        [XmlElement("InternalRulesOption")]
+        public string InternalRulesOption;
+
 
         private Settings()
         {

@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  
-  <!-- The name/value pair of a setting -->
-    <SettingName>Value</SettingName>
-  
-  <!-- Output Path -->
-  <!--<OutputPath>C:\Temp\SD124422\</OutputPath>-->
+
+  <!-- Path to external rule; leave empty if rule is located in the jobe extension folder -->
+  <ExternalRuleDirectory></ExternalRuleDirectory>
+
+  <!-- Name of external rule; leave empty, if only internal rules are executed -->
+  <!-- Default rule name as part of Job installation: VaultJobProcessorExec.iLogicVB -->
+  <ExternalRuleName>VaultJobProcessorExec.iLogicVB</ExternalRuleName>
+
+  <!-- Internal Rules Execution -->
+  <!-- Supported Options are 'None' 'Active', 'All', 'full or partial rule name'-->
+  <InternalRulesOption>None</InternalRulesOption>
 
 </settings>

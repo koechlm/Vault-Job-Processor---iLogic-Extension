@@ -1,0 +1,24 @@
+﻿'AddReference "QuickstartiLogicLibrary.dll"
+'DISCLAIMER:
+'---------------------------------
+'In any case, code, templates, and snippets of this solution are of "work in progress" character.
+'Neither Markus Koechl, nor Autodesk represents that these samples are reliable, accurate, complete, or otherwise valid. 
+'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
+
+Sub Main
+	'Break
+	'iLogicVb.UpdateWhenDone = True
+	
+
+	Dim mInvSrv As InventorServer = ThisServer
+
+	'	'set sheet color to red if vault lifecycle state is "Obsolete"
+	Dim mDraw As Inventor.DrawingDocument = ThisServer.Documents(1)
+	Dim mColor As Inventor.Color
+	mColor = mInvSrv.TransientObjects.CreateColor(255, 204, 204)
+	mColor.Opacity = 0.1
+	mDraw.SheetSettings.SheetColor = mColor
+	
+	iProperties.Value("Custom", "DateTimeStamp") = "JobProcessorTestRuleSuccess: " & DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
+
+End Sub
