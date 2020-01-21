@@ -65,11 +65,12 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     return JobOutcome.Success;
                 }
                 //run iLogic for Inventor DWG file types/skip AutoCAD DWG files
+                ACW.PropDef[] mPropDefs = mWsMgr.PropertyService.GetPropertyDefinitionsByEntityClassId("FILE");
                 ACW.PropDef mPropDef = null;
                 ACW.PropInst mPropInst = null;
                 if (mFile.Name.EndsWith(".dwg"))
                 {
-                    mPropDef = mWsMgr.PropertyService.GetPropertyDefinitionsByEntityClassId("FILE").Where(n => n.SysName == "Provider").FirstOrDefault();
+                    mPropDef = mPropDefs.Where(n => n.SysName == "Provider").FirstOrDefault();
                     mPropInst = (mWsMgr.PropertyService.GetPropertiesByEntityIds("FILE", new long[] { mFile.Id })).Where(n => n.PropDefId == mPropDef.Id).FirstOrDefault();
                     if (mPropInst.Val.ToString() != "Inventor DWG")
                     {
@@ -205,14 +206,47 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 mAutomation.RulesOnEventsEnabled = false;
                 mAutomation.RulesEnabled = false;
 
+                //Open Inventor Document
                 Document mDoc = mInv.Documents.Open(mDocPath);
 
                 //read rule execution settings
+                string mVaultRuleFullFileName = mSettings.VaultRuleFullFileName;
                 String mExtRulePath = mSettings.ExternalRuleDirectory;
                 String mExtRuleName = mSettings.ExternalRuleName;
                 String mExtRuleFullName = null;
                 String mIntRulesOption = mSettings.InternalRulesOption;
-                if (mExtRuleName != "")
+                if (mVaultRuleFullFileName != "")
+                {
+                    ACW.File mRuleFile = mWsMgr.DocumentService.FindLatestFilesByPaths(new string[] { mVaultRuleFullFileName }).FirstOrDefault();
+                    //build download options including DefaultAcquisitionOptions
+                    VDF.Vault.Currency.Entities.FileIteration mRuleFileIter = new VDF.Vault.Currency.Entities.FileIteration(mConnection, mRuleFile);
+                    
+                    VDF.Vault.Settings.AcquireFilesSettings mAcqrRuleSettings = CreateAcquireSettings(false);
+
+                    mAcqrRuleSettings.AddFileToAcquire(mRuleFileIter, mAcqrRuleSettings.DefaultAcquisitionOption);
+
+                    //download
+                    VDF.Vault.Results.AcquireFilesResults mAcqrRuleResults = this.mConnection.FileManager.AcquireFiles(mAcqrRuleSettings);
+                    //pick-up the new file iteration in case of check-out
+                    VDF.Vault.Results.FileAcquisitionResult mRuleAcqResult = mAcqrRuleResults.FileResults.Where(n => n.File.EntityName == mRuleFileIter.EntityName).FirstOrDefault();
+                    if (mRuleAcqResult.LocalPath != null)
+                    {
+                        mExtRuleFullName = mRuleAcqResult.LocalPath.FullPath;
+                        System.IO.FileInfo fileInfo = new System.IO.FileInfo(mExtRuleFullName);
+                        if (fileInfo.Exists == false)
+                        {
+                            context.Log(null, "Job downloaded rule file but exited due to missing rule file " + mExtRuleFullName + ".");
+                            mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                            return JobOutcome.Failure;
+                        }
+                    }
+                    else
+                    {
+                        context.Log(null, "Job could not download configured rule file and exited. Compare the 'VaultRuleFullFileName' setting and available rule in Vault.");
+                        return JobOutcome.Failure;
+                    }
+                }
+                if (mExtRuleName != "" && mVaultRuleFullFileName == "")
                 {
                     if (mSettings.ExternalRuleDirectory == "")
                     {
@@ -229,15 +263,32 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     if (fileInfo.Exists == false)
                     {
                         context.Log(null, "Job exited due to missing rule file " + mExtRuleFullName + ".");
-                        mDoc.Close(true);
                         mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                         return JobOutcome.Failure;
                     }
-
-                    //useful rule arguments to continue Vault interaction within the rule (iLogic-Vault library)
+                }
+                //an external rule is not mandatory.
+                if (mExtRuleFullName != "")
+                { 
+                    //required rule arguments to continue Vault interaction within the rule (iLogic-Vault library)
                     NameValueMap ruleArguments = mInv.TransientObjects.CreateNameValueMap();
-                    ruleArguments.Add("VaultConnection", mConnection);
+                    ruleArguments.Add("ServerName", mConnection.Server);
+                    ruleArguments.Add("VaultName", mConnection.Vault);
+                    ruleArguments.Add("UserId", mConnection.UserID);
+                    ruleArguments.Add("Ticket", mConnection.Ticket);
+                    //additional rule arguments to build rule conditions evaluating Vault lifecycel information, properties, etc.
                     ruleArguments.Add("VaultRevisionState", mNewFileIteration.LifecycleInfo.StateName);
+
+                    //get properties assigned to source file and add definition/value pair to dictionary
+                    ACW.PropInst[] mSourcePropInsts = mWsMgr.PropertyService.GetPropertiesByEntityIds("FILE", new long[] { mFileIteration.EntityIterationId });
+                    string mPropDispName;
+                    foreach (ACW.PropInst item in mSourcePropInsts)
+                    {
+                        mPropDispName = mPropDefs.Where(n => n.Id == item.PropDefId).FirstOrDefault().DispName;
+                        ruleArguments.Add(mPropDispName, item.Val);
+                    }
+
+                    //call external rule with arguments; return value = 0 in case of successful execution
                     mRuleSuccess = mAutomation.RunExternalRuleWithArguments(mDoc, mExtRuleFullName, ruleArguments);
                     if (mRuleSuccess != 0)
                     {
@@ -248,7 +299,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
                     mDoc.Save2(false);
                 }
-                
+
 
                 //use case - open test file and execute all, all active or filtered document rules
                 dynamic mDocRules = mAutomation.Rules(mDoc);

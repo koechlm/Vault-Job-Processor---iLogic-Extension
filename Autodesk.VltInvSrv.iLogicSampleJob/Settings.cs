@@ -22,11 +22,14 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
     [XmlRoot("settings")]
     public class Settings
     {
-        [XmlElement("ExternalRuleDirectory")]
-        public string ExternalRuleDirectory;
+        [XmlElement("VaultRuleFullFileName")]
+        public string VaultRuleFullFileName;
 
         [XmlElement("ExternalRuleName")]
         public string ExternalRuleName;
+
+        [XmlElement("ExternalRuleDirectory")]
+        public string ExternalRuleDirectory;
 
         [XmlElement("InternalRulesOption")]
         public string InternalRulesOption;

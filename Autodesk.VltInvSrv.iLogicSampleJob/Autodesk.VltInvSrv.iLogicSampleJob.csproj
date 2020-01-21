@@ -111,9 +111,10 @@
     <None Include="Autodesk.VltInvSrv.iLogicSampleJob.vcet.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="VaultJobProcessorExec.iLogicVb">
+    <None Include="VaultJobProcExec.iLogicVb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="VaultJobProcExecConnected.iLogicVb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings.xml">
