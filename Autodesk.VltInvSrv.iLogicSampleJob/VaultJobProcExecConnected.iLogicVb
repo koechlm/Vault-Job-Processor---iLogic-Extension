@@ -8,6 +8,7 @@ AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
 
 Sub Main
+' NOTE - This rule template requires iLogic-Vault Quickstart library version 2020.3.0 or newer.
 
 'to enable iLogicVault commands reuse the job processor's user connection
 	Dim iLogicVault As New QuickstartiLogicLibrary.QuickstartiLogicLib
