@@ -10,6 +10,10 @@
 
   <!-- Path to external rule; leave empty if rule is located in the job's extension folder or a vaulted rule is activated-->
   <ExternalRuleDirectory></ExternalRuleDirectory>
+  
+  <!-- Option to propagate all file properties as name/value pair in rule arguments -->
+  <!-- Leave empty to skip property transfer, set to True to handover -->
+  <PropagateProps>True</PropagateProps>
 
   <!-- Internal Rules Execution -->
   <!-- Supported Options are 'None' 'Active', 'All', 'full or partial rule name'-->

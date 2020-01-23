@@ -31,6 +31,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         [XmlElement("ExternalRuleDirectory")]
         public string ExternalRuleDirectory;
 
+        [XmlElement("PropagateProps")]
+        public string PropagateProps;
+
         [XmlElement("InternalRulesOption")]
         public string InternalRulesOption;
 

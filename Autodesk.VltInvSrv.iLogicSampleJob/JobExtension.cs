@@ -220,7 +220,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     ACW.File mRuleFile = mWsMgr.DocumentService.FindLatestFilesByPaths(new string[] { mVaultRuleFullFileName }).FirstOrDefault();
                     //build download options including DefaultAcquisitionOptions
                     VDF.Vault.Currency.Entities.FileIteration mRuleFileIter = new VDF.Vault.Currency.Entities.FileIteration(mConnection, mRuleFile);
-                    
+
                     VDF.Vault.Settings.AcquireFilesSettings mAcqrRuleSettings = CreateAcquireSettings(false);
 
                     mAcqrRuleSettings.AddFileToAcquire(mRuleFileIter, mAcqrRuleSettings.DefaultAcquisitionOption);
@@ -269,25 +269,26 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
                 //an external rule is not mandatory.
                 if (mExtRuleFullName != "")
-                { 
+                {
                     //required rule arguments to continue Vault interaction within the rule (iLogic-Vault library)
                     NameValueMap ruleArguments = mInv.TransientObjects.CreateNameValueMap();
                     ruleArguments.Add("ServerName", mConnection.Server);
                     ruleArguments.Add("VaultName", mConnection.Vault);
                     ruleArguments.Add("UserId", mConnection.UserID);
                     ruleArguments.Add("Ticket", mConnection.Ticket);
-                    //additional rule arguments to build rule conditions evaluating Vault lifecycel information, properties, etc.
-                    ruleArguments.Add("VaultRevisionState", mNewFileIteration.LifecycleInfo.StateName);
 
-                    //get properties assigned to source file and add definition/value pair to dictionary
-                    ACW.PropInst[] mSourcePropInsts = mWsMgr.PropertyService.GetPropertiesByEntityIds("FILE", new long[] { mFileIteration.EntityIterationId });
-                    string mPropDispName;
-                    foreach (ACW.PropInst item in mSourcePropInsts)
+                    //additional rule arguments to build rule conditions evaluating Vault lifecycle information, properties, etc.
+                    if (mSettings.PropagateProps == "True")
                     {
-                        mPropDispName = mPropDefs.Where(n => n.Id == item.PropDefId).FirstOrDefault().DispName;
-                        ruleArguments.Add(mPropDispName, item.Val);
+                        ACW.PropInst[] mSourcePropInsts = mWsMgr.PropertyService.GetPropertiesByEntityIds("FILE", new long[] { mFileIteration.EntityIterationId });
+                        string mPropDispName;
+                        foreach (ACW.PropInst item in mSourcePropInsts)
+                        {
+                            mPropDispName = mPropDefs.Where(n => n.Id == item.PropDefId).FirstOrDefault().DispName;
+                            ruleArguments.Add(mPropDispName, item.Val);
+                        }
                     }
-
+                    
                     //call external rule with arguments; return value = 0 in case of successful execution
                     mRuleSuccess = mAutomation.RunExternalRuleWithArguments(mDoc, mExtRuleFullName, ruleArguments);
                     if (mRuleSuccess != 0)
