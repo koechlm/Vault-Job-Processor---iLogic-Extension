@@ -288,7 +288,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                             ruleArguments.Add(mPropDispName, item.Val);
                         }
                     }
-                    
+
                     //call external rule with arguments; return value = 0 in case of successful execution
                     mRuleSuccess = mAutomation.RunExternalRuleWithArguments(mDoc, mExtRuleFullName, ruleArguments);
                     if (mRuleSuccess != 0)
@@ -324,8 +324,14 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         }
                         break;
 
-                    case "all":
-                        mRulesToExec = mDocRules.ToList();
+                    case "All":
+                        if (mDocRules != null)
+                        {
+                            foreach (dynamic rule in mDocRules)
+                            {
+                                mRulesToExec.Add(rule);
+                            }
+                        }
                         break;
 
                     default:

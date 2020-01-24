@@ -16,7 +16,7 @@
   <PropagateProps>True</PropagateProps>
 
   <!-- Internal Rules Execution -->
-  <!-- Supported Options are 'None' 'Active', 'All', 'full or partial rule name'-->
-  <InternalRulesOption>None</InternalRulesOption>
+  <!-- Supported Options are 'None' 'Active', 'All', or 'full or partial rule name'-->
+  <InternalRulesOption>All</InternalRulesOption>
 
 </settings>
