@@ -1,4 +1,6 @@
-﻿AddReference "C:\PDMC-Sample\Libraries\iLogic\QuickstartiLogicLibrary.dll" 'VaultInventorServer iLogic Add-In requires full path
+﻿'VaultInventorServer iLogic Add-In requires full path
+AddReference "C:\PDMC-Sample\Libraries\iLogic\QuickstartiLogicLibrary.dll"
+ 'Unlike iLogic-Vault Quickstart for Inventor Application, VaultInventorServer requires the reference
 AddReference "Autodesk.Connectivity.WebServices.dll"
 AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 'DISCLAIMER:
@@ -8,12 +10,10 @@ AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
 
 Sub Main
-' NOTE - This rule template requires iLogic-Vault Quickstart library version 2020.3.0 or newer.
 
 'to enable iLogicVault commands reuse the job processor's user connection
 	Dim iLogicVault As New QuickstartiLogicLibrary.QuickstartiLogicLib
 	Dim LoggedIn As Boolean
-	Dim FileState As String
 	Try
 		dbServer = RuleArguments("ServerName")
 		fServer = RuleArguments("ServerName")
@@ -21,90 +21,24 @@ Sub Main
 		userId = RuleArguments("UserId")
 		ticket = RuleArguments("Ticket")
 		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, ticket)
-		FileState = RuleArguments("VaultRevisionState")
 	Catch
 	End Try
 	
+	'make sure that the job processor returns a failure code if you exit the rule on errors
 	If LoggedIn = False
 		Dim ex As New Exception
 		Throw ex
 		Exit Sub
 	End If
-	
-	'use known iLogic syntax and snippets in job processor rules like you do in Inventor application rules
-	iProperties.Value("Custom", "DateTimeStamp") = "JobProcessorTestRuleSuccess: " & DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
 
 	'Note - Vault Inventor Server uses a subset of the Inventor API. Use the Inventor Server object istead of Inventor Application.
 	Dim mInvSrv As InventorServer = ThisServer
 	
 	'access the active document
   	Dim oDoc As Document = ThisDoc.Document
-  	'get the document type
-	Dim eDocumentType As Inventor.DocumentTypeEnum = oDoc.DocumentType
-	Dim sDocumentType As String = "Unknown"
 
-	Select Case eDocumentType
-    	Case DocumentTypeEnum.kAssemblyDocumentObject
-      		sDocumentType = "Assembly Document"
-    	Case DocumentTypeEnum.kDesignElementDocumentObject
-      		sDocumentType = "DesignElement Document"
-    	Case DocumentTypeEnum.kDrawingDocumentObject
-				sDocumentType = "Drawing Document"
-		Case DocumentTypeEnum.kForeignModelDocumentObject
-      		sDocumentType = "ForeignModel Document"
-    	Case DocumentTypeEnum.kPartDocumentObject
-      		sDocumentType = "Part Document"
-    	Case DocumentTypeEnum.kPresentationDocumentObject
-      		sDocumentType = "Presentation Document"
-    	Case DocumentTypeEnum.kSATFileDocumentObject
-      		sDocumentType = "SATFile Document"
-    	Case DocumentTypeEnum.kUnknownDocumentObject
-      		sDocumentType = "Unknown Document"
-	End Select
-	
-	'get the document sub-type
-	Dim sDocumentSubType As String = oDoc.SubType
-  	Dim sReadableType As String = "Unknown"
-
-  	'part document sub-types
-  	'part
-  	Select Case sDocumentSubType
-		Case "{4D29B490-49B2-11D0-93C3-7E0706000000}"
-      		sReadableType = "Part"
-      'sheet metal
-	    Case "{9C464203-9BAE-11D3-8BAD-0060B0CE6BB4}"
-			sReadableType = "sheet metal"
-      'generic proxy
-    	Case "{92055419-B3FA-11D3-A479-00C04F6B9531}"
-			sReadableType = "generic proxy"
-      'compatibility proxy
-    	Case "{9C464204-9BAE-11D3-8BAD-0060B0CE6BB4}"
-      		sReadableType = "compatibility proxy"
-      'catalog proxy
-    	Case "{9C88D3AF-C3EB-11D3-B79E-0060B0F159EF}"
-      		sReadableType = "catalog proxy"
- 		
-		'assembly document sub-types
-    	Case "{E60F81E1-49B3-11D0-93C3-7E0706000000}"
-      		sReadableType = "assembly"
-		Case "{28EC8354-9024-440F-A8A2-0E0E55D635B0}"
- 			sReadableType = "weldment"
-			
-	  'drawing document sub-types
-    	Case "{BBF9FDF1-52DC-11D0-8C04-0800090BE8EC}"
-      		sReadableType = "drawing"
-			
- 
-      'design element document sub-types
-		Case "{62FBB030-24C7-11D3-B78D-0060B0F159EF}"
-			sReadableType = "design element"
-
-      'presentation document sub-types
-    	Case "{76283A80-50DD-11D3-A7E3-00C04F79D7BC}"
-			sReadableType = "presentation"
-
-  	End Select
-		
+	'use known iLogic syntax and snippets in job processor rules like you do in Inventor application rules
+	iProperties.Value("Custom", "DateTimeStamp") = "JobProcessorTestRuleSuccess: " & DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
 	
 End Sub
 
