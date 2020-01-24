@@ -115,7 +115,9 @@
     <None Include="VaultJobProcExec.iLogicVb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="VaultJobProcExecConnected.iLogicVb" />
+    <None Include="VaultJobProcExecConnected.iLogicVb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Settings.xml">
