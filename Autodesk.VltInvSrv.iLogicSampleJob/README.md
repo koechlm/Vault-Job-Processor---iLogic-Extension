@@ -44,7 +44,7 @@ The job expects that all library definition files configured in the Inventor pro
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
 
-2020.25.0.0 - Initial Version
+2020.2.0.0 - Initial Version
  
 ---------------------------------
 

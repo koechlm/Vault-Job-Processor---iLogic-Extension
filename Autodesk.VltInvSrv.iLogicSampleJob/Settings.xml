@@ -1,16 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+  <!-- iLogic Addin DLL Directory: path to custom iLogic extensions; same setting like Inventor->Tools->Options->iLogic Configuration-->
+  <iLogicAddinDLLs>C:\PDMC-Sample\Libraries\iLogic</iLogicAddinDLLs>
+
+  <!-- iLogic Loglevel; Supported Options are None, Trace, Debug, Info, Warn, Error, Fatal -->
+  <!-- Note - if blank the default value is Error -->
+  <iLogicLogLevel>Trace</iLogicLogLevel>
+  
+  <!-- Path and file name to iLogic Logfile-->
+  <iLogicLogFile>C:\TEMP\iLogicDebug\iLogic4VltInvSrv.log</iLogicLogFile>
+
   <!-- Path to vaulted rule; works as primary rule and will ignore setting <ExternalRuleName> if found. Leave empty if external rule applies -->
   <VaultRuleFullFileName>$/Libraries/iLogic/Automation Sample/VaultJobProcExecConnected.iLogicVb</VaultRuleFullFileName>
-  
+
   <!-- Name of external rule; leave empty, if only internal rules are executed -->
   <!-- Default rule name as part of Job installation: VaultJobProcExec.iLogicVB -->
   <ExternalRuleName>VaultJobProcExec.iLogicVB</ExternalRuleName>
 
   <!-- Path to external rule; leave empty if rule is located in the job's extension folder or a vaulted rule is activated-->
-  <ExternalRuleDirectory></ExternalRuleDirectory>
-  
+  <ExternalRuleDirectory>C:\PDMC-Sample\Libraries\iLogic\Automation Sample</ExternalRuleDirectory>
+
   <!-- Option to propagate all file properties as name/value pair in rule arguments -->
   <!-- Leave empty to skip property transfer, set to True to handover -->
   <PropagateProps>True</PropagateProps>

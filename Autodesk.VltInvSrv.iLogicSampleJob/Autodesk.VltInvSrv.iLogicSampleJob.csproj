@@ -107,6 +107,7 @@
     <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="iLogicLogger.config" />
     <None Include="Key.snk" />
     <None Include="Autodesk.VltInvSrv.iLogicSampleJob.vcet.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -22,6 +22,15 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
     [XmlRoot("settings")]
     public class Settings
     {
+        [XmlElement("iLogicAddinDLLs")]
+        public string iLogicAddinDLLs;
+
+        [XmlElement("iLogicLogLevel")]
+        public string iLogicLogLevel;
+
+        [XmlElement("iLogicLogFile")]
+        public string iLogicLogFile;
+
         [XmlElement("VaultRuleFullFileName")]
         public string VaultRuleFullFileName;
 

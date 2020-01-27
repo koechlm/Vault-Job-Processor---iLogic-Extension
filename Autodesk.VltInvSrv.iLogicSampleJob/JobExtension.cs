@@ -205,7 +205,45 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 //avoid unplanned rule execution triggered by the document itself
                 mAutomation.RulesOnEventsEnabled = false;
                 mAutomation.RulesEnabled = false;
+                dynamic mFileOptions = mAutomation.FileOptions;
+                mFileOptions.AddinDirectory = mSettings.iLogicAddinDLLs;
+                List<string> mExtRlsDirs = new List<string>();
+                mExtRlsDirs.Add(mAppPath);
+                mFileOptions.ExternalRuleDirectories = mExtRlsDirs.ToArray();
+                dynamic mLogCtrl = mAutomation.LogControl;
+                string mLogFileFullName = mSettings.iLogicLogFile;
 
+                switch (mSettings.iLogicLogLevel)
+                {
+                    case "None":
+                         mLogCtrl.Level = 0;
+                        break;
+                    case "Trace":
+                        mLogCtrl.Level = 1;
+                        break;
+                    case "Debug":
+                        mLogCtrl.Level = 2;
+                        break;
+                    case "Info":
+                        mLogCtrl.Level = 3;
+                        break;
+                    case "Warn":
+                        mLogCtrl.Level = 4;
+                        break;
+                    case "Error":
+                        mLogCtrl.Level = 5;
+                        break;
+                    case "Fatal":
+                        mLogCtrl.Level = 6;
+                        break;
+                    default:
+                        mLogCtrl.Level = 5;
+                        break;
+                }
+
+                //enable iLogic to save a log file for each job Id.
+                //job.Id
+                
                 //Open Inventor Document
                 Document mDoc = mInv.Documents.Open(mDocPath);
 
@@ -254,7 +292,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
                     else
                     {
-                        mExtRuleFullName = System.IO.Path.Combine(mExtRulePath, mExtRuleName);
+                        mExtRlsDirs.Add(mExtRulePath);
+                        mFileOptions.ExternalRuleDirectories = mExtRlsDirs.ToArray();
+                        //mExtRuleFullName = System.IO.Path.Combine(mExtRulePath, mExtRuleName);
                     }
 
                     //use case  - apply external rule with arguments; additional Vault UDP, status or any information might fill rule arguments
@@ -296,6 +336,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         context.Log(null, "Job failed due to failure in external rule " + mExtRuleName + ".");
                         mDoc.Close(true);
                         mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                        mLogCtrl.SaveLogAs(mLogFileFullName);
                         return JobOutcome.Failure;
                     }
                     mDoc.Save2(false);
@@ -354,6 +395,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                             context.Log(null, "Job failed due to failure in internal rule " + rule.Name + ".");
                             mDoc.Close(true);
                             mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                            mLogCtrl.SaveLogAs(mLogFileFullName);
                             return JobOutcome.Failure;
                         }
                     }
@@ -361,6 +403,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 mDoc.Save2(false);
                 mDoc.Close(true);
+                mLogCtrl.SaveLogAs(mLogFileFullName);
 
                 #endregion iLogic Rule Execution
 

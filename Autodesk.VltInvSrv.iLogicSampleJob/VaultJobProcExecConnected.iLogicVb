@@ -1,6 +1,4 @@
-﻿'VaultInventorServer iLogic Add-In requires full path
-AddReference "C:\PDMC-Sample\Libraries\iLogic\QuickstartiLogicLibrary.dll"
- 'Unlike iLogic-Vault Quickstart for Inventor Application, VaultInventorServer requires the reference
+﻿AddReference "QuickstartiLogicLibrary.dll"
 AddReference "Autodesk.Connectivity.WebServices.dll"
 AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 'DISCLAIMER:
@@ -14,6 +12,7 @@ Sub Main
 'to enable iLogicVault commands reuse the job processor's user connection
 	Dim iLogicVault As New QuickstartiLogicLibrary.QuickstartiLogicLib
 	Dim LoggedIn As Boolean
+	Dim FileState As String
 	Try
 		dbServer = RuleArguments("ServerName")
 		fServer = RuleArguments("ServerName")
@@ -21,24 +20,34 @@ Sub Main
 		userId = RuleArguments("UserId")
 		ticket = RuleArguments("Ticket")
 		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, ticket)
+		FileState = RuleArguments("VaultRevisionState")
 	Catch
 	End Try
 	
-	'make sure that the job processor returns a failure code if you exit the rule on errors
 	If LoggedIn = False
 		Dim ex As New Exception
+		Logger.Error("Rule could not re-use Job Processor's Vault Login.")
 		Throw ex
 		Exit Sub
 	End If
+	
+	Dim mExtRuleDirs As String
+	For Each mDir As String In iLogicVb.Automation.FileOptions.ExternalRuleDirectories
+			mExtRuleDirs += vbCr & mDir
+	Next
+		
+	Logger.Info("iLogic External Rule Directories: " &  mExtRuleDirs)
+	Logger.Info("iLogic Addin DLLs Directory: " & iLogicVb.Automation.FileOptions.AddinDirectory)
+	Logger.Info("iLogic Loglevel set by Vault Job: " & iLogicVb.Automation.LogControl.Level)
+	
+	'use known iLogic syntax and snippets in job processor rules like you do in Inventor application rules
+	iProperties.Value("Custom", "DateTimeStamp") = "JobProcessorTestRuleSuccess: " & DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
 
 	'Note - Vault Inventor Server uses a subset of the Inventor API. Use the Inventor Server object istead of Inventor Application.
 	Dim mInvSrv As InventorServer = ThisServer
 	
 	'access the active document
-  	Dim oDoc As Document = ThisDoc.Document
-
-	'use known iLogic syntax and snippets in job processor rules like you do in Inventor application rules
-	iProperties.Value("Custom", "DateTimeStamp") = "JobProcessorTestRuleSuccess: " & DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
+  	Dim oDoc As Document = ThisDoc.Document	
 	
 End Sub
 
