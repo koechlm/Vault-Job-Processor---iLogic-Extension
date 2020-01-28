@@ -37,6 +37,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
         public JobOutcome Execute(IJobProcessorServices context, IJob job)
         {
+            
             try
             {
                 Inventor.InventorServer mInv = context.InventorObject as InventorServer;
@@ -163,41 +164,58 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 //build download options including DefaultAcquisitionOptions
                 VDF.Vault.Currency.Entities.FileIteration mFileIteration = new VDF.Vault.Currency.Entities.FileIteration(mConnection, mFile);
-                VDF.Vault.Currency.Entities.FileIteration mNewFileIteration;
+                VDF.Vault.Currency.Entities.FileIteration mNewFileIteration = null;
                 VDF.Vault.Settings.AcquireFilesSettings mAcqrFlsSettings;
+                VDF.Vault.Results.AcquireFilesResults mAcqrFlsResults2;
+                VDF.Vault.Results.FileAcquisitionResult mFileAcqsResult2;
+                string mLocalFileFullName = "", mExt = "";
+
+                if (mFileIteration.IsCheckedOut == true && mFileIteration.IsCheckedOutToCurrentUser == false)
+                {
+                    //exit the job, as the job user is not able to edit the file reserved to another user
+                    mInvDfltProject.Activate();
+                    context.Log(null, "Job stopped execution as the source file to process is checked-out by another user.");
+                    return JobOutcome.Failure;
+
+                }
+                //download only
                 if (mFileIteration.IsCheckedOut == true && mFileIteration.IsCheckedOutToCurrentUser == true)
                 {
                     mAcqrFlsSettings = CreateAcquireSettings(false);
-                }
-                else
-                {
-                    mAcqrFlsSettings = CreateAcquireSettings(true);
-                }
-
-                mAcqrFlsSettings.AddFileToAcquire(mFileIteration, mAcqrFlsSettings.DefaultAcquisitionOption);
-
-                //download
-                VDF.Vault.Results.AcquireFilesResults mAcqrFlsResults2 = this.mConnection.FileManager.AcquireFiles(mAcqrFlsSettings);
-                //pick-up the new file iteration in case of check-out
-                VDF.Vault.Results.FileAcquisitionResult mFileAcqsResult2 = mAcqrFlsResults2.FileResults.Where(n => n.File.EntityName == mFileIteration.EntityName).FirstOrDefault();
-                if (mAcqrFlsResults2 != null && mFileAcqsResult2.NewFileIteration != null)
-                {
-                    mNewFileIteration = mFileAcqsResult2.NewFileIteration;
-                }
-                else
-                {
+                    mAcqrFlsSettings.AddFileToAcquire(mFileIteration, mAcqrFlsSettings.DefaultAcquisitionOption);
+                    mAcqrFlsResults2 = this.mConnection.FileManager.AcquireFiles(mAcqrFlsSettings);
                     mNewFileIteration = mFileIteration;
-                }
+                    mFileAcqsResult2 = mAcqrFlsResults2.FileResults.Where(n => n.File.EntityName == mFileIteration.EntityName).FirstOrDefault();
+                    mLocalFileFullName = mFileAcqsResult2.LocalPath.FullPath;
+                    mExt = System.IO.Path.GetExtension(mLocalFileFullName);
 
-                if (mFileAcqsResult2 == null || (mNewFileIteration.IsCheckedOut != true && mNewFileIteration.IsCheckedOutToCurrentUser != true))
+                }
+                //checkout and download
+                if (mFileIteration.IsCheckedOut == false)
                 {
-                    mInvDfltProject.Activate();
-                    context.Log(null, "Job stopped execution as the source file to process did not download or check-out.");
-                    return JobOutcome.Failure;
-                }
-                string mDocPath = mFileAcqsResult2.LocalPath.FullPath;
-                string mExt = System.IO.Path.GetExtension(mDocPath);
+                    try
+                    {
+                        mAcqrFlsSettings = CreateAcquireSettings(true); //checkout (don't checkout related children)
+                        mAcqrFlsSettings.AddFileToAcquire(mFileIteration, mAcqrFlsSettings.DefaultAcquisitionOption);
+                        mAcqrFlsResults2 = this.mConnection.FileManager.AcquireFiles(mAcqrFlsSettings);
+                        mFileAcqsResult2 = mAcqrFlsResults2.FileResults.Where(n => n.File.EntityName == mFileIteration.EntityName).FirstOrDefault();
+                        mNewFileIteration = mFileAcqsResult2.NewFileIteration;
+                        mAcqrFlsSettings = null;
+                        mAcqrFlsSettings = CreateAcquireSettings(false);//download (include related children)
+                        mAcqrFlsSettings.AddFileToAcquire(mNewFileIteration, mAcqrFlsSettings.DefaultAcquisitionOption);
+                        mAcqrFlsResults2 = this.mConnection.FileManager.AcquireFiles(mAcqrFlsSettings);
+                        mLocalFileFullName = mFileAcqsResult2.LocalPath.FullPath;
+                        mExt = System.IO.Path.GetExtension(mLocalFileFullName);
+                    }
+                    catch (Exception)
+                    {
+                        mInvDfltProject.Activate();
+                        context.Log(null, "Job stopped execution as the source file to process did not download or check-out.");
+                        return JobOutcome.Failure;
+                    }
 
+                }
+                
                 #endregion download source file(s)
 
 
@@ -254,7 +272,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
 
                 //Open Inventor Document
-                Document mDoc = mInv.Documents.Open(mDocPath);
+                Document mDoc = mInv.Documents.Open(mLocalFileFullName);
 
                 //read rule execution settings
                 string mVaultRuleFullFileName = mSettings.VaultRuleFullFileName;
@@ -282,7 +300,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         System.IO.FileInfo fileInfo = new System.IO.FileInfo(mExtRuleFullName);
                         if (fileInfo.Exists == false)
                         {
-                            context.Log(null, "Job downloaded rule file but exited due to missing rule file " + mExtRuleFullName + ".");
+                            context.Log(null, "Job downloaded rule file but exited due to missing rule file: " + mExtRuleFullName + ".");
                             mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                             return JobOutcome.Failure;
                         }
@@ -342,7 +360,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     mRuleSuccess = mAutomation.RunExternalRuleWithArguments(mDoc, mExtRuleFullName, ruleArguments);
                     if (mRuleSuccess != 0)
                     {
-                        context.Log(null, "Job failed due to failure in external rule " + mExtRuleName + ".");
+                        context.Log(null, "Job failed due to failure in external rule: " + mExtRuleName + ".");
                         mDoc.Close(true);
                         mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                         mLogCtrl.SaveLogAs(mLogFileFullName);
@@ -401,7 +419,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         mRuleSuccess = mAutomation.RunRule(mDoc, rule.Name);
                         if (mRuleSuccess != 0)
                         {
-                            context.Log(null, "Job failed due to failure in internal rule " + rule.Name + ".");
+                            context.Log(null, "Job failed due to failure in internal rule: " + rule.Name + ".");
                             mDoc.Close(true);
                             mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                             mLogCtrl.SaveLogAs(mLogFileFullName);
@@ -420,7 +438,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 #region Check-in result
 
                 // checkin new file version
-                VDF.Currency.FilePathAbsolute vdfPath = new VDF.Currency.FilePathAbsolute(mDocPath);
+                VDF.Currency.FilePathAbsolute vdfPath = new VDF.Currency.FilePathAbsolute(mLocalFileFullName);
                 FileIteration mUploadedFile = null;
                 try
                 {
@@ -428,7 +446,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
                 catch
                 {
-                    context.Log(null, "Job could not check-in updated file " + mUploadedFile.EntityName + ".");
+                    context.Log(null, "Job could not check-in updated file: " + mUploadedFile.EntityName + ".");
                     return JobOutcome.Failure;
                 }
                 #endregion check-in result
@@ -466,9 +484,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 settings.OptionsRelationshipGathering.FileRelationshipSettings.ReleaseBiased = true;
                 settings.OptionsRelationshipGathering.FileRelationshipSettings.VersionGatheringOption = VDF.Vault.Currency.VersionGatheringOption.Revision;
                 settings.OptionsRelationshipGathering.IncludeLinksSettings.IncludeLinks = false;
-                VDF.Vault.Settings.AcquireFilesSettings.AcquireFileResolutionOptions mResOpt = new VDF.Vault.Settings.AcquireFilesSettings.AcquireFileResolutionOptions();
-                mResOpt.OverwriteOption = VDF.Vault.Settings.AcquireFilesSettings.AcquireFileResolutionOptions.OverwriteOptions.ForceOverwriteAll;
-                mResOpt.SyncWithRemoteSiteSetting = VDF.Vault.Settings.AcquireFilesSettings.SyncWithRemoteSite.Always;
+                settings.OptionsResolution.OverwriteOption = VDF.Vault.Settings.AcquireFilesSettings.AcquireFileResolutionOptions.OverwriteOptions.ForceOverwriteAll;
+                settings.OptionsResolution.SyncWithRemoteSiteSetting = VDF.Vault.Settings.AcquireFilesSettings.SyncWithRemoteSite.Always;
+                settings.OptionsResolution.UpdateReferencesModel.UpdateVaultStatus = true;
             }
             return settings;
         }
