@@ -180,7 +180,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 VDF.Vault.Results.AcquireFilesResults mAcqrFlsResults2 = this.mConnection.FileManager.AcquireFiles(mAcqrFlsSettings);
                 //pick-up the new file iteration in case of check-out
                 VDF.Vault.Results.FileAcquisitionResult mFileAcqsResult2 = mAcqrFlsResults2.FileResults.Where(n => n.File.EntityName == mFileIteration.EntityName).FirstOrDefault();
-                if (mFileAcqsResult2.NewFileIteration != null)
+                if (mAcqrFlsResults2 != null && mFileAcqsResult2.NewFileIteration != null)
                 {
                     mNewFileIteration = mFileAcqsResult2.NewFileIteration;
                 }
@@ -211,12 +211,12 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 mExtRlsDirs.Add(mAppPath);
                 mFileOptions.ExternalRuleDirectories = mExtRlsDirs.ToArray();
                 dynamic mLogCtrl = mAutomation.LogControl;
-                string mLogFileFullName = mSettings.iLogicLogFile;
+                string mLogFileFullName = mSettings.iLogicLogDir;
 
                 switch (mSettings.iLogicLogLevel)
                 {
                     case "None":
-                         mLogCtrl.Level = 0;
+                        mLogCtrl.Level = 0;
                         break;
                     case "Trace":
                         mLogCtrl.Level = 1;
@@ -242,8 +242,17 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
 
                 //enable iLogic to save a log file for each job Id.
-                //job.Id
-                
+                if (mSettings.iLogicLogLevel != "None")
+                {
+                    string mLogName = job.Id + "_iLogicSampleJob.log";
+                    System.IO.DirectoryInfo mLogDirInfo = new System.IO.DirectoryInfo(mSettings.iLogicLogDir);
+                    if (mLogDirInfo.Exists == false)
+                    {
+                        mLogDirInfo = System.IO.Directory.CreateDirectory(mSettings.iLogicLogDir);
+                    }
+                    mLogFileFullName = System.IO.Path.Combine(mLogDirInfo.FullName, mLogName);
+                }
+
                 //Open Inventor Document
                 Document mDoc = mInv.Documents.Open(mDocPath);
 
@@ -461,7 +470,6 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 mResOpt.OverwriteOption = VDF.Vault.Settings.AcquireFilesSettings.AcquireFileResolutionOptions.OverwriteOptions.ForceOverwriteAll;
                 mResOpt.SyncWithRemoteSiteSetting = VDF.Vault.Settings.AcquireFilesSettings.SyncWithRemoteSite.Always;
             }
-
             return settings;
         }
 

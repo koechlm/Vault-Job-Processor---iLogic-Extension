@@ -28,8 +28,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         [XmlElement("iLogicLogLevel")]
         public string iLogicLogLevel;
 
-        [XmlElement("iLogicLogFile")]
-        public string iLogicLogFile;
+        [XmlElement("iLogicLogDir")]
+        public string iLogicLogDir;
 
         [XmlElement("VaultRuleFullFileName")]
         public string VaultRuleFullFileName;

@@ -4,12 +4,12 @@
   <!-- iLogic Addin DLL Directory: path to custom iLogic extensions; same setting like Inventor->Tools->Options->iLogic Configuration-->
   <iLogicAddinDLLs>C:\PDMC-Sample\Libraries\iLogic</iLogicAddinDLLs>
 
-  <!-- iLogic Loglevel; Supported Options are None, Trace, Debug, Info, Warn, Error, Fatal -->
-  <!-- Note - if blank the default value is Error -->
+  <!-- iLogic Loglevel; Supported Options are None, Trace, Debug, Info, Warn, Error, Fatal. The default value is Error -->
+  <!-- Note - mind step 4 listed in the ReadMe/Configuration Steps section -->
   <iLogicLogLevel>Trace</iLogicLogLevel>
   
-  <!-- Path and file name to iLogic Logfile-->
-  <iLogicLogFile>C:\TEMP\iLogicDebug\iLogic4VltInvSrv.log</iLogicLogFile>
+  <!-- Path to iLogic Logfile-->
+  <iLogicLogDir>C:\TEMP\iLogicDebug</iLogicLogDir>
 
   <!-- Path to vaulted rule; works as primary rule and will ignore setting <ExternalRuleName> if found. Leave empty if external rule applies -->
   <VaultRuleFullFileName>$/Libraries/iLogic/Automation Sample/VaultJobProcExecConnected.iLogicVb</VaultRuleFullFileName>
