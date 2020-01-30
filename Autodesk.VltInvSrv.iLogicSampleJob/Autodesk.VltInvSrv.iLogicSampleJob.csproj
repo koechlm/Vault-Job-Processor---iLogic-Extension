@@ -114,7 +114,9 @@
     <None Include="Autodesk.VltInvSrv.iLogicSampleJob.vcet.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="README.md" />
+    <None Include="README.md">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="VaultJobRule.iLogicVb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
