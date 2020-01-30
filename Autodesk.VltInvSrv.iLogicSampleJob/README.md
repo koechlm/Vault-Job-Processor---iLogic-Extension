@@ -42,6 +42,8 @@ Accordingly, those configuration samples are provided “as is” with no warran
 NOTES/KNOWN ISSUES:
 ---------------------------------
 The job expects that all library definition files configured in the Inventor project file are available in the file system. Otherwise, the job might fail with unhandled exception due to missing style library or other settings files.
+Only iLogic rules updating existing files are allowed; component replacement, new component insertions or any other change impacting the referenced files and its parent-child
+relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
