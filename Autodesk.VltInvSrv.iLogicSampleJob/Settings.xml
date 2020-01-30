@@ -2,34 +2,35 @@
 <settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
   <!-- External Rule Directories; path to external rules, like ->Tools->Options->iLogic Configuration. Multiple paths require comma separation (',').
-  Leave empty if the external rule is located in the job's extension folder or a vaulted rule is activated.
-  If the primary rule runs nested external rule(s), their directories need to be listed here. Otherwise nested rule calls require the full path.-->
+      Leave empty if the external rule is located in the job's extension folder or a vaulted rule is activated.
+      If the primary rule runs nested external rule(s), their directories need to be listed here. Otherwise nested rule calls require the full path.-->
   <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic\,C:\PDMC-Sample\Libraries\iLogic\Automation Sample</ExternalRuleDirectories>
   
   <!-- iLogic Addin DLL Directory: path to custom iLogic extensions; same setting like Inventor->Tools->Options->iLogic Configuration-->
   <iLogicAddinDLLs>C:\PDMC-Sample\Libraries\iLogic</iLogicAddinDLLs>
 
-  <!-- iLogic Loglevel; Supported Options are None, Trace, Debug, Info, Warn, Error, Fatal. The default value is Error -->
-  <!-- Note - mind step 4 listed in the ReadMe/Configuration Steps section -->
+  <!-- iLogic Loglevel; Supported Options are None, Trace, Debug, Info, Warn, Error, Fatal. The default value is Error
+      Note - mind step 4 listed in the ReadMe/Configuration Steps section -->
   <iLogicLogLevel>Trace</iLogicLogLevel>
   
   <!-- Path to iLogic Logfile-->
   <iLogicLogDir>C:\TEMP\iLogicDebug</iLogicLogDir>
 
   <!-- Path to vaulted rule; works as primary rule and will ignore setting <ExternalRuleName> if found. Leave empty if external rule applies.
-  Use the common Vault path syntax, e.g., $/Libraries/iLogic/Automation Sample/VaultJobRuleConnected.iLogicVb -->
+      Use the common Vault path syntax, e.g., $/Libraries/iLogic/Automation Sample/VaultJobRuleConnected.iLogicVb -->
   <VaultRuleFullFileName></VaultRuleFullFileName>
 
-  <!-- Name of external rule; leave empty, if only internal rules are executed -->
-  <!-- Default rule name as part of Job installation: VaultJobRule.iLogicVB -->
+  <!-- Name of external rule; leave empty, if only internal rules are executed
+       Default rule name as part of Job installation: VaultJobRule.iLogicVB -->
   <ExternalRuleName>VaultJobRule.iLogicVB</ExternalRuleName>
 
-  <!-- Option to propagate all file properties as name/value pair in rule arguments -->
-  <!-- Leave empty to skip property transfer, set to True to handover -->
+  <!-- Option to propagate all file properties as name/value pair in rule arguments.
+      Leave empty to skip property transfer, set to True to publish login information and properties to the rule.
+      Note - Using iLogic-Vault interactions (VaultJobRuleConnected) requires PropagateProps set to True.-->
   <PropagateProps>True</PropagateProps>
 
-  <!-- Internal Rules Execution -->
-  <!-- Supported Options are 'None' 'Active', 'All', or 'full or partial rule name'-->
+  <!-- Internal Rules Execution
+      Supported Options are 'None' 'Active', 'All', or 'full or partial rule name'-->
   <InternalRulesOption>All</InternalRulesOption>
 
 </settings>
