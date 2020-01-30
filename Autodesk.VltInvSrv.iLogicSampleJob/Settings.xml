@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
+  <!-- External Rule Directories; path to external rules, like ->Tools->Options->iLogic Configuration. Multiple paths require comma separation (',').
+  Leave empty if the external rule is located in the job's extension folder or a vaulted rule is activated.
+  If the primary rule runs nested external rule(s), their directories need to be listed here. Otherwise nested rule calls require the full path.-->
+  <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic\,C:\PDMC-Sample\Libraries\iLogic\Automation Sample</ExternalRuleDirectories>
+  
   <!-- iLogic Addin DLL Directory: path to custom iLogic extensions; same setting like Inventor->Tools->Options->iLogic Configuration-->
   <iLogicAddinDLLs>C:\PDMC-Sample\Libraries\iLogic</iLogicAddinDLLs>
 
@@ -11,15 +16,13 @@
   <!-- Path to iLogic Logfile-->
   <iLogicLogDir>C:\TEMP\iLogicDebug</iLogicLogDir>
 
-  <!-- Path to vaulted rule; works as primary rule and will ignore setting <ExternalRuleName> if found. Leave empty if external rule applies -->
-  <VaultRuleFullFileName>$/Libraries/iLogic/Automation Sample/VaultJobProcExecConnected.iLogicVb</VaultRuleFullFileName>
+  <!-- Path to vaulted rule; works as primary rule and will ignore setting <ExternalRuleName> if found. Leave empty if external rule applies.
+  Use the common Vault path syntax, e.g., $/Libraries/iLogic/Automation Sample/VaultJobRuleConnected.iLogicVb -->
+  <VaultRuleFullFileName></VaultRuleFullFileName>
 
   <!-- Name of external rule; leave empty, if only internal rules are executed -->
-  <!-- Default rule name as part of Job installation: VaultJobProcExec.iLogicVB -->
-  <ExternalRuleName>VaultJobProcExec.iLogicVB</ExternalRuleName>
-
-  <!-- Path to external rule; leave empty if rule is located in the job's extension folder or a vaulted rule is activated-->
-  <ExternalRuleDirectory>C:\PDMC-Sample\Libraries\iLogic\Automation Sample</ExternalRuleDirectory>
+  <!-- Default rule name as part of Job installation: VaultJobRule.iLogicVB -->
+  <ExternalRuleName>VaultJobRule.iLogicVB</ExternalRuleName>
 
   <!-- Option to propagate all file properties as name/value pair in rule arguments -->
   <!-- Leave empty to skip property transfer, set to True to handover -->

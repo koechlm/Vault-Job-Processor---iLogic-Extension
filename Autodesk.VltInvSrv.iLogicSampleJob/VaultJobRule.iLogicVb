@@ -5,15 +5,25 @@
 'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
 
 Sub Main
+
 	'some insights on the job's iLogic settings
-	Dim mExtRuleDirs As String
+	Logger.Info("----------------------- this job's iLogic settings ------------------------------------")	
 	For Each mDir As String In iLogicVb.Automation.FileOptions.ExternalRuleDirectories
-			mExtRuleDirs += vbCr & mDir
+			Logger.Info("iLogic External Rule Directories: " &  mDir)
 	Next
-		
-	Logger.Info("iLogic External Rule Directories: " &  mExtRuleDirs)
 	Logger.Info("iLogic Addin DLLs Directory: " & iLogicVb.Automation.FileOptions.AddinDirectory)
 	Logger.Info("iLogic Loglevel set by Vault Job: " & iLogicVb.Automation.LogControl.Level)
+	Logger.Info("--------------------------------------------------------------------------------------------")	
+	
+	'insights on rule arguments that optionally may publish all Vault properties of the processed file
+	Logger.Info("----------------------- Rule Arguments published by Vault Job ----------------")	
+	Dim mArgs As NameValueMap = RuleArguments.Arguments
+	If mArgs.Count > 0 Then
+		For i = 1 To mArgs.Count
+			Logger.Info(mArgs.Name(i) & ": "  & mArgs.Value(mArgs.Name(i)))
+		Next 
+	End If
+	Logger.Info("--------------------------------------------------------------------------------------------")	
 	
 	'Note - Vault Inventor Server uses a subset of the Inventor API. Use the Inventor Server object istead of Inventor Application.
 	Dim mInvSrv As InventorServer = ThisServer

@@ -113,10 +113,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="README.md" />
-    <None Include="VaultJobProcExec.iLogicVb">
+    <None Include="VaultJobRule.iLogicVb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="VaultJobProcExecConnected.iLogicVb">
+    <None Include="VaultJobRuleConnected.iLogicVb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

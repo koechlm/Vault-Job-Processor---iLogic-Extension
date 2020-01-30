@@ -220,19 +220,44 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 #endregion download source file(s)
 
+                #region capture dependencies
+                //we need to return all relationships during later check-in
+                List<ACW.FileAssocParam> mFileAssocParams = new List<ACW.FileAssocParam>();
+                ACW.FileAssocArray mFileAssocArray = mWsMgr.DocumentService.GetLatestFileAssociationsByMasterIds(new long[] { mFile.MasterId },
+                    ACW.FileAssociationTypeEnum.None, false, ACW.FileAssociationTypeEnum.All, false, false, false, true).FirstOrDefault();
+                if (mFileAssocArray.FileAssocs != null)
+                {
+                    foreach (ACW.FileAssoc item in mFileAssocArray.FileAssocs)
+                    {
+                        ACW.FileAssocParam mFileAssocParam = new ACW.FileAssocParam();
+                        mFileAssocParam.CldFileId = item.CldFile.Id;
+                        mFileAssocParam.ExpectedVaultPath = item.ExpectedVaultPath;
+                        mFileAssocParam.RefId = item.RefId;
+                        mFileAssocParam.Source = item.Source;
+                        mFileAssocParam.Typ = item.Typ;
+                        mFileAssocParams.Add(mFileAssocParam);
+                    }
+                }
 
-                #region iLogic Rule Execution
+                #endregion capture dependencies
+
+                #region iLogic Configuration
+
                 //avoid unplanned rule execution triggered by the document itself
                 mAutomation.RulesOnEventsEnabled = false;
                 mAutomation.RulesEnabled = false;
+
+                //set the iLogic Advanced Configuration Settings
                 dynamic mFileOptions = mAutomation.FileOptions;
                 mFileOptions.AddinDirectory = mSettings.iLogicAddinDLLs;
-                List<string> mExtRlsDirs = new List<string>();
-                mExtRlsDirs.Add(mAppPath);
-                mFileOptions.ExternalRuleDirectories = mExtRlsDirs.ToArray();
-                dynamic mLogCtrl = mAutomation.LogControl;
-                string mLogFileFullName = mSettings.iLogicLogDir;
+                //add the job extension app path and configured external rule directories to the FileOptions.ExternalRuleDirectories for iLogic
+                List<string> mExtRuleDirs = new List<string>();
+                mExtRuleDirs.Add(mAppPath);
+                mExtRuleDirs.AddRange(mSettings.ExternalRuleDirectories.Split(',').ToList<string>());
+                mFileOptions.ExternalRuleDirectories = mExtRuleDirs.ToArray();
 
+                //enable iLogic logging
+                dynamic mLogCtrl = mAutomation.LogControl;
                 switch (mSettings.iLogicLogLevel)
                 {
                     case "None":
@@ -262,7 +287,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
 
                 //enable iLogic to save a log file for each job Id.
-                if (mSettings.iLogicLogLevel != "None")
+                string mILogicLogFileFullName = "";
+                if (mLogCtrl.Level != 0)
                 {
                     string mLogName = job.Id + "_" + mFile.Name + "_iLogicSampleJob.log";
                     System.IO.DirectoryInfo mLogDirInfo = new System.IO.DirectoryInfo(mSettings.iLogicLogDir);
@@ -270,21 +296,20 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     {
                         mLogDirInfo = System.IO.Directory.CreateDirectory(mSettings.iLogicLogDir);
                     }
-                    mLogFileFullName = System.IO.Path.Combine(mLogDirInfo.FullName, mLogName);
+                    mILogicLogFileFullName = System.IO.Path.Combine(mLogDirInfo.FullName, mLogName);
                 }
 
-                //Open Inventor Document
-                Document mDoc = mInv.Documents.Open(mLocalFileFullName);
+
 
                 //read rule execution settings
-                string mVaultRuleFullFileName = mSettings.VaultRuleFullFileName;
-                String mExtRulePath = mSettings.ExternalRuleDirectory;
-                String mExtRuleName = mSettings.ExternalRuleName;
-                String mExtRuleFullName = null;
-                String mIntRulesOption = mSettings.InternalRulesOption;
-                if (mVaultRuleFullFileName != "")
+                string mVaultRule = mSettings.VaultRuleFullFileName;
+                string mExtRule = mSettings.ExternalRuleName;
+                string mExtRuleFullName = null;
+                string mIntRulesOption = mSettings.InternalRulesOption;
+
+                if (mVaultRule != "")
                 {
-                    ACW.File mRuleFile = mWsMgr.DocumentService.FindLatestFilesByPaths(new string[] { mVaultRuleFullFileName }).FirstOrDefault();
+                    ACW.File mRuleFile = mWsMgr.DocumentService.FindLatestFilesByPaths(new string[] { mVaultRule }).FirstOrDefault();
                     //build download options including DefaultAcquisitionOptions
                     VDF.Vault.Currency.Entities.FileIteration mRuleFileIter = new VDF.Vault.Currency.Entities.FileIteration(mConnection, mRuleFile);
 
@@ -306,6 +331,17 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                             mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                             return JobOutcome.Failure;
                         }
+                        else
+                        {
+                            mExtRule = fileInfo.Name;
+                            if (!mExtRuleDirs.Any(n => fileInfo.DirectoryName.Equals(n)))
+                            {
+                                context.Log(null, "Job downloaded rule file but exited due to missing iLogic External Rule Directory configuration: Add the path"
+                                    + fileInfo.DirectoryName + " to the list of External Rule Directories.");
+                                mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                                return JobOutcome.Failure;
+                            }
+                        }
                     }
                     else
                     {
@@ -313,22 +349,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         return JobOutcome.Failure;
                     }
                 }
-                if (mExtRuleName != "" && mVaultRuleFullFileName == "")
-                {
-                    if (mSettings.ExternalRuleDirectory == "")
-                    {
-                        mExtRuleFullName = System.IO.Path.Combine(mAppPath, mExtRuleName);
-                    }
-                    else
-                    {
-                        mExtRlsDirs.Add(mExtRulePath);
-                        mFileOptions.ExternalRuleDirectories = mExtRlsDirs.ToArray();
-                        mExtRuleFullName = mExtRuleName; //iLogic will find the rule due to the FileOptions.ExternalRuleDirectories setting
-                    }
-                }
+
+                #endregion iLogic Configuration
+
+                #region Run iLogic Rule(s)
+
+                //Open Inventor Document
+                Document mDoc = mInv.Documents.Open(mLocalFileFullName);
 
                 //use case  - apply external rule with arguments; additional Vault UDP, status or any information might fill rule arguments
-                if (mExtRuleFullName != "")
+                if (mExtRule != "")
                 {
                     //required rule arguments to continue Vault interaction within the rule (iLogic-Vault library)
                     NameValueMap ruleArguments = mInv.TransientObjects.CreateNameValueMap();
@@ -342,32 +372,37 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     {
                         ACW.PropInst[] mSourcePropInsts = mWsMgr.PropertyService.GetPropertiesByEntityIds("FILE", new long[] { mFileIteration.EntityIterationId });
                         string mPropDispName;
+                        string mThumbnailDispName = mPropDefs.Where(n => n.SysName == "Thumbnail").FirstOrDefault().DispName;
                         foreach (ACW.PropInst item in mSourcePropInsts)
                         {
                             mPropDispName = mPropDefs.Where(n => n.Id == item.PropDefId).FirstOrDefault().DispName;
-                            ruleArguments.Add(mPropDispName, item.Val);
+                            //filter thumbnail property, as iLogic RuleArguments will fail reading it.
+                            if (mPropDispName != mThumbnailDispName)
+                            {
+                                ruleArguments.Add(mPropDispName, item.Val);
+                            }
                         }
                     }
 
                     //call external rule with arguments; return value = 0 in case of successful execution
-                    mRuleSuccess = mAutomation.RunExternalRuleWithArguments(mDoc, mExtRuleFullName, ruleArguments);
+                    mRuleSuccess = mAutomation.RunExternalRuleWithArguments(mDoc, mExtRule, ruleArguments);
                     if (mRuleSuccess != 0)
                     {
-                        context.Log(null, "Job failed due to failure in external rule: " + mExtRuleName + ".");
+                        context.Log(null, "Job failed due to failure in external rule: " + mExtRule + ".");
                         mDoc.Close(true);
                         mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
-                        mLogCtrl.SaveLogAs(mLogFileFullName);
+                        mLogCtrl.SaveLogAs(mILogicLogFileFullName);
                         return JobOutcome.Failure;
                     }
                     else
                     {
-                        mAllRulesTextWrp = "External Rule: " + mExtRuleName;
+                        mAllRulesTextWrp = "External Rule: " + mExtRule;
                     }
                     mDoc.Save2(false);
                 }
 
 
-                //use case - open test file and execute all, all active or filtered document rules
+                //use case - run all, all active or filtered document rules
                 dynamic mDocRules = mAutomation.Rules(mDoc);
                 List<dynamic> mRulesToExec = new List<dynamic>();
 
@@ -419,7 +454,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                             context.Log(null, "Job failed due to failure in internal rule: " + rule.Name + ".");
                             mDoc.Close(true);
                             mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
-                            mLogCtrl.SaveLogAs(mLogFileFullName);
+                            mLogCtrl.SaveLogAs(mILogicLogFileFullName);
                             return JobOutcome.Failure;
                         }
                         else
@@ -431,7 +466,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 mDoc.Save2(false);
                 mDoc.Close(true);
-                mLogCtrl.SaveLogAs(mLogFileFullName);
+                mLogCtrl.SaveLogAs(mILogicLogFileFullName);
 
                 if (mAllRules.Count > 0)
                 {
@@ -442,7 +477,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
                 }
 
-                #endregion iLogic Rule Execution
+                #endregion Run iLogic Rules
 
 
                 #region Check-in result
@@ -452,7 +487,17 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 FileIteration mUploadedFile = null;
                 try
                 {
-                    mUploadedFile = mConnection.FileManager.CheckinFile(mNewFileIteration, "Created by Custom Job executing iLogic : " + mAllRulesTextWrp, false, null, null, false, null, mFileIteration.FileClassification, false, vdfPath);
+                    if (mFileAssocParams.Count > 0)
+                    {
+                        mUploadedFile = mConnection.FileManager.CheckinFile(mNewFileIteration, "Created by Custom Job executing iLogic : " + mAllRulesTextWrp,
+                                                false, mFileAssocParams.ToArray(), null, true, null, mFileIteration.FileClassification, false, vdfPath);
+                    }
+                    else
+                    {
+                        mUploadedFile = mConnection.FileManager.CheckinFile(mNewFileIteration, "Created by Custom Job executing iLogic : " + mAllRulesTextWrp,
+                                                false, null, null, false, null, mFileIteration.FileClassification, false, vdfPath);
+                    }
+
                 }
                 catch
                 {
@@ -467,7 +512,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 //delete temporary working folder if imlemented here
 
                 #endregion reset
+
                 return JobOutcome.Success;
+
             }
             catch (Exception ex)
             {
@@ -497,6 +544,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 settings.OptionsResolution.OverwriteOption = VDF.Vault.Settings.AcquireFilesSettings.AcquireFileResolutionOptions.OverwriteOptions.ForceOverwriteAll;
                 settings.OptionsResolution.SyncWithRemoteSiteSetting = VDF.Vault.Settings.AcquireFilesSettings.SyncWithRemoteSite.Always;
                 settings.OptionsResolution.UpdateReferencesModel.UpdateVaultStatus = true;
+                settings.CreateMetaDataFile = true;
             }
             return settings;
         }

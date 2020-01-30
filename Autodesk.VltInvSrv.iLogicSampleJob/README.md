@@ -21,7 +21,7 @@ The job is valid for any Vault configuration fulfilling these requirements:
 - iLogic rules compatible for Inventor Server execution
 	- ThisApplication object being replaced by ThisServer
 	
-- To allow iLogic rules interacting with Vault during job execution requires the Job-Processor's log-in being re-used within the rule. Use the template VaultJobProcExecConnected.iLogicVb to build your rule.
+- To allow iLogic rules interacting with Vault during job execution requires the Job-Processor's log-in being re-used within the rule. Use the template VaultJobRuleConnected.iLogicVb to build your rule.
 	- the referenced iLogic-Vault Quickstart library is available on GitHub open source and in binary format.
 
 TO CONFIGURE:
