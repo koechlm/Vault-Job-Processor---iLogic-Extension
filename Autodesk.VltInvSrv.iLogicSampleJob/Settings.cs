@@ -46,6 +46,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         [XmlElement("InternalRulesOption")]
         public string InternalRulesOption;
 
+        [XmlElement("ActivateDebugBreak")]
+        public string ActivateDebugBreak;
+
 
         private Settings()
         {

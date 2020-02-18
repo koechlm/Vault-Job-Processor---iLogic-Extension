@@ -384,6 +384,12 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         }
                     }
 
+                    if (mSettings.ActivateDebugBreak == "True")
+                    {
+                        MessageBox.Show("You opted to break for Visual Studio rule debugging? If so, attach to VaultInventorServer.exe now, then continue...",
+                            "iLogicSampleJob", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+
                     //call external rule with arguments; return value = 0 in case of successful execution
                     mRuleSuccess = mAutomation.RunExternalRuleWithArguments(mDoc, mExtRule, ruleArguments);
                     if (mRuleSuccess != 0)

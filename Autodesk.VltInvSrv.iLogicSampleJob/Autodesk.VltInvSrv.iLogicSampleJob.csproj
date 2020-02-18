@@ -39,7 +39,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\..\..\..\..\ProgramData\Autodesk\Vault 2020\Extensions\Autodesk.VltInvSrv.iLogicSampleJob\</OutputPath>
+    <OutputPath>..\..\..\..\..\..\ProgramData\Autodesk\Vault 2020\Extensions\Autodesk.VltInvSrv.iLogicSampleJob\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -81,8 +81,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Autodesk.iLogic.Interfaces">
-      <HintPath>..\..\..\..\..\Program Files\Autodesk\Vault Professional 2020\Explorer\Inventor Server\Bin\Autodesk.iLogic.Interfaces.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Inventor 2020\Bin\Autodesk.iLogic.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Autodesk.Inventor.Interop, Version=24.1.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

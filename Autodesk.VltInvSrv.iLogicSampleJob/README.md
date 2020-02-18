@@ -47,7 +47,7 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
-
+2020.2.0.1 - Option to break execution for iLogic Rule debugging added
 2020.2.0.0 - Initial Version
  
 ---------------------------------
