@@ -56,6 +56,9 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autodesk.Connectivity.Explorer.Extensibility">
+      <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Autodesk Vault 2020 SDK\bin\x64\Autodesk.Connectivity.Explorer.Extensibility.dll</HintPath>
+    </Reference>
     <Reference Include="Autodesk.Connectivity.Explorer.ExtensibilityTools">
       <HintPath>$(ProgramW6432)\Autodesk\Autodesk Vault 2020 SDK\bin\x64\Autodesk.Connectivity.Explorer.ExtensibilityTools.dll</HintPath>
       <Private>False</Private>
@@ -89,19 +92,37 @@
       <HintPath>..\..\..\..\..\Program Files\Autodesk\Inventor 2020\Bin\Public Assemblies\Autodesk.Inventor.Interop.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JobExtension.cs" />
+    <Compile Include="iLogicJobAdmin.cs" />
+    <Compile Include="iLogicJobAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="iLogicJobAdminForm.Designer.cs">
+      <DependentUpon>iLogicJobAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="iLogicJobExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
@@ -124,10 +145,35 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Vault.ico" />
+    <None Include="Resources\iLogicConfiguration.ico" />
+    <None Include="Resources\iLogicConfiguration.png" />
+    <None Include="Resources\Customize.png" />
+    <None Include="Resources\Options_32x32.png" />
+    <None Include="Resources\iFeature_32x32.png" />
+    <None Include="Resources\CheckIn_16x16.png" />
+    <None Include="Resources\CheckOut_16x16.png" />
+    <None Include="Resources\CheckIn_32x32.png" />
+    <None Include="Resources\CheckOut_32x32.png" />
+    <None Include="Resources\MapFolders_16x16.png" />
+    <None Include="Resources\iLogic-Plus.png" />
+    <None Include="Resources\iLogic-Up.png" />
+    <None Include="Resources\iLogic-Down.png" />
+    <None Include="Resources\OpenFromVault_16x16.png" />
+    <None Include="Resources\OpenFromVault_32x32.png" />
     <Content Include="Settings.xml">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="iLogicJobAdminForm.resx">
+      <DependentUpon>iLogicJobAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

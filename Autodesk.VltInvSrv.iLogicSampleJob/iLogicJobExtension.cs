@@ -21,10 +21,10 @@ using iLogic = Autodesk.iLogic.Interfaces;
 
 namespace Autodesk.VltInvSrv.iLogicSampleJob
 {
-    public class JobExtension : IJobHandler
+    public class iLogicJobExtension : IJobHandler
     {
         private static string JOB_TYPE = "Autodesk.VltInvSrv.iLogicSampleJob";
-        private static Settings mSettings = Settings.Load();
+        public static Settings mSettings = Settings.Load();
         private static string mAppPath = Util.GetAssemblyPath();
         private VDF.Vault.Currency.Connections.Connection mConnection;
         private Int32 mRuleSuccess = -1;
@@ -298,14 +298,23 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
                     mILogicLogFileFullName = System.IO.Path.Combine(mLogDirInfo.FullName, mLogName);
                 }
-
-
+                
 
                 //read rule execution settings
                 string mVaultRule = mSettings.VaultRuleFullFileName;
-                string mExtRule = mSettings.ExternalRuleName;
+                string mExtRule = null;
                 string mExtRuleFullName = null;
                 string mIntRulesOption = mSettings.InternalRulesOption;
+                string mSelectedRule = null;
+                if (job.Params["ExternalRule"] != null)
+                {
+                    //interactive job: read rule name from parameters instead of settings
+                    mExtRule = mSelectedRule;
+                }
+                else
+                {
+                    mExtRule = mSettings.ExternalRuleName;
+                }
 
                 if (mVaultRule != "")
                 {

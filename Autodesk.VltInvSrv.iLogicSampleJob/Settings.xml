@@ -16,6 +16,11 @@
   <!-- Path to iLogic Logfile-->
   <iLogicLogDir>C:\TEMP\iLogicDebug</iLogicLogDir>
 
+  <!-- Break job execution to enable iLogic rule debugging in Visual Studio by showing a MessageBox; connect to process 'VaultInventorServer.exe'
+      before closing the MessageBox. Supported options are True and False, defaults to False. 
+      iLogic expects an environment variable of name 'iLogicRuleFolderForVS' sharing an existing path, e.g., C:\Templ\iLogicDebug. -->
+  <ActivateDebugBreak>False</ActivateDebugBreak>
+
   <!-- Path to vaulted rule; works as primary rule and will ignore setting <ExternalRuleName> if found. Leave empty if external rule applies.
       Use the common Vault path syntax, e.g., $/Libraries/iLogic/Automation Sample/VaultJobRuleConnected.iLogicVb -->
   <VaultRuleFullFileName></VaultRuleFullFileName>
@@ -33,9 +38,6 @@
       Supported Options are 'None' 'Active', 'All', or 'full or partial rule name'-->
   <InternalRulesOption>All</InternalRulesOption>
 
-  <!-- Break job execution to enable iLogic rule debugging in Visual Studio by showing a MessageBox; connect to process 'VaultInventorServer.exe'
-      before closing the MessageBox. Supported options are True and False, defaults to False. 
-      iLogic expects an environment variable of name 'iLogicRuleFolderForVS' sharing an existing path, e.g., C:\Templ\iLogicDebug. -->
-  <ActivateDebugBreak>False</ActivateDebugBreak>
+
 
 </settings>
