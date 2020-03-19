@@ -79,9 +79,16 @@
       <HintPath>$(ProgramW6432)\Autodesk\Autodesk Vault 2020 SDK\bin\x64\Autodesk.DataManagement.Client.Framework.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Autodesk.DataManagement.Client.Framework.Forms, Version=25.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files\Autodesk\Autodesk Vault 2020 SDK\bin\x64\Autodesk.DataManagement.Client.Framework.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="Autodesk.DataManagement.Client.Framework.Vault">
       <HintPath>$(ProgramW6432)\Autodesk\Autodesk Vault 2020 SDK\bin\x64\Autodesk.DataManagement.Client.Framework.Vault.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="Autodesk.DataManagement.Client.Framework.Vault.Forms">
+      <HintPath>..\..\..\..\..\Program Files\Autodesk\Autodesk Vault 2020 SDK\bin\x64\Autodesk.DataManagement.Client.Framework.Vault.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Autodesk.iLogic.Interfaces">
       <HintPath>..\..\..\..\..\..\Program Files\Autodesk\Inventor 2020\Bin\Autodesk.iLogic.Interfaces.dll</HintPath>
@@ -123,6 +130,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SelectFromVault.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectFromVault.Designer.cs">
+      <DependentUpon>SelectFromVault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectUserJob.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectUserJob.Designer.cs">
+      <DependentUpon>SelectUserJob.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Util.cs" />
   </ItemGroup>
@@ -133,6 +152,7 @@
     <None Include="Key.snk" />
     <None Include="Autodesk.VltInvSrv.iLogicSampleJob.vcet.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="README.md">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -147,7 +167,6 @@
   <ItemGroup>
     <None Include="Resources\Vault.ico" />
     <None Include="Resources\iLogicConfiguration.ico" />
-    <None Include="Resources\iLogicConfiguration.png" />
     <None Include="Resources\Customize.png" />
     <None Include="Resources\Options_32x32.png" />
     <None Include="Resources\iFeature_32x32.png" />
@@ -161,10 +180,8 @@
     <None Include="Resources\iLogic-Down.png" />
     <None Include="Resources\OpenFromVault_16x16.png" />
     <None Include="Resources\OpenFromVault_32x32.png" />
-    <Content Include="Settings.xml">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\iLogicConfiguration.png" />
+    <None Include="Resources\000420-folder-delete.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="iLogicJobAdminForm.resx">
@@ -174,6 +191,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="SelectFromVault.resx">
+      <DependentUpon>SelectFromVault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectUserJob.resx">
+      <DependentUpon>SelectUserJob.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="iLogicJobSettings.xml" />
+    <None Include="Resources\ViewOptions_16.png" />
+    <None Include="Resources\uplevel_16.png" />
+    <None Include="Resources\Back_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

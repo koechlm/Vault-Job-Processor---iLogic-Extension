@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <iLogicAddinDLLs>C:\PDMC-Sample\Libraries\iLogic\Extensions</iLogicAddinDLLs>
+  <iLogicLogLevel>Debug</iLogicLogLevel>
+  <iLogicLogDir>C:\TEMP\iLogicDebug</iLogicLogDir>
+  <VaultRuleFullFileName>$/Libraries/iLogic/Automation Sample/</VaultRuleFullFileName>
+  <ExternalRuleName />
+  <ExternalRuleDirectories>C:\PDMC-Sample</ExternalRuleDirectories>
+  <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic</ExternalRuleDirectories>
+  <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic\Automation Sample</ExternalRuleDirectories>
+  <PropagateProps>True</PropagateProps>
+  <InternalRulesOption>Active only</InternalRulesOption>
+  <InternalRulesOptionText />
+  <ActivateDebugBreak>True</ActivateDebugBreak>
+</settings>

@@ -13,6 +13,7 @@ PARTICULAR PURPOSE.
 using System;
 using System.Linq;
 using System.IO;
+using System.Windows.Forms;
 
 using ACJE = Autodesk.Connectivity.JobProcessor.Extensibility;
 using ACW = Autodesk.Connectivity.WebServices;
@@ -25,22 +26,39 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 {
     class iLogicJobAdmin : IExplorerExtension
     {
-       
+        public static VDF.Vault.Currency.Connections.Connection mConnection = null;
+        public static Settings mSettings = null;
+
         public void mQueueiLogicJobCmdHndlr(object s, CommandItemEventArgs e)
         {
-            // select job rule
-            string mRuleName = iLogicJobExtension.mSettings.ExternalRuleName;
+            // select job rule that should run on selected file(s)
+            mSettings = Settings.LoadFromVault(mConnection);
+            if (mSettings == null)
+            {
+                MessageBox.Show("iLogic Environment for Job Processor is not configured. \n\r Contact your Vault Administrator for Support.", "Submit iLogic Job to Job Queue.",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            //initiate user interaction to select rule to be applied to selected files
+            iLogicSampleJob.SelectUserJob mUserJob = new SelectUserJob();
+            
+            var retval = mUserJob.ShowDialog();
+
+            //get dialog return parameters
+            string mRuleName = mUserJob.JobFullFileName;
+            string mResultCheckIn = mUserJob.CreateNewIteration;
 
             // Queue an iLogic job
             const string iLogicJobTypeName = "Autodesk.VltInvSrv.iLogicSampleJob";
             const string iLogicJob_FileId = "EntityId";
             const string iLogicJob_FileClassId = "EntityClassId";
             const string iLogicJob_Rule = "ExternalRule";
+            const string iLogicJob_CheckIn = "CheckIn";
 
             foreach (ISelection vaultObj in e.Context.CurrentSelectionSet)
             {
                 ACW.File mFile = (ACW.File)e.Context.Application.Connection.WebServiceManager.DocumentService.GetLatestFileByMasterId(vaultObj.Id);
-                ACW.JobParam[] mParamList = new ACW.JobParam[3];
+                ACW.JobParam[] mParamList = new ACW.JobParam[4];
                 ACW.JobParam mMasterIdParam = new ACW.JobParam
                 {
                     Name = iLogicJob_FileId,
@@ -62,10 +80,18 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 };
                 mParamList[2] = mRuleParam;
 
+                ACW.JobParam mCheckInParam = new ACW.JobParam
+                {
+                    Name = iLogicJob_CheckIn,
+                    Val = mResultCheckIn
+                };
+                mParamList[3] = mCheckInParam;
+
                 // Add the job to the queue
                 //
+                string mRuleShortName = mRuleName.Split('/').Last();
                 e.Context.Application.Connection.WebServiceManager.JobService.AddJob(
-                    iLogicJobTypeName, String.Format("Manually queued file {0} for iLogicSampleJob.", vaultObj.Label),
+                    iLogicJobTypeName, String.Format("Manually queued file {0} to run iLogic rule {1} on it.", vaultObj.Label, mRuleShortName ),
                     mParamList, 10);
             }
         }
@@ -140,6 +166,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         public void OnLogOn(IApplication application)
         {
             //do nothing
+            mConnection = application.Connection;
         }
 
         public void OnShutdown(IApplication application)

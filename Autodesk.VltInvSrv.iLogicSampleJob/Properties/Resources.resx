@@ -124,6 +124,9 @@
   <data name="Vault_Info_32x32Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iFeature_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="OpenFromVault_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenFromVault_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="MapFolders_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MapFolders_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,8 +154,8 @@
   <data name="iLogicConfigurationIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iLogicConfiguration.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CustomizeImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Customize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="OpenFromVault_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenFromVault_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CheckIn_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CheckIn_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,10 +163,16 @@
   <data name="VaultIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="OpenFromVault_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenFromVault_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="000420-folder-delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\000420-folder-delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="OpenFromVault_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenFromVault_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Back_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Back_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uplevel_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uplevel_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ViewOptions_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ViewOptions_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

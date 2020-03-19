@@ -24,7 +24,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
     public class iLogicJobExtension : IJobHandler
     {
         private static string JOB_TYPE = "Autodesk.VltInvSrv.iLogicSampleJob";
-        public static Settings mSettings = Settings.Load();
+        public static Settings mSettings = null;
+        public static string mJobExecType = null;
+        public static bool mJobCheckInResult = true;
         private static string mAppPath = Util.GetAssemblyPath();
         private VDF.Vault.Currency.Connections.Connection mConnection;
         private Int32 mRuleSuccess = -1;
@@ -51,6 +53,35 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 Autodesk.Connectivity.WebServicesTools.WebServiceManager mWsMgr = mConnection.WebServiceManager;
                 long mEntId = Convert.ToInt64(job.Params["EntityId"]);
                 string mEntClsId = job.Params["EntityClassId"];
+
+                //Load settings from Vault
+                mSettings = Settings.LoadFromVault(mConnection);
+                if (mSettings == null)
+                {
+                    context.Log(null, "This job could not load settings from Vault");
+                    return JobOutcome.Failure;
+                }
+
+                //jobs interactively submitted by users behave differently; activate the critera UserJob/LifecycleJob
+                if (job.Params["ExternalRule"] != null)
+                {
+                    mJobExecType = "UserJob";
+                    if (job.Params["CheckIn"] == "false")
+                    {
+                        mJobCheckInResult = false;
+                    }
+                }
+                else
+                {
+                    mJobExecType = "LifecycleJob";
+                }
+
+                //Validate required settings for lifecycle job execution; we need to have an external rule or internal rule option <> None
+                if (mJobExecType == "LifecycleJob" && mSettings.ExternalRuleName == "" && mSettings.InternalRulesOption == "None")
+                {
+                    context.Log(null, "The iLogic Rule Options are set to neither run an external rule nor internal rules.");
+                    return JobOutcome.Failure;
+                }
 
                 // only run the job for files; handle the scenario, that an item lifecycle transition accidently submitted the job
                 if (mEntClsId != "FILE")
@@ -253,8 +284,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 //add the job extension app path and configured external rule directories to the FileOptions.ExternalRuleDirectories for iLogic
                 List<string> mExtRuleDirs = new List<string>();
                 mExtRuleDirs.Add(mAppPath);
-                mExtRuleDirs.AddRange(mSettings.ExternalRuleDirectories.Split(',').ToList<string>());
-                mFileOptions.ExternalRuleDirectories = mExtRuleDirs.ToArray();
+                mExtRuleDirs.AddRange(mSettings.ExternalRuleDirectories.ToList<string>());
+                mFileOptions.ExternalRuleDirectories = mSettings.ExternalRuleDirectories;
 
                 //enable iLogic logging
                 dynamic mLogCtrl = mAutomation.LogControl;
@@ -298,18 +329,18 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
                     mILogicLogFileFullName = System.IO.Path.Combine(mLogDirInfo.FullName, mLogName);
                 }
-                
+
 
                 //read rule execution settings
                 string mVaultRule = mSettings.VaultRuleFullFileName;
                 string mExtRule = null;
                 string mExtRuleFullName = null;
                 string mIntRulesOption = mSettings.InternalRulesOption;
-                string mSelectedRule = null;
-                if (job.Params["ExternalRule"] != null)
+                //string mSelectedRule = null;
+                if (mJobExecType == "UserJob")
                 {
                     //interactive job: read rule name from parameters instead of settings
-                    mExtRule = mSelectedRule;
+                    mExtRule = job.Params["ExternalRule"];
                 }
                 else
                 {
@@ -418,6 +449,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
 
                 //use case - run all, all active or filtered document rules
+                if (mJobExecType == "LifecycleJob")
+                {
+                    mSettings.InternalRulesOption = "None";
+                }
                 dynamic mDocRules = mAutomation.Rules(mDoc);
                 List<dynamic> mRulesToExec = new List<dynamic>();
 
@@ -496,28 +531,35 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
 
                 #region Check-in result
-
-                // checkin new file version
-                VDF.Currency.FilePathAbsolute vdfPath = new VDF.Currency.FilePathAbsolute(mLocalFileFullName);
-                FileIteration mUploadedFile = null;
-                try
+                //if Check-in is opted out (user job only) don't return the new file
+                if (mJobCheckInResult == false)
                 {
-                    if (mFileAssocParams.Count > 0)
-                    {
-                        mUploadedFile = mConnection.FileManager.CheckinFile(mNewFileIteration, "Created by Custom Job executing iLogic : " + mAllRulesTextWrp,
-                                                false, mFileAssocParams.ToArray(), null, true, null, mFileIteration.FileClassification, false, vdfPath);
-                    }
-                    else
-                    {
-                        mUploadedFile = mConnection.FileManager.CheckinFile(mNewFileIteration, "Created by Custom Job executing iLogic : " + mAllRulesTextWrp,
-                                                false, null, null, false, null, mFileIteration.FileClassification, false, vdfPath);
-                    }
-
+                    mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                 }
-                catch
+                else
                 {
-                    context.Log(null, "Job could not check-in updated file: " + mUploadedFile.EntityName + ".");
-                    return JobOutcome.Failure;
+                    // checkin new file version
+                    VDF.Currency.FilePathAbsolute vdfPath = new VDF.Currency.FilePathAbsolute(mLocalFileFullName);
+                    FileIteration mUploadedFile = null;
+                    try
+                    {
+                        if (mFileAssocParams.Count > 0)
+                        {
+                            mUploadedFile = mConnection.FileManager.CheckinFile(mNewFileIteration, "Created by Custom Job executing iLogic : " + mAllRulesTextWrp,
+                                                    false, mFileAssocParams.ToArray(), null, true, null, mFileIteration.FileClassification, false, vdfPath);
+                        }
+                        else
+                        {
+                            mUploadedFile = mConnection.FileManager.CheckinFile(mNewFileIteration, "Created by Custom Job executing iLogic : " + mAllRulesTextWrp,
+                                                    false, null, null, false, null, mFileIteration.FileClassification, false, vdfPath);
+                        }
+
+                    }
+                    catch
+                    {
+                        context.Log(null, "Job could not check-in updated file: " + mUploadedFile.EntityName + ".");
+                        return JobOutcome.Failure;
+                    }
                 }
                 #endregion check-in result
 

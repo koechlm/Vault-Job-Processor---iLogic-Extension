@@ -63,6 +63,26 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _000420_folder_delete {
+            get {
+                object obj = ResourceManager.GetObject("000420-folder-delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Back_16 {
+            get {
+                object obj = ResourceManager.GetObject("Back_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CheckIn_16x16 {
             get {
                 object obj = ResourceManager.GetObject("CheckIn_16x16", resourceCulture);
@@ -96,16 +116,6 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         internal static System.Drawing.Bitmap CheckOut_32x32 {
             get {
                 object obj = ResourceManager.GetObject("CheckOut_32x32", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap CustomizeImg {
-            get {
-                object obj = ResourceManager.GetObject("CustomizeImg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,6 +213,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap uplevel_16 {
+            get {
+                object obj = ResourceManager.GetObject("uplevel_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Vault_Info_32x32Img {
             get {
                 object obj = ResourceManager.GetObject("Vault_Info_32x32Img", resourceCulture);
@@ -217,6 +237,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
             get {
                 object obj = ResourceManager.GetObject("VaultIco", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ViewOptions_16 {
+            get {
+                object obj = ResourceManager.GetObject("ViewOptions_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
