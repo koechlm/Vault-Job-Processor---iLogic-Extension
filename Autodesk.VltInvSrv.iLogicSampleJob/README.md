@@ -1,6 +1,8 @@
-# Vault-Inventor-Server Job Sample to run iLogic Rules
+# Vault-Inventor-Server Job Extension Sample to run iLogic Rules
 
-This custom job allows to run external and/or document rules using VaultInventorServer.
+The iLogic Extension for Vault Job Processor allows configuring the iLogic AddIn of Vault-Inventor-Server and provides a custom job as a framework. 
+Administrators can configure which iLogic rules to run on Lifecycle State Transitions and which iLogic rules being available for interactive, 
+manual job submission on selected files.
 
 INTRODUCTION:
 ---------------------------------
@@ -27,10 +29,14 @@ The job is valid for any Vault configuration fulfilling these requirements:
 TO CONFIGURE:
 ---------------------------------
 1) Copy the folder Autodesk.VltInvSrv.iLogicSampleJob to %ProgramData%\Autodesk\Vault 2020\Extensions\.
-2) Edit the settings.xml to configure the options
-3) Add the job to the Job Queue activating job transitions. To achieve this, integrate this job into a custom lifecycle transition by adding the Job-Type name
+2) Start Vault Explorer and configure the iLogic Job environment: Tools -> iLogic Job Administration...; first time load will bring up an error message, that no configuration could be loaded.
+3) Edit the configuration options and Save To Vault. Even if empty values are saved to Vault, the error mentioned before will no longer occure.
+4) Manual Job Submission - To use the manual Job submission, you need to configure and save the Tab Manual User Job Options. A single external rule file is the minimum configuration.
+	To submit a job, select a file (Inventor only ;)) go to Actions -> Queue iLogic Job and select the rule to be run against the selected file.
+5) Automatic Job Submission. Configure the Tab "Job Rules Options" and save to Vault. Add the job name to the Job Queue activating job transitions. To achieve this, integrate this job into a custom lifecycle transition by adding the Job-Type name
 "Autodesk.VltInvSrv.iLogicSampleJob" to the transition's 'Custom Job Types' tab.
-4) To enable iLogic logging copy the file iLogicLogger.config to the C:\Program Files\Autodesk\Vault Professional 202x\Explorer\Inventor Server\Bin\
+6) To enable iLogic logging copy the file iLogicLogger.config to the C:\Program Files\Autodesk\Vault Professional 202x\Explorer\Inventor Server\Bin\. Enable iLogic Logging in the configuration
+Tab "Advanced iLogic Configuration".
 
 DISCLAIMER:
 ---------------------------------

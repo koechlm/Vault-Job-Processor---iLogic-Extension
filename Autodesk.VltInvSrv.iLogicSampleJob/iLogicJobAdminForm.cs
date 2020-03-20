@@ -27,6 +27,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         public iLogicJobAdminForm()
         {
             InitializeComponent();
+
+            lblDebugInfo.Visible = false;
         }
 
         private void iLogicJobAdminForm_Load(object sender, EventArgs e)
