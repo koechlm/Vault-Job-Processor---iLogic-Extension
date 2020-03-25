@@ -41,9 +41,6 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         [XmlElement("VaultRuleFullFileName")]
         public string VaultRuleFullFileName;
 
-        [XmlElement("ExternalRuleName")]
-        public string ExternalRuleName;
-
         [XmlElement("ExternalRuleDirectories")]
         public string[] ExternalRuleDirectories;
 

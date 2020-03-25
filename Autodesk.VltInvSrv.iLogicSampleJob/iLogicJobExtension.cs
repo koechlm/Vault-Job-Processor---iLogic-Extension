@@ -77,7 +77,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
 
                 //Validate required settings for lifecycle job execution; we need to have an external rule or internal rule option <> None
-                if (mJobExecType == "LifecycleJob" && mSettings.ExternalRuleName == "" && mSettings.InternalRulesOption == "None")
+                if (mJobExecType == "LifecycleJob" && mSettings.VaultRuleFullFileName == "" && mSettings.InternalRulesOption == "None")
                 {
                     context.Log(null, "The iLogic Rule Options are set to neither run an external rule nor internal rules.");
                     return JobOutcome.Failure;
@@ -332,11 +332,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
 
                 //read rule execution settings
-                string mVaultRule = mSettings.VaultRuleFullFileName;
                 string mExtRule = null;
-                string mExtRuleFullName = null;
+                string mExtRuleFullLocalName = null;
                 string mIntRulesOption = mSettings.InternalRulesOption;
-                //string mSelectedRule = null;
+
                 if (mJobExecType == "UserJob")
                 {
                     //interactive job: read rule name from parameters instead of settings
@@ -344,19 +343,19 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
                 else
                 {
-                    mExtRule = mSettings.ExternalRuleName;
+                    mExtRule = mSettings.VaultRuleFullFileName;
                 }
 
-                if (mVaultRule != "")
+                if (mExtRule != "")
                 {
-                    ACW.File mRuleFile = mWsMgr.DocumentService.FindLatestFilesByPaths(new string[] { mVaultRule }).FirstOrDefault();
+                    ACW.File mRuleFile = mWsMgr.DocumentService.FindLatestFilesByPaths(new string[] { mExtRule }).FirstOrDefault();
                     //build download options including DefaultAcquisitionOptions
                     VDF.Vault.Currency.Entities.FileIteration mRuleFileIter = new VDF.Vault.Currency.Entities.FileIteration(mConnection, mRuleFile);
 
                     //the rule must not be checked out by another user or better not checked out at all
                     if (mRuleFileIter.CheckedOutMachine != "")
                     {
-                        context.Log(null, "Job exited because the rule file " + mExtRuleFullName + " had been checked out at the time of execution. Check-in the rule before re-submitting this job.");
+                        context.Log(null, "Job exited because the rule file " + mExtRule + " had been checked out at the time of execution. Check-in the rule before re-submitting this job.");
                         mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                         return JobOutcome.Failure;
                     }
@@ -371,11 +370,11 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     VDF.Vault.Results.FileAcquisitionResult mRuleAcqResult = mAcqrRuleResults.FileResults.Where(n => n.File.EntityName == mRuleFileIter.EntityName).FirstOrDefault();
                     if (mRuleAcqResult.LocalPath != null)
                     {
-                        mExtRuleFullName = mRuleAcqResult.LocalPath.FullPath;
-                        System.IO.FileInfo fileInfo = new System.IO.FileInfo(mExtRuleFullName);
+                        mExtRuleFullLocalName = mRuleAcqResult.LocalPath.FullPath;
+                        System.IO.FileInfo fileInfo = new System.IO.FileInfo(mExtRuleFullLocalName);
                         if (fileInfo.Exists == false)
                         {
-                            context.Log(null, "Job downloaded rule file but exited due to missing rule file: " + mExtRuleFullName + ".");
+                            context.Log(null, "Job downloaded rule file but exited due to missing rule file: " + mExtRuleFullLocalName + ".");
                             mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                             return JobOutcome.Failure;
                         }
@@ -393,7 +392,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
                     else
                     {
-                        context.Log(null, "Job could not download configured rule file and exited. Compare the 'VaultRuleFullFileName' setting and available rule in Vault.");
+                        context.Log(null, "Job could not download configured rule file and exited. Compare the Job Rule Options and available rule in Vault.");
                         return JobOutcome.Failure;
                     }
                 }
@@ -435,7 +434,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     if (mSettings.ActivateDebugBreak == "True")
                     {
                         MessageBox.Show("You opted to break for Visual Studio rule debugging? If so, attach to VaultInventorServer.exe now, then continue...",
-                            "iLogicSampleJob", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            "iLogicSampleJob", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
 
                     //call external rule with arguments; return value = 0 in case of successful execution

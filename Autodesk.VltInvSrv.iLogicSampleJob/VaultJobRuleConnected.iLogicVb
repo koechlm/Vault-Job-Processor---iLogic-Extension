@@ -1,4 +1,4 @@
-﻿AddReference "QuickstartiLogicLibrary.dll"
+﻿AddReference "QuickstartiLogicVltInvSrvLibrary.dll"
 AddReference "Autodesk.Connectivity.WebServices.dll"
 AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 'DISCLAIMER:
@@ -8,9 +8,9 @@ AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
 
 Sub Main
-
+break 'prepared for step by step debugging
 'to enable iLogicVault commands reuse the job processor's user connection
-	Dim iLogicVault As New QuickstartiLogicLibrary.QuickstartiLogicLib
+	Dim iLogicVault As New QuickstartiLogicVltInvSrvLibrary.iLogicVltInvSrvLibrary
 	Dim LoggedIn As Boolean
 	Dim FileState As String
 	Try
@@ -20,7 +20,7 @@ Sub Main
 		userId = RuleArguments("UserId")
 		ticket = RuleArguments("Ticket")
 		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, ticket)
-		FileState = RuleArguments("VaultRevisionState")
+		FileState = RuleArguments("State (Historical)")
 	Catch
 	End Try
 	

@@ -5,7 +5,7 @@
 'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
 
 Sub Main
-
+	break 'prepared for step by step debugging
 	'some insights on the job's iLogic settings
 	Logger.Info("----------------------- this job's iLogic settings ------------------------------------")	
 	For Each mDir As String In iLogicVb.Automation.FileOptions.ExternalRuleDirectories

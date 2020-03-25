@@ -3,13 +3,20 @@
   <iLogicAddinDLLs>C:\PDMC-Sample\Libraries\iLogic\Extensions</iLogicAddinDLLs>
   <iLogicLogLevel>Debug</iLogicLogLevel>
   <iLogicLogDir>C:\TEMP\iLogicDebug</iLogicLogDir>
-  <VaultRuleFullFileName>$/Libraries/iLogic/Automation Sample/</VaultRuleFullFileName>
-  <ExternalRuleName />
-  <ExternalRuleDirectories>C:\PDMC-Sample</ExternalRuleDirectories>
+  <VaultRuleFullFileName>$/Libraries/iLogic/Automation Sample/VaultJobRule.iLogicVb</VaultRuleFullFileName>
   <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic</ExternalRuleDirectories>
   <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic\Automation Sample</ExternalRuleDirectories>
+  <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic\Sample Rules iLogic-PDM</ExternalRuleDirectories>
   <PropagateProps>True</PropagateProps>
-  <InternalRulesOption>Active only</InternalRulesOption>
-  <InternalRulesOptionText />
+  <InternalRulesOption>None</InternalRulesOption>
+  <InternalRulesOptionText>_Auto</InternalRulesOptionText>
+  <UserRules>Publish BOM Type|true|$/Libraries/iLogic/Automation Sample/BOMTypeToPropVltJob.iLogicVb</UserRules>
+  <UserRules>Save 3D - Rule Collection|true|$/Libraries/iLogic/Automation Sample/Save3DVltJob.iLogicVb</UserRules>
+  <UserRules>Publish Unique Inventor File-Id|true|$/Libraries/iLogic/Automation Sample/UidToiPropVltJob.ilogicvb</UserRules>
+  <UserRules>Publish Key-Parameters|true|$/Libraries/iLogic/Automation Sample/UpdateKeyParameters.iLogicVb</UserRules>
+  <UserRules>VaultJobRule.iLogicVb|true|$/Libraries/iLogic/Automation Sample/VaultJobRule.iLogicVb</UserRules>
+  <UserRules>VaultJobRule_Debug.iLogicVb|true|$/Libraries/iLogic/Automation Sample/VaultJobRule_Debug.iLogicVb</UserRules>
+  <UserRules>Print All Drawing Sheets|false|$/Libraries/iLogic/Automation Sample/VaultJobRule_IdwPrint.iLogicVb</UserRules>
+  <UserRules>VaultJobRuleConnected.iLogicVb|true|$/Libraries/iLogic/Automation Sample/VaultJobRuleConnected.iLogicVb</UserRules>
   <ActivateDebugBreak>True</ActivateDebugBreak>
 </settings>
