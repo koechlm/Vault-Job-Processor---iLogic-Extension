@@ -356,7 +356,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     //the rule must not be checked out by another user or better not checked out at all
                     if (mRuleFileIter.CheckedOutMachine != "")
                     {
-                        context.Log(null, "Job exited because the rule file " + mExtRuleFullName + " has been checked at the time of execution. Check-in the rule before re-submitting this job.");
+                        context.Log(null, "Job exited because the rule file " + mExtRuleFullName + " had been checked out at the time of execution. Check-in the rule before re-submitting this job.");
+                        mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                         return JobOutcome.Failure;
                     }
 
