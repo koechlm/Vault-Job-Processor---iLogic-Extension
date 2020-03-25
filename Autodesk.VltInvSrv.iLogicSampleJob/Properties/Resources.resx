@@ -175,4 +175,7 @@
   <data name="ViewOptions_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ViewOptions_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iLogic_Browser_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iLogic-Browser_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

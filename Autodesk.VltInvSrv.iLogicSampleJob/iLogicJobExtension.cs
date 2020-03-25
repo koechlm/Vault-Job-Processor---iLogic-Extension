@@ -353,6 +353,13 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     //build download options including DefaultAcquisitionOptions
                     VDF.Vault.Currency.Entities.FileIteration mRuleFileIter = new VDF.Vault.Currency.Entities.FileIteration(mConnection, mRuleFile);
 
+                    //the rule must not be checked out by another user or better not checked out at all
+                    if (mRuleFileIter.CheckedOutMachine != "")
+                    {
+                        context.Log(null, "Job exited because the rule file " + mExtRuleFullName + " has been checked at the time of execution. Check-in the rule before re-submitting this job.");
+                        return JobOutcome.Failure;
+                    }
+
                     VDF.Vault.Settings.AcquireFilesSettings mAcqrRuleSettings = CreateAcquireSettings(false);
 
                     mAcqrRuleSettings.AddFileToAcquire(mRuleFileIter, mAcqrRuleSettings.DefaultAcquisitionOption);

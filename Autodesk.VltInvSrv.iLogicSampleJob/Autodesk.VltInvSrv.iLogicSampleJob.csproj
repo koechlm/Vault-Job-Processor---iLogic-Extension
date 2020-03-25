@@ -200,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iLogicJobSettings.xml" />
+    <None Include="Resources\iLogic-Browser_transparent.png" />
     <None Include="Resources\ViewOptions_16.png" />
     <None Include="Resources\uplevel_16.png" />
     <None Include="Resources\Back_16.png" />

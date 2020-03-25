@@ -35,13 +35,13 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             mSettings = Settings.LoadFromVault(mConnection);
             if (mSettings == null)
             {
-                MessageBox.Show("iLogic Environment for Job Processor is not configured. \n\r Contact your Vault Administrator for Support.", "Submit iLogic Job to Job Queue.",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("iLogic Environment for Job Processor is not configured. \n\r Contact your Vault Administrator for Support.", "Submit iLogic Job to Job Queue.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             //initiate user interaction to select rule to be applied to selected files
             iLogicSampleJob.SelectUserJob mUserJob = new SelectUserJob();
-            
+
             var retval = mUserJob.ShowDialog();
 
             //get dialog return parameters
@@ -90,9 +90,20 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 // Add the job to the queue
                 //
                 string mRuleShortName = mRuleName.Split('/').Last();
-                e.Context.Application.Connection.WebServiceManager.JobService.AddJob(
-                    iLogicJobTypeName, String.Format("Manually queued file {0} to run iLogic rule {1} on it.", vaultObj.Label, mRuleShortName ),
-                    mParamList, 10);
+                try
+                {
+                    e.Context.Application.Connection.WebServiceManager.JobService.AddJob(
+                        iLogicJobTypeName, String.Format("Manually queued file {0} to run iLogic rule {1} on it.", vaultObj.Label, mRuleShortName),
+                        mParamList, 10);
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message == "237")
+                    {
+                        MessageBox.Show("You tried to queue a duplicate Job; resolve the existing job first.", "Queue iLogic Job...", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
             }
         }
 
@@ -126,7 +137,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             CommandItem mQueuePublishJobCmdItem = new CommandItem("Command.iLogicJobAdd", "Queue iLogic Job")
             {
                 NavigationTypes = new SelectionTypeId[] { SelectionTypeId.File },
-                MultiSelectEnabled = true
+                MultiSelectEnabled = true,
+                Image = Properties.Resources.iLogic_Browser_transparent
             };
             mQueuePublishJobCmdItem.Execute += mQueueiLogicJobCmdHndlr;
 

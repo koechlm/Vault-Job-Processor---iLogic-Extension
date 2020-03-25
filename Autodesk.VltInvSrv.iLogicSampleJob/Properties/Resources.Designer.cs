@@ -123,6 +123,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iLogic_Browser_transparent {
+            get {
+                object obj = ResourceManager.GetObject("iLogic_Browser_transparent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iLogic_Down {
             get {
                 object obj = ResourceManager.GetObject("iLogic-Down", resourceCulture);
