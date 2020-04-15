@@ -14,7 +14,7 @@ Options allow to save iLogic logging per job.
 
 REQUIREMENTS:
 ---------------------------------
-Vault Workgroup, Vault Professional 2020.2 (Update 2 added the iLogic Automation Add-In to Vault Inventor Server).
+Vault Workgroup, Vault Professional 2021.
 This job leverages the Vault Inventor Server component and does not require Inventor installation or Inventor license.
 The job is valid for any Vault configuration fulfilling these requirements:
 - Enforce Workingfolder = Enabled
@@ -35,7 +35,7 @@ TO CONFIGURE:
 	To submit a job, select a file (Inventor only ;)) go to Actions -> Queue iLogic Job and select the rule to be run against the selected file.
 5) Automatic Job Submission. Configure the Tab "Job Rules Options" and save to Vault. Add the job name to the Job Queue activating job transitions. To achieve this, integrate this job into a custom lifecycle transition by adding the Job-Type name
 "Autodesk.VltInvSrv.iLogicSampleJob" to the transition's 'Custom Job Types' tab.
-6) To enable iLogic logging copy the file iLogicLogger.config to the C:\Program Files\Autodesk\Vault Professional 202x\Explorer\Inventor Server\Bin\. Enable iLogic Logging in the configuration
+6) To enable iLogic logging copy the file iLogicLogger.config to the C:\Program Files\Autodesk\Vault Client 2021\Explorer\Inventor Server\Bin\. Enable iLogic Logging in the configuration
 Tab "Advanced iLogic Configuration".
 
 DISCLAIMER:
@@ -53,6 +53,7 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
+2021.0.0.0 - updated for Vault Client / Job Processor 2021
 2020.2.1.0 - Vault Extension with user interface for configuration and user interactive job submission
 2020.2.0.1 - Option to break execution for iLogic Rule debugging added
 2020.2.0.0 - Initial Version
