@@ -199,7 +199,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="iLogicJobSettings.xml" />
+    <Content Include="iLogicJobSettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\iLogic-Browser_transparent.png" />
     <None Include="Resources\ViewOptions_16.png" />
     <None Include="Resources\uplevel_16.png" />
