@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Autodesk iLogic Job Extension")]
-[assembly: AssemblyDescription("API Sample - iLogic Rule Execution for Job Processing")]
+[assembly: AssemblyDescription("API Sample - iLogic Rule Extension for Job Processing")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Autodesk")]
 [assembly: AssemblyProduct("Autodesk Vault Professional - API Sample")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2021.0.0.0")]
-[assembly: AssemblyFileVersion("2021.0.0.0")]
+[assembly: AssemblyVersion("2021.0.1.0")]
+[assembly: AssemblyFileVersion("2021.0.1.0")]

@@ -44,9 +44,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAddInDirSearch = new System.Windows.Forms.Button();
             this.txtDLLsDir = new System.Windows.Forms.TextBox();
-            this.btnRuleDirDown = new System.Windows.Forms.Button();
-            this.btnRuleDirUp = new System.Windows.Forms.Button();
-            this.btnRuleDirAdd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtgrdViewExtRls = new System.Windows.Forms.DataGridView();
             this.column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,6 +51,9 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addPathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuExtRuleDirDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRuleDirAdd = new System.Windows.Forms.Button();
+            this.btnRuleDirUp = new System.Windows.Forms.Button();
+            this.btnRuleDirDown = new System.Windows.Forms.Button();
             this.tabJobRules = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lblInternalRuleText = new System.Windows.Forms.Label();
@@ -118,9 +118,6 @@
             this.tabAdvancediLogicConfig.Controls.Add(this.groupBox4);
             this.tabAdvancediLogicConfig.Controls.Add(this.groupBox3);
             this.tabAdvancediLogicConfig.Controls.Add(this.groupBox2);
-            this.tabAdvancediLogicConfig.Controls.Add(this.btnRuleDirDown);
-            this.tabAdvancediLogicConfig.Controls.Add(this.btnRuleDirUp);
-            this.tabAdvancediLogicConfig.Controls.Add(this.btnRuleDirAdd);
             this.tabAdvancediLogicConfig.Controls.Add(this.groupBox1);
             this.tabAdvancediLogicConfig.Location = new System.Drawing.Point(4, 30);
             this.tabAdvancediLogicConfig.Name = "tabAdvancediLogicConfig";
@@ -137,7 +134,7 @@
             this.groupBox4.Controls.Add(this.chckBoxBreak);
             this.groupBox4.Location = new System.Drawing.Point(7, 325);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(439, 87);
+            this.groupBox4.Size = new System.Drawing.Size(579, 87);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Advanced Rule Debugging";
@@ -151,6 +148,7 @@
             this.lblDebugInfo.TabIndex = 2;
             this.lblDebugInfo.Text = "Enabling Debugging expects the environment \r\nvariable \"iLogicRuleFolderForVS\" and" +
     " an available \r\npath value.";
+            this.lblDebugInfo.Click += new System.EventHandler(this.lblDebugInfo_Click);
             // 
             // chckBoxBreak
             // 
@@ -172,7 +170,7 @@
             this.groupBox3.Controls.Add(this.txtLogPath);
             this.groupBox3.Location = new System.Drawing.Point(6, 238);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(440, 80);
+            this.groupBox3.Size = new System.Drawing.Size(580, 80);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Logging";
@@ -198,9 +196,9 @@
             // btnSelectLogPath
             // 
             this.btnSelectLogPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelectLogPath.Location = new System.Drawing.Point(397, 42);
+            this.btnSelectLogPath.Location = new System.Drawing.Point(539, 42);
             this.btnSelectLogPath.Name = "btnSelectLogPath";
-            this.btnSelectLogPath.Size = new System.Drawing.Size(35, 26);
+            this.btnSelectLogPath.Size = new System.Drawing.Size(33, 26);
             this.btnSelectLogPath.TabIndex = 3;
             this.btnSelectLogPath.Text = "...";
             this.btnSelectLogPath.UseVisualStyleBackColor = true;
@@ -228,7 +226,7 @@
             this.txtLogPath.Enabled = false;
             this.txtLogPath.Location = new System.Drawing.Point(66, 46);
             this.txtLogPath.Name = "txtLogPath";
-            this.txtLogPath.Size = new System.Drawing.Size(321, 20);
+            this.txtLogPath.Size = new System.Drawing.Size(467, 20);
             this.txtLogPath.TabIndex = 2;
             // 
             // groupBox2
@@ -237,7 +235,7 @@
             this.groupBox2.Controls.Add(this.txtDLLsDir);
             this.groupBox2.Location = new System.Drawing.Point(6, 172);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(440, 60);
+            this.groupBox2.Size = new System.Drawing.Size(580, 60);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "iLogic Addin DLLs Directory";
@@ -245,7 +243,7 @@
             // btnAddInDirSearch
             // 
             this.btnAddInDirSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddInDirSearch.Location = new System.Drawing.Point(397, 19);
+            this.btnAddInDirSearch.Location = new System.Drawing.Point(539, 19);
             this.btnAddInDirSearch.Name = "btnAddInDirSearch";
             this.btnAddInDirSearch.Size = new System.Drawing.Size(35, 26);
             this.btnAddInDirSearch.TabIndex = 1;
@@ -257,48 +255,18 @@
             // 
             this.txtDLLsDir.Location = new System.Drawing.Point(6, 23);
             this.txtDLLsDir.Name = "txtDLLsDir";
-            this.txtDLLsDir.Size = new System.Drawing.Size(381, 20);
+            this.txtDLLsDir.Size = new System.Drawing.Size(527, 20);
             this.txtDLLsDir.TabIndex = 0;
-            // 
-            // btnRuleDirDown
-            // 
-            this.btnRuleDirDown.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Down;
-            this.btnRuleDirDown.Location = new System.Drawing.Point(452, 113);
-            this.btnRuleDirDown.Name = "btnRuleDirDown";
-            this.btnRuleDirDown.Size = new System.Drawing.Size(26, 26);
-            this.btnRuleDirDown.TabIndex = 3;
-            this.toolTip1.SetToolTip(this.btnRuleDirDown, "Move this directory down in the list (lower priority)");
-            this.btnRuleDirDown.UseVisualStyleBackColor = true;
-            this.btnRuleDirDown.Click += new System.EventHandler(this.btnRuleDirDown_Click);
-            // 
-            // btnRuleDirUp
-            // 
-            this.btnRuleDirUp.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Up;
-            this.btnRuleDirUp.Location = new System.Drawing.Point(452, 81);
-            this.btnRuleDirUp.Name = "btnRuleDirUp";
-            this.btnRuleDirUp.Size = new System.Drawing.Size(26, 26);
-            this.btnRuleDirUp.TabIndex = 2;
-            this.toolTip1.SetToolTip(this.btnRuleDirUp, "Move this directory up in the list (higher priority)");
-            this.btnRuleDirUp.UseVisualStyleBackColor = true;
-            this.btnRuleDirUp.Click += new System.EventHandler(this.btnRuleDirUp_Click);
-            // 
-            // btnRuleDirAdd
-            // 
-            this.btnRuleDirAdd.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Plus;
-            this.btnRuleDirAdd.Location = new System.Drawing.Point(452, 25);
-            this.btnRuleDirAdd.Name = "btnRuleDirAdd";
-            this.btnRuleDirAdd.Size = new System.Drawing.Size(26, 26);
-            this.btnRuleDirAdd.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.btnRuleDirAdd, "Add a Directory to the list");
-            this.btnRuleDirAdd.UseVisualStyleBackColor = true;
-            this.btnRuleDirAdd.Click += new System.EventHandler(this.btnRuleDirAdd_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dtgrdViewExtRls);
+            this.groupBox1.Controls.Add(this.btnRuleDirAdd);
+            this.groupBox1.Controls.Add(this.btnRuleDirUp);
+            this.groupBox1.Controls.Add(this.btnRuleDirDown);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(440, 160);
+            this.groupBox1.Size = new System.Drawing.Size(580, 160);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "External Rule Directories";
@@ -315,7 +283,7 @@
             this.dtgrdViewExtRls.Location = new System.Drawing.Point(6, 19);
             this.dtgrdViewExtRls.Name = "dtgrdViewExtRls";
             this.dtgrdViewExtRls.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgrdViewExtRls.Size = new System.Drawing.Size(432, 135);
+            this.dtgrdViewExtRls.Size = new System.Drawing.Size(536, 135);
             this.dtgrdViewExtRls.TabIndex = 0;
             // 
             // column1
@@ -359,6 +327,39 @@
             this.mnuExtRuleDirDelete.ToolTipText = "Delete selected row(s).";
             this.mnuExtRuleDirDelete.Click += new System.EventHandler(this.mnuExtRuleDirDelete_Click);
             // 
+            // btnRuleDirAdd
+            // 
+            this.btnRuleDirAdd.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Plus;
+            this.btnRuleDirAdd.Location = new System.Drawing.Point(548, 19);
+            this.btnRuleDirAdd.Name = "btnRuleDirAdd";
+            this.btnRuleDirAdd.Size = new System.Drawing.Size(26, 26);
+            this.btnRuleDirAdd.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.btnRuleDirAdd, "Add a Directory to the list");
+            this.btnRuleDirAdd.UseVisualStyleBackColor = true;
+            this.btnRuleDirAdd.Click += new System.EventHandler(this.btnRuleDirAdd_Click);
+            // 
+            // btnRuleDirUp
+            // 
+            this.btnRuleDirUp.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Up;
+            this.btnRuleDirUp.Location = new System.Drawing.Point(548, 75);
+            this.btnRuleDirUp.Name = "btnRuleDirUp";
+            this.btnRuleDirUp.Size = new System.Drawing.Size(26, 26);
+            this.btnRuleDirUp.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.btnRuleDirUp, "Move this directory up in the list (higher priority)");
+            this.btnRuleDirUp.UseVisualStyleBackColor = true;
+            this.btnRuleDirUp.Click += new System.EventHandler(this.btnRuleDirUp_Click);
+            // 
+            // btnRuleDirDown
+            // 
+            this.btnRuleDirDown.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Down;
+            this.btnRuleDirDown.Location = new System.Drawing.Point(548, 107);
+            this.btnRuleDirDown.Name = "btnRuleDirDown";
+            this.btnRuleDirDown.Size = new System.Drawing.Size(26, 26);
+            this.btnRuleDirDown.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.btnRuleDirDown, "Move this directory down in the list (lower priority)");
+            this.btnRuleDirDown.UseVisualStyleBackColor = true;
+            this.btnRuleDirDown.Click += new System.EventHandler(this.btnRuleDirDown_Click);
+            // 
             // tabJobRules
             // 
             this.tabJobRules.Controls.Add(this.groupBox6);
@@ -368,7 +369,7 @@
             this.tabJobRules.Padding = new System.Windows.Forms.Padding(3);
             this.tabJobRules.Size = new System.Drawing.Size(592, 418);
             this.tabJobRules.TabIndex = 2;
-            this.tabJobRules.Text = "Job Rules Options";
+            this.tabJobRules.Text = "Lifecycle Rule(s)";
             this.toolTip1.SetToolTip(this.tabJobRules, "Configure External and Document Rule exection options.");
             this.tabJobRules.UseVisualStyleBackColor = true;
             // 
@@ -437,7 +438,7 @@
             this.groupBox5.Size = new System.Drawing.Size(579, 125);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "External Rule (Primary Rule)";
+            this.groupBox5.Text = "Primary Rule File";
             // 
             // chckBoxPropagateProps
             // 
@@ -456,7 +457,7 @@
             // 
             this.btnOpenJobRuleVault.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenJobRuleVault.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.OpenFromVault_16x16;
-            this.btnOpenJobRuleVault.Location = new System.Drawing.Point(397, 40);
+            this.btnOpenJobRuleVault.Location = new System.Drawing.Point(538, 40);
             this.btnOpenJobRuleVault.Name = "btnOpenJobRuleVault";
             this.btnOpenJobRuleVault.Size = new System.Drawing.Size(35, 26);
             this.btnOpenJobRuleVault.TabIndex = 3;
@@ -468,7 +469,7 @@
             this.txtJobRuleVault.Location = new System.Drawing.Point(6, 44);
             this.txtJobRuleVault.Name = "txtJobRuleVault";
             this.txtJobRuleVault.ReadOnly = true;
-            this.txtJobRuleVault.Size = new System.Drawing.Size(381, 20);
+            this.txtJobRuleVault.Size = new System.Drawing.Size(526, 20);
             this.txtJobRuleVault.TabIndex = 2;
             // 
             // label3
@@ -488,7 +489,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(592, 418);
             this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Manual Job Rules Options";
+            this.tabPage1.Text = "User Rules";
             this.toolTip1.SetToolTip(this.tabPage1, "Configure rules available for user interactive iLogic-Job submission.");
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
@@ -508,6 +509,7 @@
             // dtGrdUsrRules
             // 
             this.dtGrdUsrRules.AllowUserToAddRows = false;
+            this.dtGrdUsrRules.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dtGrdUsrRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdUsrRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
@@ -524,7 +526,8 @@
             // 
             // Column4
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column4.FillWeight = 10F;
             this.Column4.HeaderText = "Id";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
@@ -534,7 +537,8 @@
             // 
             // UserRuleDispName
             // 
-            this.UserRuleDispName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UserRuleDispName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.UserRuleDispName.FillWeight = 50F;
             this.UserRuleDispName.HeaderText = "Display Name";
             this.UserRuleDispName.Name = "UserRuleDispName";
             this.UserRuleDispName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -544,6 +548,7 @@
             // Column3
             // 
             this.Column3.FalseValue = "false";
+            this.Column3.FillWeight = 10F;
             this.Column3.HeaderText = "Create New File Version";
             this.Column3.Name = "Column3";
             this.Column3.ToolTipText = resources.GetString("Column3.ToolTipText");
@@ -615,7 +620,7 @@
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(16, 487);
+            this.btnImport.Location = new System.Drawing.Point(12, 478);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(120, 26);
             this.btnImport.TabIndex = 1;
@@ -625,7 +630,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(142, 487);
+            this.btnExport.Location = new System.Drawing.Point(138, 478);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(114, 26);
             this.btnExport.TabIndex = 2;
@@ -637,7 +642,7 @@
             // 
             this.btnSaveToVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckIn_32x32;
             this.btnSaveToVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveToVlt.Location = new System.Drawing.Point(492, 470);
+            this.btnSaveToVlt.Location = new System.Drawing.Point(488, 470);
             this.btnSaveToVlt.Name = "btnSaveToVlt";
             this.btnSaveToVlt.Size = new System.Drawing.Size(120, 43);
             this.btnSaveToVlt.TabIndex = 3;
@@ -650,7 +655,7 @@
             // 
             this.btnLoadFromVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckOut_32x32;
             this.btnLoadFromVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoadFromVlt.Location = new System.Drawing.Point(363, 470);
+            this.btnLoadFromVlt.Location = new System.Drawing.Point(359, 470);
             this.btnLoadFromVlt.Name = "btnLoadFromVlt";
             this.btnLoadFromVlt.Size = new System.Drawing.Size(123, 43);
             this.btnLoadFromVlt.TabIndex = 4;
@@ -669,6 +674,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(624, 525);
             this.Controls.Add(this.btnLoadFromVlt);
             this.Controls.Add(this.btnSaveToVlt);
@@ -678,6 +685,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(640, 564);
             this.Name = "iLogicJobAdminForm";
             this.ShowInTaskbar = false;
             this.Text = "iLogic Configuration";

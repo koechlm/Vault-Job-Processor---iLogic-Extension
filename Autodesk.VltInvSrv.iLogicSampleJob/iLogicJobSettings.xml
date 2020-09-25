@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <iLogicAddinDLLs>C:\PDMC-Sample\Libraries\iLogic\Extensions</iLogicAddinDLLs>
-  <iLogicLogLevel>Debug</iLogicLogLevel>
+  <iLogicAddinDLLs>C:\PDMC-Sample\Templates\Design Data\iLogic\Extensions</iLogicAddinDLLs>
+  <iLogicLogLevel>Trace</iLogicLogLevel>
   <iLogicLogDir>C:\TEMP\iLogicDebug</iLogicLogDir>
-  <VaultRuleFullFileName>$/Libraries/iLogic/Automation Sample/VaultJobRule.iLogicVb</VaultRuleFullFileName>
-  <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic</ExternalRuleDirectories>
-  <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic\Automation Sample</ExternalRuleDirectories>
-  <ExternalRuleDirectories>C:\PDMC-Sample\Libraries\iLogic\Sample Rules iLogic-PDM</ExternalRuleDirectories>
+  <VaultRuleFullFileName>$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule_MasterSample.iLogicVb</VaultRuleFullFileName>
+  <ExternalRuleDirectories>C:\PDMC-Sample\Templates\Design Data\iLogic</ExternalRuleDirectories>
+  <ExternalRuleDirectories>C:\PDMC-Sample\Templates\Design Data\iLogic\Design Automation</ExternalRuleDirectories>
+  <ExternalRuleDirectories>C:\PDMC-Sample\Templates\Design Data\iLogic\Sample Rules PDM</ExternalRuleDirectories>
+  <ExternalRuleDirectories>C:\PDMC-Sample\Templates\Design Data\iLogic\Vault Automation</ExternalRuleDirectories>
   <PropagateProps>True</PropagateProps>
   <InternalRulesOption>None</InternalRulesOption>
   <InternalRulesOptionText>_Auto</InternalRulesOptionText>
-  <UserRules>Publish BOM Type|true|$/Libraries/iLogic/Automation Sample/BOMTypeToPropVltJob.iLogicVb</UserRules>
-  <UserRules>Save 3D - Rule Collection|true|$/Libraries/iLogic/Automation Sample/Save3DVltJob.iLogicVb</UserRules>
-  <UserRules>Publish Unique Inventor File-Id|true|$/Libraries/iLogic/Automation Sample/UidToiPropVltJob.ilogicvb</UserRules>
-  <UserRules>Publish Key-Parameters|true|$/Libraries/iLogic/Automation Sample/UpdateKeyParameters.iLogicVb</UserRules>
-  <UserRules>VaultJobRule.iLogicVb|true|$/Libraries/iLogic/Automation Sample/VaultJobRule.iLogicVb</UserRules>
-  <UserRules>VaultJobRule_Debug.iLogicVb|true|$/Libraries/iLogic/Automation Sample/VaultJobRule_Debug.iLogicVb</UserRules>
-  <UserRules>Print All Drawing Sheets|false|$/Libraries/iLogic/Automation Sample/VaultJobRule_IdwPrint.iLogicVb</UserRules>
-  <UserRules>VaultJobRuleConnected.iLogicVb|true|$/Libraries/iLogic/Automation Sample/VaultJobRuleConnected.iLogicVb</UserRules>
-  <ActivateDebugBreak>True</ActivateDebugBreak>
+  <UserRules>Master rule calling sub-rules|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule_MasterSample.iLogicVb</UserRules>
+  <UserRules>BOMTypeToProp|true|$/Templates/Design Data/iLogic/Vault Automation/BOMTypeToPropVltJob.iLogicVb</UserRules>
+  <UserRules>Save3D|true|$/Templates/Design Data/iLogic/Vault Automation/Save3DVltJob.iLogicVb</UserRules>
+  <UserRules>UidToiProp|true|$/Templates/Design Data/iLogic/Vault Automation/UidToiPropVltJob.ilogicvb</UserRules>
+  <UserRules>VaultJobRule|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule.iLogicVb</UserRules>
+  <UserRules>VaultJobRule IdwPrintToPDF|false|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule_IdwPrint.iLogicVb</UserRules>
+  <UserRules>VaultJobRuleConnected|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRuleConnected.iLogicVb</UserRules>
+  <UserRules>Apply BOM Settings PDMC-Sample|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRuleConnected-BOMSettingsPDMC-Sample.iLogicVb</UserRules>
+  <ActivateDebugBreak>False</ActivateDebugBreak>
 </settings>

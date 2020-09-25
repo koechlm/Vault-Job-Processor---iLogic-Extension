@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectUserJob));
             this.dtGrdUsrRules = new System.Windows.Forms.DataGridView();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserRuleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserRuleDispName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.UserRuleNewFileIter = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UserRulePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_SelectUsrJob_Cancel = new System.Windows.Forms.Button();
             this.btn_SelectUserJob_Submit = new System.Windows.Forms.Button();
@@ -42,11 +42,13 @@
             // dtGrdUsrRules
             // 
             this.dtGrdUsrRules.AllowUserToAddRows = false;
+            this.dtGrdUsrRules.AllowUserToDeleteRows = false;
+            this.dtGrdUsrRules.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dtGrdUsrRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdUsrRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column4,
+            this.UserRuleId,
             this.UserRuleDispName,
-            this.Column3,
+            this.UserRuleNewFileIter,
             this.UserRulePath});
             this.dtGrdUsrRules.Location = new System.Drawing.Point(12, 12);
             this.dtGrdUsrRules.MultiSelect = false;
@@ -57,15 +59,15 @@
             this.dtGrdUsrRules.TabIndex = 5;
             this.dtGrdUsrRules.SelectionChanged += new System.EventHandler(this.dtGrdUsrRules_SelectionChanged);
             // 
-            // Column4
+            // UserRuleId
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.Column4.HeaderText = "Id";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column4.ToolTipText = "Row Order";
-            this.Column4.Width = 22;
+            this.UserRuleId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.UserRuleId.HeaderText = "Id";
+            this.UserRuleId.Name = "UserRuleId";
+            this.UserRuleId.ReadOnly = true;
+            this.UserRuleId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.UserRuleId.ToolTipText = "Row Order";
+            this.UserRuleId.Width = 22;
             // 
             // UserRuleDispName
             // 
@@ -73,18 +75,20 @@
             this.UserRuleDispName.FillWeight = 20.25F;
             this.UserRuleDispName.HeaderText = "Display Name";
             this.UserRuleDispName.Name = "UserRuleDispName";
+            this.UserRuleDispName.ReadOnly = true;
             this.UserRuleDispName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.UserRuleDispName.ToolTipText = "Descriptive Name for user selection.";
             // 
-            // Column3
+            // UserRuleNewFileIter
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.FalseValue = "false";
-            this.Column3.FillWeight = 10F;
-            this.Column3.HeaderText = "Create New File Version";
-            this.Column3.Name = "Column3";
-            this.Column3.ToolTipText = resources.GetString("Column3.ToolTipText");
-            this.Column3.TrueValue = "true";
+            this.UserRuleNewFileIter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.UserRuleNewFileIter.FalseValue = "false";
+            this.UserRuleNewFileIter.FillWeight = 10F;
+            this.UserRuleNewFileIter.HeaderText = "Create New File Version";
+            this.UserRuleNewFileIter.Name = "UserRuleNewFileIter";
+            this.UserRuleNewFileIter.ReadOnly = true;
+            this.UserRuleNewFileIter.ToolTipText = resources.GetString("UserRuleNewFileIter.ToolTipText");
+            this.UserRuleNewFileIter.TrueValue = "true";
             // 
             // UserRulePath
             // 
@@ -128,6 +132,7 @@
             this.Controls.Add(this.btn_SelectUserJob_Submit);
             this.Controls.Add(this.dtGrdUsrRules);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "SelectUserJob";
             this.Text = "Select Job...";
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdUsrRules)).EndInit();
@@ -138,9 +143,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dtGrdUsrRules;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserRuleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserRuleDispName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn UserRuleNewFileIter;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserRulePath;
         private System.Windows.Forms.Button btn_SelectUsrJob_Cancel;
         private System.Windows.Forms.Button btn_SelectUserJob_Submit;

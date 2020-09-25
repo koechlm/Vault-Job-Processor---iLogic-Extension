@@ -472,6 +472,11 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 return false;
             }
         }
+
+        private void lblDebugInfo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
