@@ -54,18 +54,18 @@
             this.btnRuleDirAdd = new System.Windows.Forms.Button();
             this.btnRuleDirUp = new System.Windows.Forms.Button();
             this.btnRuleDirDown = new System.Windows.Forms.Button();
-            this.tabJobRules = new System.Windows.Forms.TabPage();
+            this.tabLifecycleRules = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lblInternalRuleText = new System.Windows.Forms.Label();
             this.txtInternalRuleText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbRunInternal = new System.Windows.Forms.ComboBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.chckBoxPropagateProps = new System.Windows.Forms.CheckBox();
+            this.lblPrimaryRuleFile = new System.Windows.Forms.Label();
             this.btnOpenJobRuleVault = new System.Windows.Forms.Button();
             this.txtJobRuleVault = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabUserRules = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.dtGrdUsrRules = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +78,10 @@
             this.btnAddUserRules = new System.Windows.Forms.Button();
             this.btnUserRuleUp = new System.Windows.Forms.Button();
             this.btnUserRuleDown = new System.Windows.Forms.Button();
+            this.tabOptions = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.lblPropagateVltProps = new System.Windows.Forms.Label();
+            this.chckBoxPropagateProps = new System.Windows.Forms.CheckBox();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnSaveToVlt = new System.Windows.Forms.Button();
@@ -92,20 +96,23 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdViewExtRls)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
-            this.tabJobRules.SuspendLayout();
+            this.tabLifecycleRules.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabUserRules.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdUsrRules)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
+            this.tabOptions.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabAdvancediLogicConfig);
-            this.tabControl1.Controls.Add(this.tabJobRules);
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabLifecycleRules);
+            this.tabControl1.Controls.Add(this.tabUserRules);
+            this.tabControl1.Controls.Add(this.tabOptions);
             this.tabControl1.ItemSize = new System.Drawing.Size(105, 26);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -138,16 +145,17 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Advanced Rule Debugging";
+            this.toolTip1.SetToolTip(this.groupBox4, "Pauses Job execution to connect a Visual Studio debug-project \r\nto running instan" +
+        "ce of VaultInventorServer.");
             // 
             // lblDebugInfo
             // 
             this.lblDebugInfo.AutoSize = true;
             this.lblDebugInfo.Location = new System.Drawing.Point(163, 20);
             this.lblDebugInfo.Name = "lblDebugInfo";
-            this.lblDebugInfo.Size = new System.Drawing.Size(249, 39);
+            this.lblDebugInfo.Size = new System.Drawing.Size(310, 52);
             this.lblDebugInfo.TabIndex = 2;
-            this.lblDebugInfo.Text = "Enabling Debugging expects the environment \r\nvariable \"iLogicRuleFolderForVS\" and" +
-    " an available \r\npath value.";
+            this.lblDebugInfo.Text = resources.GetString("lblDebugInfo.Text");
             this.lblDebugInfo.Click += new System.EventHandler(this.lblDebugInfo_Click);
             // 
             // chckBoxBreak
@@ -360,18 +368,18 @@
             this.btnRuleDirDown.UseVisualStyleBackColor = true;
             this.btnRuleDirDown.Click += new System.EventHandler(this.btnRuleDirDown_Click);
             // 
-            // tabJobRules
+            // tabLifecycleRules
             // 
-            this.tabJobRules.Controls.Add(this.groupBox6);
-            this.tabJobRules.Controls.Add(this.groupBox5);
-            this.tabJobRules.Location = new System.Drawing.Point(4, 30);
-            this.tabJobRules.Name = "tabJobRules";
-            this.tabJobRules.Padding = new System.Windows.Forms.Padding(3);
-            this.tabJobRules.Size = new System.Drawing.Size(592, 418);
-            this.tabJobRules.TabIndex = 2;
-            this.tabJobRules.Text = "Lifecycle Rule(s)";
-            this.toolTip1.SetToolTip(this.tabJobRules, "Configure External and Document Rule exection options.");
-            this.tabJobRules.UseVisualStyleBackColor = true;
+            this.tabLifecycleRules.Controls.Add(this.groupBox6);
+            this.tabLifecycleRules.Controls.Add(this.groupBox5);
+            this.tabLifecycleRules.Location = new System.Drawing.Point(4, 30);
+            this.tabLifecycleRules.Name = "tabLifecycleRules";
+            this.tabLifecycleRules.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLifecycleRules.Size = new System.Drawing.Size(592, 418);
+            this.tabLifecycleRules.TabIndex = 2;
+            this.tabLifecycleRules.Text = "Lifecycle Rule(s)";
+            this.toolTip1.SetToolTip(this.tabLifecycleRules, "Configure External and Document Rule exection options.");
+            this.tabLifecycleRules.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -385,6 +393,8 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Internal Rules";
+            this.toolTip1.SetToolTip(this.groupBox6, "Internal rules are available rules stored within the Inventor file \r\nprocessed by" +
+        " the job run at a lifecycle transition.");
             // 
             // lblInternalRuleText
             // 
@@ -429,7 +439,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.chckBoxPropagateProps);
+            this.groupBox5.Controls.Add(this.lblPrimaryRuleFile);
             this.groupBox5.Controls.Add(this.btnOpenJobRuleVault);
             this.groupBox5.Controls.Add(this.txtJobRuleVault);
             this.groupBox5.Controls.Add(this.label3);
@@ -439,25 +449,25 @@
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Primary Rule File";
+            this.toolTip1.SetToolTip(this.groupBox5, "The primary rule runs on Lifecycle transitions, \r\nhaving added this sample as a c" +
+        "ustom job.");
             // 
-            // chckBoxPropagateProps
+            // lblPrimaryRuleFile
             // 
-            this.chckBoxPropagateProps.AutoSize = true;
-            this.chckBoxPropagateProps.Checked = true;
-            this.chckBoxPropagateProps.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chckBoxPropagateProps.Location = new System.Drawing.Point(6, 84);
-            this.chckBoxPropagateProps.Name = "chckBoxPropagateProps";
-            this.chckBoxPropagateProps.Size = new System.Drawing.Size(204, 17);
-            this.chckBoxPropagateProps.TabIndex = 7;
-            this.chckBoxPropagateProps.Text = "Propagate properties of processed file";
-            this.toolTip1.SetToolTip(this.chckBoxPropagateProps, "Shares all Properties of the processed file as rule arguments.");
-            this.chckBoxPropagateProps.UseVisualStyleBackColor = true;
+            this.lblPrimaryRuleFile.AutoSize = true;
+            this.lblPrimaryRuleFile.Location = new System.Drawing.Point(6, 20);
+            this.lblPrimaryRuleFile.Name = "lblPrimaryRuleFile";
+            this.lblPrimaryRuleFile.Size = new System.Drawing.Size(507, 26);
+            this.lblPrimaryRuleFile.TabIndex = 4;
+            this.lblPrimaryRuleFile.Text = "Jobs queued by lifecycle transitions run the external rule configured below. This" +
+    " \"Primary\" rule may behave\r\nlike a master rule and run other rules based on the " +
+    "given file type or context.";
             // 
             // btnOpenJobRuleVault
             // 
             this.btnOpenJobRuleVault.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenJobRuleVault.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.OpenFromVault_16x16;
-            this.btnOpenJobRuleVault.Location = new System.Drawing.Point(538, 40);
+            this.btnOpenJobRuleVault.Location = new System.Drawing.Point(538, 73);
             this.btnOpenJobRuleVault.Name = "btnOpenJobRuleVault";
             this.btnOpenJobRuleVault.Size = new System.Drawing.Size(35, 26);
             this.btnOpenJobRuleVault.TabIndex = 3;
@@ -466,7 +476,7 @@
             // 
             // txtJobRuleVault
             // 
-            this.txtJobRuleVault.Location = new System.Drawing.Point(6, 44);
+            this.txtJobRuleVault.Location = new System.Drawing.Point(6, 77);
             this.txtJobRuleVault.Name = "txtJobRuleVault";
             this.txtJobRuleVault.ReadOnly = true;
             this.txtJobRuleVault.Size = new System.Drawing.Size(526, 20);
@@ -475,23 +485,23 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 28);
+            this.label3.Location = new System.Drawing.Point(6, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 0;
             this.label3.Text = "Vault Path";
             // 
-            // tabPage1
+            // tabUserRules
             // 
-            this.tabPage1.Controls.Add(this.groupBox7);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(592, 418);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "User Rules";
-            this.toolTip1.SetToolTip(this.tabPage1, "Configure rules available for user interactive iLogic-Job submission.");
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabUserRules.Controls.Add(this.groupBox7);
+            this.tabUserRules.Location = new System.Drawing.Point(4, 30);
+            this.tabUserRules.Name = "tabUserRules";
+            this.tabUserRules.Padding = new System.Windows.Forms.Padding(3);
+            this.tabUserRules.Size = new System.Drawing.Size(592, 418);
+            this.tabUserRules.TabIndex = 3;
+            this.tabUserRules.Text = "User Rules";
+            this.toolTip1.SetToolTip(this.tabUserRules, "Configure rules available for user interactive iLogic-Job submission.");
+            this.tabUserRules.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
@@ -618,23 +628,70 @@
             this.btnUserRuleDown.UseVisualStyleBackColor = true;
             this.btnUserRuleDown.Click += new System.EventHandler(this.btnUserRuleDown_Click);
             // 
+            // tabOptions
+            // 
+            this.tabOptions.Controls.Add(this.groupBox8);
+            this.tabOptions.Location = new System.Drawing.Point(4, 30);
+            this.tabOptions.Name = "tabOptions";
+            this.tabOptions.Size = new System.Drawing.Size(592, 418);
+            this.tabOptions.TabIndex = 4;
+            this.tabOptions.Text = "Options";
+            this.tabOptions.UseVisualStyleBackColor = true;
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.lblPropagateVltProps);
+            this.groupBox8.Controls.Add(this.chckBoxPropagateProps);
+            this.groupBox8.Location = new System.Drawing.Point(3, 3);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(586, 128);
+            this.groupBox8.TabIndex = 0;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Vault Properties";
+            // 
+            // lblPropagateVltProps
+            // 
+            this.lblPropagateVltProps.AutoSize = true;
+            this.lblPropagateVltProps.Location = new System.Drawing.Point(190, 20);
+            this.lblPropagateVltProps.Name = "lblPropagateVltProps";
+            this.lblPropagateVltProps.Size = new System.Drawing.Size(390, 65);
+            this.lblPropagateVltProps.TabIndex = 9;
+            this.lblPropagateVltProps.Text = resources.GetString("lblPropagateVltProps.Text");
+            // 
+            // chckBoxPropagateProps
+            // 
+            this.chckBoxPropagateProps.AutoSize = true;
+            this.chckBoxPropagateProps.Checked = true;
+            this.chckBoxPropagateProps.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chckBoxPropagateProps.Location = new System.Drawing.Point(6, 19);
+            this.chckBoxPropagateProps.Name = "chckBoxPropagateProps";
+            this.chckBoxPropagateProps.Size = new System.Drawing.Size(171, 17);
+            this.chckBoxPropagateProps.TabIndex = 8;
+            this.chckBoxPropagateProps.Text = "Propagate Vault File Properties";
+            this.toolTip1.SetToolTip(this.chckBoxPropagateProps, "Shares all Properties of the processed file as rule arguments.");
+            this.chckBoxPropagateProps.UseVisualStyleBackColor = true;
+            this.chckBoxPropagateProps.CheckedChanged += new System.EventHandler(this.chckBoxPropagateProps_CheckedChanged);
+            // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(12, 478);
+            this.btnImport.Location = new System.Drawing.Point(12, 470);
             this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(120, 26);
+            this.btnImport.Size = new System.Drawing.Size(120, 22);
             this.btnImport.TabIndex = 1;
-            this.btnImport.Text = "Import Settings...";
+            this.btnImport.Text = "Import Settings";
+            this.toolTip1.SetToolTip(this.btnImport, "Imports the sample settings from [Application Path]\\iLogicJobSettings.xml.");
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(138, 478);
+            this.btnExport.Location = new System.Drawing.Point(12, 491);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(114, 26);
+            this.btnExport.Size = new System.Drawing.Size(120, 22);
             this.btnExport.TabIndex = 2;
-            this.btnExport.Text = "Export Settings...";
+            this.btnExport.Text = "Export Settings";
+            this.toolTip1.SetToolTip(this.btnExport, "Exports the current settings to the file [Application Path]\\iLogicJobSettings.xml" +
+        ".");
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
@@ -642,7 +699,7 @@
             // 
             this.btnSaveToVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckIn_32x32;
             this.btnSaveToVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveToVlt.Location = new System.Drawing.Point(488, 470);
+            this.btnSaveToVlt.Location = new System.Drawing.Point(492, 470);
             this.btnSaveToVlt.Name = "btnSaveToVlt";
             this.btnSaveToVlt.Size = new System.Drawing.Size(120, 43);
             this.btnSaveToVlt.TabIndex = 3;
@@ -655,7 +712,7 @@
             // 
             this.btnLoadFromVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckOut_32x32;
             this.btnLoadFromVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoadFromVlt.Location = new System.Drawing.Point(359, 470);
+            this.btnLoadFromVlt.Location = new System.Drawing.Point(363, 470);
             this.btnLoadFromVlt.Name = "btnLoadFromVlt";
             this.btnLoadFromVlt.Size = new System.Drawing.Size(123, 43);
             this.btnLoadFromVlt.TabIndex = 4;
@@ -684,6 +741,7 @@
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(640, 564);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 564);
             this.Name = "iLogicJobAdminForm";
@@ -701,15 +759,18 @@
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdViewExtRls)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
-            this.tabJobRules.ResumeLayout(false);
+            this.tabLifecycleRules.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.tabPage1.ResumeLayout(false);
+            this.tabUserRules.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdUsrRules)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
+            this.tabOptions.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -718,8 +779,8 @@
 
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabAdvancediLogicConfig;
-        private System.Windows.Forms.TabPage tabJobRules;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabLifecycleRules;
+        private System.Windows.Forms.TabPage tabUserRules;
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnSaveToVlt;
@@ -744,7 +805,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnOpenJobRuleVault;
         private System.Windows.Forms.TextBox txtJobRuleVault;
-        private System.Windows.Forms.CheckBox chckBoxPropagateProps;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label lblInternalRuleText;
         private System.Windows.Forms.TextBox txtInternalRuleText;
@@ -770,5 +830,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserRulePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn column2;
+        private System.Windows.Forms.Label lblPrimaryRuleFile;
+        private System.Windows.Forms.TabPage tabOptions;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label lblPropagateVltProps;
+        private System.Windows.Forms.CheckBox chckBoxPropagateProps;
     }
 }

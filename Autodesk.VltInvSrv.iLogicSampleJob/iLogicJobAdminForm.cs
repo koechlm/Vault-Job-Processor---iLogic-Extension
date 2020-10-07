@@ -477,6 +477,11 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         {
 
         }
+
+        private void chckBoxPropagateProps_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
