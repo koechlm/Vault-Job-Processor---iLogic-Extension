@@ -63,7 +63,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
 
                 //jobs interactively submitted by users behave differently; activate the critera UserJob/LifecycleJob
-                if (job.Params["ExternalRule"] != null)
+                if (job.Params.ContainsKey("ExternalRule"))
                 {
                     mJobExecType = "UserJob";
                     if (job.Params["CheckIn"] == "false")

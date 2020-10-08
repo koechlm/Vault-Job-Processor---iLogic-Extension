@@ -94,7 +94,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 {
                     e.Context.Application.Connection.WebServiceManager.JobService.AddJob(
                         iLogicJobTypeName, String.Format("Manually queued file {0} to run iLogic rule {1} on it.", vaultObj.Label, mRuleShortName),
-                        mParamList, 10);
+                        mParamList, 1);
                 }
                 catch (Exception ex)
                 {
