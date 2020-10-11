@@ -51,7 +51,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         private void btn_SelectUserJob_Submit_Click(object sender, EventArgs e)
         {
             JobFullFileName = dtGrdUsrRules.SelectedRows[0].Cells[3].Value.ToString();
-            CreateNewIteration = dtGrdUsrRules.SelectedRows[0].Cells[2].ToString();
+            CreateNewIteration = dtGrdUsrRules.SelectedRows[0].Cells[2].Value.ToString();
             this.Close();
         }
 
