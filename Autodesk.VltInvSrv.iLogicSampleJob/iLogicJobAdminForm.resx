@@ -117,25 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblPropagateVltProps.Text" xml:space="preserve">
-    <value>Enable this option to share all file properties as additional Rule Arguments 
-(NameValueMap = Vault Property Name | Vault Property Value.
-
-If disabled, the default arguments include "ServerName". "VaultName", "UserId",
-and "Ticket" only.</value>
-  </data>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>336, 14</value>
-  </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>336, 14</value>
-  </metadata>
   <data name="lblDebugInfo.Text" xml:space="preserve">
     <value>Enabling extended debugging expects the environment variable 
 "iLogicRuleFolderForVS" and an available path's value. 
 The installer added the path C:\WINDOWS\TEMP.
 Check that you have access to the location.</value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>336, 14</value>
+  </metadata>
   <metadata name="column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -163,6 +153,13 @@ Check that you have access to the location.</value>
   <metadata name="contextMenuStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>433, 14</value>
   </metadata>
+  <data name="lblPropagateVltProps.Text" xml:space="preserve">
+    <value>Enable this option to share all file properties as additional Rule Arguments 
+(NameValueMap = Vault Property Name | Vault Property Value.
+
+If disabled, the default arguments include "ServerName". "VaultName", "UserId",
+and "Ticket" only.</value>
+  </data>
   <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>12, 14</value>
   </metadata>

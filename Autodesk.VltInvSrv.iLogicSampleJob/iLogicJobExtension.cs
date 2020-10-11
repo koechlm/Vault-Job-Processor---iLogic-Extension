@@ -54,6 +54,12 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 long mEntId = Convert.ToInt64(job.Params["EntityId"]);
                 string mEntClsId = job.Params["EntityClassId"];
 
+                //prepare to evaluate properties
+                ACW.File mFile = mWsMgr.DocumentService.GetFileById(mEntId);
+                ACW.PropDef[] mPropDefs = mWsMgr.PropertyService.GetPropertyDefinitionsByEntityClassId("FILE");
+                ACW.PropDef mPropDef = null;
+                ACW.PropInst mPropInst = null;
+
                 //Load settings from Vault
                 mSettings = Settings.LoadFromVault(mConnection);
                 if (mSettings == null)
@@ -83,6 +89,22 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     return JobOutcome.Failure;
                 }
 
+                //override the InternalRulesOption All, Active, Containing Text... in case the file hasn't internal rules
+                if (mJobExecType == "LifecycleJob" && mSettings.InternalRulesOption != "None")
+                {
+                    mPropDef = mPropDefs.Where(n => n.SysName == "iLogicRuleStatus").FirstOrDefault();
+                    mPropInst = (mWsMgr.PropertyService.GetPropertiesByEntityIds("FILE", new long[] { mFile.Id })).Where(n => n.PropDefId == mPropDef.Id).FirstOrDefault();
+                    if (mPropInst.Val.ToString() == null)
+                    {
+                        mSettings.InternalRulesOption = "None";
+                    }
+                    if (mJobExecType == "LifecycleJob" && mSettings.VaultRuleFullFileName == "" && mSettings.InternalRulesOption == "None")
+                    {
+                        context.Log(null, "Skipped Job execution as the job had to run internal rules only, but the file doesn't have document rules.");
+                        return JobOutcome.Success;
+                    }
+                }
+
                 // only run the job for files; handle the scenario, that an item lifecycle transition accidently submitted the job
                 if (mEntClsId != "FILE")
                 {
@@ -92,16 +114,13 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 // only run the job for ipt and iam file types,
                 List<string> mFileExtensions = new List<string> { ".ipt", ".iam", "idw", "dwg" };
-                ACW.File mFile = mWsMgr.DocumentService.GetFileById(mEntId);
                 if (!mFileExtensions.Any(n => mFile.Name.EndsWith(n)))
                 {
                     context.Log(null, "Skipped Job execution as file type did not match iLogic enabled files (ipt, iam, idw/dwg");
                     return JobOutcome.Success;
                 }
+
                 //run iLogic for Inventor DWG file types/skip AutoCAD DWG files
-                ACW.PropDef[] mPropDefs = mWsMgr.PropertyService.GetPropertyDefinitionsByEntityClassId("FILE");
-                ACW.PropDef mPropDef = null;
-                ACW.PropInst mPropInst = null;
                 if (mFile.Name.EndsWith(".dwg"))
                 {
                     mPropDef = mPropDefs.Where(n => n.SysName == "Provider").FirstOrDefault();
@@ -403,12 +422,13 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 //Open Inventor Document
                 Document mDoc = mInv.Documents.Open(mLocalFileFullName);
+                NameValueMap ruleArguments = mInv.TransientObjects.CreateNameValueMap();
 
                 //use case  - apply external rule with arguments; additional Vault UDP, status or any information might fill rule arguments
                 if (mExtRule != "")
                 {
                     //required rule arguments to continue Vault interaction within the rule (iLogic-Vault library)
-                    NameValueMap ruleArguments = mInv.TransientObjects.CreateNameValueMap();
+
                     ruleArguments.Add("ServerName", mConnection.Server);
                     ruleArguments.Add("VaultName", mConnection.Vault);
                     ruleArguments.Add("UserId", mConnection.UserID);
@@ -455,68 +475,67 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
 
 
-                //use case - run all, all active or filtered document rules
-                if (mJobExecType == "LifecycleJob")
+                //use case - run all, all active or filtered document rules for Lifecycle Type job
+                if (mJobExecType == "LifecycleJob" && mSettings.InternalRulesOption != "None")
                 {
-                    mSettings.InternalRulesOption = "None";
-                }
-                dynamic mDocRules = mAutomation.Rules(mDoc);
-                List<dynamic> mRulesToExec = new List<dynamic>();
+                    dynamic mDocRules = mAutomation.Rules(mDoc);
+                    List<dynamic> mRulesToExec = new List<dynamic>();
 
-                switch (mSettings.InternalRulesOption)
-                {
-                    case "None":
-                        break;
+                    switch (mSettings.InternalRulesOption)
+                    {
+                        case "None":
+                            break;
 
-                    case "Active":
-                        if (mDocRules != null)
-                        {
-                            foreach (dynamic rule in mDocRules)
+                        case "Active":
+                            if (mDocRules != null)
                             {
-                                if (rule.IsActive == true)
+                                foreach (dynamic rule in mDocRules)
+                                {
+                                    if (rule.IsActive == true)
+                                    {
+                                        mRulesToExec.Add(rule);
+                                    }
+                                }
+                            }
+                            break;
+
+                        case "All":
+                            if (mDocRules != null)
+                            {
+                                foreach (dynamic rule in mDocRules)
                                 {
                                     mRulesToExec.Add(rule);
                                 }
                             }
-                        }
-                        break;
+                            break;
 
-                    case "All":
-                        if (mDocRules != null)
-                        {
+                        default:
                             foreach (dynamic rule in mDocRules)
                             {
-                                mRulesToExec.Add(rule);
+                                if (rule.Name.Contains(mSettings.InternalRulesOptiontext))
+                                {
+                                    mRulesToExec.Add(rule);
+                                }
                             }
-                        }
-                        break;
-
-                    default:
-                        foreach (dynamic rule in mDocRules)
-                        {
-                            if (rule.Name.Contains(mSettings.InternalRulesOption))
-                            {
-                                mRulesToExec.Add(rule);
-                            }
-                        }
-                        break;
-                }
-                if (mRulesToExec.Count >= 1)
-                {
-                    foreach (dynamic rule in mRulesToExec)
+                            break;
+                    }
+                    if (mRulesToExec.Count >= 1)
                     {
-                        mRuleSuccess = mAutomation.RunRule(mDoc, rule.Name);
-                        if (mRuleSuccess != 0)
+                        foreach (dynamic rule in mRulesToExec)
                         {
-                            context.Log(null, "Job failed due to failure in internal rule: " + rule.Name + ".");
-                            mDoc.Close(true);
-                            mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
-                            mLogCtrl.SaveLogAs(mILogicLogFileFullName);
-                            return JobOutcome.Failure;
-                        }
-                        else
-                        {
-                            mAllRules.Add(rule.Name);
+                            mRuleSuccess = mAutomation.RunRule(mDoc, rule.Name);
+                            if (mRuleSuccess != 0)
+                            {
+                                context.Log(null, "Job failed due to failure in internal rule: " + rule.Name + ".");
+                                mDoc.Close(true);
+                                mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                                mLogCtrl.SaveLogAs(mILogicLogFileFullName);
+                                return JobOutcome.Failure;
+                            }
+                            else
+                            {
+                                mAllRules.Add(rule.Name);
+                            }
                         }
                     }
                 }

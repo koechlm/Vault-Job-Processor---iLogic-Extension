@@ -378,7 +378,6 @@
             this.tabLifecycleRules.Size = new System.Drawing.Size(592, 418);
             this.tabLifecycleRules.TabIndex = 2;
             this.tabLifecycleRules.Text = "Lifecycle Rule(s)";
-            this.toolTip1.SetToolTip(this.tabLifecycleRules, "Configure External and Document Rule exection options.");
             this.tabLifecycleRules.UseVisualStyleBackColor = true;
             // 
             // groupBox6

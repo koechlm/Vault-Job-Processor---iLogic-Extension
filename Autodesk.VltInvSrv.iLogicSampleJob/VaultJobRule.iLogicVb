@@ -24,13 +24,27 @@ Sub Main
 		Next 
 	End If
 	Logger.Info("--------------------------------------------------------------------------------------------")	
-	
+
 	'Note - Vault Inventor Server uses a subset of the Inventor API. Use the Inventor Server object istead of Inventor Application.
 	Dim mInvSrv As InventorServer = ThisServer
 
 	'access the active document like you do in Inventor application rules
   	Dim oDoc As Document = ThisDoc.Document
-
+	Dim oAsmDoc As AssemblyDocument
+	Dim oPrtDoc As PartDocument
+	Dim eDocumentType As Inventor.DocumentTypeEnum = oDoc.DocumentType
+	Dim oParams As Inventor.Parameters
+	
+	If eDocumentType = DocumentTypeEnum.kPartDocumentObject Then
+		oPartDoc = oDoc
+		oParams = oPartDoc.ComponentDefinition.Parameters
+		Logger.Info("----------------------- Parameters published by Vault Job ----------------")	
+		For Each oParam As Object In oParams
+				Logger.Info("Parameter: " & oParam.Name & "; Expression: " & oParam.Expression)
+		Next
+		Logger.Info("----------------------- Parameters published by Vault Job ----------------")	
+	End If
+			
 	'use known iLogic syntax and snippets in job processor rules like you do in Inventor application rules
 	iProperties.Value("Custom", "DateTimeStamp") = "JobProcessorTestRuleSuccess: " & DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
 
