@@ -446,7 +446,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                             //filter thumbnail property, as iLogic RuleArguments will fail reading it.
                             if (mPropDispName != mThumbnailDispName)
                             {
-                                ruleArguments.Add(mPropDispName, item.Val);
+                                ruleArguments.Add("File." + mPropDispName, item.Val);
                             }
                         }
                     }

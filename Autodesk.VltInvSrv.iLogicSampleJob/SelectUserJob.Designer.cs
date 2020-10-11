@@ -43,6 +43,9 @@
             // 
             this.dtGrdUsrRules.AllowUserToAddRows = false;
             this.dtGrdUsrRules.AllowUserToDeleteRows = false;
+            this.dtGrdUsrRules.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGrdUsrRules.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dtGrdUsrRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdUsrRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -102,6 +105,7 @@
             // 
             // btn_SelectUsrJob_Cancel
             // 
+            this.btn_SelectUsrJob_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_SelectUsrJob_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_SelectUsrJob_Cancel.Location = new System.Drawing.Point(713, 415);
             this.btn_SelectUsrJob_Cancel.Name = "btn_SelectUsrJob_Cancel";
@@ -113,6 +117,7 @@
             // 
             // btn_SelectUserJob_Submit
             // 
+            this.btn_SelectUserJob_Submit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_SelectUserJob_Submit.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_SelectUserJob_Submit.Enabled = false;
             this.btn_SelectUserJob_Submit.Location = new System.Drawing.Point(599, 415);
@@ -134,7 +139,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "SelectUserJob";
-            this.Text = "Select Job...";
+            this.Text = "Select iLogic Rule for Job...";
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdUsrRules)).EndInit();
             this.ResumeLayout(false);
 

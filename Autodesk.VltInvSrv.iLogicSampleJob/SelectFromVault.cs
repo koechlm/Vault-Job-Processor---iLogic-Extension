@@ -226,5 +226,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         {
             this.Close();
         }
+
+        private void vaultBrowserControl1_SelectionChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

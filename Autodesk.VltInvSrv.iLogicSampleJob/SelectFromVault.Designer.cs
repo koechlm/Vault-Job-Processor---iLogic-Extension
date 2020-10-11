@@ -48,6 +48,7 @@
             // 
             // btn_Cancel
             // 
+            this.btn_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.Location = new System.Drawing.Point(713, 415);
             this.btn_Cancel.Name = "btn_Cancel";
@@ -59,6 +60,7 @@
             // 
             // btn_Select
             // 
+            this.btn_Select.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_Select.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btn_Select.Enabled = false;
             this.btn_Select.Location = new System.Drawing.Point(632, 415);
@@ -84,6 +86,9 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -167,14 +172,17 @@
             // vaultBrowserControl1
             // 
             this.vaultBrowserControl1.AllowFindPanel = true;
+            this.vaultBrowserControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.vaultBrowserControl1.AutoSize = true;
             this.vaultBrowserControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tableLayoutPanel1.SetColumnSpan(this.vaultBrowserControl1, 3);
-            this.vaultBrowserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vaultBrowserControl1.Location = new System.Drawing.Point(91, 35);
             this.vaultBrowserControl1.Name = "vaultBrowserControl1";
             this.vaultBrowserControl1.Size = new System.Drawing.Size(682, 270);
             this.vaultBrowserControl1.TabIndex = 5;
+            this.vaultBrowserControl1.SelectionChanged += new System.EventHandler(this.vaultBrowserControl1_SelectionChanged);
             // 
             // label1
             // 
@@ -221,10 +229,10 @@
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(816, 489);
+            this.MaximumSize = new System.Drawing.Size(1280, 768);
             this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "SelectFromVault";
-            this.Text = "Select From Vault...";
+            this.Text = "Select iLogic Rule From Vault...";
             this.Shown += new System.EventHandler(this.SelectFromVault_Shown);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

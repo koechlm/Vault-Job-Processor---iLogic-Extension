@@ -154,11 +154,11 @@ Check that you have access to the location.</value>
     <value>433, 14</value>
   </metadata>
   <data name="lblPropagateVltProps.Text" xml:space="preserve">
-    <value>Enable this option to share all file properties as additional Rule Arguments 
-(NameValueMap = Vault Property Name | Vault Property Value.
+    <value>Default option to share all file properties as additional Rule Arguments:
+NameValueMap = File.&lt;Vault Property Name&gt; | &lt;Vault Property Value&gt;.
 
-If disabled, the default arguments include "ServerName". "VaultName", "UserId",
-and "Ticket" only.</value>
+Rule arguments include "ServerName". "VaultName", "UserId",
+and "Ticket" also; use these to re-use the Job Processor's Vault connection.</value>
   </data>
   <metadata name="folderBrowserDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>12, 14</value>

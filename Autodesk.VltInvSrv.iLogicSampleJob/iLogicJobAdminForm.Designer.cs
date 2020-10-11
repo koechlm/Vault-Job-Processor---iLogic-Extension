@@ -109,6 +109,9 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabAdvancediLogicConfig);
             this.tabControl1.Controls.Add(this.tabLifecycleRules);
             this.tabControl1.Controls.Add(this.tabUserRules);
@@ -137,6 +140,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.lblDebugInfo);
             this.groupBox4.Controls.Add(this.chckBoxBreak);
             this.groupBox4.Location = new System.Drawing.Point(7, 325);
@@ -171,6 +176,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lblLogPath);
             this.groupBox3.Controls.Add(this.lblLogLevel);
             this.groupBox3.Controls.Add(this.btnSelectLogPath);
@@ -203,6 +210,7 @@
             // 
             // btnSelectLogPath
             // 
+            this.btnSelectLogPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelectLogPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSelectLogPath.Location = new System.Drawing.Point(539, 42);
             this.btnSelectLogPath.Name = "btnSelectLogPath";
@@ -231,6 +239,8 @@
             // 
             // txtLogPath
             // 
+            this.txtLogPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtLogPath.Enabled = false;
             this.txtLogPath.Location = new System.Drawing.Point(66, 46);
             this.txtLogPath.Name = "txtLogPath";
@@ -239,6 +249,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnAddInDirSearch);
             this.groupBox2.Controls.Add(this.txtDLLsDir);
             this.groupBox2.Location = new System.Drawing.Point(6, 172);
@@ -250,6 +262,7 @@
             // 
             // btnAddInDirSearch
             // 
+            this.btnAddInDirSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddInDirSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddInDirSearch.Location = new System.Drawing.Point(539, 19);
             this.btnAddInDirSearch.Name = "btnAddInDirSearch";
@@ -261,6 +274,8 @@
             // 
             // txtDLLsDir
             // 
+            this.txtDLLsDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDLLsDir.Location = new System.Drawing.Point(6, 23);
             this.txtDLLsDir.Name = "txtDLLsDir";
             this.txtDLLsDir.Size = new System.Drawing.Size(527, 20);
@@ -268,6 +283,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dtgrdViewExtRls);
             this.groupBox1.Controls.Add(this.btnRuleDirAdd);
             this.groupBox1.Controls.Add(this.btnRuleDirUp);
@@ -282,6 +300,9 @@
             // dtgrdViewExtRls
             // 
             this.dtgrdViewExtRls.AllowUserToAddRows = false;
+            this.dtgrdViewExtRls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgrdViewExtRls.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdViewExtRls.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.column1,
@@ -297,6 +318,7 @@
             // column1
             // 
             this.column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.column1.FillWeight = 10F;
             this.column1.HeaderText = "Order";
             this.column1.Name = "column1";
             this.column1.ReadOnly = true;
@@ -306,6 +328,7 @@
             // column2
             // 
             this.column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.column2.FillWeight = 190F;
             this.column2.HeaderText = "Path";
             this.column2.Name = "column2";
             this.column2.ReadOnly = true;
@@ -337,6 +360,7 @@
             // 
             // btnRuleDirAdd
             // 
+            this.btnRuleDirAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRuleDirAdd.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Plus;
             this.btnRuleDirAdd.Location = new System.Drawing.Point(548, 19);
             this.btnRuleDirAdd.Name = "btnRuleDirAdd";
@@ -348,6 +372,7 @@
             // 
             // btnRuleDirUp
             // 
+            this.btnRuleDirUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRuleDirUp.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Up;
             this.btnRuleDirUp.Location = new System.Drawing.Point(548, 75);
             this.btnRuleDirUp.Name = "btnRuleDirUp";
@@ -359,6 +384,7 @@
             // 
             // btnRuleDirDown
             // 
+            this.btnRuleDirDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRuleDirDown.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Down;
             this.btnRuleDirDown.Location = new System.Drawing.Point(548, 107);
             this.btnRuleDirDown.Name = "btnRuleDirDown";
@@ -382,6 +408,8 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox6.Controls.Add(this.lblInternalRuleText);
             this.groupBox6.Controls.Add(this.txtInternalRuleText);
             this.groupBox6.Controls.Add(this.label5);
@@ -438,6 +466,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.lblPrimaryRuleFile);
             this.groupBox5.Controls.Add(this.btnOpenJobRuleVault);
             this.groupBox5.Controls.Add(this.txtJobRuleVault);
@@ -464,6 +494,7 @@
             // 
             // btnOpenJobRuleVault
             // 
+            this.btnOpenJobRuleVault.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOpenJobRuleVault.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOpenJobRuleVault.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.OpenFromVault_16x16;
             this.btnOpenJobRuleVault.Location = new System.Drawing.Point(538, 73);
@@ -475,6 +506,8 @@
             // 
             // txtJobRuleVault
             // 
+            this.txtJobRuleVault.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtJobRuleVault.Location = new System.Drawing.Point(6, 77);
             this.txtJobRuleVault.Name = "txtJobRuleVault";
             this.txtJobRuleVault.ReadOnly = true;
@@ -504,6 +537,9 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox7.Controls.Add(this.dtGrdUsrRules);
             this.groupBox7.Controls.Add(this.btnAddUserRules);
             this.groupBox7.Controls.Add(this.btnUserRuleUp);
@@ -518,6 +554,9 @@
             // dtGrdUsrRules
             // 
             this.dtGrdUsrRules.AllowUserToAddRows = false;
+            this.dtGrdUsrRules.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtGrdUsrRules.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dtGrdUsrRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdUsrRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -599,6 +638,7 @@
             // 
             // btnAddUserRules
             // 
+            this.btnAddUserRules.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddUserRules.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Plus;
             this.btnAddUserRules.Location = new System.Drawing.Point(548, 19);
             this.btnAddUserRules.Name = "btnAddUserRules";
@@ -609,6 +649,7 @@
             // 
             // btnUserRuleUp
             // 
+            this.btnUserRuleUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUserRuleUp.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Up;
             this.btnUserRuleUp.Location = new System.Drawing.Point(548, 75);
             this.btnUserRuleUp.Name = "btnUserRuleUp";
@@ -619,6 +660,7 @@
             // 
             // btnUserRuleDown
             // 
+            this.btnUserRuleDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUserRuleDown.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Down;
             this.btnUserRuleDown.Location = new System.Drawing.Point(548, 107);
             this.btnUserRuleDown.Name = "btnUserRuleDown";
@@ -639,11 +681,13 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox8.Controls.Add(this.lblPropagateVltProps);
             this.groupBox8.Controls.Add(this.chckBoxPropagateProps);
             this.groupBox8.Location = new System.Drawing.Point(3, 3);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(586, 128);
+            this.groupBox8.Size = new System.Drawing.Size(586, 113);
             this.groupBox8.TabIndex = 0;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Vault Properties";
@@ -653,7 +697,7 @@
             this.lblPropagateVltProps.AutoSize = true;
             this.lblPropagateVltProps.Location = new System.Drawing.Point(190, 20);
             this.lblPropagateVltProps.Name = "lblPropagateVltProps";
-            this.lblPropagateVltProps.Size = new System.Drawing.Size(390, 65);
+            this.lblPropagateVltProps.Size = new System.Drawing.Size(367, 65);
             this.lblPropagateVltProps.TabIndex = 9;
             this.lblPropagateVltProps.Text = resources.GetString("lblPropagateVltProps.Text");
             // 
@@ -662,6 +706,7 @@
             this.chckBoxPropagateProps.AutoSize = true;
             this.chckBoxPropagateProps.Checked = true;
             this.chckBoxPropagateProps.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chckBoxPropagateProps.Enabled = false;
             this.chckBoxPropagateProps.Location = new System.Drawing.Point(6, 19);
             this.chckBoxPropagateProps.Name = "chckBoxPropagateProps";
             this.chckBoxPropagateProps.Size = new System.Drawing.Size(171, 17);
@@ -673,6 +718,7 @@
             // 
             // btnImport
             // 
+            this.btnImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnImport.Location = new System.Drawing.Point(12, 470);
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(120, 22);
@@ -684,6 +730,7 @@
             // 
             // btnExport
             // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExport.Location = new System.Drawing.Point(12, 491);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(120, 22);
@@ -696,6 +743,7 @@
             // 
             // btnSaveToVlt
             // 
+            this.btnSaveToVlt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveToVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckIn_32x32;
             this.btnSaveToVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSaveToVlt.Location = new System.Drawing.Point(492, 470);
@@ -709,6 +757,7 @@
             // 
             // btnLoadFromVlt
             // 
+            this.btnLoadFromVlt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoadFromVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckOut_32x32;
             this.btnLoadFromVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLoadFromVlt.Location = new System.Drawing.Point(363, 470);
@@ -731,7 +780,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(624, 525);
             this.Controls.Add(this.btnLoadFromVlt);
             this.Controls.Add(this.btnSaveToVlt);
@@ -740,7 +788,7 @@
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(640, 564);
+            this.MaximumSize = new System.Drawing.Size(1024, 768);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(640, 564);
             this.Name = "iLogicJobAdminForm";
