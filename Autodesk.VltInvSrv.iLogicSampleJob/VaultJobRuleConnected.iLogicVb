@@ -12,7 +12,7 @@ break 'prepared for step by step debugging
 'to enable iLogicVault commands reuse the job processor's user connection
 	Dim iLogicVault As New QuickstartiLogicVltInvSrvLibrary.iLogicVltInvSrvLibrary
 	Dim LoggedIn As Boolean
-	Dim FileState As String
+	Dim FileStateName As String
 	Try
 		dbServer = RuleArguments("ServerName")
 		fServer = RuleArguments("ServerName")
@@ -20,7 +20,7 @@ break 'prepared for step by step debugging
 		userId = RuleArguments("UserId")
 		ticket = RuleArguments("Ticket")
 		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, ticket)
-		FileState = RuleArguments("State (Historical)")
+		FileStateName = RuleArguments("File.State (Historical)")
 	Catch
 	End Try
 	
