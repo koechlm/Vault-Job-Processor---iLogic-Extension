@@ -53,6 +53,8 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
+2021.0.2.1 - All dialogs are user resizeable; fixed several issues, see commits for details
+2021.0.1.4 - Job Administration Dialog, new Options tab
 2021.0.1.0 - Renamed tabs in iLogic Job Administration Dialog, Added MSI Installer Project
 2021.0.0.0 - updated for Vault Client / Job Processor 2021
 2020.2.1.0 - Vault Extension with user interface for configuration and user interactive job submission
