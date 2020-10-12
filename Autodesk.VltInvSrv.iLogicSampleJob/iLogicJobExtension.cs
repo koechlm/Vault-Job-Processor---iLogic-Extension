@@ -82,6 +82,18 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     mJobExecType = "LifecycleJob";
                 }
 
+                if (job.Params.ContainsKey("CheckIn"))
+                {
+                    if (job.Params["CheckIn"] == "true")
+                    {
+                        mJobCheckInResult = true;
+                    }
+                    else
+                    {
+                        mJobCheckInResult = false;
+                    }
+                }
+
                 //Validate required settings for lifecycle job execution; we need to have an external rule or internal rule option <> None
                 if (mJobExecType == "LifecycleJob" && mSettings.VaultRuleFullFileName == "" && mSettings.InternalRulesOption == "None")
                 {
@@ -537,10 +549,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                                 mAllRules.Add(rule.Name);
                             }
                         }
+                        mDoc.Save2(false);
                     }
                 }
 
-                mDoc.Save2(false);
                 mDoc.Close(true);
                 mLogCtrl.SaveLogAs(mILogicLogFileFullName);
 
