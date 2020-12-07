@@ -476,7 +476,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         context.Log(null, "Job failed due to failure in external rule: " + mExtRule + ".");
                         mDoc.Close(true);
                         mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
-                        mLogCtrl.SaveLogAs(mILogicLogFileFullName);
+                        if (mLogCtrl.Level != 0)
+                        {
+                            mLogCtrl.SaveLogAs(mILogicLogFileFullName);
+                        }
                         return JobOutcome.Failure;
                     }
                     else
@@ -541,7 +544,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                                 context.Log(null, "Job failed due to failure in internal rule: " + rule.Name + ".");
                                 mDoc.Close(true);
                                 mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
-                                mLogCtrl.SaveLogAs(mILogicLogFileFullName);
+                                if (mLogCtrl.Level != 0)
+                                {
+                                    mLogCtrl.SaveLogAs(mILogicLogFileFullName);
+                                }
                                 return JobOutcome.Failure;
                             }
                             else
@@ -554,7 +560,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
 
                 mDoc.Close(true);
-                mLogCtrl.SaveLogAs(mILogicLogFileFullName);
+                if (mLogCtrl.Level != 0)
+                {
+                    mLogCtrl.SaveLogAs(mILogicLogFileFullName);
+                }
 
                 if (mAllRules.Count > 0)
                 {
