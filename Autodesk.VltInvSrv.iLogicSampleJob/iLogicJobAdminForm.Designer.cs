@@ -158,9 +158,11 @@
             this.lblDebugInfo.AutoSize = true;
             this.lblDebugInfo.Location = new System.Drawing.Point(163, 20);
             this.lblDebugInfo.Name = "lblDebugInfo";
-            this.lblDebugInfo.Size = new System.Drawing.Size(310, 52);
+            this.lblDebugInfo.Size = new System.Drawing.Size(368, 39);
             this.lblDebugInfo.TabIndex = 2;
-            this.lblDebugInfo.Text = resources.GetString("lblDebugInfo.Text");
+            this.lblDebugInfo.Text = "Advanced Rule Debugging stops the Job execution with a Message Box.\r\nUse Visual S" +
+    "tudio and attach to the process \'VaultInventorServer.exe\' before\r\nconfirming the" +
+    " message with OK.";
             this.lblDebugInfo.Click += new System.EventHandler(this.lblDebugInfo_Click);
             // 
             // chckBoxBreak

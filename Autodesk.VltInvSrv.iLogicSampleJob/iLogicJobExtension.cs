@@ -32,6 +32,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         private Int32 mRuleSuccess = -1;
         private List<string> mAllRules = new List<string>();
         private string mAllRulesTextWrp = "";
+        private string mRuleTmp = "\\iLogicVaultJobRules";
 
         #region IJobHandler Implementation
         public bool CanProcess(string jobType)
@@ -44,8 +45,6 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
             try
             {
-                Inventor.InventorServer mInv = context.InventorObject as InventorServer;
-
                 #region validate execution rules
 
                 //pick up this job's context
@@ -144,6 +143,28 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
                 }
 
+                //enable advanced debug break 
+                if (mSettings.ActivateDebugBreak == "True")
+                {
+                    try
+                    {
+                        System.IO.DirectoryInfo mRuleTempInfo = new System.IO.DirectoryInfo(System.IO.Path.GetTempPath() + mRuleTmp);
+                        if (mRuleTempInfo.Exists == false)
+                        {
+                            mRuleTempInfo = System.IO.Directory.CreateDirectory(System.IO.Path.GetTempPath() + mRuleTmp);
+                        }
+                        System.Environment.SetEnvironmentVariable("iLogicRuleFolderForVS", mRuleTempInfo.FullName);
+                    }
+                    catch (Exception e)
+                    {
+                        {
+                            context.Log(null, "Advanced Debug Break tried to create a temporary system variable but failed with the error: " + e.Message);
+                            return JobOutcome.Failure;
+                        }
+                    }
+                }
+
+                Inventor.InventorServer mInv = context.InventorObject as InventorServer;
                 ApplicationAddIns mInvSrvAddIns = mInv.ApplicationAddIns;
                 ApplicationAddIn iLogicAddIn = mInvSrvAddIns.ItemById["{3BDD8D79-2179-4B11-8A5A-257B1C0263AC}"];
 
@@ -352,15 +373,23 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 string mILogicLogFileFullName = "";
                 if (mLogCtrl.Level != 0)
                 {
-                    string mLogName = job.Id + "_" + mFile.Name + "_iLogicSampleJob.log";
-                    System.IO.DirectoryInfo mLogDirInfo = new System.IO.DirectoryInfo(mSettings.iLogicLogDir);
-                    if (mLogDirInfo.Exists == false)
+                    //validate that a log path is configured and exists
+                    if (mSettings.iLogicLogDir != "")
                     {
-                        mLogDirInfo = System.IO.Directory.CreateDirectory(mSettings.iLogicLogDir);
+                        string mLogName = job.Id + "_" + mFile.Name + "_iLogicSampleJob.log";
+                        System.IO.DirectoryInfo mLogDirInfo = new System.IO.DirectoryInfo(mSettings.iLogicLogDir);
+                        if (mLogDirInfo.Exists == false)
+                        {
+                            mLogDirInfo = System.IO.Directory.CreateDirectory(mSettings.iLogicLogDir);
+                        }
+                        mILogicLogFileFullName = System.IO.Path.Combine(mLogDirInfo.FullName, mLogName);
                     }
-                    mILogicLogFileFullName = System.IO.Path.Combine(mLogDirInfo.FullName, mLogName);
+                    else
+                    {
+                        context.Log(null, "The configured log level requires a path and exited because no valid path exists. Review and correct the JobExtension's iLogic Configuration.");
+                        return JobOutcome.Failure;
+                    }
                 }
-
 
                 //read rule execution settings
                 string mExtRule = null;
@@ -614,6 +643,17 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 mInvDfltProject.Activate();
                 //delete temporary working folder if imlemented here
+
+                //delete the temporary rule debug variable and related folder
+                if (System.Environment.GetEnvironmentVariable("iLogicRuleFolderForVS") != null)
+                {
+                    System.IO.DirectoryInfo mRuleTempInfo = new System.IO.DirectoryInfo(System.Environment.GetEnvironmentVariable("iLogicRuleFolderForVS"));
+                    if (mRuleTempInfo.Exists)
+                    {
+                        System.IO.Directory.Delete(mRuleTempInfo.FullName, true);
+                    }
+                    System.Environment.SetEnvironmentVariable("iLogicRuleFolderForVS", null);
+                }
 
                 #endregion reset
 

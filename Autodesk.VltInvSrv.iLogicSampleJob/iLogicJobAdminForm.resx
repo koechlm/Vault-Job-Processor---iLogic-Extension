@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblDebugInfo.Text" xml:space="preserve">
-    <value>Enabling extended debugging expects the environment variable 
-"iLogicRuleFolderForVS" and an available path's value. 
-The installer added the path C:\WINDOWS\TEMP.
-Check that you have access to the location.</value>
-  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>336, 14</value>
   </metadata>

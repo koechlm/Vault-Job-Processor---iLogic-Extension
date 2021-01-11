@@ -53,6 +53,7 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
+2021.0.3.0 - Resolved logging and advanced debugging issues; see project '2021.0.3 Update' for details.
 2021.0.2.1 - All dialogs are user resizeable; fixed several issues, see commits for details
 2021.0.1.4 - Job Administration Dialog, new Options tab
 2021.0.1.0 - Renamed tabs in iLogic Job Administration Dialog, Added MSI Installer Project

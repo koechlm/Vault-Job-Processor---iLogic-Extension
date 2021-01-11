@@ -1961,15 +1961,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Autodesk Vault iLogicJobExtension SampleApp 2021"
-        "ProductCode" = "8:{8FF10DFD-194A-4F36-956A-BEF6277B8BF5}"
-        "PackageCode" = "8:{B7BF8810-88E1-4D40-A8AA-7485AB560A24}"
+        "ProductCode" = "8:{57A08A24-AE2D-4873-B398-5DA5C231ECD5}"
+        "PackageCode" = "8:{05B1344A-E12C-47C9-82D4-02AE50B731F3}"
         "UpgradeCode" = "8:{99F32B73-324F-4D8B-B249-BC735D036446}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.1.2021"
+        "ProductVersion" = "8:3.0.2021"
         "Manufacturer" = "8:Autodesk"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/koechlm/Vault-Job-Processor---iLogic-Extension/issues"
@@ -1994,84 +1994,6 @@
             {
                 "Keys"
                 {
-                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_B11564E660AF44869F0316BBCD8E117E"
-                    {
-                    "Name" = "8:SYSTEM"
-                    "Condition" = "8:"
-                    "AlwaysCreate" = "11:FALSE"
-                    "DeleteAtUninstall" = "11:FALSE"
-                    "Transitive" = "11:FALSE"
-                        "Keys"
-                        {
-                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_202F70A3EFB54F2FBD4EB33A01F2C98B"
-                            {
-                            "Name" = "8:CurrentControlSet"
-                            "Condition" = "8:"
-                            "AlwaysCreate" = "11:FALSE"
-                            "DeleteAtUninstall" = "11:FALSE"
-                            "Transitive" = "11:FALSE"
-                                "Keys"
-                                {
-                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_85E40A12293D4F4B80AA2CEBE699DA97"
-                                    {
-                                    "Name" = "8:Control"
-                                    "Condition" = "8:"
-                                    "AlwaysCreate" = "11:FALSE"
-                                    "DeleteAtUninstall" = "11:FALSE"
-                                    "Transitive" = "11:FALSE"
-                                        "Keys"
-                                        {
-                                            "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_BA932380B57C4A87AEA2D695C014C5EC"
-                                            {
-                                            "Name" = "8:Session Manager"
-                                            "Condition" = "8:"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "DeleteAtUninstall" = "11:FALSE"
-                                            "Transitive" = "11:FALSE"
-                                                "Keys"
-                                                {
-                                                    "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_5DB898208A3343F684CAAD267FFED2A6"
-                                                    {
-                                                    "Name" = "8:Environment"
-                                                    "Condition" = "8:"
-                                                    "AlwaysCreate" = "11:TRUE"
-                                                    "DeleteAtUninstall" = "11:FALSE"
-                                                    "Transitive" = "11:FALSE"
-                                                        "Keys"
-                                                        {
-                                                        }
-                                                        "Values"
-                                                        {
-                                                            "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_DBC79008F7964EBA9855236B1640B8D4"
-                                                            {
-                                                            "Name" = "8:iLogicRuleFolderForVS"
-                                                            "Condition" = "8:"
-                                                            "Transitive" = "11:FALSE"
-                                                            "ValueTypes" = "3:1"
-                                                            "Value" = "8:C:\\WINDOWS\\TEMP"
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                "Values"
-                                                {
-                                                }
-                                            }
-                                        }
-                                        "Values"
-                                        {
-                                        }
-                                    }
-                                }
-                                "Values"
-                                {
-                                }
-                            }
-                        }
-                        "Values"
-                        {
-                        }
-                    }
                 }
             }
             "HKCU"
@@ -2505,7 +2427,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_839FAA723C0A4CDDBE6F856FA92F8E74"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\Autodesk.VltInvSrv.iLogicSampleJob\\obj\\x64\\Debug\\Autodesk.VltInvSrv.iLogicSampleJob.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_82DFAA786EAF42B8B444014ADD0F8A21"
