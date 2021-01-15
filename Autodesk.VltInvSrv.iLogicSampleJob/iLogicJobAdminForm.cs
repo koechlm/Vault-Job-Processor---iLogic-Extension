@@ -58,6 +58,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             //job rules options tab
             mActiveSettings.VaultRuleFullFileName = txtJobRuleVault.Text;
             mActiveSettings.PropagateProps = chckBoxPropagateProps.Checked.ToString();
+            mActiveSettings.PropagateItemProps = chckBoxPropagateItemProps.Checked.ToString();
             mActiveSettings.InternalRulesOption = cmbRunInternal.Text;
             mActiveSettings.InternalRulesOptiontext = txtInternalRuleText.Text;
             //user rules tab
@@ -238,8 +239,15 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     chckBoxBreak.Checked = false;
                 }
 
-                //job rules options tab
+                //job rules tab
                 txtJobRuleVault.Text = mNewSettings.VaultRuleFullFileName;
+                cmbRunInternal.Text = mNewSettings.InternalRulesOption;
+                txtInternalRuleText.Text = mNewSettings.InternalRulesOptiontext;
+
+                //user rules tab
+                mUpdateUsrRlsGrid(mNewSettings.UserRules);
+
+                //options tab
                 if (mNewSettings.PropagateProps == "True")
                 {
                     chckBoxPropagateProps.Checked = true;
@@ -248,11 +256,15 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 {
                     chckBoxPropagateProps.Checked = false;
                 }
-                cmbRunInternal.Text = mNewSettings.InternalRulesOption;
-                txtInternalRuleText.Text = mNewSettings.InternalRulesOptiontext;
 
-                //user rules tab
-                mUpdateUsrRlsGrid(mNewSettings.UserRules);
+                if (mNewSettings.PropagateItemProps == "True")
+                {
+                    chckBoxPropagateItemProps.Checked = true;
+                }
+                else
+                {
+                    chckBoxPropagateItemProps.Checked = false;
+                }
 
                 MessageBox.Show("Successfully imported settings.", "Configuration Import", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -451,6 +463,13 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 //job rules options tab
                 txtJobRuleVault.Text = mNewSettings.VaultRuleFullFileName;
+                cmbRunInternal.Text = mNewSettings.InternalRulesOption;
+                txtInternalRuleText.Text = mNewSettings.InternalRulesOptiontext;
+
+                //user rules tab
+                mUpdateUsrRlsGrid(mNewSettings.UserRules);
+
+                //options tab
                 if (mNewSettings.PropagateProps == "True")
                 {
                     chckBoxPropagateProps.Checked = true;
@@ -459,11 +478,15 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 {
                     chckBoxPropagateProps.Checked = false;
                 }
-                cmbRunInternal.Text = mNewSettings.InternalRulesOption;
-                txtInternalRuleText.Text = mNewSettings.InternalRulesOptiontext;
 
-                //user rules tab
-                mUpdateUsrRlsGrid(mNewSettings.UserRules);
+                if (mNewSettings.PropagateItemProps == "True")
+                {
+                    chckBoxPropagateItemProps.Checked = true;
+                }
+                else
+                {
+                    chckBoxPropagateItemProps.Checked = false;
+                }
 
                 return true;
             }

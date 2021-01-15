@@ -9,6 +9,7 @@
   <ExternalRuleDirectories>C:\PDMC-Sample\Templates\Design Data\iLogic\Sample Rules PDM</ExternalRuleDirectories>
   <ExternalRuleDirectories>C:\PDMC-Sample\Templates\Design Data\iLogic\Vault Automation</ExternalRuleDirectories>
   <PropagateProps>True</PropagateProps>
+  <PropagateItemProps>False</PropagateItemProps>
   <InternalRulesOption>None</InternalRulesOption>
   <InternalRulesOptionText>_Auto</InternalRulesOptionText>
   <UserRules>Master rule calling sub-rules|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule_MasterSample.iLogicVb</UserRules>

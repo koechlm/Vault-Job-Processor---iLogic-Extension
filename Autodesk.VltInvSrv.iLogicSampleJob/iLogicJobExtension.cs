@@ -24,6 +24,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
     public class iLogicJobExtension : IJobHandler
     {
         private static string JOB_TYPE = "Autodesk.VltInvSrv.iLogicSampleJob";
+        Autodesk.Connectivity.WebServicesTools.WebServiceManager mWsMgr;
         public static Settings mSettings = null;
         public static string mJobExecType = null;
         public static bool mJobCheckInResult = true;
@@ -49,7 +50,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 //pick up this job's context
                 mConnection = context.Connection;
-                Autodesk.Connectivity.WebServicesTools.WebServiceManager mWsMgr = mConnection.WebServiceManager;
+                mWsMgr = mConnection.WebServiceManager;
                 long mEntId = Convert.ToInt64(job.Params["EntityId"]);
                 string mEntClsId = job.Params["EntityClassId"];
 
@@ -492,6 +493,23 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         }
                     }
 
+                    if (true)
+                    {
+                        //get item properties
+                        ACW.Item[] items = mWsMgr.ItemService.GetItemsByFileId(mFileIteration.EntityIterationId);
+                        if (items.Length > 0)
+                        {
+                            Dictionary<string, string> VaultItemProperties = new Dictionary<string, string>();
+                            //todo: handle 1:n file item links
+                            ACW.Item item = items[0];
+                            mGetItemProps(item, ref VaultItemProperties);
+                            foreach (KeyValuePair<string, string> mPropVal in VaultItemProperties)
+                            {
+                                ruleArguments.Add("Item." + mPropVal.Key, mPropVal.Value);
+                            }
+                        }
+                    }
+
                     if (mSettings.ActivateDebugBreak == "True")
                     {
                         MessageBox.Show("You opted to break for Visual Studio rule debugging? If so, attach to VaultInventorServer.exe now, then continue...",
@@ -691,6 +709,33 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 settings.CreateMetaDataFile = true;
             }
             return settings;
+        }
+
+        private void mGetItemProps(ACW.Item item, ref Dictionary<string, string> VaultItemProperties)
+        {
+            string mPropDispName = null;
+            string mPropVal = null;
+            string mThumbnailDispName = null;
+
+            ACW.PropDef[] mItemPropDefs = mWsMgr.PropertyService.GetPropertyDefinitionsByEntityClassId("ITEM");
+            ACW.PropInst[] mItemPropInsts = mWsMgr.PropertyService.GetPropertiesByEntityIds("ITEM", new long[] { item.Id });
+            mThumbnailDispName = mItemPropDefs.Where(n => n.SysName == "Thumbnail").FirstOrDefault().DispName;
+            foreach (ACW.PropInst mItemPropInst in mItemPropInsts)
+            {
+                mPropDispName = mItemPropDefs.Where(n => n.Id == mItemPropInst.PropDefId).FirstOrDefault().DispName;
+                if (mPropDispName != mThumbnailDispName)
+                {
+                    if (mItemPropInst.Val == null)
+                    {
+                        mPropVal = "";
+                    }
+                    else
+                    {
+                        mPropVal = mItemPropInst.Val.ToString();
+                    }
+                    VaultItemProperties.Add(mPropDispName, mPropVal);
+                }
+            }
         }
 
         public void OnJobProcessorShutdown(IJobProcessorServices context)

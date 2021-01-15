@@ -47,6 +47,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         [XmlElement("PropagateProps")]
         public string PropagateProps;
 
+        [XmlElement("PropagateItemProps")]
+        public string PropagateItemProps;
+
         [XmlElement("InternalRulesOption")]
         public string InternalRulesOption;
 
