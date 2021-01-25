@@ -117,6 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblDebugInfo.Text" xml:space="preserve">
+    <value>Advanced Rule Debugging stops the Job execution with a Message Box.
+Use Visual Studio and attach to the process 'VaultInventorServer.exe' (default)
+or 'Inventor.exe' (if rule requires) before confirming the message with OK.</value>
+  </data>
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>336, 14</value>
   </metadata>
@@ -141,6 +146,9 @@
   <data name="Column3.ToolTipText" xml:space="preserve">
     <value>Most rules require check-out the file processed as they update processed file. Other rules, e.g., extracting BOM, exporting, don't require to check-in a new file iteration. Uncheck, to Undo Check-out state of the processed file.</value>
   </data>
+  <metadata name="RunInvApplication.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="UserRulePath.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

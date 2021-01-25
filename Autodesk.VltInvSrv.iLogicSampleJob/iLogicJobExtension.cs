@@ -28,12 +28,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         public static Settings mSettings = null;
         public static string mJobExecType = null;
         public static bool mJobCheckInResult = true;
+        public static bool mInvAppRequired = false;
         private static string mAppPath = Util.GetAssemblyPath();
         private VDF.Vault.Currency.Connections.Connection mConnection;
         private Int32 mRuleSuccess = -1;
         private List<string> mAllRules = new List<string>();
         private string mAllRulesTextWrp = "";
         private string mRuleTmp = "\\iLogicVaultJobRules";
+        private Inventor.Application mInvApp;
+        private Inventor.InventorServer mInvSrv;
+        ApplicationAddIns mInvAddIns;
 
         #region IJobHandler Implementation
         public bool CanProcess(string jobType)
@@ -91,6 +95,17 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     else
                     {
                         mJobCheckInResult = false;
+                    }
+                }
+                if (job.Params.ContainsKey("InvApplication"))
+                {
+                    if (job.Params["InvApplication"] == "true")
+                    {
+                        mInvAppRequired = true;
+                    }
+                    else
+                    {
+                        mInvAppRequired = false;
                     }
                 }
 
@@ -165,9 +180,27 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
                 }
 
-                Inventor.InventorServer mInv = context.InventorObject as InventorServer;
-                ApplicationAddIns mInvSrvAddIns = mInv.ApplicationAddIns;
-                ApplicationAddIn iLogicAddIn = mInvSrvAddIns.ItemById["{3BDD8D79-2179-4B11-8A5A-257B1C0263AC}"];
+
+                // Jobs for Inventor Application or Inventor Server
+                if (mInvAppRequired == true || (mJobExecType == "LifecycleJob" && mSettings.UseInvApp == "True"))
+                {
+                    if (mGetInvApp() == true)
+                    {
+                        mInvAddIns = mInvApp.ApplicationAddIns;
+                    }
+                    else
+                    {
+                        context.Log(null, "The job required Inventor Application but was not able to start it.");
+                        return JobOutcome.Failure;
+                    }
+                }
+                else
+                {
+                    mInvSrv = context.InventorObject as InventorServer;
+                    mInvAddIns = mInvSrv.ApplicationAddIns;
+                }
+
+                ApplicationAddIn iLogicAddIn = mInvAddIns.ItemById["{3BDD8D79-2179-4B11-8A5A-257B1C0263AC}"];
 
                 if (iLogicAddIn != null && iLogicAddIn.Activated != true)
                 {
@@ -230,7 +263,14 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     mIpjLocalPath = fileAcquisitionResult.LocalPath.FullPath;
 
                     //activate this Vault's ipj   
-                    mInvIpjManager = mInv.DesignProjectManager;
+                    if (mInvAppRequired == true)
+                    {
+                        mInvIpjManager = mInvApp.DesignProjectManager;
+                    }
+                    else
+                    {
+                        mInvIpjManager = mInvSrv.DesignProjectManager;
+                    }
                     mInvDfltProject = mInvIpjManager.ActiveDesignProject;
                     mInvVltProject = mInvIpjManager.DesignProjects.AddExisting(mIpjLocalPath);
                     mInvVltProject.Activate();
@@ -463,8 +503,18 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 #region Run iLogic Rule(s)
 
                 //Open Inventor Document
-                Document mDoc = mInv.Documents.Open(mLocalFileFullName);
-                NameValueMap ruleArguments = mInv.TransientObjects.CreateNameValueMap();
+                Document mDoc = null;
+                NameValueMap ruleArguments = null;
+                if (mInvAppRequired == true)
+                {
+                    mDoc = mInvApp.Documents.Open(mLocalFileFullName);
+                    ruleArguments = mInvApp.TransientObjects.CreateNameValueMap();
+                }
+                else
+                {
+                    mDoc = mInvSrv.Documents.Open(mLocalFileFullName);
+                    ruleArguments = mInvSrv.TransientObjects.CreateNameValueMap();
+                }
 
                 //use case  - apply external rule with arguments; additional Vault UDP, status or any information might fill rule arguments
                 if (mExtRule != "")
@@ -662,6 +712,12 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 mInvDfltProject.Activate();
                 //delete temporary working folder if imlemented here
 
+                //terminate Inventor Application if used
+                if (mInvApp != null)
+                {
+                    mInvApp.Quit();
+                }
+
                 //delete the temporary rule debug variable and related folder
                 if (System.Environment.GetEnvironmentVariable("iLogicRuleFolderForVS") != null)
                 {
@@ -736,6 +792,23 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     VaultItemProperties.Add(mPropDispName, mPropVal);
                 }
             }
+        }
+
+        private bool mGetInvApp()
+        {
+            while (mInvApp == null)
+            {
+                try
+                {
+                    mInvApp = System.Runtime.InteropServices.Marshal.GetActiveObject("Inventor.Application") as Inventor.Application;
+                }
+                catch (Exception)
+                {
+                    Type inventorAppType = System.Type.GetTypeFromProgID("Inventor.Application");
+                    mInvApp = System.Activator.CreateInstance(inventorAppType) as Inventor.Application;
+                }
+            }
+            return true;
         }
 
         public void OnJobProcessorShutdown(IJobProcessorServices context)

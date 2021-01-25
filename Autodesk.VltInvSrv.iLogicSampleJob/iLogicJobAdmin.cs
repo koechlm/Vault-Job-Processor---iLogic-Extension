@@ -45,8 +45,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             var retval = mUserJob.ShowDialog();
 
             //get dialog return parameters
-            string mRuleName = mUserJob.JobFullFileName;
-            string mResultCheckIn = mUserJob.CreateNewIteration;
+            string mRuleName = mUserJob.mJobFullFileName;
+            string mResultCheckIn = mUserJob.mCreateNewIteration;
+            string mInvApp = mUserJob.mRunInvApp;
 
             // Queue an iLogic job
             const string iLogicJobTypeName = "Autodesk.VltInvSrv.iLogicSampleJob";
@@ -54,11 +55,12 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             const string iLogicJob_FileClassId = "EntityClassId";
             const string iLogicJob_Rule = "ExternalRule";
             const string iLogicJob_CheckIn = "CheckIn";
+            const string iLogicJob_InvApp = "InvApplication";
 
             foreach (ISelection vaultObj in e.Context.CurrentSelectionSet)
             {
                 ACW.File mFile = (ACW.File)e.Context.Application.Connection.WebServiceManager.DocumentService.GetLatestFileByMasterId(vaultObj.Id);
-                ACW.JobParam[] mParamList = new ACW.JobParam[4];
+                ACW.JobParam[] mParamList = new ACW.JobParam[5];
                 ACW.JobParam mMasterIdParam = new ACW.JobParam
                 {
                     Name = iLogicJob_FileId,
@@ -86,6 +88,13 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     Val = mResultCheckIn
                 };
                 mParamList[3] = mCheckInParam;
+
+                ACW.JobParam mInvAppParam = new ACW.JobParam
+                {
+                    Name = iLogicJob_InvApp,
+                    Val = mInvApp
+                };
+                mParamList[4] = mInvAppParam;
 
                 // Add the job to the queue
                 //
@@ -177,7 +186,6 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
         public void OnLogOn(IApplication application)
         {
-            //do nothing
             mConnection = application.Connection;
         }
 

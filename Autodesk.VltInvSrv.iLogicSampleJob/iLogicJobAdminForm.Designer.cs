@@ -71,6 +71,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserRuleDispName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.RunInvApplication = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UserRulePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +81,8 @@
             this.btnUserRuleDown = new System.Windows.Forms.Button();
             this.tabOptions = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.chckBoxPropagateItemProps = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblPropagateVltProps = new System.Windows.Forms.Label();
             this.chckBoxPropagateProps = new System.Windows.Forms.CheckBox();
             this.btnImport = new System.Windows.Forms.Button();
@@ -88,8 +91,9 @@
             this.btnLoadFromVlt = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.chckBoxPropagateItemProps = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.chckInvApp = new System.Windows.Forms.CheckBox();
+            this.lblUseInvApp = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabAdvancediLogicConfig.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -107,6 +111,7 @@
             this.contextMenuStrip2.SuspendLayout();
             this.tabOptions.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -160,11 +165,9 @@
             this.lblDebugInfo.AutoSize = true;
             this.lblDebugInfo.Location = new System.Drawing.Point(163, 20);
             this.lblDebugInfo.Name = "lblDebugInfo";
-            this.lblDebugInfo.Size = new System.Drawing.Size(368, 39);
+            this.lblDebugInfo.Size = new System.Drawing.Size(376, 39);
             this.lblDebugInfo.TabIndex = 2;
-            this.lblDebugInfo.Text = "Advanced Rule Debugging stops the Job execution with a Message Box.\r\nUse Visual S" +
-    "tudio and attach to the process \'VaultInventorServer.exe\' before\r\nconfirming the" +
-    " message with OK.";
+            this.lblDebugInfo.Text = resources.GetString("lblDebugInfo.Text");
             this.lblDebugInfo.Click += new System.EventHandler(this.lblDebugInfo_Click);
             // 
             // chckBoxBreak
@@ -400,6 +403,7 @@
             // 
             // tabLifecycleRules
             // 
+            this.tabLifecycleRules.Controls.Add(this.groupBox9);
             this.tabLifecycleRules.Controls.Add(this.groupBox6);
             this.tabLifecycleRules.Controls.Add(this.groupBox5);
             this.tabLifecycleRules.Location = new System.Drawing.Point(4, 30);
@@ -567,6 +571,7 @@
             this.Column4,
             this.UserRuleDispName,
             this.Column3,
+            this.RunInvApplication,
             this.UserRulePath});
             this.dtGrdUsrRules.ContextMenuStrip = this.contextMenuStrip2;
             this.dtGrdUsrRules.Location = new System.Drawing.Point(6, 19);
@@ -605,6 +610,16 @@
             this.Column3.Name = "Column3";
             this.Column3.ToolTipText = resources.GetString("Column3.ToolTipText");
             this.Column3.TrueValue = "true";
+            // 
+            // RunInvApplication
+            // 
+            this.RunInvApplication.FalseValue = "false";
+            this.RunInvApplication.FillWeight = 10F;
+            this.RunInvApplication.HeaderText = "Use Inventor Application";
+            this.RunInvApplication.Name = "RunInvApplication";
+            this.RunInvApplication.ToolTipText = "Activate if rule requires full Inventor Application instead of VaultInventorServe" +
+    "r";
+            this.RunInvApplication.TrueValue = "true";
             // 
             // UserRulePath
             // 
@@ -698,6 +713,26 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Vault Properties";
             // 
+            // chckBoxPropagateItemProps
+            // 
+            this.chckBoxPropagateItemProps.AutoSize = true;
+            this.chckBoxPropagateItemProps.Location = new System.Drawing.Point(6, 115);
+            this.chckBoxPropagateItemProps.Name = "chckBoxPropagateItemProps";
+            this.chckBoxPropagateItemProps.Size = new System.Drawing.Size(175, 17);
+            this.chckBoxPropagateItemProps.TabIndex = 10;
+            this.chckBoxPropagateItemProps.Text = "Propagate Vault Item Properties";
+            this.chckBoxPropagateItemProps.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(190, 116);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(348, 26);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Option to share all the file\'s Item properties as additional Rule Arguments:\r\nNam" +
+    "eValueMap = Item.<Vault Property Name> | <Vault Property Value>.";
+            // 
             // lblPropagateVltProps
             // 
             this.lblPropagateVltProps.AutoSize = true;
@@ -781,25 +816,36 @@
             this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderBrowserDialog1.SelectedPath = "C:\\";
             // 
-            // chckBoxPropagateItemProps
+            // groupBox9
             // 
-            this.chckBoxPropagateItemProps.AutoSize = true;
-            this.chckBoxPropagateItemProps.Location = new System.Drawing.Point(6, 115);
-            this.chckBoxPropagateItemProps.Name = "chckBoxPropagateItemProps";
-            this.chckBoxPropagateItemProps.Size = new System.Drawing.Size(175, 17);
-            this.chckBoxPropagateItemProps.TabIndex = 10;
-            this.chckBoxPropagateItemProps.Text = "Propagate Vault Item Properties";
-            this.chckBoxPropagateItemProps.UseVisualStyleBackColor = true;
+            this.groupBox9.Controls.Add(this.lblUseInvApp);
+            this.groupBox9.Controls.Add(this.chckInvApp);
+            this.groupBox9.Location = new System.Drawing.Point(6, 223);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(579, 85);
+            this.groupBox9.TabIndex = 2;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Inventor Options";
             // 
-            // label1
+            // chckInvApp
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(190, 116);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(348, 26);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Option to share all the file\'s Item properties as additional Rule Arguments:\r\nNam" +
-    "eValueMap = Item.<Vault Property Name> | <Vault Property Value>.";
+            this.chckInvApp.AutoSize = true;
+            this.chckInvApp.Location = new System.Drawing.Point(6, 19);
+            this.chckInvApp.Name = "chckInvApp";
+            this.chckInvApp.Size = new System.Drawing.Size(142, 17);
+            this.chckInvApp.TabIndex = 0;
+            this.chckInvApp.Text = "Use Inventor Application";
+            this.chckInvApp.UseVisualStyleBackColor = true;
+            // 
+            // lblUseInvApp
+            // 
+            this.lblUseInvApp.AutoSize = true;
+            this.lblUseInvApp.Location = new System.Drawing.Point(155, 19);
+            this.lblUseInvApp.Name = "lblUseInvApp";
+            this.lblUseInvApp.Size = new System.Drawing.Size(339, 39);
+            this.lblUseInvApp.TabIndex = 1;
+            this.lblUseInvApp.Text = "Leave unchecked whenever possible. \r\nCheck if rule(s) require the full Inventor a" +
+    "pplication, e.g., for BIM Export\r\nor Image Export jobs.";
             // 
             // iLogicJobAdminForm
             // 
@@ -844,6 +890,8 @@
             this.tabOptions.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -897,10 +945,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserRuleDispName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserRulePath;
         private System.Windows.Forms.DataGridViewTextBoxColumn column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn column2;
         private System.Windows.Forms.Label lblPrimaryRuleFile;
@@ -910,5 +954,13 @@
         private System.Windows.Forms.CheckBox chckBoxPropagateProps;
         private System.Windows.Forms.CheckBox chckBoxPropagateItemProps;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserRuleDispName;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn RunInvApplication;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserRulePath;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label lblUseInvApp;
+        private System.Windows.Forms.CheckBox chckInvApp;
     }
 }

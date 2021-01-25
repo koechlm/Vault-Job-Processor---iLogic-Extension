@@ -61,6 +61,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             mActiveSettings.PropagateItemProps = chckBoxPropagateItemProps.Checked.ToString();
             mActiveSettings.InternalRulesOption = cmbRunInternal.Text;
             mActiveSettings.InternalRulesOptiontext = txtInternalRuleText.Text;
+            mActiveSettings.UseInvApp = chckInvApp.Checked.ToString();
             //user rules tab
             mActiveSettings.UserRules = mGetUserRules();
 
@@ -99,7 +100,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 {
                     mRules[i] = dtGrdUsrRules.Rows[i].Cells[1].Value.ToString() + "|"
                         + dtGrdUsrRules.Rows[i].Cells[2].Value.ToString() + "|"
-                        + dtGrdUsrRules.Rows[i].Cells[3].Value.ToString();
+                        + dtGrdUsrRules.Rows[i].Cells[3].Value.ToString() + "|"
+                        + dtGrdUsrRules.Rows[i].Cells[4].Value.ToString();
                 }
             }
             return mRules;
@@ -243,6 +245,14 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 txtJobRuleVault.Text = mNewSettings.VaultRuleFullFileName;
                 cmbRunInternal.Text = mNewSettings.InternalRulesOption;
                 txtInternalRuleText.Text = mNewSettings.InternalRulesOptiontext;
+                if (mNewSettings.UseInvApp == "True")
+                {
+                    chckInvApp.Checked = true;
+                }
+                else
+                {
+                    chckInvApp.Checked = false;
+                }
 
                 //user rules tab
                 mUpdateUsrRlsGrid(mNewSettings.UserRules);
@@ -296,7 +306,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             for (int i = 0; i < mUsrRls.Count(); i++)
             {
                 mRow = mUsrRls[i].Split('|');
-                dtGrdUsrRules.Rows.Add(new string[] { (i + 1).ToString(), mRow[0], mRow[1], mRow[2] });
+                dtGrdUsrRules.Rows.Add(new string[] { (i + 1).ToString(), mRow[0], mRow[1], mRow[2], mRow[3] });
             }
             mRenumber(dtGrdUsrRules);
         }
@@ -316,7 +326,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
             for (int i = 0; i < selectFromVault.RetFullNames.Count; i++)
             {
-                dtGrdUsrRules.Rows.Add(new string[] { "", selectFromVault.RetNames[i], "false", selectFromVault.RetFullNames[i] });
+                dtGrdUsrRules.Rows.Add(new string[] { "", selectFromVault.RetNames[i], "false", "false", selectFromVault.RetFullNames[i] });
             }
             mRenumber(dtGrdUsrRules);
         }
@@ -346,6 +356,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 mRow.Cells[1].Value = dtGrdUsrRules.Rows[rowIndex].Cells[1].Value.ToString();
                 mRow.Cells[2].Value = dtGrdUsrRules.Rows[rowIndex].Cells[2].Value.ToString();
                 mRow.Cells[3].Value = dtGrdUsrRules.Rows[rowIndex].Cells[3].Value.ToString();
+                mRow.Cells[4].Value = dtGrdUsrRules.Rows[rowIndex].Cells[4].Value.ToString();
                 dtGrdUsrRules.Rows.RemoveAt(rowIndex);
                 dtGrdUsrRules.Rows.Insert(rowIndex - 1, mRow);
                 foreach (DataGridViewRow row in dtGrdUsrRules.Rows)
@@ -367,6 +378,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 mRow.Cells[1].Value = dtGrdUsrRules.Rows[rowIndex].Cells[1].Value.ToString();
                 mRow.Cells[2].Value = dtGrdUsrRules.Rows[rowIndex].Cells[2].Value.ToString();
                 mRow.Cells[3].Value = dtGrdUsrRules.Rows[rowIndex].Cells[3].Value.ToString();
+                mRow.Cells[4].Value = dtGrdUsrRules.Rows[rowIndex].Cells[4].Value.ToString();
                 dtGrdUsrRules.Rows.RemoveAt(rowIndex);
                 dtGrdUsrRules.Rows.Insert(rowIndex + 1, mRow);
                 foreach (DataGridViewRow row in dtGrdUsrRules.Rows)
@@ -404,6 +416,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             mActiveSettings.PropagateProps = chckBoxPropagateProps.Checked.ToString();
             mActiveSettings.InternalRulesOption = cmbRunInternal.Text;
             mActiveSettings.InternalRulesOptiontext = txtInternalRuleText.Text;
+            mActiveSettings.UseInvApp = chckInvApp.Checked.ToString();
             //user rules tab
             mActiveSettings.UserRules = mGetUserRules();
 
@@ -465,6 +478,14 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 txtJobRuleVault.Text = mNewSettings.VaultRuleFullFileName;
                 cmbRunInternal.Text = mNewSettings.InternalRulesOption;
                 txtInternalRuleText.Text = mNewSettings.InternalRulesOptiontext;
+                if (mNewSettings.UseInvApp == "True")
+                {
+                    chckInvApp.Checked = true;
+                }
+                else
+                {
+                    chckInvApp.Checked = false;
+                }
 
                 //user rules tab
                 mUpdateUsrRlsGrid(mNewSettings.UserRules);

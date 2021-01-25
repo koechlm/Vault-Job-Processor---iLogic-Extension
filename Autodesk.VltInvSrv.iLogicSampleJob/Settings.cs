@@ -56,6 +56,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         [XmlElement("InternalRulesOptionText")]
         public string InternalRulesOptiontext;
 
+        [XmlElement("UseInvApp")]
+        public string UseInvApp;
+
         [XmlElement("UserRules")]
         public string[] UserRules;
 

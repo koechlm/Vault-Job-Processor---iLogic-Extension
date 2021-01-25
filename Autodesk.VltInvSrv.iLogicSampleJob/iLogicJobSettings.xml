@@ -12,13 +12,14 @@
   <PropagateItemProps>False</PropagateItemProps>
   <InternalRulesOption>None</InternalRulesOption>
   <InternalRulesOptionText>_Auto</InternalRulesOptionText>
-  <UserRules>Master rule calling sub-rules|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule_MasterSample.iLogicVb</UserRules>
-  <UserRules>BOMTypeToProp|true|$/Templates/Design Data/iLogic/Vault Automation/BOMTypeToPropVltJob.iLogicVb</UserRules>
-  <UserRules>Save3D|true|$/Templates/Design Data/iLogic/Vault Automation/Save3DVltJob.iLogicVb</UserRules>
-  <UserRules>UidToiProp|true|$/Templates/Design Data/iLogic/Vault Automation/UidToiPropVltJob.ilogicvb</UserRules>
-  <UserRules>VaultJobRule|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule.iLogicVb</UserRules>
-  <UserRules>VaultJobRule IdwPrintToPDF|false|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule_IdwPrint.iLogicVb</UserRules>
-  <UserRules>VaultJobRuleConnected|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRuleConnected.iLogicVb</UserRules>
-  <UserRules>Apply BOM Settings PDMC-Sample|true|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRuleConnected-BOMSettingsPDMC-Sample.iLogicVb</UserRules>
+  <UseInvApp>False</UseInvApp>
+  <UserRules>Master rule calling sub-rules|true|false|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule_MasterSample.iLogicVb</UserRules>
+  <UserRules>BOMTypeToProp|true|false|$/Templates/Design Data/iLogic/Vault Automation/BOMTypeToPropVltJob.iLogicVb</UserRules>
+  <UserRules>Save3D|true|false|$/Templates/Design Data/iLogic/Vault Automation/Save3DVltJob.iLogicVb</UserRules>
+  <UserRules>UidToiProp|true|false|$/Templates/Design Data/iLogic/Vault Automation/UidToiPropVltJob.ilogicvb</UserRules>
+  <UserRules>VaultJobRule|true|false|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule.iLogicVb</UserRules>
+  <UserRules>VaultJobRule IdwPrintToPDF|false|false|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRule_IdwPrint.iLogicVb</UserRules>
+  <UserRules>VaultJobRuleConnected|true|false|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRuleConnected.iLogicVb</UserRules>
+  <UserRules>Apply BOM Settings PDMC-Sample|true|false|$/Templates/Design Data/iLogic/Vault Automation/VaultJobRuleConnected-BOMSettingsPDMC-Sample.iLogicVb</UserRules>
   <ActivateDebugBreak>False</ActivateDebugBreak>
 </settings>

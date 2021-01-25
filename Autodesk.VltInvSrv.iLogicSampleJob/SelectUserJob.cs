@@ -22,9 +22,11 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         private Settings settings = iLogicJobAdmin.mSettings;
 
         //return parameters
-        public string JobFullFileName { get; set; }
+        public string mJobFullFileName { get; set; }
 
-        public string CreateNewIteration { get; set; }
+        public string mCreateNewIteration { get; set; }
+
+        public string mRunInvApp { get; set; }
 
         public SelectUserJob()
         {
@@ -39,7 +41,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             for (int i = 0; i < mUsrRls.Count(); i++)
             {
                 mRow = mUsrRls[i].Split('|');
-                dtGrdUsrRules.Rows.Add(new string[] { (i + 1).ToString(), mRow[0], mRow[1], mRow[2] });
+                dtGrdUsrRules.Rows.Add(new string[] { (i + 1).ToString(), mRow[0], mRow[1], mRow[2], mRow[3] });
             }
         }
 
@@ -50,8 +52,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
         private void btn_SelectUserJob_Submit_Click(object sender, EventArgs e)
         {
-            JobFullFileName = dtGrdUsrRules.SelectedRows[0].Cells[3].Value.ToString();
-            CreateNewIteration = dtGrdUsrRules.SelectedRows[0].Cells[2].Value.ToString();
+            mJobFullFileName = dtGrdUsrRules.SelectedRows[0].Cells[4].Value.ToString();
+            mCreateNewIteration = dtGrdUsrRules.SelectedRows[0].Cells[2].Value.ToString();
+            mRunInvApp = dtGrdUsrRules.SelectedRows[0].Cells[3].Value.ToString();
             this.Close();
         }
 
