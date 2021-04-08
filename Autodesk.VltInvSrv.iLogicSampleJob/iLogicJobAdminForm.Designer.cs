@@ -55,6 +55,9 @@
             this.btnRuleDirUp = new System.Windows.Forms.Button();
             this.btnRuleDirDown = new System.Windows.Forms.Button();
             this.tabLifecycleRules = new System.Windows.Forms.TabPage();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.lblUseInvApp = new System.Windows.Forms.Label();
+            this.chckInvApp = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lblInternalRuleText = new System.Windows.Forms.Label();
             this.txtInternalRuleText = new System.Windows.Forms.TextBox();
@@ -91,9 +94,6 @@
             this.btnLoadFromVlt = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.chckInvApp = new System.Windows.Forms.CheckBox();
-            this.lblUseInvApp = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabAdvancediLogicConfig.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -103,6 +103,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdViewExtRls)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.tabLifecycleRules.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tabUserRules.SuspendLayout();
@@ -111,7 +112,6 @@
             this.contextMenuStrip2.SuspendLayout();
             this.tabOptions.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -413,6 +413,37 @@
             this.tabLifecycleRules.TabIndex = 2;
             this.tabLifecycleRules.Text = "Lifecycle Rule(s)";
             this.tabLifecycleRules.UseVisualStyleBackColor = true;
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.lblUseInvApp);
+            this.groupBox9.Controls.Add(this.chckInvApp);
+            this.groupBox9.Location = new System.Drawing.Point(6, 223);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(579, 85);
+            this.groupBox9.TabIndex = 2;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Inventor Options";
+            // 
+            // lblUseInvApp
+            // 
+            this.lblUseInvApp.AutoSize = true;
+            this.lblUseInvApp.Location = new System.Drawing.Point(155, 19);
+            this.lblUseInvApp.Name = "lblUseInvApp";
+            this.lblUseInvApp.Size = new System.Drawing.Size(342, 26);
+            this.lblUseInvApp.TabIndex = 1;
+            this.lblUseInvApp.Text = "Leave unchecked whenever possible. \r\nCheck if rule(s) require the full Inventor a" +
+    "pplication, e.g., for BIM Export.";
+            // 
+            // chckInvApp
+            // 
+            this.chckInvApp.AutoSize = true;
+            this.chckInvApp.Location = new System.Drawing.Point(6, 19);
+            this.chckInvApp.Name = "chckInvApp";
+            this.chckInvApp.Size = new System.Drawing.Size(142, 17);
+            this.chckInvApp.TabIndex = 0;
+            this.chckInvApp.Text = "Use Inventor Application";
+            this.chckInvApp.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
@@ -816,37 +847,6 @@
             this.folderBrowserDialog1.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderBrowserDialog1.SelectedPath = "C:\\";
             // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.lblUseInvApp);
-            this.groupBox9.Controls.Add(this.chckInvApp);
-            this.groupBox9.Location = new System.Drawing.Point(6, 223);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(579, 85);
-            this.groupBox9.TabIndex = 2;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Inventor Options";
-            // 
-            // chckInvApp
-            // 
-            this.chckInvApp.AutoSize = true;
-            this.chckInvApp.Location = new System.Drawing.Point(6, 19);
-            this.chckInvApp.Name = "chckInvApp";
-            this.chckInvApp.Size = new System.Drawing.Size(142, 17);
-            this.chckInvApp.TabIndex = 0;
-            this.chckInvApp.Text = "Use Inventor Application";
-            this.chckInvApp.UseVisualStyleBackColor = true;
-            // 
-            // lblUseInvApp
-            // 
-            this.lblUseInvApp.AutoSize = true;
-            this.lblUseInvApp.Location = new System.Drawing.Point(155, 19);
-            this.lblUseInvApp.Name = "lblUseInvApp";
-            this.lblUseInvApp.Size = new System.Drawing.Size(339, 39);
-            this.lblUseInvApp.TabIndex = 1;
-            this.lblUseInvApp.Text = "Leave unchecked whenever possible. \r\nCheck if rule(s) require the full Inventor a" +
-    "pplication, e.g., for BIM Export\r\nor Image Export jobs.";
-            // 
             // iLogicJobAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -879,6 +879,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdViewExtRls)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.tabLifecycleRules.ResumeLayout(false);
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -890,8 +892,6 @@
             this.tabOptions.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
