@@ -72,7 +72,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             }
             else
             {
-                MessageBox.Show("Export settings to local file failed.", "Configuration Export", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Export settings to local file failed. Check the permissions Vault Extensions folder.", "Configuration Export", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -280,7 +280,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             }
             catch (Exception)
             {
-                MessageBox.Show("Could not import settings.", "Configuration Import", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Could not import settings. Check the permissions Vault Extensions folder.", "Configuration Import", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
 

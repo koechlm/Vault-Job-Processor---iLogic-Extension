@@ -18,8 +18,8 @@ break 'prepared for step by step debugging
 		fServer = RuleArguments("ServerName")
 		vltName = RuleArguments("VaultName")
 		userId = RuleArguments("UserId")
-		ticket = RuleArguments("Ticket")
-		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, ticket)
+		SessionId = RuleArguments("SessionId")
+		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, SessionId)
 		FileStateName = RuleArguments("File.State (Historical)")
 	Catch
 	End Try

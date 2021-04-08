@@ -524,8 +524,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     ruleArguments.Add("ServerName", mConnection.Server);
                     ruleArguments.Add("VaultName", mConnection.Vault);
                     ruleArguments.Add("UserId", mConnection.UserID);
-                    ruleArguments.Add("Ticket", mConnection.Ticket);
-
+                    ruleArguments.Add("SessionId", mWsMgr.AuthService.Session.Id);
+                    
                     //additional rule arguments to build rule conditions evaluating Vault lifecycle information, properties, etc.
                     if (mSettings.PropagateProps == "True")
                     {

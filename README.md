@@ -53,6 +53,8 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
+2022.0.0.0 - updated for Vault Client / Job Processor 2022 - Note: Rules re-using the job processor's connection require updating; compare the included sample rule "VaultJobRuleConnected.iLogicVB."
+2021.1.0.0 - New option to run Job with Inventor or VaultInventorServer
 2021.0.3.0 - Resolved logging and advanced debugging issues; see project '2021.0.3 Update' for details.
 2021.0.2.1 - All dialogs are user resizeable; fixed several issues, see commits for details
 2021.0.1.4 - Job Administration Dialog, new Options tab
