@@ -28,6 +28,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
     {
         public static VDF.Vault.Currency.Connections.Connection mConnection = null;
         public static Settings mSettings = null;
+        public static bool mConfigPerm = false;
+        public static bool mSettingsChanged = false;
 
         public void mQueueiLogicJobCmdHndlr(object s, CommandItemEventArgs e)
         {
@@ -118,8 +120,23 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
         public void mJobAdminHndlr(object s, CommandItemEventArgs e)
         {
-            iLogicJobAdminForm mAdminWindow = new iLogicJobAdminForm();
-            mAdminWindow.ShowDialog();
+            Autodesk.Connectivity.WebServices.Permis[] mAllPermisObjects = e.Context.Application.Connection.WebServiceManager.AdminService.GetPermissionsByUserId(e.Context.Application.Connection.UserID);
+            List<String> mAllPermissions = new List<string>();
+            foreach (var item in mAllPermisObjects)
+            {
+                mAllPermissions.Add(item.Descr);
+            }
+            if (mAllPermissions.Contains("Vault Get Options") && mAllPermissions.Contains("Vault Set Options"))
+            {
+                mConfigPerm = true;
+                iLogicJobAdminForm mAdminWindow = new iLogicJobAdminForm();
+                mAdminWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("You do not have sufficient permissions to configure Vault behaviors. \n\r Contact your Vault Configuration Administrator.", "iLogic Job Administration.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
         public IEnumerable<CommandSite> CommandSites()

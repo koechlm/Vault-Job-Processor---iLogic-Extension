@@ -39,6 +39,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             if (success)
             {
                 //MessageBox.Show("Successfully loaded settings from Vault.", "iLogic Configuration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                iLogicJobAdmin.mSettingsChanged = false;
+                btnSaveToVlt.Enabled = false;
             }
             else
             {
@@ -121,6 +123,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 txtLogPath.Enabled = false;
                 btnSelectLogPath.Enabled = false;
             }
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
         }
 
         private void cmbRunInternal_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,6 +139,8 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 txtInternalRuleText.Enabled = false;
                 lblInternalRuleText.Enabled = false;
             }
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
         }
 
         private void btnAddInDirSearch_Click(object sender, EventArgs e)
@@ -142,6 +148,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             folderBrowserDialog1.Description = "Select Directory for iLogic Extensions...";
             folderBrowserDialog1.ShowDialog();
             txtDLLsDir.Text = folderBrowserDialog1.SelectedPath;
+            folderBrowserDialog1.Dispose();
+
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
         }
 
         private void btnSelectLogPath_Click(object sender, EventArgs e)
@@ -149,6 +159,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             folderBrowserDialog1.Description = "Select Directory for iLogic Log-Files...";
             folderBrowserDialog1.ShowDialog();
             txtLogPath.Text = folderBrowserDialog1.SelectedPath;
+            folderBrowserDialog1.Dispose();
+
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
         }
 
         private void btnRuleDirAdd_Click(object sender, EventArgs e)
@@ -159,58 +173,93 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             dtgrdViewExtRls.Rows.Add(new string[] { dtgrdViewExtRls.Rows.Count.ToString(), folderBrowserDialog1.SelectedPath });
 
             mRenumber(dtgrdViewExtRls);
+
+            folderBrowserDialog1.Dispose();
+
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
         }
 
         private void mnuExtRuleDirDelete_Click(object sender, EventArgs e)
         {
-            DataGridViewSelectedCellCollection mSelCells = dtgrdViewExtRls.SelectedCells;
-            DataGridViewSelectedRowCollection mSelRows = dtgrdViewExtRls.SelectedRows;
-            foreach (DataGridViewRow item in mSelRows)
+            try
             {
-                if (dtgrdViewExtRls.Rows.Count > 1 && item.IsNewRow != true)
+                DataGridViewSelectedCellCollection mSelCells = dtgrdViewExtRls.SelectedCells;
+                DataGridViewSelectedRowCollection mSelRows = dtgrdViewExtRls.SelectedRows;
+                foreach (DataGridViewRow item in mSelRows)
                 {
-                    dtgrdViewExtRls.Rows.Remove(item);
+                    if (dtgrdViewExtRls.Rows.Count > 1 && item.IsNewRow != true)
+                    {
+                        dtgrdViewExtRls.Rows.Remove(item);
+                    }
                 }
+                mRenumber(dtgrdViewExtRls);
+
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
             }
-            mRenumber(dtgrdViewExtRls);
+            catch (Exception)
+            { }
+
         }
 
         private void btnRuleDirUp_Click(object sender, EventArgs e)
         {
-            rowIndex = dtgrdViewExtRls.SelectedCells[0].OwningRow.Index;
-            if (rowIndex > 0)
+            try
             {
-                DataGridViewRow mRow = (DataGridViewRow)dtgrdViewExtRls.Rows[rowIndex].Clone();
-                mRow.Cells[0].Value = dtgrdViewExtRls.Rows[rowIndex].Cells[0].Value.ToString();
-                mRow.Cells[1].Value = dtgrdViewExtRls.Rows[rowIndex].Cells[1].Value.ToString();
-                dtgrdViewExtRls.Rows.RemoveAt(rowIndex);
-                dtgrdViewExtRls.Rows.Insert(rowIndex - 1, mRow);
-                foreach (DataGridViewRow row in dtgrdViewExtRls.Rows)
+                rowIndex = dtgrdViewExtRls.SelectedCells[0].OwningRow.Index;
+                if (rowIndex > 0)
                 {
-                    row.Selected = false;
+                    DataGridViewRow mRow = (DataGridViewRow)dtgrdViewExtRls.Rows[rowIndex].Clone();
+                    mRow.Cells[0].Value = dtgrdViewExtRls.Rows[rowIndex].Cells[0].Value.ToString();
+                    mRow.Cells[1].Value = dtgrdViewExtRls.Rows[rowIndex].Cells[1].Value.ToString();
+                    dtgrdViewExtRls.Rows.RemoveAt(rowIndex);
+                    dtgrdViewExtRls.Rows.Insert(rowIndex - 1, mRow);
+                    foreach (DataGridViewRow row in dtgrdViewExtRls.Rows)
+                    {
+                        row.Selected = false;
+                    }
+                    //dtgrdViewExtRls.Rows[rowIndex - 1].Selected = true;
                 }
-                //dtgrdViewExtRls.Rows[rowIndex - 1].Selected = true;
+                mRenumber(dtgrdViewExtRls);
+
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
             }
-            mRenumber(dtgrdViewExtRls);
+            catch (Exception)
+            {
+                //the exception occurs, if the user did not select a cell or row; continue without message
+            }
         }
 
         private void btnRuleDirDown_Click(object sender, EventArgs e)
         {
-            rowIndex = dtgrdViewExtRls.SelectedCells[0].OwningRow.Index;
-            if (rowIndex < dtgrdViewExtRls.Rows.Count - 1)
+            try
             {
-                DataGridViewRow mRow = (DataGridViewRow)dtgrdViewExtRls.Rows[rowIndex].Clone();
-                mRow.Cells[0].Value = dtgrdViewExtRls.Rows[rowIndex].Cells[0].Value.ToString();
-                mRow.Cells[1].Value = dtgrdViewExtRls.Rows[rowIndex].Cells[1].Value.ToString();
-                dtgrdViewExtRls.Rows.RemoveAt(rowIndex);
-                dtgrdViewExtRls.Rows.Insert(rowIndex + 1, mRow);
-                foreach (DataGridViewRow row in dtgrdViewExtRls.Rows)
+                rowIndex = dtgrdViewExtRls.SelectedCells[0].OwningRow.Index;
+                if (rowIndex < dtgrdViewExtRls.Rows.Count - 1)
                 {
-                    row.Selected = false;
+                    DataGridViewRow mRow = (DataGridViewRow)dtgrdViewExtRls.Rows[rowIndex].Clone();
+                    mRow.Cells[0].Value = dtgrdViewExtRls.Rows[rowIndex].Cells[0].Value.ToString();
+                    mRow.Cells[1].Value = dtgrdViewExtRls.Rows[rowIndex].Cells[1].Value.ToString();
+                    dtgrdViewExtRls.Rows.RemoveAt(rowIndex);
+                    dtgrdViewExtRls.Rows.Insert(rowIndex + 1, mRow);
+                    foreach (DataGridViewRow row in dtgrdViewExtRls.Rows)
+                    {
+                        row.Selected = false;
+                    }
+                    //dtgrdViewExtRls.Rows[rowIndex + 1].Selected = true;
                 }
-                //dtgrdViewExtRls.Rows[rowIndex + 1].Selected = true;
+                mRenumber(dtgrdViewExtRls);
+
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
             }
-            mRenumber(dtgrdViewExtRls);
+            catch (Exception)
+            {
+                //the exception occurs, if the user did not select a cell or row; continue without message
+            }
+
         }
 
         private void mRenumber(DataGridView dataGridView)
@@ -277,11 +326,13 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
 
                 MessageBox.Show("Successfully imported settings.", "Configuration Import", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Could not import settings. Check the permissions Vault Extensions folder.", "Configuration Import", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
             }
 
         }
@@ -315,7 +366,15 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         {
             SelectFromVault selectFromVault = new SelectFromVault(Multiselect: false);
             var returnval = selectFromVault.ShowDialog();
-            txtJobRuleVault.Text = selectFromVault.RetFullNames.FirstOrDefault();
+            if (selectFromVault.DialogResult == DialogResult.OK)
+            {
+                txtJobRuleVault.Text = selectFromVault.RetFullNames.FirstOrDefault();
+                
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
+                
+                selectFromVault.Dispose();
+            }
         }
 
         private void btnAddUserRules_Click(object sender, EventArgs e)
@@ -323,70 +382,105 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             List<string> mUserRules = new List<string>();
             SelectFromVault selectFromVault = new SelectFromVault(Multiselect: true);
             var returnval = selectFromVault.ShowDialog();
-
-            for (int i = 0; i < selectFromVault.RetFullNames.Count; i++)
+            if (selectFromVault.DialogResult == DialogResult.OK)
             {
-                dtGrdUsrRules.Rows.Add(new string[] { "", selectFromVault.RetNames[i], "false", "false", selectFromVault.RetFullNames[i] });
+                for (int i = 0; i < selectFromVault.RetFullNames.Count; i++)
+                {
+                    dtGrdUsrRules.Rows.Add(new string[] { "", selectFromVault.RetNames[i], "false", "false", selectFromVault.RetFullNames[i] });
+                }
+                mRenumber(dtGrdUsrRules);
+
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
+
+                selectFromVault.Dispose();
             }
-            mRenumber(dtGrdUsrRules);
         }
 
         private void mnuUserRulesDelete_Click(object sender, EventArgs e)
         {
-            DataGridViewSelectedCellCollection mSelCells = dtGrdUsrRules.SelectedCells;
-            DataGridViewSelectedRowCollection mSelRows = dtGrdUsrRules.SelectedRows;
-            foreach (DataGridViewRow item in mSelRows)
+            try
             {
-                if (dtGrdUsrRules.Rows.Count > 1 && item.IsNewRow != true)
+                DataGridViewSelectedCellCollection mSelCells = dtGrdUsrRules.SelectedCells;
+                DataGridViewSelectedRowCollection mSelRows = dtGrdUsrRules.SelectedRows;
+                foreach (DataGridViewRow item in mSelRows)
                 {
-                    dtGrdUsrRules.Rows.Remove(item);
+                    if (dtGrdUsrRules.Rows.Count > 1 && item.IsNewRow != true)
+                    {
+                        dtGrdUsrRules.Rows.Remove(item);
+                    }
                 }
+                mRenumber(dtGrdUsrRules);
+
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
             }
-            mRenumber(dtGrdUsrRules);
+            catch (Exception)
+            { }
         }
 
         private void btnUserRuleUp_Click(object sender, EventArgs e)
         {
-            rowIndex = dtGrdUsrRules.SelectedCells[0].OwningRow.Index;
-            if (rowIndex > 0)
+            try
             {
-                dtGrdUsrRules.Rows[rowIndex].Selected = false;
-                DataGridViewRow mRow = (DataGridViewRow)dtGrdUsrRules.Rows[rowIndex].Clone();
-                mRow.Cells[0].Value = dtGrdUsrRules.Rows[rowIndex].Cells[0].Value.ToString();
-                mRow.Cells[1].Value = dtGrdUsrRules.Rows[rowIndex].Cells[1].Value.ToString();
-                mRow.Cells[2].Value = dtGrdUsrRules.Rows[rowIndex].Cells[2].Value.ToString();
-                mRow.Cells[3].Value = dtGrdUsrRules.Rows[rowIndex].Cells[3].Value.ToString();
-                mRow.Cells[4].Value = dtGrdUsrRules.Rows[rowIndex].Cells[4].Value.ToString();
-                dtGrdUsrRules.Rows.RemoveAt(rowIndex);
-                dtGrdUsrRules.Rows.Insert(rowIndex - 1, mRow);
-                foreach (DataGridViewRow row in dtGrdUsrRules.Rows)
+                rowIndex = dtGrdUsrRules.SelectedCells[0].OwningRow.Index;
+                if (rowIndex > 0)
                 {
-                    row.Selected = false;
+                    dtGrdUsrRules.Rows[rowIndex].Selected = false;
+                    DataGridViewRow mRow = (DataGridViewRow)dtGrdUsrRules.Rows[rowIndex].Clone();
+                    mRow.Cells[0].Value = dtGrdUsrRules.Rows[rowIndex].Cells[0].Value.ToString();
+                    mRow.Cells[1].Value = dtGrdUsrRules.Rows[rowIndex].Cells[1].Value.ToString();
+                    mRow.Cells[2].Value = dtGrdUsrRules.Rows[rowIndex].Cells[2].Value.ToString();
+                    mRow.Cells[3].Value = dtGrdUsrRules.Rows[rowIndex].Cells[3].Value.ToString();
+                    mRow.Cells[4].Value = dtGrdUsrRules.Rows[rowIndex].Cells[4].Value.ToString();
+                    dtGrdUsrRules.Rows.RemoveAt(rowIndex);
+                    dtGrdUsrRules.Rows.Insert(rowIndex - 1, mRow);
+                    foreach (DataGridViewRow row in dtGrdUsrRules.Rows)
+                    {
+                        row.Selected = false;
+                    }
+                    //dtGrdUsrRules.Rows[rowIndex - 1].Selected = true;
                 }
-                //dtGrdUsrRules.Rows[rowIndex - 1].Selected = true;
+
+                mRenumber(dtGrdUsrRules);
+
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
             }
-            mRenumber(dtGrdUsrRules);
+            catch (Exception)
+            { }
+
         }
 
         private void btnUserRuleDown_Click(object sender, EventArgs e)
         {
-            rowIndex = dtGrdUsrRules.SelectedCells[0].OwningRow.Index;
-            if (rowIndex < dtGrdUsrRules.Rows.Count - 1)
+            try
             {
-                DataGridViewRow mRow = (DataGridViewRow)dtGrdUsrRules.Rows[rowIndex].Clone();
-                mRow.Cells[0].Value = dtGrdUsrRules.Rows[rowIndex].Cells[0].Value.ToString();
-                mRow.Cells[1].Value = dtGrdUsrRules.Rows[rowIndex].Cells[1].Value.ToString();
-                mRow.Cells[2].Value = dtGrdUsrRules.Rows[rowIndex].Cells[2].Value.ToString();
-                mRow.Cells[3].Value = dtGrdUsrRules.Rows[rowIndex].Cells[3].Value.ToString();
-                mRow.Cells[4].Value = dtGrdUsrRules.Rows[rowIndex].Cells[4].Value.ToString();
-                dtGrdUsrRules.Rows.RemoveAt(rowIndex);
-                dtGrdUsrRules.Rows.Insert(rowIndex + 1, mRow);
-                foreach (DataGridViewRow row in dtGrdUsrRules.Rows)
+                rowIndex = dtGrdUsrRules.SelectedCells[0].OwningRow.Index;
+                if (rowIndex < dtGrdUsrRules.Rows.Count - 1)
                 {
-                    row.Selected = false;
+                    DataGridViewRow mRow = (DataGridViewRow)dtGrdUsrRules.Rows[rowIndex].Clone();
+                    mRow.Cells[0].Value = dtGrdUsrRules.Rows[rowIndex].Cells[0].Value.ToString();
+                    mRow.Cells[1].Value = dtGrdUsrRules.Rows[rowIndex].Cells[1].Value.ToString();
+                    mRow.Cells[2].Value = dtGrdUsrRules.Rows[rowIndex].Cells[2].Value.ToString();
+                    mRow.Cells[3].Value = dtGrdUsrRules.Rows[rowIndex].Cells[3].Value.ToString();
+                    mRow.Cells[4].Value = dtGrdUsrRules.Rows[rowIndex].Cells[4].Value.ToString();
+                    dtGrdUsrRules.Rows.RemoveAt(rowIndex);
+                    dtGrdUsrRules.Rows.Insert(rowIndex + 1, mRow);
+                    foreach (DataGridViewRow row in dtGrdUsrRules.Rows)
+                    {
+                        row.Selected = false;
+                    }
                 }
+
+                mRenumber(dtGrdUsrRules);
+
+                iLogicJobAdmin.mSettingsChanged = true;
+                btnSaveToVlt.Enabled = true;
             }
-            mRenumber(dtGrdUsrRules);
+            catch (Exception)
+            { }
+
         }
 
         private void chckBoxBreak_CheckedChanged(object sender, EventArgs e)
@@ -400,9 +494,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 lblDebugInfo.Visible = false;
             }
 
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
         }
 
         private void btnSaveToVlt_Click(object sender, EventArgs e)
+        {
+            mSaveToVault();
+        }
+
+        private void mSaveToVault()
         {
             Settings mActiveSettings = new Settings();
             //iLogic options tab
@@ -424,12 +525,14 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             if (mExpSuccess == true)
             {
                 MessageBox.Show("Successfully saved settings to Vault.", "iLogic Configuration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                iLogicJobAdmin.mSettingsChanged = false;
+                btnSaveToVlt.Enabled = false;
             }
             else
             {
                 MessageBox.Show("Saving settings to Vault failed.", "iLogic Configuration", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void btnLoadFromVlt_Click(object sender, EventArgs e)
@@ -446,6 +549,9 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             if (success)
             {
                 MessageBox.Show("Successfully loaded settings from Vault.", "iLogic Configuration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                iLogicJobAdmin.mSettingsChanged = false;
+                btnSaveToVlt.Enabled = false;
             }
             else
             {
@@ -517,14 +623,23 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             }
         }
 
-        private void lblDebugInfo_Click(object sender, EventArgs e)
+        private void mConfigChanged(object sender, EventArgs e)
         {
-
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
         }
 
-        private void chckBoxPropagateProps_CheckedChanged(object sender, EventArgs e)
+        private void iLogicJobAdminForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (iLogicJobAdmin.mSettingsChanged == true)
+            {
+                
+                DialogResult dialogResult = MessageBox.Show("There are unsaved changes;\n\rDo you want to save them to Vault?", "iLogic Job Administration", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    mSaveToVault();
+                }
+            }
         }
     }
 

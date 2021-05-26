@@ -36,6 +36,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         private string mAllRulesTextWrp = "";
         private string mRuleTmp = "\\iLogicVaultJobRules";
         private Inventor.Application mInvApp;
+        private bool mInvAppExisted = false;
         private Inventor.InventorServer mInvSrv;
         ApplicationAddIns mInvAddIns;
 
@@ -305,7 +306,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 }
                 //download only
-                if (mFileIteration.IsCheckedOut == true && mFileIteration.IsCheckedOutToCurrentUser == true)
+                if ((mFileIteration.IsCheckedOut == true && mFileIteration.IsCheckedOutToCurrentUser == true) || mJobCheckInResult == false)
                 {
                     mAcqrFlsSettings = CreateAcquireSettings(false);
                     mAcqrFlsSettings.AddFileToAcquire(mFileIteration, mAcqrFlsSettings.DefaultAcquisitionOption);
@@ -317,7 +318,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 }
                 //checkout and download
-                if (mFileIteration.IsCheckedOut == false)
+                if (mFileIteration.IsCheckedOut == false && mJobCheckInResult == true)
                 {
                     try
                     {
@@ -341,28 +342,30 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     }
 
                 }
-
                 #endregion download source file(s)
 
                 #region capture dependencies
                 //we need to return all relationships during later check-in
                 List<ACW.FileAssocParam> mFileAssocParams = new List<ACW.FileAssocParam>();
-                ACW.FileAssocArray mFileAssocArray = mWsMgr.DocumentService.GetLatestFileAssociationsByMasterIds(new long[] { mFile.MasterId },
-                    ACW.FileAssociationTypeEnum.None, false, ACW.FileAssociationTypeEnum.All, false, false, false, true).FirstOrDefault();
-                if (mFileAssocArray.FileAssocs != null)
+                ACW.FileAssocArray mFileAssocArray = null;
+                if (mJobCheckInResult == true)
                 {
-                    foreach (ACW.FileAssoc item in mFileAssocArray.FileAssocs)
+                    mFileAssocArray = mWsMgr.DocumentService.GetLatestFileAssociationsByMasterIds(new long[] { mFile.MasterId },
+                        ACW.FileAssociationTypeEnum.None, false, ACW.FileAssociationTypeEnum.All, false, false, false, true).FirstOrDefault();
+                    if (mFileAssocArray.FileAssocs != null)
                     {
-                        ACW.FileAssocParam mFileAssocParam = new ACW.FileAssocParam();
-                        mFileAssocParam.CldFileId = item.CldFile.Id;
-                        mFileAssocParam.ExpectedVaultPath = item.ExpectedVaultPath;
-                        mFileAssocParam.RefId = item.RefId;
-                        mFileAssocParam.Source = item.Source;
-                        mFileAssocParam.Typ = item.Typ;
-                        mFileAssocParams.Add(mFileAssocParam);
+                        foreach (ACW.FileAssoc item in mFileAssocArray.FileAssocs)
+                        {
+                            ACW.FileAssocParam mFileAssocParam = new ACW.FileAssocParam();
+                            mFileAssocParam.CldFileId = item.CldFile.Id;
+                            mFileAssocParam.ExpectedVaultPath = item.ExpectedVaultPath;
+                            mFileAssocParam.RefId = item.RefId;
+                            mFileAssocParam.Source = item.Source;
+                            mFileAssocParam.Typ = item.Typ;
+                            mFileAssocParams.Add(mFileAssocParam);
+                        }
                     }
                 }
-
                 #endregion capture dependencies
 
                 #region iLogic Configuration
@@ -457,7 +460,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     if (mRuleFileIter.CheckedOutMachine != "")
                     {
                         context.Log(null, "Job exited because the rule file " + mExtRule + " had been checked out at the time of execution. Check-in the rule before re-submitting this job.");
-                        mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                        if (mNewFileIteration.IsCheckedOut == true)
+                        {
+                            mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                        }
                         return JobOutcome.Failure;
                     }
 
@@ -476,7 +482,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         if (fileInfo.Exists == false)
                         {
                             context.Log(null, "Job downloaded rule file but exited due to missing rule file: " + mExtRuleFullLocalName + ".");
-                            mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                            if (mNewFileIteration.IsCheckedOut == true)
+                            {
+                                mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                            }
                             return JobOutcome.Failure;
                         }
                         else
@@ -486,7 +495,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                             {
                                 context.Log(null, "Job downloaded rule file but exited due to missing iLogic External Rule Directory configuration: Add the path"
                                     + fileInfo.DirectoryName + " to the list of External Rule Directories.");
-                                mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                                if (mNewFileIteration.IsCheckedOut == true)
+                                {
+                                    mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                                }
                                 return JobOutcome.Failure;
                             }
                         }
@@ -525,7 +537,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     ruleArguments.Add("VaultName", mConnection.Vault);
                     ruleArguments.Add("UserId", mConnection.UserID);
                     ruleArguments.Add("SessionId", mWsMgr.AuthService.Session.Id);
-                    
+
                     //additional rule arguments to build rule conditions evaluating Vault lifecycle information, properties, etc.
                     if (mSettings.PropagateProps == "True")
                     {
@@ -572,7 +584,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     {
                         context.Log(null, "Job failed due to failure in external rule: " + mExtRule + ".");
                         mDoc.Close(true);
-                        mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                        if (mNewFileIteration.IsCheckedOut == true)
+                        {
+                            mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                        }
                         if (mLogCtrl.Level != 0)
                         {
                             mLogCtrl.SaveLogAs(mILogicLogFileFullName);
@@ -640,7 +655,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                             {
                                 context.Log(null, "Job failed due to failure in internal rule: " + rule.Name + ".");
                                 mDoc.Close(true);
-                                mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                                if (mNewFileIteration.IsCheckedOut == true)
+                                {
+                                    mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                                }
                                 if (mLogCtrl.Level != 0)
                                 {
                                     mLogCtrl.SaveLogAs(mILogicLogFileFullName);
@@ -676,11 +694,11 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 #region Check-in result
                 //if Check-in is opted out (user job only) don't return the new file
-                if (mJobCheckInResult == false)
+                if (mJobCheckInResult == false && mNewFileIteration.IsCheckedOut == true)
                 {
                     mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
                 }
-                else
+                if(mJobCheckInResult == true && mNewFileIteration.IsCheckedOut == true)
                 {
                     // checkin new file version
                     VDF.Currency.FilePathAbsolute vdfPath = new VDF.Currency.FilePathAbsolute(mLocalFileFullName);
@@ -713,7 +731,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 //delete temporary working folder if imlemented here
 
                 //terminate Inventor Application if used
-                if (mInvApp != null)
+                if (mInvApp != null && mInvAppExisted == true)
                 {
                     mInvApp.Quit();
                 }
@@ -801,6 +819,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 try
                 {
                     mInvApp = System.Runtime.InteropServices.Marshal.GetActiveObject("Inventor.Application") as Inventor.Application;
+                    mInvAppExisted = true;
                 }
                 catch (Exception)
                 {

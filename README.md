@@ -53,6 +53,8 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
+2022.0.1.x - restrict iLogic Job Administration to Configuration Administrators; track configuration changes and warn user of losing unsaved edits on dialog close;
+					improved behavior for "Create new file iteration = disabled": avoid check-out instead of undocheckout => allows rule to create new iteration, e.g. attaching export files.
 2022.0.0.0 - updated for Vault Client / Job Processor 2022 - Note: Rules re-using the job processor's connection require updating; compare the included sample rule "VaultJobRuleConnected.iLogicVB."
 2021.1.0.0 - New option to run Job with Inventor or VaultInventorServer
 2021.0.3.0 - Resolved logging and advanced debugging issues; see project '2021.0.3 Update' for details.

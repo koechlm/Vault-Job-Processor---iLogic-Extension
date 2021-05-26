@@ -30,13 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectUserJob));
             this.dtGrdUsrRules = new System.Windows.Forms.DataGridView();
-            this.btn_SelectUsrJob_Cancel = new System.Windows.Forms.Button();
-            this.btn_SelectUserJob_Submit = new System.Windows.Forms.Button();
             this.UserRuleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserRuleDispName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserRuleNewFileIter = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.RunInvApp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UserRulePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_SelectUsrJob_Cancel = new System.Windows.Forms.Button();
+            this.btn_SelectUserJob_Submit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdUsrRules)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,31 +63,6 @@
             this.dtGrdUsrRules.Size = new System.Drawing.Size(776, 376);
             this.dtGrdUsrRules.TabIndex = 5;
             this.dtGrdUsrRules.SelectionChanged += new System.EventHandler(this.dtGrdUsrRules_SelectionChanged);
-            // 
-            // btn_SelectUsrJob_Cancel
-            // 
-            this.btn_SelectUsrJob_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SelectUsrJob_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btn_SelectUsrJob_Cancel.Location = new System.Drawing.Point(713, 415);
-            this.btn_SelectUsrJob_Cancel.Name = "btn_SelectUsrJob_Cancel";
-            this.btn_SelectUsrJob_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_SelectUsrJob_Cancel.TabIndex = 6;
-            this.btn_SelectUsrJob_Cancel.Text = "Cancel";
-            this.btn_SelectUsrJob_Cancel.UseVisualStyleBackColor = true;
-            this.btn_SelectUsrJob_Cancel.Click += new System.EventHandler(this.btn_SelectUsrJob_Cancel_Click);
-            // 
-            // btn_SelectUserJob_Submit
-            // 
-            this.btn_SelectUserJob_Submit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_SelectUserJob_Submit.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_SelectUserJob_Submit.Enabled = false;
-            this.btn_SelectUserJob_Submit.Location = new System.Drawing.Point(599, 415);
-            this.btn_SelectUserJob_Submit.Name = "btn_SelectUserJob_Submit";
-            this.btn_SelectUserJob_Submit.Size = new System.Drawing.Size(108, 23);
-            this.btn_SelectUserJob_Submit.TabIndex = 7;
-            this.btn_SelectUserJob_Submit.Text = "Submit to Queue";
-            this.btn_SelectUserJob_Submit.UseVisualStyleBackColor = true;
-            this.btn_SelectUserJob_Submit.Click += new System.EventHandler(this.btn_SelectUserJob_Submit_Click);
             // 
             // UserRuleId
             // 
@@ -117,7 +92,7 @@
             this.UserRuleNewFileIter.HeaderText = "Create New File Version";
             this.UserRuleNewFileIter.Name = "UserRuleNewFileIter";
             this.UserRuleNewFileIter.ReadOnly = true;
-            this.UserRuleNewFileIter.ToolTipText = resources.GetString("UserRuleNewFileIter.ToolTipText");
+            this.UserRuleNewFileIter.ToolTipText = "Running this rule will create a new file version.";
             this.UserRuleNewFileIter.TrueValue = "true";
             // 
             // RunInvApp
@@ -139,6 +114,31 @@
             this.UserRulePath.ReadOnly = true;
             this.UserRulePath.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.UserRulePath.ToolTipText = "Rule file name and path in Vault.";
+            // 
+            // btn_SelectUsrJob_Cancel
+            // 
+            this.btn_SelectUsrJob_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_SelectUsrJob_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btn_SelectUsrJob_Cancel.Location = new System.Drawing.Point(713, 415);
+            this.btn_SelectUsrJob_Cancel.Name = "btn_SelectUsrJob_Cancel";
+            this.btn_SelectUsrJob_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_SelectUsrJob_Cancel.TabIndex = 6;
+            this.btn_SelectUsrJob_Cancel.Text = "Cancel";
+            this.btn_SelectUsrJob_Cancel.UseVisualStyleBackColor = true;
+            this.btn_SelectUsrJob_Cancel.Click += new System.EventHandler(this.btn_SelectUsrJob_Cancel_Click);
+            // 
+            // btn_SelectUserJob_Submit
+            // 
+            this.btn_SelectUserJob_Submit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_SelectUserJob_Submit.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_SelectUserJob_Submit.Enabled = false;
+            this.btn_SelectUserJob_Submit.Location = new System.Drawing.Point(599, 415);
+            this.btn_SelectUserJob_Submit.Name = "btn_SelectUserJob_Submit";
+            this.btn_SelectUserJob_Submit.Size = new System.Drawing.Size(108, 23);
+            this.btn_SelectUserJob_Submit.TabIndex = 7;
+            this.btn_SelectUserJob_Submit.Text = "Submit to Queue";
+            this.btn_SelectUserJob_Submit.UseVisualStyleBackColor = true;
+            this.btn_SelectUserJob_Submit.Click += new System.EventHandler(this.btn_SelectUserJob_Submit_Click);
             // 
             // SelectUserJob
             // 

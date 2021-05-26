@@ -2138,15 +2138,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Autodesk Vault iLogicJobExtension SampleApp 2022"
-        "ProductCode" = "8:{5953196B-FB04-4483-A13F-1388DA6212EB}"
-        "PackageCode" = "8:{8DD3CB5F-376F-45F5-88C6-054C7831FB44}"
+        "ProductCode" = "8:{51D1C74F-A926-403F-BF06-98628FAD0A72}"
+        "PackageCode" = "8:{446354B8-C4B2-492C-94B1-9EA6CD877485}"
         "UpgradeCode" = "8:{99F32B73-324F-4D8B-B249-BC735D036446}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:4.0.0"
+        "ProductVersion" = "8:2.0.2022"
         "Manufacturer" = "8:Autodesk"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/koechlm/Vault-Job-Processor---iLogic-Extension/issues"
@@ -2604,7 +2604,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_839FAA723C0A4CDDBE6F856FA92F8E74"
             {
-            "SourcePath" = "8:..\\Autodesk.VltInvSrv.iLogicSampleJob\\obj\\x64\\Debug\\Autodesk.VltInvSrv.iLogicSampleJob.dll"
+            "SourcePath" = "8:..\\Autodesk.VltInvSrv.iLogicSampleJob\\obj\\x64\\Release\\Autodesk.VltInvSrv.iLogicSampleJob.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_82DFAA786EAF42B8B444014ADD0F8A21"

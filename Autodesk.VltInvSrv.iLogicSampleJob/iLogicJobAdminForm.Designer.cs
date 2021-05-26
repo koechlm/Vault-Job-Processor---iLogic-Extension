@@ -73,7 +73,7 @@
             this.dtGrdUsrRules = new System.Windows.Forms.DataGridView();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserRuleDispName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CreateNewIteration = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.RunInvApplication = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UserRulePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -168,7 +168,6 @@
             this.lblDebugInfo.Size = new System.Drawing.Size(376, 39);
             this.lblDebugInfo.TabIndex = 2;
             this.lblDebugInfo.Text = resources.GetString("lblDebugInfo.Text");
-            this.lblDebugInfo.Click += new System.EventHandler(this.lblDebugInfo_Click);
             // 
             // chckBoxBreak
             // 
@@ -253,6 +252,7 @@
             this.txtLogPath.Name = "txtLogPath";
             this.txtLogPath.Size = new System.Drawing.Size(467, 20);
             this.txtLogPath.TabIndex = 2;
+            this.txtLogPath.TextChanged += new System.EventHandler(this.mConfigChanged);
             // 
             // groupBox2
             // 
@@ -287,6 +287,7 @@
             this.txtDLLsDir.Name = "txtDLLsDir";
             this.txtDLLsDir.Size = new System.Drawing.Size(527, 20);
             this.txtDLLsDir.TabIndex = 0;
+            this.txtDLLsDir.TextChanged += new System.EventHandler(this.mConfigChanged);
             // 
             // groupBox1
             // 
@@ -321,6 +322,7 @@
             this.dtgrdViewExtRls.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgrdViewExtRls.Size = new System.Drawing.Size(536, 135);
             this.dtgrdViewExtRls.TabIndex = 0;
+            this.dtgrdViewExtRls.DataMemberChanged += new System.EventHandler(this.mConfigChanged);
             // 
             // column1
             // 
@@ -444,6 +446,7 @@
             this.chckInvApp.TabIndex = 0;
             this.chckInvApp.Text = "Use Inventor Application";
             this.chckInvApp.UseVisualStyleBackColor = true;
+            this.chckInvApp.CheckedChanged += new System.EventHandler(this.mConfigChanged);
             // 
             // groupBox6
             // 
@@ -479,6 +482,7 @@
             this.txtInternalRuleText.Name = "txtInternalRuleText";
             this.txtInternalRuleText.Size = new System.Drawing.Size(264, 20);
             this.txtInternalRuleText.TabIndex = 2;
+            this.txtInternalRuleText.TextChanged += new System.EventHandler(this.mConfigChanged);
             // 
             // label5
             // 
@@ -549,9 +553,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtJobRuleVault.Location = new System.Drawing.Point(6, 77);
             this.txtJobRuleVault.Name = "txtJobRuleVault";
-            this.txtJobRuleVault.ReadOnly = true;
             this.txtJobRuleVault.Size = new System.Drawing.Size(526, 20);
             this.txtJobRuleVault.TabIndex = 2;
+            this.txtJobRuleVault.TextChanged += new System.EventHandler(this.mConfigChanged);
             // 
             // label3
             // 
@@ -596,12 +600,13 @@
             this.dtGrdUsrRules.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGrdUsrRules.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dtGrdUsrRules.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dtGrdUsrRules.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdUsrRules.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column4,
             this.UserRuleDispName,
-            this.Column3,
+            this.CreateNewIteration,
             this.RunInvApplication,
             this.UserRulePath});
             this.dtGrdUsrRules.ContextMenuStrip = this.contextMenuStrip2;
@@ -633,14 +638,15 @@
             this.UserRuleDispName.ToolTipText = "Descriptive Name for user selection.";
             this.UserRuleDispName.Width = 70;
             // 
-            // Column3
+            // CreateNewIteration
             // 
-            this.Column3.FalseValue = "false";
-            this.Column3.FillWeight = 10F;
-            this.Column3.HeaderText = "Create New File Version";
-            this.Column3.Name = "Column3";
-            this.Column3.ToolTipText = resources.GetString("Column3.ToolTipText");
-            this.Column3.TrueValue = "true";
+            this.CreateNewIteration.FalseValue = "false";
+            this.CreateNewIteration.FillWeight = 10F;
+            this.CreateNewIteration.HeaderText = "Create New File Version";
+            this.CreateNewIteration.Name = "CreateNewIteration";
+            this.CreateNewIteration.ToolTipText = resources.GetString("CreateNewIteration.ToolTipText");
+            this.CreateNewIteration.TrueValue = "true";
+            this.CreateNewIteration.Width = 82;
             // 
             // RunInvApplication
             // 
@@ -651,6 +657,7 @@
             this.RunInvApplication.ToolTipText = "Activate if rule requires full Inventor Application instead of VaultInventorServe" +
     "r";
             this.RunInvApplication.TrueValue = "true";
+            this.RunInvApplication.Width = 116;
             // 
             // UserRulePath
             // 
@@ -753,6 +760,7 @@
             this.chckBoxPropagateItemProps.TabIndex = 10;
             this.chckBoxPropagateItemProps.Text = "Propagate Vault Item Properties";
             this.chckBoxPropagateItemProps.UseVisualStyleBackColor = true;
+            this.chckBoxPropagateItemProps.CheckedChanged += new System.EventHandler(this.mConfigChanged);
             // 
             // label1
             // 
@@ -786,7 +794,6 @@
             this.chckBoxPropagateProps.Text = "Propagate Vault File Properties";
             this.toolTip1.SetToolTip(this.chckBoxPropagateProps, "Shares all Properties of the processed file as rule arguments.");
             this.chckBoxPropagateProps.UseVisualStyleBackColor = true;
-            this.chckBoxPropagateProps.CheckedChanged += new System.EventHandler(this.chckBoxPropagateProps_CheckedChanged);
             // 
             // btnImport
             // 
@@ -796,7 +803,7 @@
             this.btnImport.Size = new System.Drawing.Size(120, 22);
             this.btnImport.TabIndex = 1;
             this.btnImport.Text = "Import Settings";
-            this.toolTip1.SetToolTip(this.btnImport, "Imports the sample settings from [Application Path]\\iLogicJobSettings.xml.");
+            this.toolTip1.SetToolTip(this.btnImport, "Imports the sample settings from <Application Path>\\iLogicJobSettings.xml");
             this.btnImport.UseVisualStyleBackColor = true;
             this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
@@ -808,14 +815,15 @@
             this.btnExport.Size = new System.Drawing.Size(120, 22);
             this.btnExport.TabIndex = 2;
             this.btnExport.Text = "Export Settings";
-            this.toolTip1.SetToolTip(this.btnExport, "Exports the current settings to the file [Application Path]\\iLogicJobSettings.xml" +
-        ".");
+            this.toolTip1.SetToolTip(this.btnExport, "Exports the current settings to the file <Application Path>\\iLogicJobSettings.xml" +
+        "");
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnSaveToVlt
             // 
             this.btnSaveToVlt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveToVlt.Enabled = false;
             this.btnSaveToVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckIn_32x32;
             this.btnSaveToVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSaveToVlt.Location = new System.Drawing.Point(492, 470);
@@ -866,6 +874,7 @@
             this.Name = "iLogicJobAdminForm";
             this.ShowInTaskbar = false;
             this.Text = "iLogic Configuration";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.iLogicJobAdminForm_FormClosing);
             this.Load += new System.EventHandler(this.iLogicJobAdminForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabAdvancediLogicConfig.ResumeLayout(false);
@@ -956,7 +965,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserRuleDispName;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CreateNewIteration;
         private System.Windows.Forms.DataGridViewCheckBoxColumn RunInvApplication;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserRulePath;
         private System.Windows.Forms.GroupBox groupBox9;
