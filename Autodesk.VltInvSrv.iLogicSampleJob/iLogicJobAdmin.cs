@@ -121,12 +121,12 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         public void mJobAdminHndlr(object s, CommandItemEventArgs e)
         {
             Autodesk.Connectivity.WebServices.Permis[] mAllPermisObjects = e.Context.Application.Connection.WebServiceManager.AdminService.GetPermissionsByUserId(e.Context.Application.Connection.UserID);
-            List<String> mAllPermissions = new List<string>();
+            List<long> mAllPermissions = new List<long>();
             foreach (var item in mAllPermisObjects)
             {
-                mAllPermissions.Add(item.Descr);
+                mAllPermissions.Add(item.Id);
             }
-            if (mAllPermissions.Contains("Vault Get Options") && mAllPermissions.Contains("Vault Set Options"))
+            if (mAllPermissions.Contains(76) && mAllPermissions.Contains(77)) //76 = Vault Set Options; 77 = Vault Get Options
             {
                 mConfigPerm = true;
                 iLogicJobAdminForm mAdminWindow = new iLogicJobAdminForm();
