@@ -2,7 +2,10 @@
 
 The iLogic Extension for Vault Job Processor allows configuring the iLogic AddIn of Vault-Inventor-Server and provides a custom job as a framework. 
 Administrators can configure which iLogic rules to run on Lifecycle State Transitions and which iLogic rules being available for interactive, 
-manual job submission on selected files.
+manual job submission on selected files. 
+Install the extension on
+- Job Processor only for iLogic-Jobs submitted through lifecycle transitions
+- Any Vault Client for user-interactive job submission
 
 INTRODUCTION:
 ---------------------------------
@@ -14,7 +17,7 @@ Options allow to save iLogic logging per job.
 
 REQUIREMENTS:
 ---------------------------------
-Vault Workgroup, Vault Professional 2021. Note - The sample msi installer checks for Vault Professional !
+Vault Workgroup, Vault Professional matching release. Note - The sample msi installer checks for Vault Professional !
 This job leverages the Vault Inventor Server component and does not require Inventor installation or Inventor license.
 The job is valid for any Vault configuration fulfilling these requirements:
 - Enforce Workingfolder = Enabled
@@ -24,18 +27,18 @@ The job is valid for any Vault configuration fulfilling these requirements:
 	- ThisApplication object being replaced by ThisServer
 	
 - To allow iLogic rules interacting with Vault during job execution requires the Job-Processor's log-in being re-used within the rule. Use the template VaultJobRuleConnected.iLogicVb to build your rule.
-	- the referenced iLogic-Vault Quickstart library is available on GitHub open source and in binary format. Minimum Version (binary) or branch is 2020.3.0
+	- the referenced iLogic-Vault Quickstart library is available on GitHub open source and in binary format; select the matching Vault release version.
 
 TO CONFIGURE: (Note - Using the installer obsoletes step 1 and 6)
 ---------------------------------
-1) Copy the folder Autodesk.VltInvSrv.iLogicSampleJob to %ProgramData%\Autodesk\Vault 2021\Extensions\.
+1) Copy the folder Autodesk.VltInvSrv.iLogicSampleJob to %ProgramData%\Autodesk\Vault 202x\Extensions\.
 2) Start Vault Explorer and configure the iLogic Job environment: Tools -> iLogic Job Administration...; first time load will bring up an error message, that no configuration could be loaded.
 3) Edit the configuration options and Save To Vault. Even if empty values are saved to Vault, the error mentioned before will no longer occure.
 4) Manual Job Submission - To use the manual Job submission, you need to configure and save the Tab 'User Rules'. A single external rule file is the minimum configuration.
 	To submit a job, select a file (Inventor only ;)) go to Actions -> Queue iLogic Job and select the rule to be run against the selected file.
 5) Automatic Job Submission. Configure the Tab 'Lifecycle Rule(s)' and save to Vault. Add the job name to the Job Queue activating job transitions. To achieve this, integrate this job into a custom lifecycle transition by adding the Job-Type name
 "Autodesk.VltInvSrv.iLogicSampleJob" to the transition's 'Custom Job Types' tab.
-6) To enable iLogic logging copy the file iLogicLogger.config to the C:\Program Files\Autodesk\Vault Client 2021\Explorer\Inventor Server\Bin\. Enable iLogic Logging in the configuration
+6) To enable iLogic logging copy the file iLogicLogger.config to the C:\Program Files\Autodesk\Vault Client 202x\Explorer\Inventor Server\Bin\. Enable iLogic Logging in the configuration
 Tab "Advanced iLogic Configuration".
 
 DISCLAIMER:
@@ -53,7 +56,8 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
-2022.0.3.x	Remove Vault language dependency while validating permissions to administrate iLogic-Jobs.
+2022.0.0.0 - updated for Vault Client / Job Processor 2023
+2022.0.3.x - Remove Vault language dependency while validating permissions to administrate iLogic-Jobs.
 2022.0.2.x - restrict iLogic Job Administration to Configuration Administrators; track configuration changes and warn user of losing unsaved edits on dialog close;
 					improved behavior for "Create new file iteration = disabled": avoid check-out instead of undocheckout => allows rule to create new iteration, e.g. attaching export files.
 2022.0.0.0 - updated for Vault Client / Job Processor 2022 - Note: Rules re-using the job processor's connection require updating; compare the included sample rule "VaultJobRuleConnected.iLogicVB."

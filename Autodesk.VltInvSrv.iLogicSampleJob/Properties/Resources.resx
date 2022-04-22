@@ -118,44 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="CheckOut_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CheckOut_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Vault_Info_32x32Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iFeature_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OpenFromVault_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenFromVault_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MapFolders_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MapFolders_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iLogicConfigurationImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iLogicConfiguration.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iLogic-Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iLogic-Plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iLogic-Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iLogic-Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="iLogic-Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iLogic-Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CheckOut_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CheckOut_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Options_32x32Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Options_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="CheckIn_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CheckIn_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="iLogicConfigurationIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iLogicConfiguration.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="OpenFromVault_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenFromVault_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ArrowDown_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArrowDown_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckOut_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckOut_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uplevel_161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\uplevel_161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CheckIn_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CheckIn_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,19 +136,73 @@
   <data name="VaultIco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Vault.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="000420-folder-delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\000420-folder-delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="iLogic_Browser_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iLogic-Browser_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Back_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Back_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CheckOut_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckOut_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="uplevel_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\uplevel_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Back_161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Back_161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Vault_Info_32x32Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iFeature_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="000420-folder-delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\000420-folder-delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ViewOptions_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ViewOptions_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iLogic_Browser_transparent" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iLogic-Browser_transparent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="CheckIn_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckIn_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Back_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Back_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckOut_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckOut_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckIn_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckIn_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MapFolders_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MapFolders_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iLogicConfigurationImg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iLogicConfiguration.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CheckOut_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CheckOut_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OpenFromVault_16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenFromVault_16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iLogic-Plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iLogic-Plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ViewOptions_161" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ViewOptions_161.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OpenFromVault_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenFromVault_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iLogic-Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iLogic-Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Options_32x32Img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Options_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ArrowUp_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ArrowUp_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iLogic-Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iLogic-Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Add_Generic_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Add_Generic_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

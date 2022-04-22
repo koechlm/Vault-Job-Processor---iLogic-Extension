@@ -370,7 +370,7 @@
             // btnRuleDirAdd
             // 
             this.btnRuleDirAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRuleDirAdd.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Plus;
+            this.btnRuleDirAdd.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.Add_Generic_16;
             this.btnRuleDirAdd.Location = new System.Drawing.Point(548, 19);
             this.btnRuleDirAdd.Name = "btnRuleDirAdd";
             this.btnRuleDirAdd.Size = new System.Drawing.Size(26, 26);
@@ -382,7 +382,7 @@
             // btnRuleDirUp
             // 
             this.btnRuleDirUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRuleDirUp.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Up;
+            this.btnRuleDirUp.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.ArrowUp_16;
             this.btnRuleDirUp.Location = new System.Drawing.Point(548, 75);
             this.btnRuleDirUp.Name = "btnRuleDirUp";
             this.btnRuleDirUp.Size = new System.Drawing.Size(26, 26);
@@ -394,7 +394,7 @@
             // btnRuleDirDown
             // 
             this.btnRuleDirDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRuleDirDown.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Down;
+            this.btnRuleDirDown.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.ArrowDown_16;
             this.btnRuleDirDown.Location = new System.Drawing.Point(548, 107);
             this.btnRuleDirDown.Name = "btnRuleDirDown";
             this.btnRuleDirDown.Size = new System.Drawing.Size(26, 26);
@@ -696,7 +696,7 @@
             // btnAddUserRules
             // 
             this.btnAddUserRules.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddUserRules.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Plus;
+            this.btnAddUserRules.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.Add_Generic_16;
             this.btnAddUserRules.Location = new System.Drawing.Point(548, 19);
             this.btnAddUserRules.Name = "btnAddUserRules";
             this.btnAddUserRules.Size = new System.Drawing.Size(26, 26);
@@ -707,7 +707,7 @@
             // btnUserRuleUp
             // 
             this.btnUserRuleUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUserRuleUp.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Up;
+            this.btnUserRuleUp.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.ArrowUp_16;
             this.btnUserRuleUp.Location = new System.Drawing.Point(548, 75);
             this.btnUserRuleUp.Name = "btnUserRuleUp";
             this.btnUserRuleUp.Size = new System.Drawing.Size(26, 26);
@@ -718,7 +718,7 @@
             // btnUserRuleDown
             // 
             this.btnUserRuleDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUserRuleDown.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.iLogic_Down;
+            this.btnUserRuleDown.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.ArrowDown_16;
             this.btnUserRuleDown.Location = new System.Drawing.Point(548, 107);
             this.btnUserRuleDown.Name = "btnUserRuleDown";
             this.btnUserRuleDown.Size = new System.Drawing.Size(26, 26);
@@ -824,7 +824,7 @@
             // 
             this.btnSaveToVlt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveToVlt.Enabled = false;
-            this.btnSaveToVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckIn_32x32;
+            this.btnSaveToVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckIn_32;
             this.btnSaveToVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSaveToVlt.Location = new System.Drawing.Point(492, 470);
             this.btnSaveToVlt.Name = "btnSaveToVlt";
@@ -838,7 +838,7 @@
             // btnLoadFromVlt
             // 
             this.btnLoadFromVlt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLoadFromVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckOut_32x32;
+            this.btnLoadFromVlt.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.CheckOut_32;
             this.btnLoadFromVlt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLoadFromVlt.Location = new System.Drawing.Point(363, 470);
             this.btnLoadFromVlt.Name = "btnLoadFromVlt";

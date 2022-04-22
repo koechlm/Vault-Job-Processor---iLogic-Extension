@@ -19,7 +19,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -73,9 +73,49 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Add_Generic_16 {
+            get {
+                object obj = ResourceManager.GetObject("Add_Generic_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ArrowDown_16 {
+            get {
+                object obj = ResourceManager.GetObject("ArrowDown_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ArrowUp_16 {
+            get {
+                object obj = ResourceManager.GetObject("ArrowUp_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Back_16 {
             get {
                 object obj = ResourceManager.GetObject("Back_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Back_161 {
+            get {
+                object obj = ResourceManager.GetObject("Back_161", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,6 +133,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CheckIn_32 {
+            get {
+                object obj = ResourceManager.GetObject("CheckIn_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CheckIn_32x32 {
             get {
                 object obj = ResourceManager.GetObject("CheckIn_32x32", resourceCulture);
@@ -103,9 +153,29 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CheckOut_16 {
+            get {
+                object obj = ResourceManager.GetObject("CheckOut_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CheckOut_16x16 {
             get {
                 object obj = ResourceManager.GetObject("CheckOut_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap CheckOut_32 {
+            get {
+                object obj = ResourceManager.GetObject("CheckOut_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,6 +303,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap uplevel_161 {
+            get {
+                object obj = ResourceManager.GetObject("uplevel_161", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Vault_Info_32x32Img {
             get {
                 object obj = ResourceManager.GetObject("Vault_Info_32x32Img", resourceCulture);
@@ -256,6 +336,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         internal static System.Drawing.Bitmap ViewOptions_16 {
             get {
                 object obj = ResourceManager.GetObject("ViewOptions_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ViewOptions_161 {
+            get {
+                object obj = ResourceManager.GetObject("ViewOptions_161", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -119,7 +119,7 @@
             this.vaultNavigationPathComboboxControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vaultNavigationPathComboboxControl1.Location = new System.Drawing.Point(91, 3);
             this.vaultNavigationPathComboboxControl1.Name = "vaultNavigationPathComboboxControl1";
-            this.vaultNavigationPathComboboxControl1.Size = new System.Drawing.Size(601, 26);
+            this.vaultNavigationPathComboboxControl1.Size = new System.Drawing.Size(570, 26);
             this.vaultNavigationPathComboboxControl1.TabIndex = 3;
             // 
             // toolStrip1
@@ -131,16 +131,16 @@
             this.navigateBack_toolStripButton,
             this.navigateUp_toolStripButton,
             this.switchView_toolStripSplitButton});
-            this.toolStrip1.Location = new System.Drawing.Point(695, 0);
+            this.toolStrip1.Location = new System.Drawing.Point(664, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(81, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(112, 32);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // navigateBack_toolStripButton
             // 
             this.navigateBack_toolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.navigateBack_toolStripButton.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.Back_16;
+            this.navigateBack_toolStripButton.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.Back_161;
             this.navigateBack_toolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.navigateBack_toolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.navigateBack_toolStripButton.Name = "navigateBack_toolStripButton";
@@ -151,7 +151,7 @@
             // navigateUp_toolStripButton
             // 
             this.navigateUp_toolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.navigateUp_toolStripButton.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.uplevel_16;
+            this.navigateUp_toolStripButton.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.uplevel_161;
             this.navigateUp_toolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.navigateUp_toolStripButton.Name = "navigateUp_toolStripButton";
             this.navigateUp_toolStripButton.Size = new System.Drawing.Size(23, 29);
@@ -161,7 +161,7 @@
             // switchView_toolStripSplitButton
             // 
             this.switchView_toolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.switchView_toolStripSplitButton.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.ViewOptions_16;
+            this.switchView_toolStripSplitButton.Image = global::Autodesk.VltInvSrv.iLogicSampleJob.Properties.Resources.ViewOptions_161;
             this.switchView_toolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.switchView_toolStripSplitButton.Name = "switchView_toolStripSplitButton";
             this.switchView_toolStripSplitButton.Size = new System.Drawing.Size(32, 29);
@@ -204,7 +204,7 @@
             this.fileName_multiPartTextBox.Location = new System.Drawing.Point(91, 311);
             this.fileName_multiPartTextBox.Name = "fileName_multiPartTextBox";
             this.fileName_multiPartTextBox.Parts = ((System.Collections.Generic.IEnumerable<string>)(resources.GetObject("fileName_multiPartTextBox.Parts")));
-            this.fileName_multiPartTextBox.Size = new System.Drawing.Size(551, 22);
+            this.fileName_multiPartTextBox.Size = new System.Drawing.Size(520, 22);
             this.fileName_multiPartTextBox.TabIndex = 6;
             // 
             // txtFileType
@@ -213,11 +213,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.SetColumnSpan(this.txtFileType, 2);
-            this.txtFileType.Location = new System.Drawing.Point(648, 311);
+            this.txtFileType.Location = new System.Drawing.Point(617, 311);
             this.txtFileType.MinimumSize = new System.Drawing.Size(100, 20);
             this.txtFileType.Name = "txtFileType";
             this.txtFileType.ReadOnly = true;
-            this.txtFileType.Size = new System.Drawing.Size(125, 20);
+            this.txtFileType.Size = new System.Drawing.Size(156, 20);
             this.txtFileType.TabIndex = 7;
             // 
             // SelectFromVault
