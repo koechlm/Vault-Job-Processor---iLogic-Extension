@@ -94,8 +94,10 @@
       <HintPath>..\..\..\..\OneDrive - Autodesk\Vault Customization\SDK References 2022\Autodesk Vault 2022 SDK\bin\x64\Autodesk.DataManagement.Client.Framework.Vault.Forms.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Autodesk.iLogic.Interfaces">
-      <HintPath>..\..\..\OneDrive - autodesk\Vault Customization\Inventor 2022 Bin\Autodesk.iLogic.Interfaces.dll</HintPath>
+    <Reference Include="Autodesk.iLogic.Interfaces, Version=26.20.28700.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\OneDrive - Autodesk\Vault Customization\SDK References 2022\Inventor 2022 Bin\Autodesk.iLogic.Interfaces.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Autodesk.Inventor.Interop, Version=26.0.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -199,6 +201,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Autodesk.iLogic.Interfaces.dll" />
     <Content Include="iLogicJobSettings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
