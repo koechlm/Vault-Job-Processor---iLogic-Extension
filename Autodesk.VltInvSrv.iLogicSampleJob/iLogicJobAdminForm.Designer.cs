@@ -616,6 +616,9 @@
             this.dtGrdUsrRules.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdUsrRules.Size = new System.Drawing.Size(536, 381);
             this.dtGrdUsrRules.TabIndex = 4;
+            this.dtGrdUsrRules.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdUsrRules_CellContentClick);
+            this.dtGrdUsrRules.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdUsrRules_CellContentDoubleClick);
+            this.dtGrdUsrRules.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdUsrRules_CellDoubleClick);
             // 
             // Column4
             // 

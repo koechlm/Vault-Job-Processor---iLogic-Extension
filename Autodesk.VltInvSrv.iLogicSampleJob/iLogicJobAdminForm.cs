@@ -641,6 +641,24 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
             }
         }
+
+        private void dtGrdUsrRules_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
+        }
+
+        private void dtGrdUsrRules_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
+        }
+
+        private void dtGrdUsrRules_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            iLogicJobAdmin.mSettingsChanged = true;
+            btnSaveToVlt.Enabled = true;
+        }
     }
 
 }
