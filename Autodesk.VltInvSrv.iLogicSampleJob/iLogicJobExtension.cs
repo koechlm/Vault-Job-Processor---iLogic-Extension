@@ -607,7 +607,11 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                     {
                         mAllRulesTextWrp = "External Rule: " + mExtRule;
                     }
-                    mDoc.Save2(false);
+                    if (mJobCheckInResult == true)
+                    {
+                        mDoc.Save2(false);
+                    }
+                    
                 }
 
 
@@ -679,7 +683,11 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                                 mAllRules.Add(rule.Name);
                             }
                         }
-                        mDoc.Save2(false);
+
+                        if (mJobCheckInResult == true)
+                        {
+                            mDoc.Save2(false);
+                        }
                     }
                 }
 
