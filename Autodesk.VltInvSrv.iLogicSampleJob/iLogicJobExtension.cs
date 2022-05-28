@@ -453,7 +453,15 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 if (mExtRule != "")
                 {
                     ACW.File mRuleFile = mWsMgr.DocumentService.FindLatestFilesByPaths(new string[] { mExtRule }).FirstOrDefault();
-                    //build download options including DefaultAcquisitionOptions
+                    if (mRuleFile.MasterId == -1)
+                    {
+                        context.Log(null, "Job exited because the rule file " + mExtRule + " could not be found at the given path.");
+                        if (mNewFileIteration.IsCheckedOut == true)
+                        {
+                            mConnection.FileManager.UndoCheckoutFile(mNewFileIteration);
+                        }
+                        return JobOutcome.Failure;
+                    }
                     VDF.Vault.Currency.Entities.FileIteration mRuleFileIter = new VDF.Vault.Currency.Entities.FileIteration(mConnection, mRuleFile);
 
                     //the rule must not be checked out by another user or better not checked out at all
@@ -467,6 +475,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         return JobOutcome.Failure;
                     }
 
+                    //build download options including DefaultAcquisitionOptions
                     VDF.Vault.Settings.AcquireFilesSettings mAcqrRuleSettings = CreateAcquireSettings(false);
 
                     mAcqrRuleSettings.AddFileToAcquire(mRuleFileIter, mAcqrRuleSettings.DefaultAcquisitionOption);
