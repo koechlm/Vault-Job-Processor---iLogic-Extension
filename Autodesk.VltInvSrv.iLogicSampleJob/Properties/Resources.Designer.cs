@@ -313,26 +313,6 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Vault_Info_32x32Img {
-            get {
-                object obj = ResourceManager.GetObject("Vault_Info_32x32Img", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        internal static System.Drawing.Icon VaultIco {
-            get {
-                object obj = ResourceManager.GetObject("VaultIco", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ViewOptions_16 {
             get {
                 object obj = ResourceManager.GetObject("ViewOptions_16", resourceCulture);
@@ -347,6 +327,16 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob.Properties {
             get {
                 object obj = ResourceManager.GetObject("ViewOptions_161", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon VLTM_2023_0_0_F_icon {
+            get {
+                object obj = ResourceManager.GetObject("VLTM_2023_0_0_F_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

@@ -38,7 +38,7 @@ TO CONFIGURE: (Note - Using the installer obsoletes step 1 and 6)
 	To submit a job, select a file (Inventor only ;)) go to Actions -> Queue iLogic Job and select the rule to be run against the selected file.
 5) Automatic Job Submission. Configure the Tab 'Lifecycle Rule(s)' and save to Vault. Add the job name to the Job Queue activating job transitions. To achieve this, integrate this job into a custom lifecycle transition by adding the Job-Type name
 "Autodesk.VltInvSrv.iLogicSampleJob" to the transition's 'Custom Job Types' tab.
-6) To enable iLogic logging copy the file iLogicLogger.config to the C:\Program Files\Autodesk\Vault Client 202x\Explorer\Inventor Server\Bin\. Enable iLogic Logging in the configuration
+6) To enable iLogic logging copy the file iLogicLogger.config to the C:\Program Files\Autodesk\Vault Client 202x\Explorer\VaultInventorServer\. Enable iLogic Logging in the configuration
 Tab "Advanced iLogic Configuration".
 
 DISCLAIMER:
@@ -56,7 +56,9 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
-2022.0.0.0 - updated for Vault Client / Job Processor 2023
+2023.0.0.x - updated for Vault Client / Job Processor 2023
+2022.3.0.0 - updated for Vault Client / Job Processor 2022.3
+2022.2.0.0 - new methods AddFile, GetVaultFileStatus and UpdateVaultFileProperties implemented
 2022.0.3.x - Remove Vault language dependency while validating permissions to administrate iLogic-Jobs.
 2022.0.2.x - restrict iLogic Job Administration to Configuration Administrators; track configuration changes and warn user of losing unsaved edits on dialog close;
 					improved behavior for "Create new file iteration = disabled": avoid check-out instead of undocheckout => allows rule to create new iteration, e.g. attaching export files.

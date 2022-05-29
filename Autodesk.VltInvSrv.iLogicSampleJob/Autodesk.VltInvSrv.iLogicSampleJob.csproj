@@ -57,6 +57,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>VLTM-2023.0.0.F-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autodesk.Connectivity.Explorer.Extensibility">
       <HintPath>..\..\..\..\OneDrive - Autodesk\Vault Customization\SDK References 2023\Autodesk Vault 2023 SDK\bin\x64\Autodesk.Connectivity.Explorer.Extensibility.dll</HintPath>
@@ -169,7 +172,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Vault.ico" />
     <None Include="Resources\iLogicConfiguration.ico" />
     <None Include="Resources\Customize.png" />
     <None Include="Resources\Options_32x32.png" />
@@ -194,6 +196,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SelectFromVault.resx">
       <DependentUpon>SelectFromVault.cs</DependentUpon>
@@ -206,6 +209,8 @@
     <Content Include="iLogicJobSettings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\VLTM-2023.0.0.F-icon.ico" />
+    <Content Include="VLTM-2023.0.0.F-icon.ico" />
     <None Include="Resources\Add_Generic_16.png" />
     <None Include="Resources\ArrowDown_16.png" />
     <None Include="Resources\ArrowUp_16.png" />
