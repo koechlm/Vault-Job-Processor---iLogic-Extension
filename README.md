@@ -2,7 +2,9 @@
 
 The iLogic Extension for Vault Job Processor allows configuring the iLogic AddIn of Vault-Inventor-Server and provides a custom job as a framework. 
 Administrators can configure which iLogic rules to run on Lifecycle State Transitions and which iLogic rules being available for interactive, 
-manual job submission on selected files. 
+manual job submission on selected files.
+![image](https://user-images.githubusercontent.com/19150039/173843282-f86c5c46-0475-48eb-b5f2-5ee014d42d58.png)
+
 Install the extension on
 - Job Processor only for iLogic-Jobs submitted through lifecycle transitions
 - Any Vault Client for user-interactive job submission
