@@ -134,7 +134,14 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
             }
             else
             {
-                MessageBox.Show("You do not have sufficient permissions to configure Vault behaviors. \n\r Contact your Vault Configuration Administrator.", "iLogic Job Administration.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                VDF.Currency.Restriction mAdminRestriction = new VDF.Currency.Restriction("iLogic Job Administration", "Access denied", "Accessing Administration Settings requires the permissions 'Vault Get Options' and 'Vault Set Options'");
+                VDF.Forms.Settings.ShowRestrictionsSettings showRestrictionsSettings = new VDF.Forms.Settings.ShowRestrictionsSettings("iLogic Job Administration", VDF.Forms.Settings.ShowRestrictionsSettings.IconType.Error);
+                showRestrictionsSettings.AddRestriction(mAdminRestriction);
+                showRestrictionsSettings.ShowDetailsArea = true;
+                showRestrictionsSettings.RestrictionColumnCaption = "Restriction";
+                showRestrictionsSettings.RestrictedObjectNameColumnCaption = "Object";
+                showRestrictionsSettings.ReasonColumnCaption = "Restriction Reason";
+                DialogResult result = VDF.Forms.Library.ShowRestrictions(showRestrictionsSettings);
             }
 
         }

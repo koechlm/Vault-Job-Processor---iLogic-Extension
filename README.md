@@ -56,7 +56,7 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
-2023.0.0.x - updated for Vault Client / Job Processor 2023
+2023.0.1.x - updated for Vault Client / Job Processor 2023. New detailed restriction dialog info for non-Configuration Admins trying to access iLogic Configuration
 2022.3.0.0 - updated for Vault Client / Job Processor 2022.3
 2022.2.0.0 - new methods AddFile, GetVaultFileStatus and UpdateVaultFileProperties implemented
 2022.0.3.x - Remove Vault language dependency while validating permissions to administrate iLogic-Jobs.
