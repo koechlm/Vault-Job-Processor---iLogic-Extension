@@ -2317,7 +2317,7 @@
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:TRUE"
         "ProductVersion" = "8:1.0.2023"
-        "Manufacturer" = "8:Autodesk"
+        "Manufacturer" = "8:Markus Koechl, Autodesk"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/koechlm/Vault-Job-Processor---iLogic-Extension/issues"
         "Title" = "8:Setup iLogicJobExtension Sample 2023"
