@@ -717,7 +717,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                 }
                 if(mJobCheckInResult == true && mNewFileIteration.IsCheckedOut == true)
                 {
-                    // checkin new file version
+                    // checkin new file version, note: the new file will refuse to assign/update items, as item data are removed 
                     VDF.Currency.FilePathAbsolute vdfPath = new VDF.Currency.FilePathAbsolute(mLocalFileFullName);
                     FileIteration mUploadedFile = null;
                     try
@@ -725,7 +725,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
                         if (mFileAssocParams.Count > 0)
                         {
                             mUploadedFile = mConnection.FileManager.CheckinFile(mNewFileIteration, "Created by Custom Job executing iLogic : " + mAllRulesTextWrp,
-                                                    false, mFileAssocParams.ToArray(), null, true, null, mFileIteration.FileClassification, false, vdfPath);
+                                                    false, mFileAssocParams.ToArray(), null, false, null, mFileIteration.FileClassification, false, vdfPath);
                         }
                         else
                         {
