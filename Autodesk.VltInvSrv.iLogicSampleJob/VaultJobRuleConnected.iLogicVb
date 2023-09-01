@@ -1,4 +1,4 @@
-﻿AddReference "QuickstartiLogicVltInvSrvLibrary.dll"
+﻿AddReference "iLogicVaultInventorServerSample.dll"
 AddReference "Autodesk.Connectivity.WebServices.dll"
 AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 'DISCLAIMER:
@@ -9,8 +9,8 @@ AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 
 Sub Main
 break 'prepared for step by step debugging
-'to enable iLogicVault commands reuse the job processor's user connection
-	Dim iLogicVault As New QuickstartiLogicVltInvSrvLibrary.iLogicVltInvSrvLibrary
+	'to enable iLogicVault commands reuse the job processor's user connection
+	Dim iLogicVault As New iLogicVaultInventorServerSample.iLogicVltInvSrvLibrary
 	Dim LoggedIn As Boolean
 	Dim FileStateName As String
 	Try

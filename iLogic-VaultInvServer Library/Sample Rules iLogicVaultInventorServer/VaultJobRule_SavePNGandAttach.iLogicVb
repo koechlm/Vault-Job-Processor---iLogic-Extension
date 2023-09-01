@@ -1,0 +1,106 @@
+﻿AddReference "iLogicVaultInventorServerSample.dll"
+AddReference "Autodesk.Connectivity.WebServices.dll"
+AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
+'DISCLAIMER:
+'---------------------------------
+'In any case, code, templates, and snippets of this solution are of "work in progress" character.
+'Neither Markus Koechl, nor Autodesk represents that these samples are reliable, accurate, complete, or otherwise valid. 
+'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
+
+Sub Main
+	break
+	Dim ex As New Exception
+
+	'the rule applies to part and assembly files only
+	If ThisDoc.Document.DocumentType <> Inventor.DocumentTypeEnum.kAssemblyDocumentObject And ThisDoc.Document.DocumentType <> Inventor.DocumentTypeEnum.kPartDocumentObject Then
+		Logger.Info("Rule iLogicVault_AddFileAndAttach applies to part and assembly documents only. Exited without action.")
+		Return
+	End If
+
+	'get the job processor's Vault connection (note - this is different from Inventor Application)
+	Dim iLogicVault As New iLogicVaultInventorServerSample.iLogicVltInvSrvLibrary
+	Dim LoggedIn As Boolean
+	Dim FileState As String
+	Try
+		dbServer = RuleArguments("ServerName")
+		fServer = RuleArguments("ServerName")
+		vltName = RuleArguments("VaultName")
+		userId = RuleArguments("UserId")
+		SessionId = RuleArguments("SessionId")
+		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, SessionId)
+		If LoggedIn = False Then
+			Logger.Error("Rule could not re-use Job Processor's Vault Login.")
+			Throw ex
+		End If
+	Catch
+		Logger.Error("Failed Reading Rule Arguments.")
+		Throw ex
+	End Try
+
+	'check the vault status of the file; the rule expects that the file exists in vault and is not checked out
+	Dim mDocVaultStatus As New Dictionary(Of String, String)
+	mDocVaultStatus = iLogicVault.GetVaultFileStatus(ThisDoc.PathAndFileName(True))
+	If mDocVaultStatus.Item("ErrorState") = "None" Then
+		If mDocVaultStatus.Item("CheckOutState") <> "NotCheckedOut" Or mDocVaultStatus.Item("LockState") <> "Unlocked" Then
+			Logger.Error("This rule expects the active document being available for checkout to the current user, but must not be checked out.")
+			Throw ex
+		End If
+	Else
+		Logger.Error("ErrorState = " + mDocVaultStatus.Item("ErrorState") + ". This rule expects that the active document is vaulted!")
+	End If
+
+	'create camera object; note InventorServer does not provide document views
+	Dim camera As Inventor.Camera = ThisServer.TransientObjects.CreateCamera
+	camera.SceneObject = ThisDoc.Document.ComponentDefinition
+	'position the camera
+	camera.ViewOrientationType = Inventor.ViewOrientationTypeEnum.kIsoTopRightViewOrientation
+	camera.Fit()
+	camera.ApplyWithoutTransition()
+
+	Dim topClr As Color
+	topClr = ThisServer.TransientObjects.CreateColor(255, 255, 255)
+	Dim bottomClr As Color
+	bottomClr = ThisServer.TransientObjects.CreateColor(255, 255, 255)
+
+	'derive file name from source
+	Dim bitmapName As String = ThisDoc.ChangeExtension(".png")
+
+	'clean local working folder; existing files in Vault update a new iteration
+	success = mCleanWfFile(bitmapName)
+	If success = True Then
+		'save the image file
+		camera.SaveAsBitmap(bitmapName, 1280, 768, topClr, bottomClr)
+
+		'upload file as new or incremental file iteration and attach to thisdoc in Vault
+		Dim mVaultPath As String = iLogicVault.ConvertLocalPathToVaultPath(bitmapName)
+		Dim mParentVaultFullFileName = iLogicVault.ConvertLocalPathToVaultPath(ThisDoc.Document.FullFileName) + "/" + ThisDoc.FileName(True)
+		success = iLogicVault.AddFile(bitmapName, mVaultPath, True, mParentVaultFullFileName)
+		If (success <> True) Then
+			Logger.Error("Failed to add/update image file to Vault")
+			Throw ex
+		Else
+			Logger.Info("Successfully created, uploaded and attached image file.")
+		End If
+	Else
+		Logger.Error("Failed to clean-up local workspace before creating bitmap file.")
+		Throw ex
+	End If
+
+End Sub
+
+Private Function mCleanWfFile(mFile As String) As Boolean
+	'Delete existing file to avoid overwrite restrictions
+	Dim oFileInfo As New System.IO.FileInfo(mFile)
+	Try
+		If oFileInfo.Exists = True Then
+			If (oFileInfo.Attributes) Then
+				oFileInfo.Attributes = (oFileInfo.Attributes And Not oFileInfo.Attributes.ReadOnly)
+				System.IO.File.Delete(mFile)
+			End If
+		End If
+		Return True
+	Catch
+		Return False
+	End Try
+End Function
+

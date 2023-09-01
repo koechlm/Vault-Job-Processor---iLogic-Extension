@@ -15,7 +15,7 @@ using VDF = Autodesk.DataManagement.Client.Framework;
 using Inventor;
 using iLogic = Autodesk.iLogic.Interfaces;
 
-[assembly: ApiVersion("16.0")]
+[assembly: ApiVersion("17.0")]
 [assembly: ExtensionId("4d95a809-1c6a-4e1e-b885-7f5f69e94c7d")]
 
 

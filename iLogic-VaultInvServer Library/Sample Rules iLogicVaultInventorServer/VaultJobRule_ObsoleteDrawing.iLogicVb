@@ -1,0 +1,26 @@
+﻿
+'return unhandled exceptions to Vault Job Processor
+Dim ex As New Exception
+
+'leverage Vault Properties
+If RuleArguments("File.Obsolete") = "True" Then
+	Try
+		'access the active document
+		Dim mDoc As Document = ThisDoc.Document
+		If mDoc.DocumentType = Inventor.DocumentTypeEnum.kDrawingDocumentObject Then
+			Dim mDrwDoc As DrawingDocument = mDoc
+			'set the sheet's color 
+			Dim mColor As Inventor.Color = ThisServer.TransientObjects.CreateColor(255, 174, 174) 'red for obsolete
+			mDrwDoc.SheetSettings.SheetColor = (mColor)
+		Else
+			Logger.Warn("The rule exited because the expected document type Drawing did not match.")
+			Exit Sub
+		End If
+	Catch
+		Logger.Error("Unhandled exception in rule ObsoleteDrawgin_VaultJobRule.")
+		Throw ex
+	End Try
+Else
+	Logger.Error("File state is not obsolete, undo check-out.")
+	Throw ex
+End If

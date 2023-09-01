@@ -1,0 +1,125 @@
+﻿AddReference "iLogicVaultInventorServerSample.dll"
+AddReference "Autodesk.Connectivity.WebServices.dll"
+AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
+Sub Main
+	break
+	Dim ex As Exception
+	Dim mDoc As Document = ThisDoc.Document
+	Dim mDrwDoc As DrawingDocument
+	'validate the document type
+	Dim eDocumentType As Inventor.DocumentTypeEnum = mDoc.DocumentType
+	Select Case eDocumentType
+		Case DocumentTypeEnum.kDrawingDocumentObject
+			mDrwDoc = mDoc
+		Case Else
+			Logger.Warn("The rule exited because the expected document type Drawing did not match.")
+			Exit Sub
+	End Select
+
+	'get the job processor's Vault connection (note - this is different from Inventor Application)
+	Dim iLogicVault As New iLogicVaultInventorServerSample.iLogicVltInvSrvLibrary
+	Dim LoggedIn As Boolean
+
+	Try
+		dbServer = RuleArguments("ServerName")
+		fServer = RuleArguments("ServerName")
+		vltName = RuleArguments("VaultName")
+		userId = RuleArguments("UserId")
+		SessionId = RuleArguments("SessionId")
+		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, SessionId)
+	Catch
+		Logger.Error("Failed Reading Rule Arguments.")
+		Throw ex
+	End Try
+
+	If LoggedIn = False Then
+		Logger.Error("Rule could not re-use Job Processor's Vault Login.")
+		Throw ex
+	End If
+
+	'don't update drawings in Obsolete State; we recommend using the State Obsolete Or Latest Released Revision properties instead of relying on the State (Historical) name
+	If RuleArguments("File.Obsolete") = "True" Then
+		Dim mColor As Inventor.Color = ThisServer.TransientObjects.CreateColor(255, 174, 174) 'red for obsolete
+		mDrwDoc.SheetSettings.SheetColor = (mColor)
+		Exit Sub
+	End If
+
+	'run the update for any other state
+
+	'get the drawing resource file (= latest drawing template) and update the title block on all sheets.
+	Dim mVaultFile As String = iLogicVault.GetFileByFullFilePath("$/Templates/Inventor/Standard.idw")
+	If mVaultFile Is Nothing Then
+		Logger.Error("Drawing template file not found in Vault - Please double check that file exists in Vault at the given path.")
+		Exit Sub
+	End If
+	If mVaultFile.Count > 0 Then
+		ThisDrawing.ResourceFileName = mVaultFile
+		ThisDrawing.KeepExtraResources = False
+		Dim mSheet As Inventor.Sheet
+		For Each mSheet In mDrwDoc.Sheets
+			mSheet.Activate
+			'update title block
+			Select Case mSheet.TitleBlock.Name
+				Case "ISO ADSK EMEA"
+					Logger.Info("The title block has been updated before.")
+				Case "ISO MSD EN"
+					mSheet.Update
+					ActiveSheet.Border = "Default Border"
+					ActiveSheet.TitleBlock = "ISO ADSK EMEA"
+				Case Else
+			Logger.Warn("The title block is unknown and the rule did not update to secure compatibility.")
+			End Select
+
+			'add revision table if missing
+			Dim mRevTbls As Inventor.RevisionTables = mSheet.RevisionTables
+			If mRevTbls.Count = 0 Then
+				mAddRevTable(mRevTbls)
+			End If
+		Next
+
+		'set the sheet's color
+		Dim mColor As Inventor.Color = ThisServer.TransientObjects.CreateColor(255, 255, 255)
+		mDrwDoc.SheetSettings.SheetColor = (mColor)
+
+	End If 'mVaultFile.Count > 0
+
+End Sub
+
+Function mAddRevTable(ByRef mRevTbls)
+
+	Dim mRevTbl As Inventor.RevisionTable
+	Dim mSize As Inventor.DrawingSheetSizeEnum
+	mSize = ThisDrawing.Document.ActiveSheet.Size
+
+	RevTabHeight = ActiveSheet.Sheet.RevisionTables.Item(1).RangeBox.MaxPoint.Y - ActiveSheet.Sheet.RevisionTables.Item(1).RangeBox.MinPoint.Y
+	Y = ActiveSheet.Sheet.TitleBlock.RangeBox.MaxPoint.Y + RevTabHeight
+
+	If mSize = DrawingSheetSizeEnum.kA4DrawingSheetSize Then
+		ActiveSheet.Sheet.Orientation = 10243
+		X = 1.0 'Position Rev.Table
+	Else
+		ActiveSheet.Sheet.Orientation = 10242
+		ActiveSheet.Border = "Default Border" 'Format
+		Y = 5.875
+		Select mSize
+			Case DrawingSheetSizeEnum.kA3DrawingSheetSize
+				X = 22.0
+			Case DrawingSheetSizeEnum.kA2DrawingSheetSize
+				X = 39.4
+			Case DrawingSheetSizeEnum.kA1DrawingSheetSize
+				X = 63.1
+			Case DrawingSheetSizeEnum.kA0DrawingSheetSize
+				X = 97.9
+			Case Else
+		X = 0.0
+		End Select
+		End If
+
+		Dim mPtn As Point2d = ThisServer.TransientGeometry.CreatePoint2d(X, Y)
+		mRevTbl = mRevTbls.Add(mPtn)
+
+		Dim mStyleMgr As DrawingStylesManager = ThisDrawing.Document.StylesManager
+		Dim mRevTblStyle As RevisionTableStyle = mStyleMgr.RevisionTableStyles("Adsk.Emea.RevTable (ISO)")
+		mRevTbl.Style = mRevTblStyle
+
+End Function

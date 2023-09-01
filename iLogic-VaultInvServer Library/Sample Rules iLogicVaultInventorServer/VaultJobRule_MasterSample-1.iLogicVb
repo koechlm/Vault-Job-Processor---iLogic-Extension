@@ -1,0 +1,60 @@
+﻿'DISCLAIMER:
+'---------------------------------
+'In any case, code, templates, and snippets of this solution are of "work in progress" character.
+'Neither Markus Koechl, nor Autodesk represents that these samples are reliable, accurate, complete, or otherwise valid. 
+'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
+
+Sub Main
+	break
+	'enable update physical properties on save for parts and assemblies
+	Dim mInvSrv As InventorServer = ThisServer
+	mInvSrv.GeneralOptions.UpdatePropertiesOnSaveForFileType = kUpdatePropertiesForPartsAndAssemblies
+	
+	'access the active document
+  	Dim mDoc As Document = ThisDoc.Document
+  	'get the document type
+	Dim mDocumentType As Inventor.DocumentTypeEnum = mDoc.DocumentType
+
+	Dim mSuccess As Int32 = -1
+	
+	Select Case mDocumentType
+    	Case DocumentTypeEnum.kAssemblyDocumentObject
+			mSuccess = iLogicVb.RunExternalRule("C:\PDMC-Sample\Templates\Design Data\iLogic\Sample Rules iLogic-VaultInventorServer\VaultJobRule_UidToiProp.iLogicVb")
+			If mSuccess <> 0 Then
+				Dim ex As Exception
+				Logger.Error("Rule UidToProp returned an error and sets Job result to 'Error'")
+				Throw ex
+			End If
+			mDoc.Save2(False)
+			mSuccess = iLogicVb.RunExternalRule("C:\PDMC-Sample\Templates\Design Data\iLogic\Sample Rules iLogic-VaultInventorServer\VaultJobRule_Save3D.iLogicVb")
+			If mSuccess <> 0 Then
+				Dim ex As Exception
+				Logger.Error("Rule Save3D returned an error and sets Job result to 'Error'")
+				Throw ex
+			End If
+
+		Case DocumentTypeEnum.kPartDocumentObject
+			mSuccess = iLogicVb.RunExternalRule("C:\PDMC-Sample\Templates\Design Data\iLogic\Sample Rules iLogic-VaultInventorServer\VaultJobRule_UidToiProp.iLogicVb")
+			If mSuccess <> 0 Then
+				Dim ex As Exception
+				Logger.Error("Rule UidToProp returned an error and sets Job result to 'Error'")
+				Throw ex
+			End If
+			mDoc.Save2(False)
+			mSuccess = iLogicVb.RunExternalRule("C:\PDMC-Sample\Templates\Design Data\iLogic\Sample Rules iLogic-VaultInventorServer\VaultJobRule_Save3D.iLogicVb")
+			If mSuccess <> 0 Then
+				Dim ex As Exception
+				Logger.Error("Rule Save3D returned an error and sets Job result to 'Error'")
+				Throw ex
+			End If
+
+		Case DocumentTypeEnum.kDrawingDocumentObject
+			mSuccess = iLogicVb.RunExternalRule("C:\PDMC-Sample\Templates\Design Data\iLogic\Sample Rules iLogic-VaultInventorServer\VaultJobRule_Save2D.iLogicVb")
+			If mSuccess <> 0 Then
+				Dim ex As Exception
+				Logger.Error("Rule UpdateDrawing returned an error and sets Job result to 'Error'")
+				Throw ex
+			End If
+	End Select
+
+End Sub

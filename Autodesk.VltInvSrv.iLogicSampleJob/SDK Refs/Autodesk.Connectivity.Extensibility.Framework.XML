@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Autodesk.Connectivity.Extensibility.Framework</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ErrorCodes">
+      <summary>Error codes used for ExtensionExceptions</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.Extension.LoadStatusEnum">
+      <summary>The status of the load operation on an Extension.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.LoadStatusEnum.NotAttempted">
+      <summary>NotAttempted</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.LoadStatusEnum.Success">
+      <summary>Success</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Extension.LoadStatusEnum.Failure">
+      <summary>Failure</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.SearchTypeEnum">
+      <summary>An enumeration of different ways to locate extensions within a folder</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.SearchTypeEnum.CurrentOnly">
+      <summary>Extension should be in the current folder only</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.SearchTypeEnum.OneLevelOnly">
+      <summary>Extensions should only be in immediate sub folders</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.SearchTypeEnum.CurrentAndRecurse">
+      <summary>Extensions can be in the current folder and sub-folders any levels deep</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.Runtime">
+      <summary>The runtime requirements.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Runtime.Any">
+      <summary>Can run in any mode. Default.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Runtime.x86">
+      <summary>Can only run in 32-bit mode.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.Runtime.x64">
+      <summary>Can only run in 64-bit mode.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.VcetLookupType">
+      <summary>Gets the type of lookup for a resolve folder.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetLookupType.Registry">
+      <summary>The lookup involves the Windows registry.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetLookupType.ExplorerClient">
+      <summary>The lookup is the location of the Vault Explorer client.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetLookupType.RelativeToExtension">
+      <summary>The lookup is relative to the location of the extension's DLL.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ApiVersionAttribute">
+      <summary>Define the [assembly: ApiVersion] attribute which MUST be specified for your extension to be loaded.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.Extension">
+      <summary>The non-generic base class for Extension types</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.Extension`1">
+      <summary>Represents a class which imlements a Vault Extension interface.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly">
+      <summary>An assembly which contains Vault Extensions.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionException">
+      <summary>An Exception class for Vault extensions.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder">
+      <summary>Represents a folder to load extensions from</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionIdAttribute">
+      <summary>Define the [assembly: ExtensionId] attribute which MUST be specified for your extension to be loaded. Each extension should have a unique ID.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader">
+      <summary>A utility for loading extensions.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoaderSettings">
+      <summary>Settings class which can be used on construction of ExtensionLoader</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction">
+      <summary>A restriction from a Vault Extension.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.VcetConfiguration">
+      <summary>An object representing the contents of a .vcet.config file.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.VcetExtension">
+      <summary>An object representing an extension.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.VcetExtensionSettings">
+      <summary>An object representing the settings component of a .vcet.config file.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.VcetResolveFolder">
+      <summary>A folder to be used when resolving .NET DLL references.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Extensibility.Framework.VcetSetting">
+      <summary>A key/value pair on the extension. Used for setting meta-data on the extension. How the meta-data is used depends on the extension type.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ApiVersionAttribute.#ctor(System.String)">
+      <summary>Create an ApiVersionAttribute</summary>
+      <param>Version of the API the command extension is written for.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ApiVersionAttribute.Version">
+      <summary>Gets the version string.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.EnvironmentFolders">
+      <summary>Gets the load paths that are added to the PATH environment variable.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.ExtensionAssembly">
+      <summary>Gets the assembly that this Extension belongs to.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.ExtensionInterface">
+      <summary>Gets the Vault Extension interface that the Extension supports.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.ExtensionTypeString">
+      <summary>Gets the Type string of this Extension.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.Location">
+      <summary>Gets the location of this Extension's configuration file on disk.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.ResolveFolders">
+      <summary>Gets the additional load paths defined in the .vcet.config file.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.Runtime">
+      <summary>Gets the runtime this extension will work on.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension.Tag">
+      <summary>Gets or sets the object that contains meta-data about the object.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.Extension`1.NewInstance(System.Object[])">
+      <summary>Creates a new object that supports the Extension interface.</summary>
+      <returns>The new object supporting the Extension interface.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.Extension`1.ResetCreateInitialInstanceData">
+      <summary>Reset the create initial instance data to its default settings. The data will be populated again on the next created instance of the Extension class.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension`1.CreateInitialInstanceException">
+      <summary>Gets the exception if initial instance creation failed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension`1.CreateInitialInstanceStatus">
+      <summary>Gets the status of fist instance creation</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension`1.CreateInitialInstanceTimeSpan">
+      <summary>Gets the TimeSpan of creating the initial instance.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.Extension`1.Settings">
+      <summary>Gets the settings defined in the .vcet.config file.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.ApiVersion">
+      <summary>Gets the API Version attribute for the assembly.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.Company">
+      <summary>Gets the AssemblyCompany attribute for the assembly.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.Description">
+      <summary>Gets the AssemblyDescription attribute for the assembly.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.ExtensionId">
+      <summary>Gets the ExtensionId attribute for the assembly.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.Extensions">
+      <summary>The Vault extensions contained within the assembly.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.Folder">
+      <summary>Gets the folder path to the extension.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.LoadFailureEx">
+      <summary>If load failed, this is the exception</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.LoadStatus">
+      <summary>Gets a value indicating if the Assembly has been loaded or not.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.LoadTimeSpan">
+      <summary>Time taken to load the assembly</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.ProductName">
+      <summary>Gets the AssemblyProduct attribute for the assembly.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.RegistrationCfgFile">
+      <summary>File name of the registration config file</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionAssembly.RequireAssemblyAttributes">
+      <summary>After successful load, should required assembly attributes be checked for</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor">
+      <summary>
+        <div style="BORDER-BOTTOM: #d0d0d0 1px; PADDING-BOTTOM: 2px; MARGIN-BOTTOM: 5px; COLOR: #a0a0a0; PADDING-TOP: 2px">
+    Creates a new exception for Vault Extension related activities.
+</div>
+      </summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor(Autodesk.Connectivity.Extensibility.Framework.ErrorCodes,System.String,System.Collections.Generic.IEnumerable{Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction},System.Exception)">
+      <summary>Creates a new exception for Vault Extension related activities.</summary>
+      <param>The error code.A human readable message.Restriction information. Cannot be nullThe inner exception.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor(Autodesk.Connectivity.Extensibility.Framework.ErrorCodes,System.String,System.Collections.Generic.IEnumerable{Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction})">
+      <summary>Creates a new exception for Vault Extension related activities.</summary>
+      <param>The error code.A human readable message.Restriction information. Cannot be null</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor(Autodesk.Connectivity.Extensibility.Framework.ErrorCodes,System.String,System.Exception)">
+      <summary>Creates a new exception for Vault Extension related activities.</summary>
+      <param>The error code.A human readable message.The inner exception.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.#ctor(Autodesk.Connectivity.Extensibility.Framework.ErrorCodes,System.String)">
+      <summary>Creates a new exception for Vault Extension related activities.</summary>
+      <param>The error code.A human readable message.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.ConfigurationFile">
+      <summary>Gets the contents of the .vcet.Config file.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.ConfigurationFilePath">
+      <summary>Gets the path to the .vcet.config file.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.ErrorCode">
+      <summary>Gets the error code string.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.ErrorCodeEnum">
+      <summary>Gets the error code.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.ErrorLoadingInterfaceName">
+      <summary>Gets the interface name that failed to load</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.ExtensionConfiguration">
+      <summary>Gets the VcetExtension associated with the exception.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.Parameters">
+      <summary>Gets or sets the metadata about the error.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionException.Restrictions">
+      <summary>Gets the collection of restrictions.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.#ctor(System.String,Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.SearchTypeEnum,System.Boolean)">
+      <summary>The constructor</summary>
+      <param>The path to load extension from.How extensions should be located.If true, the extensions should be loaded according to the Autodesk App Store rules. If false, anything with a .vcet.config will be considered to be an
+Extension. The default value is false.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.IsAppStore">
+      <summary>Gets a value indicating that App Store rules should be used for detecting extensions.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.Path">
+      <summary>Gets the folder path.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder.SearchType">
+      <summary>Gets a value indicating how extensions should be located.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionIdAttribute.#ctor(System.String)">
+      <summary>Create an ExtensionIdAttribute</summary>
+      <param>The unique ID for the extension.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionIdAttribute.Id">
+      <summary>Gets the unique ID for the extension.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.#ctor">
+      <summary>The constructor</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.#ctor(Autodesk.Connectivity.Extensibility.Framework.ExtensionLoaderSettings)">
+      <summary>The constructor with ExtensionLoaderSettings</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.AddExtensionFolder(Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder)">
+      <summary>Adds a new location where the loader looks when loading extensions.</summary>
+      <param>The extensions folder.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.FindExtensions``1">
+      <summary>Locate all the Extensions of a given type, but don't load them.</summary>
+      <typeparam>The iterface to scan for.</typeparam>
+      <returns>A collection of all matching Extension or an empty collection of there are no matches.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.GetAllLoadedExtensionResolvePaths">
+      <summary>Returns a list of resolve paths for all loaded extensions.</summary>
+      <returns>The list of resolve paths for all loaded extensions.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.GetExtensionFolders">
+      <summary>Returns the extention folders that the loader is using to find extensions.</summary>
+      <returns>The extention folders that the loader is using to find extensions.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.LoadExtension(Autodesk.Connectivity.Extensibility.Framework.Extension)">
+      <summary>Loads the assemblies for a given Extension if they haven't been loaded already.</summary>
+      <param>The Extension to load.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.SetExtensionFolders(System.Collections.Generic.IEnumerable{Autodesk.Connectivity.Extensibility.Framework.ExtensionFolder})">
+      <summary>Sets the locations where the loader looks for extensions.</summary>
+      <param>A collection of folder paths.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.LoadExtensions``1">
+      <summary>Locate all the Extensions of a given type and load them into memory.</summary>
+      <typeparam>The iterface to scan for.</typeparam>
+      <returns>A collection of all matching Extension or an empty collection of there are no matches.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.LoadExtensions(System.Collections.Generic.ICollection{Autodesk.Connectivity.Extensibility.Framework.Extension})">
+      <summary>Loads the assemblies for a given set of Extensions if they haven't been loaded already.</summary>
+      <param>The Extensions to load.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.DefaultExtensionsFolder">
+      <summary>Gets the default folder for loading Vault Extensions.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.Exceptions">
+      <summary>Gets the collection of load exceptions.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.FindAllAssembiesCompleted">
+      <summary>Gets a value indicating if the find operation for all of the assemblies (config files) been done.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoader.CURRENT_API_VERSION">
+      <summary>Gets the API Version supported by the current framework.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoaderSettings.#ctor(System.Boolean,System.String)">
+      <summary>The constructor.</summary>
+      <param>If true, assemblies will only load if the required attributes are set. If false, missing attributes will not cause a load failure.The extension of the config file. Set to null for the default case, .vcet.config.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoaderSettings.ConfigFileExtension">
+      <summary>Gets the file extension for the config files.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionLoaderSettings.RequireAssemblyAttributes">
+      <summary>Gets if the assembly attributes are required.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.#ctor(System.String,System.String)">
+      <summary>The constructor for a restriction.</summary>
+      <param>A human readable description of the object which is failing.A human readable message indicating what the problem is.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.Message">
+      <summary>Gets the human readable message indicating what the problem is.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.ObjectName">
+      <summary>Gets the human readable description of the object which is failing.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.ExtensionRestriction.Source">
+      <summary>Gets the name of the extenension that created the restriction.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.VcetConfiguration.File">
+      <summary>Gets the path to the .vcet.config file.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Extensibility.Framework.VcetConfiguration.Folder">
+      <summary>Gets the folder containing the .vcet.config file.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetConfiguration.ExtensionSettings">
+      <summary>Gets or sets the contents of the Cconnectivity.ExtensionSetting tag.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetExtension.Interface">
+      <summary>Gets or sets the interface that is used to communicate with the extension.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetExtension.ResolveFolder">
+      <summary>Gets or sets the list of resolve folders.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetExtension.Runtime">
+      <summary>Gets or sets the runtime requirements.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetExtension.Setting">
+      <summary>Gets or sets the settings, which are key=value pairs used to assist in loading and configuring extensions.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetExtension.Type">
+      <summary>Gets or sets the type of the class that implements the interface.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetExtensionSettings.Extension">
+      <summary>Gets or sets the collection of Extensions.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetResolveFolder.AppendToPath">
+      <summary>Gets or sets if this resolve folder should be added to the PATH environment variable.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetResolveFolder.LookupType">
+      <summary>Gets or sets the type of lookup for finding the actual folder path.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetResolveFolder.Path">
+      <summary>Gets or sets the relative path for the lookup. Only used if the lookup type is RelativeToExtension.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetResolveFolder.Regkey">
+      <summary>Gets or sets the registry key for the lookup. Only used if the lookup type is Registry.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetResolveFolder.Regname">
+      <summary>Gets or sets the registry name for the lookup. Only used if the lookup type is Registry.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetSetting.Key">
+      <summary>Gets or sets the setting key. Key must be unique within an extension.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Extensibility.Framework.VcetSetting.Value">
+      <summary>Gets or sets the setting value.</summary>
+    </member>
+  </members>
+</doc>

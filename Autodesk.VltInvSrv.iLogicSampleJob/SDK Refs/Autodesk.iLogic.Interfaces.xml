@@ -983,6 +983,13 @@ Autodesk.iLogic.Interfaces
  If this is true, a document update will be performed automatically after a parameter is changed with a Parameter function (Parameter.Value) in the current rule.
  </summary>
 </member>
+<member name="P:Autodesk.iLogic.Interfaces.IParamDynamic.MemberEditScope">
+ <summary>
+ For model state documents, sets the member edit scope for parameter value changes made by iLogic rules. Possible values are:<br/>
+ kEditActiveMember : apply changes to the active member only<br/>
+ kEditAllMembers : apply changes to all members
+ </summary>
+</member>
 <member name="T:Autodesk.iLogic.Interfaces.IMultiValueParam">
  <summary>
   Provides properties and functions for multivalue lists (lists of choices of parameter expressions).
@@ -1111,6 +1118,13 @@ Autodesk.iLogic.Interfaces
  If this is set to True, a component that is changed and then suppressed (by setting the Component.IsActive property to false) will not be saved to disk.
  </summary>
 </member>
+<member name="P:Autodesk.iLogic.Interfaces.ICadComponent.MemberEditScope">
+ <summary>
+ In model state assemblies, sets the member edit scope for Component.IsActive changes made by iLogic rules. Possible values are:<br/>
+ kEditActiveMember : apply changes to the active member only<br/>
+ kEditAllMembers : apply changes to all members
+ </summary>
+</member>
 <member name="M:Autodesk.iLogic.Interfaces.ICadComponent.AddDrawingName(System.String)">
  <summary>
  For future use.
@@ -1184,6 +1198,13 @@ Autodesk.iLogic.Interfaces
  </summary>
  <param name="componentOrDocName">The component or document name.</param>
  <param name="iMateDefinitionName">The name of the iMate definition.</param>
+</member>
+<member name="P:Autodesk.iLogic.Interfaces.IAssemConstraint.MemberEditScope">
+ <summary>
+ In model state assemblies, sets the member edit scope for constraint IsActive changes made by iLogic rules. Possible values are:<br/>
+ kEditActiveMember : apply changes to the active member only<br/>
+ kEditAllMembers : apply changes to all members within the factory
+ </summary>
 </member>
 <member name="T:Autodesk.iLogic.Interfaces.IManagedConstraints">
  <summary>
@@ -1432,6 +1453,13 @@ Autodesk.iLogic.Interfaces
  <param name="componentName">The name of the subassembly component.</param>
  <param name="jointName">The joint name.</param>
 </member>
+<member name="P:Autodesk.iLogic.Interfaces.IAssemJoint.MemberEditScope">
+ <summary>
+ In model state assemblies, sets the member edit scope for Joint.IsActive changes made by iLogic rules. Possible values are:<br/>
+ kEditActiveMember : apply changes to the active member only<br/>
+ kEditAllMembers : apply changes to all members within the factory
+ </summary>
+</member>
 <member name="T:Autodesk.iLogic.Interfaces.ICadFeature">
  <summary>
  Provides properties and functions for features (in a part or assembly).
@@ -1532,6 +1560,13 @@ Autodesk.iLogic.Interfaces
  <param name="componentOrDocName">The component or document name.</param>
  <param name="featureName">The feature name.</param>
  <value>The thread designation (e.g. "1/2-13 UNC").</value>
+</member>
+<member name="P:Autodesk.iLogic.Interfaces.ICadFeature.MemberEditScope">
+ <summary>
+ For model state documents, sets the member edit scope for Feature.IsActive changes made by iLogic rules. Possible values are:<br/>
+ kEditActiveMember : apply changes to the active member only<br/>
+ kEditAllMembers : apply changes to all members within the factory
+ </summary>
 </member>
 <member name="M:Autodesk.iLogic.Interfaces.ICadFeature.SetThread(System.String,System.String,System.String,System.String)">
  <summary>
@@ -1876,6 +1911,13 @@ Autodesk.iLogic.Interfaces
  The default is False.
  </summary>
  <returns></returns>
+</member>
+<member name="P:Autodesk.iLogic.Interfaces.IiProperties.MemberEditScope">
+ <summary>
+ For model state documents, sets the member edit scope for iProperty changes made by iLogic rules. Possible values are:<br/>
+ kEditActiveMember : apply changes to the active member only<br/>
+ kEditAllMembers : apply changes to all members within the factory
+ </summary>
 </member>
 <member name="T:Autodesk.iLogic.Interfaces.IiPartRowChanger">
  <summary>
@@ -2284,6 +2326,15 @@ Autodesk.iLogic.Interfaces
  Gets the Automation object. This provides the iLogic API functions.
  </summary>
 </member>
+<member name="P:Autodesk.iLogic.Interfaces.ILowLevelSupport.MemberEditScope">
+ <summary>
+ For model state documents, sets the member edit scope for all changes made by iLogic rule code.
+ This can be overridden by setting the MemberEditScope on specific objects (Parameter, Component, iProperties, etc.).<br/>
+ Possible values are:<br/>
+ kEditActiveMember : apply changes to the active member only<br/>
+ kEditAllMembers : apply changes to all members within the factory
+ </summary>
+</member>
 <member name="M:Autodesk.iLogic.Interfaces.ILowLevelSupport.DocumentUpdate">
  <summary>
  Updates the document that the rule is running in.
@@ -2394,6 +2445,21 @@ Autodesk.iLogic.Interfaces
 <member name="M:Autodesk.iLogic.Interfaces.IiLogicForm.ShowGlobal(System.String,Autodesk.iLogic.Interfaces.FormMode)">
  <summary>
  Shows a form that is in global storage.
+ </summary>
+</member>
+<member name="M:Autodesk.iLogic.Interfaces.IiLogicForm.Close(System.String)">
+ <summary>
+ Close a non-modal form that is stored in the model.
+ </summary>
+</member>
+<member name="M:Autodesk.iLogic.Interfaces.IiLogicForm.CloseGlobal(System.String)">
+ <summary>
+ Close a non-modal form that is in global storage.
+ </summary>
+</member>
+<member name="M:Autodesk.iLogic.Interfaces.IiLogicForm.CloseAllForms">
+ <summary>
+ Close all forms.
  </summary>
 </member>
 <member name="T:Autodesk.iLogic.Interfaces.FormMode">
@@ -3092,6 +3158,48 @@ Autodesk.iLogic.Interfaces
  <param name="appearance">Occurrence appearance. Default is As Material.</param>
  <returns>The component occurrence.</returns>
  <remarks>Only standard Content Center parts are supported.</remarks>
+</member>
+<member name="M:Autodesk.iLogic.Interfaces.IManagedComponents.AddCustomContentCenterPart(System.String,System.String,System.String,System.Object[],System.Object[],System.Boolean,System.String,System.String,Autodesk.iLogic.Types.PointOrMatrix,System.Nullable{System.Boolean},System.Nullable{System.Boolean},Autodesk.iLogic.Types.StringOrAsset)">
+ <summary>
+ Adds a custom Content Center part to an assembly, or edits an existing part.
+ The part is specified by a family path, family name, list of standard column names and values, and a list of custom names and values.
+ </summary>
+ <param name="occName">Component occurrence name.</param>
+ <param name="ccPath">Category path in the Content Center tree view.</param>
+ <param name="familyName">Content center family name.</param>
+ <param name="findRow">Array of name, value pairs to select a row in the table. The names are column names (without units). 
+ The values can be strings or numbers.
+ (e.g. <c>{"Nominal Length", 45, "SIZE_SEL", "M6"}</c>)
+ <para>The column names can be either display or internal names. Sometimes there are two or more columns with the same
+ display name. In that case, use the internal name. 
+ (You can see the internal name in the table by hovering over the column header.)
+ </para>
+ </param>
+ <param name="customValues">Array of name, value pairs for custom values. The names are column names (without units).
+ The values can be strings or numbers.
+ (e.g. <c>{"Length", 200}</c>)
+ <para>
+ The column names must be internal names. (You can see the internal name in the table by hovering over the column header.)
+ </para>
+ </param>
+ <param name="asCustom">Set this to False if you want the part to be placed as a Standard Content Center part.
+ The default is True : the part will be placed as a custom part.
+ </param>
+ <param name="partFolder">The folder where the part should be created, or where it can be found if it has already been created.
+ If this is not specified (or if it is an empty string), then the same folder as the assembly will be used.
+ This argument must be empty (or not specified) if asCustom is false.
+ </param>
+ <param name="partFilename">The file name for the part. If this is not specified (or if it is an empty string), 
+ then the filename generated by Content Center will be used.
+ If this is specified, it must have the extension .ipt.
+ This should be a filename only, with no folder. The folder can be specified with the partFolder argument.
+ This argument must be empty (or not specified) if asCustom is false.
+ </param>
+ <param name="position">Position and orientation of the occurrence (specified as a DocumentUnitsPoint or DocumentUnitsMatrix).</param>
+ <param name="grounded">Occurrence groundedness. Default is false.</param>
+ <param name="visible">Occurrence visibility. Default is true.</param>
+ <param name="appearance">Occurrence appearance. Default is As Material.</param>
+ <returns>The component occurrence.</returns>
 </member>
 <member name="M:Autodesk.iLogic.Interfaces.IManagedComponents.Delete(System.String)">
  <summary>

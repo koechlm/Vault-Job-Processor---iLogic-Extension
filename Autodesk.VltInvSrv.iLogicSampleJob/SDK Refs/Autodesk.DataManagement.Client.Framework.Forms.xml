@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Autodesk.DataManagement.Client.Framework.Forms</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Library.UITheme">
+      <summary>Supported Vault UI theme options enum.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Library.UITheme.Classic">
+      <summary>Classic theme.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Library.UITheme.Light">
+      <summary>Light theme.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Library.UITheme.Dark">
+      <summary>Dark theme.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Library">
+      <summary>Provides a gateway to all features and services in the Autodesk.DataManagement.Client.Framework.Forms assembly</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ConfigurePrompts(System.Object)">
+      <summary>Launches a GUI workflow to allow users to configure prompts that have been registered with the
+.</summary>
+      <param>An object that will be passed to the custom help handler when the configure prompts dialog's help button is clicked.</param>
+      <returns>The button clicked by the user.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.GetAnswer(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition,System.Object[],Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptSyncContext)">
+      <summary>Retrieves a prompt answer for the specified prompt.</summary>
+      <param>The PromptDefinition previously registered through the An array of objects used to replace format items in the prompt text string.A  used to remember previous prompt answers in a specific instance of a workflow.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.GetProgressView(System.String,System.String,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Currency.ProgressValue},System.Int32)">
+      <summary>Launches a new instance of a Progress Dialog</summary>
+      <param>The caption to appear in the Progress DialogThe top level header describing the current state of an operationA list of information values to display in the Progress DialogThe Percent complete. If -1, the dialog will use a cylon progress indicator instead of a percentage based indicator</param>
+      <returns>An interface which can be used to control the state of the Progress Dialog</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.Initialize">
+      <summary>Initializes the services in this assembly. This should be called on application startup.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.SetCulture(System.Globalization.CultureInfo)">
+      <summary>Sets the culture that this assembly and its dependencies will use when returning resources.</summary>
+      <param>The culture to set</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowRestrictions(Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings)">
+      <summary>Launches a GUI workflow to display a list of restrictions to the user.</summary>
+      <param>Contains the restrictions to be displayed as well as options that control the behavior of the GUI.</param>
+      <returns>The button clicked by the user.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowWarning(System.String,System.String,Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration)">
+      <summary>Displays an warning dialog box with the specified message and title.</summary>
+      <param>The warning text to display in the dialog box.The Caption of the dialog box.The button selection that will be made available in the dialog box.</param>
+      <returns>The windows DialogResult which describes the button that was selected.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowError(System.Exception,System.String)">
+      <summary>Displays an error dialog box which displays information about a specific exception.</summary>
+      <param>The exception object to display information for.The caption of the dialog box.</param>
+      <returns>The windows DialogResult which describes the button that was selected. In this case, the result will always be DialogResult.OK</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowError(System.String,System.String)">
+      <summary>Displays an error dialog box with the specified message.</summary>
+      <param>The error text to display in the dialog box.The caption of the dialog box.</param>
+      <returns>The windows DialogResult which describes the button that was selected. In this case, the result will always be DialogResult.OK</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowError(System.String,System.String,System.String,System.String)">
+      <summary>Displays an error dialog box with the specified message and optionally, a link to launch help.</summary>
+      <param>The error text to display in the dialog box.The Caption of the dialog box.Help topic to be displayed as link textIdentifier of the help topic</param>
+      <returns>The windows DialogResult which describes the button that was selected. In this case, the result will always be DialogResult.OK</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowError(System.String,System.String,System.String,System.Action)">
+      <summary>Displays an error dialog box with the specified message and optionally, a link to launch help.</summary>
+      <param>The error text to display in the dialog box.The Caption of the dialog box.Help topic to be displayed as link textA delegate that takes care of launching help</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowMessage(System.String,System.String,System.String,System.Action,System.Boolean)">
+      <summary>Displays a message or error dialog box with the specified message and optionally, a link to launch help.</summary>
+      <param>The message text to display in the dialog box.The Caption of the dialog box.Help topic to be displayed as link textA delegate that takes care of launching helpBool value indecating which dialog type to display, Error or Info</param>
+      <returns>The windows DialogResult which describes the button that was selected. The following chart shows the possible return codes for each button.
+
+<list type="table"><listheader><term>Button</term><description>Return Code</description></listheader><item><term>"Abort", "Skip All"</term><description>DialogResult.Abort</description></item><item><term>"Cancel"</term><description>DialogResult.Cancel</description></item><item><term>"No"</term><description>DialogResult.No</description></item><item><term>"OK"</term><description>DialogResult.OK</description></item><item><term>"Retry"</term><description>DialogResult.Retry</description></item><item><term>"Skip"</term><description>DialogResult.Ignore</description></item><item><term>"Yes"</term><description>DialogResult.Yes</description></item></list></returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowMessage(System.String,System.String,Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration)">
+      <summary>Displays a message box with the specified text, caption, and button configuration (ie. Yes/No, Ok/Cancel, etc...)</summary>
+      <param>The text to display in the dialog box.The caption of the dialog box.The button selection that will be made available in the dialog box.</param>
+      <returns>The windows DialogResult which describes the button that was selected. The following chart shows the possible return codes for each button.
+
+<list type="table"><listheader><term>Button</term><description>Return Code</description></listheader><item><term>"Abort", "Skip All"</term><description>DialogResult.Abort</description></item><item><term>"Cancel"</term><description>DialogResult.Cancel</description></item><item><term>"No"</term><description>DialogResult.No</description></item><item><term>"OK"</term><description>DialogResult.OK</description></item><item><term>"Retry"</term><description>DialogResult.Retry</description></item><item><term>"Skip"</term><description>DialogResult.Ignore</description></item><item><term>"Yes"</term><description>DialogResult.Yes</description></item></list></returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Library.ShowMessage(System.String,System.Windows.Forms.Control,Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration,System.Boolean)">
+      <summary>Displays a message box with a custom user control in place of the message text.</summary>
+      <param>The caption of the dialog box.The control that will be shown instead of the standard message label.The button selection that will be made available in the dialog box.True if this dialog represents an error condition. If so, the dialog will show and error system icon.</param>
+      <returns>The windows DialogResult which describes the button that was selected. The following chart shows the possible return codes for each button.
+
+<list type="table"><listheader><term>Button</term><description>Return Code</description></listheader><item><term>"Abort", "Skip All"</term><description>DialogResult.Abort</description></item><item><term>"Cancel"</term><description>DialogResult.Cancel</description></item><item><term>"No"</term><description>DialogResult.No</description></item><item><term>"OK"</term><description>DialogResult.OK</description></item><item><term>"Retry"</term><description>DialogResult.Retry</description></item><item><term>"Skip"</term><description>DialogResult.Ignore</description></item><item><term>"Yes"</term><description>DialogResult.Yes</description></item></list></returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Library.ApplicationConfiguration">
+      <summary>Gets the service which provides the ability to configure global characteristics of the framework. The configuration options range from directory locations,
+font, etc.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Library.ApplicationPreferences">
+      <summary>Gets the service which provides the application with the ability to persist application state between sessions.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Library.CurrentTheme">
+      <summary>Current Theme Vault Client is using.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Library.CustomUIExceptionRegistration">
+      <summary>Gets the service used to register a Custom UI Exception Handler.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Library.PromptService">
+      <summary>Gets the service which provides the ability to register and manage 's.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Forms.Library.ThemeChanged">
+      <summary>On Vault client Theme changed event</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.EditModeOption">
+      <summary>Options which control the editing capabilities of the  control.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.EditModeOption.ReadOnly">
+      <summary>The control is read only.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.EditModeOption.PartialEdit">
+      <summary>The control is read only, but one or more of the individual parts can be deleted.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.EditModeOption.FullEdit">
+      <summary>The control supports full editing</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl">
+      <summary>A enhanced textbox which allows a user to enter in multiple elements (ie. multiple file names)</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.PredictPartEventArgs">
+      <summary>Arguments passed to the  event</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.#ctor">
+      <summary>Creates an instance of the MultiPartTextBoxControl</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.EditMode">
+      <summary>Gets or sets the editing capabilities.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.Parts">
+      <summary>Gets or sets the indivual parts represented in the textbox control</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.Text">
+      <summary>Gets or sets the text value that is displayed in the control.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.ManualTextChange">
+      <summary>This event is fired when a user directly changes the contents of the edit control via typing in it.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.PredictPart">
+      <summary>This event is fired when a user types in the edit control. The consumer can look at the typed text and "suggest" full strings that the user might be searching
+for.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.PredictPartEventArgs.MatchingParts">
+      <summary>Sets the possible contents that match the value of
+</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Controls.ClassicMultiPartTextBoxControl.PredictPartEventArgs.TextToMatch">
+      <summary>Gets the text that the user has typed</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration">
+      <summary>The choices for button arrangements in the Common Message box dialogs.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.None">
+      <summary>The dialog contains a default OK button.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.Abort">
+      <summary>The dialog contains an Abort button.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.SkipAll">
+      <summary>The dialog contains a Skip, Skip All, and an OK Button.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.YesNo">
+      <summary>The dialog contains a Yes and a No button.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.RetryCancel">
+      <summary>The dialog contains a Retry and a Cancel button.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.Ok">
+      <summary>The dialog contains an OK button.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.OkCancel">
+      <summary>The dialog contains an OK and a Cancel button.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.YesNoCancel">
+      <summary>The dialog contains a Yes, No and a Cancel button.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.ButtonConfiguration.ContinueCancel">
+      <summary>The dialog contains a Continue and a Cancel button.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.IconConfiguration">
+      <summary>The choices for icons in the Common Message box dialogs.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.IconConfiguration.Error">
+      <summary>The Error icon will be shown.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.IconConfiguration.Infromation">
+      <summary>The Infromation icon will be shown.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.IconConfiguration.Warning">
+      <summary>The Warning icon will be shown.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.IconConfiguration.Question">
+      <summary>The Question icon will be shown.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer">
+      <summary>Represents the answer to a prompt.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer.NotSet">
+      <summary>The answer is currently not set or unknown.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer.Yes">
+      <summary>The answer is "Yes".</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer.No">
+      <summary>The answer is "No".</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer.YesToAll">
+      <summary>The answer is "Yes To All".</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer.NoToAll">
+      <summary>The answer is "No To All".</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer.Ok">
+      <summary>The answer is "OK".</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer.Cancel">
+      <summary>The answer is "Cancel".</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptInstruction">
+      <summary>Determines when to display a prompt the user.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptInstruction.NotSet">
+      <summary>The instruction type is currently not set or unknown.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptInstruction.PromptAlways">
+      <summary>A prompt should always be displayed to the user.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptInstruction.PromptOncePerSession">
+      <summary>A prompt should only be shown once for the current session. All other calls to
+
+will return the users initial answer without displaying the prompt.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptInstruction.PromptNever">
+      <summary>A prompt should never be displayed to the user. All calls to
+
+will return the configured answer without showing a prompt to the user.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptStyle">
+      <summary>The choice of button arangements for the prompt dialog, meaning the set of answers available for the user to select when prompted.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptStyle.NotSet">
+      <summary>The style is currently not set or unknown.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptStyle.YesNo">
+      <summary>Prompts will display "Yes" and "No" options.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptStyle.MultiYesNo">
+      <summary>Prompts will display "Yes", "Yes To All", "No" and "No To All" options.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptStyle.OkCancel">
+      <summary>Prompts will display "OK" and "Cancel" options.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptStyle.MultiYesNoOnly">
+      <summary>Prompts will display "Yes To All" and "No To All" options.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.HelpIds">
+      <summary>A list of Help Ids for all of the Dialog boxes contained in the  assembly</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem">
+      <summary>This class represents an item that is to be displayed in a menu, either a top level menu or a context menu</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState">
+      <summary>This represents the current state of a menu item. The state can be changed in the 
+handler.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItemIds">
+      <summary>A list of Menu Items Ids for context menus</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptConfiguration">
+      <summary>A configuration of a prompt. Contains properties affecting a prompt's behavior as configured by a user.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition">
+      <summary>Contains properties and methods that describe the nature of a prompt such as the permissable responses, the text to display to the user, default settings, etc.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptRestriction">
+      <summary>Represents a forbidden prompt configuration.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptSyncContext">
+      <summary>Used to specify a synchronization context or workflow that a prompt is part of when making calls to
+.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.HelpIds.PromptConfigurationDialog">
+      <summary>Help ID for the Prompt Configuration dialog accessed via the  api</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.#ctor(System.String,System.Action{Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem,Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState},System.Action{Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem,Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState})">
+      <summary>Constructs an instance of the MenuItem class</summary>
+      <param>The  that appears in the menu itemAn optional function delegate that will be called just before displaying the menu item. This can be used to control the visiblity and state of the menu itemAn optional function delegate that will be called when the menu item is clicked</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.#ctor(System.String,System.Object,System.Action{Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem,Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState},System.Action{Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem,Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState})">
+      <summary>Constructs an instance of the MenuItem class</summary>
+      <param>The  that appears in the menu itemExtra data associated with this menu itemAn optional function delegate that will be called just before displaying the menu item. This can be used to control the visiblity and state of the menu itemAn optional function delegate that will be called when the menu item is clicked</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.#ctor(System.String,System.Drawing.Image,System.Action{Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem,Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState},System.Action{Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem,Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState})">
+      <summary>Constructs an instance of the MenuItem class</summary>
+      <param>The  that appears in the menu itemThe  that appear in the menu itemAn optional function delegate that will be called just before displaying the menu item. This can be used to control the visiblity and state of the menu itemAn optional function delegate that will be called when the menu item is clicked</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.BeginGroup">
+      <summary>Gets or sets whether this menu item starts a new group. When set to true, there will be a horizontal divider in the menu between this menu item and the one
+that precedes it</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.ID">
+      <summary>Gets or sets an ID that uniquely identifies this menu item</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.Image">
+      <summary>Gets or sets the image that should be displayed in the menu item. This can be null.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.OnExecute">
+      <summary>Gets or sets a function that is called when the menu item is clicked on</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.OnUpdate">
+      <summary>Gets or sets a function that will be called to compute whether the menu should be shown, or enabled, or checked before it is displayed</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.SubMenuItems">
+      <summary>Gets or sets a list of optional child menu items</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.Tag">
+      <summary>Gets or sets optional data that can be associated with this menu item.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.Text">
+      <summary>Gets or sets the text that should be displayed for the menu item</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState.IsChecked">
+      <summary>Gets or sets if the menu item is in a checked state.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState.IsEnabled">
+      <summary>Gets or sets if the menu item is enabled.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState.IsRootClicked">
+      <summary>Gets or sets if the menu item called on root node.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem.MenuItemState.IsVisible">
+      <summary>Gets or sets whether the menu item is visible or if it should be hidden.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItemIds.Refresh">
+      <summary>ID for the Refresh context menu</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItemIds.SelectAll">
+      <summary>ID for the Select all context menu</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItemIds.View">
+      <summary>ID for the View context menu</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptConfiguration.#ctor(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer,Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptInstruction)">
+      <summary>Constructs a PromptConfiguration object with a user's prefered answer and instruction.</summary>
+      <param>The user's prefered answer. Defaults to PromptAnswer.NotSet.The user's prefered instruction type. Defaults to PromptInstruction.PromptAlways.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptConfiguration.Reset">
+      <summary>Resets this PromptConfiguration to the default state.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptConfiguration.ResetSession">
+      <summary>Resets this PromptConfiguration's session data to the default state.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptConfiguration.HideThisSession">
+      <summary>Gets or sets whether prompts with this configuration should be hidden for the remainder of this session.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptConfiguration.PromptInstruction">
+      <summary>Gets or sets when the user should be prompted during a specific operation. The default value is
+.PromptAlways.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptConfiguration.UserAnswer">
+      <summary>Gets or sets the user's default answer.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.#ctor(System.String,System.String,System.String,Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptStyle,Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer,System.String,Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer,Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptInstruction)">
+      <summary>Constructs a new PromptDefinition.</summary>
+      <param>The ID of the prompt.The text to display to a user when prompted.A string identifying the main command or workflow this prompt will be used in. Used to logically group related prompts when displayed to a user.The  of this prompt.The default answer for this prompt.The text to display as the caption of the prompt dialog. If null, defaults to the application name.The answer a prompt returns when the user escapes the prompt dialog. If set to "NotSet", uses a default excape answer based on the prompt style. See the
+EscapeAnswer property for more information.The default  to use for this prompt. Defaults to PromptInstruction.PromptAlways.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.AddRestriction(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptRestriction)">
+      <summary>Adds the specified  to this prompt definition.</summary>
+      <param>The restriction to be added.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.ValidateAnswer(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptStyle,Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer)">
+      <summary>Checks to make sure that the specified answer is compatable with the corresponding prompt style.</summary>
+      <param>The prompt answer to check.The prompt style to check the answer against.</param>
+      <returns>Whether or not answer is compatible with style.</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.Command">
+      <summary>Gets the prompt context that is displayed to the users.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.DefaultAnswer">
+      <summary>Gets the the default answer to the prompt question, which is also the button that will be highlighted if a prompt is displayed.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.DefaultInstruction">
+      <summary>Gets or sets the default instruction for this prompt. This determines when this prompt should be displayed to the user.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.EscapeAnswer">
+      <summary>Gets or sets the answer that is returned when the Escape key is hit during a prompt or when the top-right close button of the prompt dialog is clicked.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.PromptId">
+      <summary>Gets the unique identifier for this prompt.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.Restrictions">
+      <summary>Gets the list of restricted answer and instruction combinations for this prompt.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.Style">
+      <summary>Gets the style of this prompt. This determines the type of "Answer Buttons" that will be available to the user when a prompt is displayed. For example (Yes/No
+or OK/Cancel).</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.SupportCancel">
+      <summary>Gets whether or not this prompt supports a true cancel operation.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.Text">
+      <summary>Gets the prompt text that is displayed to users.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition.Title">
+      <summary>Gets the caption of the dialog box that displays the prompt to the user. If not set, this will defualt to using the application name.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptRestriction.#ctor(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptAnswer,Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptInstruction)">
+      <summary>Creates a PromptRestriction object.</summary>
+      <param>The  that is part of an invalid configuration when paired with instruction.The  that is part of an invalid configruation when paired with answer.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptRestriction.Answer">
+      <summary>Get the  that is part of an invalid configuration when paired with Instruction.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptRestriction.Instruction">
+      <summary>Get the  that is part of an invalid configuration when paired with Answer.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IClipboardProvider">
+      <summary>This interface allows a custom control to specify how it's data should be formatted on the clipboard.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IContextMenu">
+      <summary>This interface allows for a custom context menu to be displayed.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomHelpProvider">
+      <summary>An interface that can be implemented to integrate Help capabilities into the Vault Developer Framework.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomLogger">
+      <summary>This interface allows to gather information from VDF and send it to Autodesk ADP servers.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomUIExceptionProvider">
+      <summary>This interface allows it's implementor to provide custom error handling for a specific exception.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IProgressView">
+      <summary>A Progress Reporter that provides tools for showing and closing the progress view.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IClipboardProvider.GetClipboardText">
+      <summary>Gets the text to put on the clipboard for the control that implements this interface.</summary>
+      <returns>The text to put on the clipboard.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IContextMenu.Show(System.Drawing.Point)">
+      <summary>Called when the context menu should be displayed.</summary>
+      <param>The location to display the menu.</param>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IContextMenu.CloseUp">
+      <summary>Event handler the implementation class needs to call when the menu is closed.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomHelpProvider.CanShowHelp(System.String,System.Object)">
+      <summary>Tests if help is available for a particular help topic.</summary>
+      <param>Uniquely identifies a help topicOptional data that defines an instance of a workflow</param>
+      <returns>True if help is available for the topic. False otherwise</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomHelpProvider.ShowHelp(System.String,System.Object)">
+      <summary>This method is called to launch help for a particular help topic</summary>
+      <param>Uniquely identifies a help topicOptional data that defines an instance of a workflow</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomLogger.RecordCommand(System.String)">
+      <summary>Records command</summary>
+      <param>Command name</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomLogger.RecordWaypoint(System.String,System.Collections.Generic.Dictionary{System.String,System.String},System.String)">
+      <summary>Records waypoint</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomUIExceptionProvider.HandleException(System.Exception,System.Windows.Forms.DialogResult@)">
+      <summary>Executes the custom handling for a specifc exception.</summary>
+      <param>The exception to be handled<c>Autodesk.DataManagement.Client.Framework.Forms.Library.ShowError(ex)</c></param>
+      <returns>True if this handler handles the exception, false otherwise.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IProgressView.Close">
+      <summary>Closes the progress view</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IProgressView.Show(System.Threading.Tasks.Task,System.Threading.CancellationTokenSource,System.IntPtr)">
+      <summary>Shows a modeless progress view</summary>
+      <param>An optional task that is executing a background process. If specified, then the progress view will automatically close when the task finishes executingA cancellation token whose Cancel method will be called if the user clicks the Cancel button on the Progress ViewA handle to the parent window for the progress view</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Interfaces.IProgressView.ShowDialog(System.Threading.Tasks.Task,System.Threading.CancellationTokenSource)">
+      <summary>Shows a modal progress view</summary>
+      <param>An optional task that is executing a background process. If specified, then the progress view will automatically close when the task finishes executingA cancellation token whose Cancel method will be called if the user clicks the Cancel button on the Progress View</param>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationConfigurationService">
+      <summary>This service provides the ability to configure global characteristics of a GUI application which uses the framework.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService">
+      <summary>This service provides the application with the ability to persist application state between sessions.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Services.ICustomUIExceptionRegistrationService">
+      <summary>This service allows for the registration of custom ui handlers for certain exceptions.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Services.IPromptService">
+      <summary>This service facilitates the management and use of prompts.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationConfigurationService.ApplicationFolderPath">
+      <summary>Gets or sets the full path of the folder where application data will be stored.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationConfigurationService.ApplicationIcon">
+      <summary>Gets or sets the icon that will be shown in dialog box captions.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationConfigurationService.CustomHelpProvider">
+      <summary>Gets or sets an interface that integrates Help capabilities into the Vault Developer Framework.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationConfigurationService.CustomLogger">
+      <summary>Gets or sets an interface that logs waypoints and commands</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationConfigurationService.MainFont">
+      <summary>Gets or sets the font that will be used in all dialogs and controls provided by the framework.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationConfigurationService.MainWindow">
+      <summary>Gets or sets the top level window handle of the host application</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationConfigurationService.UseLargeStatusImages">
+      <summary>Gets or sets whether or not the vault browser control will use large or small status icons.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.Clear">
+      <summary>Erases all of the application preferences</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.HasCategory(System.String)">
+      <summary>Gets if the application has preferences grouped by the specified category name.</summary>
+      <param>The category name that we are inspecting for preferences.</param>
+      <returns>True if there are preferenced grouped by <paramref name="categoryName" />. False otherwise.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.Load">
+      <summary>Loads the preferences from storage.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.Save">
+      <summary>Saves the preferences to storage.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.Set(System.String,System.String,System.Object)">
+      <summary>Sets the value of an application preference.</summary>
+      <param>The category that this preference should be bucketed under. This should not be null or empty.The name of the preference that we are setting.The value of the preference that we are setting.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.Get(System.String,System.String,System.Boolean)">
+      <summary>Gets the value for a boolean application preference.</summary>
+      <param>The category that this preference is bucketed under. This should not be null or empty.The name of the preference that we are getting.The value to retrurn if the prefernece does not exist.</param>
+      <returns>The value of the preference. If the preference does not exist, the value of <paramref name="defaultValue" /> will be returned.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.Get(System.String,System.String,System.Int32)">
+      <summary>Gets the value for an integer application preference.</summary>
+      <param>The category that this preference is bucketed under. This should not be null or empty.The name of the preference that we are getting.The value to retrurn if the prefernece does not exist.</param>
+      <returns>The value of the preference. If the preference does not exist, the value of <paramref name="defaultValue" /> will be returned.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.Get(System.String,System.String,System.String)">
+      <summary>Gets the value for a string application preference.</summary>
+      <param>The category that this preference is bucketed under. This should not be null or empty.The name of the preference that we are getting.The value to retrurn if the prefernece does not exist.</param>
+      <returns>The value of the preference. If the preference does not exist, the value of <paramref name="defaultValue" /> will be returned.</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Services.IApplicationPreferencesService.ProfileName">
+      <summary>An optional profile which bundles a set of similar preferences together</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.ICustomUIExceptionRegistrationService.GetProvider(System.Exception)">
+      <summary>Gets the Custom UI Exception Provider associated with the specified
+exception.</summary>
+      <param>The exception to get a custom handler for.</param>
+      <returns>A custom provider associated with this exception, or null if there is not an associated handler.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.ICustomUIExceptionRegistrationService.RegisterProvider(System.Type,System.String,Autodesk.DataManagement.Client.Framework.Forms.Interfaces.ICustomUIExceptionProvider)">
+      <summary>Associates a Custom UI Exception Provider with a specific exception.</summary>
+      <param>The type of the exception (ie. typeof(VaultServiceErrorException)).<paramref name="provider" /><paramref name="exceptionType" /><paramref name="exceptionType" /><paramref name="errorCode" /><c>Autodesk.DataManagement.Client.Framework.Forms.Library.ShowError(ex)</c></param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IPromptService.GetConfiguration(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition)">
+      <summary>Get the current  for a
+<see cref="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition" />.</summary>
+      <param>The PromptDefinition Class to get the configuration for.</param>
+      <returns>The current PromptConfiguration Class for a prompt.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IPromptService.GetPromptDefinitions">
+      <summary>Returns a collecetion of all of the 's managed by the prompt service.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IPromptService.RegisterPrompt(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition,System.Boolean)">
+      <summary>Registers a prompt definition with the prompt service.</summary>
+      <param>The PromptDefinition to registerWhether or not previously registered prompt should be replaced when attempting to register another prompt with a matching ID. If false, an exception will be
+thrown when attemping to register a prompt with an ID that was already registered. Defaults to false.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IPromptService.ResetConfigurations(System.Boolean)">
+      <summary>Resets all of the 's managed by this dialog to their default configuration.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IPromptService.SetConfiguration(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition,Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptConfiguration,System.Boolean)">
+      <summary>Sets the  for a specified
+<see cref="T:Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition" />.</summary>
+      <param>The  to associate the configuration with.The  to associate with the definition.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Services.IPromptService.UnregisterPrompt(Autodesk.DataManagement.Client.Framework.Forms.Currency.PromptDefinition)">
+      <summary>Removes a previously registered prompt from the prompt service. Once removed, it will not show up in any list of available prompts presented to the user.</summary>
+      <param>The ID of the PromptItem to remove</param>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.IconType">
+      <summary>Describes the different icons available to display on the Restrictions dialog.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.IconType.Error">
+      <summary>The standard Windos error icon, an X in a red circle.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.IconType.Warning">
+      <summary>The standard Windows warning icon, an exclamation mark in a yellow triangle.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.IconType.Info">
+      <summary>The standard Windows information icon, a lower-case I in a blue circle.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.ParentType">
+      <summary>Specifies the type of parent for the window</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.ParentType.NoParent">
+      <summary>The window has no parent and will therefor, be displayed centered in the screen</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.ParentType.UseCurrentlyActiveWindow">
+      <summary>The currently active window will be used as the parent for the window that is about to be displayed. The new window will generally be centered on top of the
+currently active window</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.ParentType.UseSpecificWindow">
+      <summary>Use a user-specified window as the parent of the window that is about to be displayed</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings">
+      <summary>Options for configuring the
+
+workflow.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings">
+      <summary>The WindowSettings class is used to configure the window parent and location for a particular GUI workflow.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.#ctor(System.String,Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.IconType)">
+      <summary>Creates an instance of the ShowRestrictionsSettings class.</summary>
+      <param>The title text for the restrictions dialog.The icon to be displayed on the dialog.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.AddRestriction(Autodesk.DataManagement.Client.Framework.Currency.Restriction)">
+      <summary>Adds a restriction to the collection of restrictions displayed by the dialog.</summary>
+      <param>The  to be added</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.AllowContinuation(System.String,System.Boolean)">
+      <summary>Configures the GUI for continuation mode, and allows a question to be provided. Continuation mode is designed to let the user complete a batch operation when
+only some of the entities are affected by restrictions.</summary>
+      <param>A question to be displayed below the description set by
+Optional paramenter that adds a "Cancel" button in addition to Yes/No</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.AllowOverride(System.String,System.String,System.Boolean)">
+      <summary>Configues the GUI for override mode, and allows a question to be provided. Override mode is designed to let the user complete an operation that would normally
+be blocked by a restriction.</summary>
+      <param>The label put next to the override checkboxOptional question to be displayed below the descritpion set by
+Option paramenter that specifies if the override checkbox should start checked or unchecked</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.SetDescription(System.String,System.String)">
+      <summary>Sets the description that is displayed on the main part of the dialog. If all the restrictions affect the same object, the singular description will be used.
+Otherwise the dialog falls back to the multiple description.</summary>
+      <param>This string is used if all the restrictions provided to the dialog affect the same object. If it contains the string.Format() specifier '{0}', the object's
+name will be swapped for it.Optional parameter that provides the description for when multiple restricted objects are displayed.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.GridLabel">
+      <summary>Gets or sets the label that is displayed above the list of restrictions.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.ReasonColumnCaption">
+      <summary>Gets or sets the caption for the column which displays the restrictionReason. Should not null or empty to show the column.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.RestrictedObjectNameColumnCaption">
+      <summary>Gets or sets the caption for the column which displays the name of the restricted object</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.RestrictionColumnCaption">
+      <summary>Gets or sets the cpation for the column which displays the restrction</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.Restrictions">
+      <summary>Gets the collection of restrictions that the dialog has been provided.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Settings.ShowRestrictionsSettings.ShowDetailsArea">
+      <summary>Gets or sets if the dialog is expanded to show the list of restrictions.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.#ctor">
+      <summary>Constructs an instance of thw WindowSettings class</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.SetParent(Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.ParentType)">
+      <summary>Configure the parent window for the case where there is either No Parent or the case where the Default Parent should be chosen</summary>
+      <param>The configuration for the parent window</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.SetParent(Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.ParentType,System.IntPtr)">
+      <summary>Sets the parent window for a form that is about to be displayed</summary>
+      <param>Determines how the parent window will be chosen<paramref name="alg" /></param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.ParentAlgorithm">
+      <summary>Gets the style that configures how the parent window will be chosen</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Forms.Settings.WindowSettings.ParentWindowHandle">
+      <summary>Gets a user-specified parent window handle</summary>
+    </member>
+  </members>
+</doc>

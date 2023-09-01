@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Autodesk.DataManagement.Client.Framework</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Library">
+      <summary>Provides a gateway to all features and services in Autodesk.DataManagement.Client.Framework assembly.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Library.Initialize(System.Boolean)">
+      <summary>Initializes the services in this assembly. This should be called on application startup.</summary>
+      <param>Pass true if this is a UI application that has a message pump (e.g. Winforms, MFC, WPF). Pass false otherwise (e.g. a Console app)</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Library.SetCulture(System.Globalization.CultureInfo)">
+      <summary>Sets the culture that this assembly will use when returning resources.</summary>
+      <param>The culture to set</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Library.ApplicationName">
+      <summary>Gets or sets the application name that will be displayed in captions for various dialogs</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Library.ApplicationVersion">
+      <summary>Gets or sets the application version</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Library.ExceptionParser">
+      <summary>Gets a service used to inspect an exception object and return information about it.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Library.ExceptionParserRegistration">
+      <summary>Gets a service which associates a custom exception parser with a particular type of exception.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Library.LoggingProvider">
+      <summary>Gets or sets the  interface that the Framework will use for logging.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Library.MainThreadDispatcher">
+      <summary>Gets or sets the main application thread. Some properties retrieval (ie. File System Icon) and other operations can only be performed properly on the main
+application thread.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Library.MainThreadDispatcherInvokeRequired">
+      <summary>Gets whether an Invoke is required in order to execute on the thread the MainThreadDispatcher is associated with. Returns true when the current thread is
+different than the MainThreadDispatcher's thread. Returns false when the MainThreadDispatcher is null or the current thread is the same as the
+MainThreadDispatcher's thread.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Library.Properties">
+      <summary>Gets a Properties dictionary that can be used by applications to store global state.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Currency.ShellIconSize">
+      <summary>The size of a windows shell icon.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Currency.ShellIconSize.Small_16">
+      <summary>Represents a 16 x 16 image</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Currency.ShellIconSize.Medium_32">
+      <summary>Represents a 32 x 32 image</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Currency.ShellIconSize.Large_48">
+      <summary>Represents a 48 x 48 image</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Currency.ShellIconSize.ExtraLarge_256">
+      <summary>Represents a 256 x 256 image</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2">
+      <summary>A Dictionary in which the values can be replaced with a function that computes the value.</summary>
+      <typeparam>The data type of the Key to the dictionaryThe data type of the Values in the dictionary</typeparam>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Currency.ExceptionRestriction">
+      <summary>An ExceptionRestriction is extra data that is optionally packaged with an exception.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Currency.FilePathAbsolute">
+      <summary>A class representing the local path of a file.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Currency.FolderPathAbsolute">
+      <summary>A class representing the local path of a folder.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Currency.ProgressValue">
+      <summary>Represents an individual line item of data that can be displayed in a progress dialog. Progress can be reported with Name/Value pairs, or just as an individual
+value.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Currency.Restriction">
+      <summary>A restriction is a combination of a restricted object and a reason why an operation failed on the object. An example would be a restriction on deleting a file,
+becuase a link to the file still exists. All other more specific restrictions types inherit from this base class.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Currency.VaultFilePathAbsolute">
+      <summary>A class representing the abosulte path of a file in Vault.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Clear">
+      <summary>Removes all keys and values from the Dictionary.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+      <summary>Determines whether the Dictionary contains an element with the key element of the specified key/value pair.</summary>
+      <param>The key/value pair whose key will be used to locate an item in the dictionary</param>
+      <returns>true if the dictionary contains an element with the key</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.ContainsKey(`0)">
+      <summary>Determines whether the Dictionary contains an element with the specified key.</summary>
+      <param>The key to locate in the Dictionary</param>
+      <returns>true if the dictionary contains an element with the key; otherwise, false</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.GetEnumerator">
+      <summary>Gets an enumerator of key/value pairs for all of the elements in the dictionary</summary>
+      <returns>An enumertor of all of the elements in the dictionary</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.TryGetValue(`0,`1@)">
+      <summary>Gets the value associated with the specified key.</summary>
+      <param>The key whose value to get.When this method returns, the value associated with the specified key, if the key is found; otherwise, the default value for the type of the value parameter.
+This parameter is passed uninitialized.</param>
+      <returns>true if the Dictionary contains an element with the specified key; otherwise, false</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Add(`0,System.Func{`0,`1})">
+      <summary>Adds an element with the provided key and function which is used to compute the value</summary>
+      <param>The object to use as the key of the element to add.The function which will be called to compute the value when this item is retrieved from the dictionary</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Add(`0,`1)">
+      <summary>Adds an element with the provided key and value</summary>
+      <param>The object to use as the key of the element to add.The object to use as the value of the element to add.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+      <summary>Adds an element with the provided key/value pair</summary>
+      <param>The key/value pair to add to the dictionary</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Remove(`0)">
+      <summary>Removes the element with the specified key from the Dictionary</summary>
+      <param>The key of the element to remove.</param>
+      <returns>true if the element is successfully removed; otherwise, false. This method also returns false if key was not found in the original Dictionary</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+      <summary>Removes the element with the key component of the specified key/value pair from the Dictionary</summary>
+      <param>The key/value pair to remove from the dictionary</param>
+      <returns>true if the element is successfully removed; otherwise, false. This method also returns false if key was not found in the original Dictionary</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Count">
+      <summary>Gets the number of key/value pairs contained in the Dictionary</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Item(`0)">
+      <summary>Gets or sets the element with the specified key.</summary>
+      <param>The key of the element to get or set.</param>
+      <returns>The element with the specified key.</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Keys">
+      <summary>Gets an System.Collections.Generic.ICollection containing the keys of Dictionary</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.DelegateValueDictionary`2.Values">
+      <summary>Gets an System.Collections.Generic.ICollection containing the values in the Dictionary&lt;TKey,TValue&gt;</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.ExceptionRestriction.#ctor(System.Int64,System.Collections.Generic.IList{System.String})">
+      <summary>Creates a Restriction object</summary>
+      <param>A numeric value that uniquely identifies this restriction.A collection of data that is specific to each restriction code.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.ExceptionRestriction.Params">
+      <summary>A collection of additional information associated with this restriction.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.ExceptionRestriction.RestrictionCode">
+      <summary>A numeric value that uniquely identifies this restriction.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.FilePathAbsolute.#ctor(System.String)">
+      <summary>A full, abolute path to a file, including its file name.</summary>
+      <param>The full, absolute path to the file, including the file name.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.FilePathAbsolute.#ctor(System.IO.FileInfo)">
+      <summary>A full, abolute path to a file, including its file name.</summary>
+      <param>A .NET utility object for a file on disk</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.FilePathAbsolute.FileExtension">
+      <summary>The file extension.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.FilePathAbsolute.FileName">
+      <summary>The name of the file with extension.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.FilePathAbsolute.FolderPath">
+      <summary>The path of the folder.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.FilePathAbsolute.FullPath">
+      <summary>The full, absolute path including the file name.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.FolderPathAbsolute.#ctor(System.String)">
+      <summary>A full, absolute path to a folder.</summary>
+      <param>The full, absolute path to the folder.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.FolderPathAbsolute.FullPath">
+      <summary>The full, absolute path of the folder.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.ProgressValue.#ctor(System.String,System.String)">
+      <summary>Constructs an instance of the ProgressValue class with a name/value pair</summary>
+      <param>The label to use in a name/value pair (ie. the "File" component of "File: XYZ")The value to use in a name/value pair (ie. the "XYZ" component of "File: XYZ")</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.ProgressValue.#ctor(System.String)">
+      <summary>Constructs an instance of the ProgressValue class with a standalone value</summary>
+      <param>The value to display as progress (ie. "File XYZ downloading")</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.ProgressValue.Label">
+      <summary>Gets of sets the name component of a name/value pair (ie. the "File" component of "File: XYZ")</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.ProgressValue.Value">
+      <summary>Gets or sets the value component of a progress item. This value may or may not be paired with a Label to describe the value.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.Restriction.#ctor(System.String,System.String,System.Boolean)">
+      <summary>Constructs an instance of the Restriction class.</summary>
+      <param>The name of the object that this restriction is about.The description of the reason for the restriction.Optional paramenter specifying if the restriction can be overridden.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.Restriction.#ctor(System.String,System.String,System.String,System.Boolean)">
+      <summary>Constructs an instance of the Restriction class with restriction text and reason.</summary>
+      <param>The name of the object that this restriction is about.The description of the reason for the restriction.The reason of restriction if needed 3rd column.Optional paramenter specifying if the restriction can be overridden.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.Restriction.IsOverrideable">
+      <summary>Gets if the resriction can be overridden by the user.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.Restriction.RestrictedObjectName">
+      <summary>Gets the name of the object that this restriction affects.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.Restriction.RestrictionReason">
+      <summary>Gets the reason for this restriction if needed.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.Restriction.RestrictionText">
+      <summary>Gets the reson for this restriction.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Currency.VaultFilePathAbsolute.#ctor(System.String)">
+      <summary>Constructor for VaultFilePathAbsolute</summary>
+      <param>The full Vault path to the file. Must be rooted.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.VaultFilePathAbsolute.FileName">
+      <summary>The name of the file with extension.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.VaultFilePathAbsolute.FolderPath">
+      <summary>The path of the folder.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Currency.VaultFilePathAbsolute.FullPath">
+      <summary>The absolute path to the Vault file.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Interfaces.IDictionaryReadonly`2">
+      <summary>Represents a read-only dictionary</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Interfaces.IExceptionParserProvider">
+      <summary>Provides details about a specific type of Exception object.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Interfaces.ILoggingProvider">
+      <summary>This interface defines what the VDF expects from a logging system.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Interfaces.IProgressReporter">
+      <summary>Provides a mechanism for a business logic layer to report results back to the GUI</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IDictionaryReadonly`2.ContainsKey(`0)">
+      <summary>Determines whether the dictionary contains an element the specified key.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IDictionaryReadonly`2.TryGetValue(`0,`1@)">
+      <summary>Gets the value associated with the specified key. If the key is not found, the value returned is default value for the type.</summary>
+      <returns>true if the an element with the specified key exists; otherwise, false</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Interfaces.IDictionaryReadonly`2.Item(`0)">
+      <summary>Gets the element with the specified key</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Interfaces.IDictionaryReadonly`2.Keys">
+      <summary>Gets the keys of the dictionary</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Interfaces.IDictionaryReadonly`2.Values">
+      <summary>Gets the values of the dictionary</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IExceptionParserProvider.GetErrorCode(System.Exception)">
+      <summary>Returns an error code that identifies the error. Not all exception types support this but it can be of use for certain types if the app wants to have special
+business logic to handle an error</summary>
+      <param>The exception object to be parsed.</param>
+      <returns>The error code associated with the exception. This may be null or empty if the exception type does not support error codes.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IExceptionParserProvider.GetMessage(System.Exception)">
+      <summary>Retrieves a textual description of the exception</summary>
+      <param>The exception object to be parsed.</param>
+      <returns>The textual description of the exception. This should never be null or empty.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IExceptionParserProvider.GetRestrictions(System.Exception)">
+      <summary>Returns a list of restrictions that may be embedded in an exception object.</summary>
+      <param>The exception object to be parsed.</param>
+      <returns>A list of restrictions associated with the exception. This may be null or an empty list if there are no exceptions.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IExceptionParserProvider.GetTitle(System.Exception)">
+      <summary>Retrieves a caption to display in a dialog box for an exception. This can return a generic message like "Error", but it can also return a more detailed message
+like "File Access Error" where the GetMessage() would return more specific details on the error</summary>
+      <param>The exception object to be parsed.</param>
+      <returns>The caption to display in a dialog box which displays information about the exception. This should never be null or empty.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IExceptionParserProvider.IsExpected(System.Exception)">
+      <summary>Returns true if the exception is one that could happen naturally and should be handled gracefully...not as a fatal error. For example "File checked out to
+another user" is an expected exception. "Object reference not found" or "Index out of range" is not</summary>
+      <param>The exception object to be parsed.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Interfaces.IExceptionParserProvider.ExceptionType">
+      <summary>Gets the type of exception that is managed by this provider</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.ILoggingProvider.LogMessage(System.String,System.String,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Nullable{System.DateTime},System.Collections.Generic.IDictionary{System.String,System.Object})">
+      <summary>Log a message to the logging system.</summary>
+      <param>The main category.An optional sub category.The message to be logged.System.Diagnostics.TraceEventTypePriority to assign to the message.UTC start of the of the message. Gives user (optionally) the ability to assign the start time.Optional list of property name/object pairs to assicated to the log message.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IProgressReporter.ReportProgress(System.String,System.String,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Currency.ProgressValue},System.Int32)">
+      <summary>Reports progress to the GUI layer</summary>
+      <param>The caption of a progress dialog. This should describe the overall operationThe header of the progress report. This should describe the current state of the operation, at a high levelA list of values to display about the current state. This might include file names, file sizes, or other statisticsThe % of the overall workflow that has been completed. If not specified, then no cumulative progress indicator will be displayed</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Interfaces.IProgressReporter.ReportProgress(System.String,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Currency.ProgressValue},System.Int32)">
+      <summary>Reports progress to the GUI layer</summary>
+      <param>The header of the progress report. This should describe the current state of the operation, at a high levelA list of values to display about the current state. This might include file names, file sizes, or other statisticsThe % of the overall workflow that has been completed. If not specified, then no cumulative progress indicator will be displayed</param>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserRegistrationService">
+      <summary>Associates a custom exception parser with a particular type of exception.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserService">
+      <summary>This service is used to inspect an exception object and return information about it.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserRegistrationService.GetParser(System.Exception)">
+      <summary>Retrieves the parser that is used to interrogate an exception object.</summary>
+      <param>The exception to retrieve a parser for.</param>
+      <returns>The provider used to parse <paramref name="ex" />. This should never be null because the framework has a built in parser registered with the base class. That parser will be used
+as a last resort.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserRegistrationService.RegisterParser(Autodesk.DataManagement.Client.Framework.Interfaces.IExceptionParserProvider)">
+      <summary>Registers a parser with a particular type of exception object. That parser will be used to inspect all exceptions of the specified type.</summary>
+      <param>The parser that is used to retrieve information about exceptions for this type.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserService.GetErrorCode(System.Exception)">
+      <summary>Returns an error code that identifies the error.</summary>
+      <param>The exception to parse.</param>
+      <returns>The error code associated with the exception. This can be null or empty if the exception type does not support an error code.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserService.GetMessage(System.Exception)">
+      <summary>Gets descriptive text which describes the exception.</summary>
+      <param>The exception to parse.</param>
+      <returns>The text which describes the exception.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserService.GetRestrictions(System.Exception)">
+      <summary>Gets a list of restrictions that may be embedded in an exception object.</summary>
+      <param>The exception to parse.</param>
+      <returns>The list of restrictions embedded in the exception. This can be null or an empty list if there are no restrictions.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserService.GetTitle(System.Exception)">
+      <summary>Gets a caption to display in a dialog box for an exception.</summary>
+      <param>The exception to parse.</param>
+      <returns>The caption to display in a dialog box.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Services.IExceptionParserService.IsExpected(System.Exception)">
+      <summary>Determines if an exception is one that could happen naturally and should be handled gracefully or a fatal error.</summary>
+      <param>The exception to parse.</param>
+      <returns>True if the exception is expected. False otherwise.</returns>
+    </member>
+  </members>
+</doc>

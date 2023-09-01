@@ -1,0 +1,29 @@
+﻿Sub Main
+	break
+	'PlotAllSheetsInDrawing
+    'Print all sheets in drawing document
+    'Get the active document and check whether it's drawing document
+    If ThisDoc.Document.DocumentType = kDrawingDocumentObject Then
+        iProperties.Value("Custom", "PrintWatermark") =  "Print Time: " & DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
+        Dim oDrgDoc As DrawingDocument
+        oDrgDoc = ThisDoc.Document
+        
+        ' Set reference to drawing print manager
+        ' DrawingPrintManager has more options than PrintManager
+        ' as it's specific to drawing document
+        Dim oDrgPrintMgr As DrawingPrintManager
+        oDrgPrintMgr = oDrgDoc.PrintManager
+        ' Set the printer name
+        ' comment this line to use default printer or assign another one
+        oDrgPrintMgr.Printer = "PDF-XChange Lite"
+        Dim oSheet As Inventor.Sheet
+		For Each oSheet In oDrgDoc.Sheets
+			oSheet.Activate
+			oDrgPrintMgr.ScaleMode = kPrintBestFitScale
+	        oDrgPrintMgr.PaperSize = kPaperSizeA4
+	        oDrgPrintMgr.Orientation = kLandscapeOrientation
+	        oDrgPrintMgr.SubmitPrint
+		Next
+		
+    End If
+End Sub

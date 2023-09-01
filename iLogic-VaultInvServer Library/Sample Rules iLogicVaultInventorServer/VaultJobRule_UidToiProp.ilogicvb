@@ -1,0 +1,69 @@
+﻿'publish the internal name as unique identifier; this helps to find files copied from this one.
+Sub Main()
+	Dim ex As Exception
+	
+	'the rule must not run on any file, e.g. library files usually down't alllow changes or vaulted files not checked out.
+	If mCheckLibraries = True Then Exit Sub 'the rule can't add properties/values to content center or library files
+	If mFileReadOnly = True Then  'the rule can't apply changes if the file is write protected
+		Logger.Error("File is read-only.")
+		Throw ex
+	End If
+	Try
+		iProperties.Value("Custom", "InternalName") = ThisDoc.Document.InternalName
+	Catch
+		Logger.Error("File " & ThisDoc.FileName & " invoked error in rule 'UidToiProp'.")
+		Throw ex
+	End Try
+
+End Sub
+
+'function to validate that current file is not a Content Center or user Library file
+Function mCheckLibraries() As Boolean
+	
+	Dim mDirInfo As System.IO.DirectoryInfo
+	Dim mLibPath As Inventor.ProjectPath
+	Dim mTmpPath As String
+	Dim mCCPath As String 
+	Dim mIPJ As Inventor.DesignProject
+	Dim mIpjPath As String
+	
+	If (ThisDoc.Document.FileSaveCounter <> 0) Then
+		Try
+			mCCPath = ThisServer.DesignProjectManager.ActiveDesignProject.ContentCenterPath
+			mIPJ = ThisServer.DesignProjectManager.ActiveDesignProject
+			mIpjPath = mIPJ.FullFileName
+			mFileInfo = New System.IO.FileInfo(ThisDoc.Document.FullFileName)
+			If InStr(mFileInfo.FullName, mCCPath.ToString) Then Return True
+			For Each mLibPath In mIPJ.LibraryPaths
+			    'check relative/absolute paths
+			    If mLibPath.Path.StartsWith(".\") Then
+			        mDirInfo = New System.IO.DirectoryInfo(mIPJ.FullFileName)
+			        mTmpPath = mDirInfo.Root.ToString & mDirInfo.Parent.ToString & mLibPath.Path.ToString.Replace(".\", "\")
+			    End If
+			    If mFileInfo.FullName.StartsWith(mTmpPath) Then Return True
+			Next
+		Catch
+			Logger.Error("Error in Function mCheckLibraries.")
+		End Try
+	Else
+		Logger.Info("File is not saved yet; readonly check skipped.")
+	End If
+End Function
+
+'Function to validate that the current file is editable.
+Function mFileReadOnly As Boolean
+	Dim mFileInfo As System.IO.FileInfo
+	'for new document, not saved yet the readonly check is not required
+	If (ThisDoc.Document.FileSaveCounter <> 0) Then
+	mFileInfo = New System.IO.FileInfo(ThisDoc.Document.FullFileName)	
+		Logger.Info(mFileInfo.DirectoryName)
+		If mFileInfo.IsReadOnly = False Then
+			Logger.Info("File " & ThisDoc.FileName & "  is Write Enabled")
+			Return False
+		Else
+			Logger.Warn("File " & ThisDoc.FileName & " is ReadOnly; rule " & " stops execution.")
+			Return True
+		End If
+	End If
+	Logger.Info("File is not saved yet; readonly check skipped.")
+End Function

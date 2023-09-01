@@ -19,7 +19,7 @@ Options allow to save iLogic logging per job.
 
 REQUIREMENTS:
 ---------------------------------
-Vault Workgroup, Vault Professional matching release. Note - The sample msi installer checks for Vault Professional !
+Vault Professional matching release.
 This job leverages the Vault Inventor Server component and does not require Inventor installation or Inventor license.
 The job is valid for any Vault configuration fulfilling these requirements:
 - Enforce Workingfolder = Enabled
@@ -29,7 +29,7 @@ The job is valid for any Vault configuration fulfilling these requirements:
 	- ThisApplication object being replaced by ThisServer
 	
 - To allow iLogic rules interacting with Vault during job execution requires the Job-Processor's log-in being re-used within the rule. Use the template VaultJobRuleConnected.iLogicVb to build your rule.
-	- the referenced iLogic-Vault Quickstart library is available on GitHub open source and in binary format; select the matching Vault release version.
+	- the referenced iLogic-VaultInventorServer library is part of this solution.
 
 TO CONFIGURE: (Note - Using the installer obsoletes step 1 and 6)
 ---------------------------------
@@ -58,6 +58,7 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
+2024.0.0.0 - updated for Vault Clinet / Job Processor 2024. NEW - the iLogic-VaultInventorServer library sample moved from the iLogic-Vault project into this solution.
 2023.0.1.x - updated for Vault Client / Job Processor 2023. New detailed restriction dialog info for non-Configuration Admins trying to access iLogic Configuration
 2022.3.0.0 - updated for Vault Client / Job Processor 2022.3
 2022.2.0.0 - new methods AddFile, GetVaultFileStatus and UpdateVaultFileProperties implemented

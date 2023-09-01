@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Autodesk.Connectivity.JobProcessor.Extensibility</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.Connectivity.JobProcessor.Extensibility.IJob">
+      <summary>A Job from from the queue.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.JobProcessor.Extensibility.IJobHandler">
+      <summary>The interface that Job Handlers must implement.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices">
+      <summary>Utilities for interfacing with the application.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJob.Description">
+      <summary>Gets the description of the job.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJob.Id">
+      <summary>Gets the unique ID.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJob.JobType">
+      <summary>Gets the job type.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJob.Params">
+      <summary>Gets the set of parameters on the job.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJob.Priority">
+      <summary>Gets the priority of the job. Lower number means higher priorty. 1 is the highest priority. Less than 1 is not allowed.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJob.VaultName">
+      <summary>Gets the Vault that the Job references.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobHandler.CanProcess(System.String)">
+      <summary>Called at Job Processor startup to determine whither or not a job of the specified type can be processed by the job handler on this particular machine.
+Implementations should check to see whether enabling software is installed.</summary>
+      <param>The job type.</param>
+      <returns>True if the handler can process the job. False if the handler cannot process the job.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobHandler.Execute(Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices,Autodesk.Connectivity.JobProcessor.Extensibility.IJob)">
+      <summary>The Execute method processes the job and returns success or failure</summary>
+      <param>The application context.The job to process.</param>
+      <returns>The outcome of the processing.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobHandler.OnJobProcessorShutdown(Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices)">
+      <summary>Called when the Job Processor is closing.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobHandler.OnJobProcessorSleep(Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices)">
+      <summary>Called when the Job Processor process is about to sleep.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobHandler.OnJobProcessorStartup(Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices)">
+      <summary>Called at Job Processor startup.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobHandler.OnJobProcessorWake(Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices)">
+      <summary>Called when the Job Processor process wakes from sleeping.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices.Log">
+      <summary>
+        <div style="BORDER-BOTTOM: #d0d0d0 1px; PADDING-BOTTOM: 2px; MARGIN-BOTTOM: 5px; COLOR: #a0a0a0; PADDING-TOP: 2px">
+    Logs a message.
+</div>
+      </summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices.ReportProgress(System.Int32)">
+      <summary>Lets the application know how close to completion the job is.</summary>
+      <param>How close to completion the job is.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices.Log(System.String,Autodesk.Connectivity.JobProcessor.Extensibility.MessageType)">
+      <summary>Logs a message.</summary>
+      <param>The message Text.Type type of message.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices.Log(System.Exception,System.String)">
+      <summary>Logs an exception.</summary>
+      <param>The exception to log.The message Text.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices.AllowRetry">
+      <summary>Gets / Sets if it's allowed to retry the job in case of failure.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices.Connection">
+      <summary>Gets a Connection object for communicating with the servers.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices.Errors">
+      <summary>Gets the list of all errors logged so far.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.IJobProcessorServices.InventorObject">
+      <summary>Gets an object which could be force cast to type Inventor.InventorServer and used like Inventor.Application. This object should be initialized and released by
+framework. Extension developer doesn't need to take care of that.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.JobProcessor.Extensibility.JobOutcome">
+      <summary>The outcome of the Job processing.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.JobProcessor.Extensibility.MessageType">
+      <summary>The type of logging message.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.JobProcessor.Extensibility.JobFrameworkException">
+      <summary>An exception to pass back to the application.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.JobProcessor.Extensibility.JobFrameworkException.#ctor(System.String,System.Boolean)">
+      <summary>Creates a new exception.</summary>
+      <param>A message describing the error.A flag describing permission to retry job.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.JobProcessor.Extensibility.JobFrameworkException.AllowRetry">
+      <summary>Property of permission to retry job</summary>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,398 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Autodesk.Connectivity.Explorer.Extensibility</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.IApplication">
+      <summary>This is the single top-level object which is passed to your Extension during events</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.ICommandContext">
+      <summary>Information about the command currently executing</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.IDetailTabContext">
+      <summary>Used by DetailPaneTab selection event handlers to interact with the application</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension">
+      <summary>Interface between Vault Explorer and command extension assemblies.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.ISelection">
+      <summary>Representation of a selected object in the Vault Explorer.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IApplication.CommandIds">
+      <summary>Gets the list of ids for commands that can be hidden</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IApplication.Connection">
+      <summary>Gets a connection to use for making calls to the Vault servers</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IApplication.Icon">
+      <summary>Gets the host's Icon for use in your own dialogs</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IApplication.Name">
+      <summary>Gets the name of the host application</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IApplication.TabPageIds">
+      <summary>Gets the tab ids that are replaceable</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IApplication.Title">
+      <summary>Gets the title (displayed in the main window title bar) of the host application</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IApplication.Version">
+      <summary>Gets the version of the host application</summary>
+    </member>
+    <member name="E:Autodesk.Connectivity.Explorer.Extensibility.IApplication.CommandBegin">
+      <summary>Registers event handler to be called on Command Begin.</summary>
+    </member>
+    <member name="E:Autodesk.Connectivity.Explorer.Extensibility.IApplication.CommandEnd">
+      <summary>Registers event handler to be called on Command End.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ICommandContext.Application">
+      <summary>Gets interface to the application object</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ICommandContext.CurrentSelectionSet">
+      <summary>Gets the collection of objects that make up the current Vault Explorer selection set</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ICommandContext.ForceRefresh">
+      <summary>Sets the value indicating if a refresh operation should be performed when the command ends. By default, the UI is not updated as doing so could be time
+consuming.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ICommandContext.GoToLocation">
+      <summary>Sets the value indicating where Vault Explorer should navigate to when the command ends. By default, the location does not change.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ICommandContext.NavSelectionSet">
+      <summary>Gets the items which are selcted in the navigation view (treeview at the left)</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ICommandContext.PreviewSelectionSet">
+      <summary>Gets the items which are selcted in the preview windows (bottom right pane)</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ICommandContext.ViewSelectionSet">
+      <summary>Gets the items which are selected in the list view (top right pane)</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IDetailTabContext.Refresh">
+      <summary>Gets the vault explorer UI. The behavior is the same as if the user pressed the F5 key.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IDetailTabContext.Application">
+      <summary>Gets the application object for the current session.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IDetailTabContext.NavSelectionSet">
+      <summary>Gets the items which are selcted in the navigation view (treeview at the left).</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IDetailTabContext.SelectedObject">
+      <summary>Gets the object that is currently selected. Returns null if no selection.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.IDetailTabContext.UserControl">
+      <summary>Gets the visible instance of the extension-provided user control type.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension.CommandSites">
+      <summary>Extension should create and return a list of CommandSite(s) imlpemented in the extension.</summary>
+      <returns>Collection of CommandSite objects to make available in Vault Explorer</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension.CustomEntityHandlers">
+      <summary>Extension should create and return a list of CustomEntityHandler(s) to override default commands for custom entity types.</summary>
+      <returns>Collection of CustomEntityHandler objects implementing override behavior for specific custom entity types.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension.DetailTabs">
+      <summary>Extension should create and return a list of DetailPaneTab(s) to be display custom tabs when vault objects are selected.</summary>
+      <returns>Collection of DetailPaneTab objects describing tabs implemented by the command extension</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension.HiddenCommands">
+      <summary>Extension should create and return a list of ids of commands to be hidden from the user. Command ids should be from the list returned by:
+IApplication.CommandIds</summary>
+      <returns>A list of ids of commands to be hidden from the user.</returns>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension.OnLogOff(Autodesk.Connectivity.Explorer.Extensibility.IApplication)">
+      <summary>This function is called when the user logs off and their security context is cleared.</summary>
+      <param>Information about the running application.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension.OnLogOn(Autodesk.Connectivity.Explorer.Extensibility.IApplication)">
+      <summary>This function is called when the user logs on and their security context is created.</summary>
+      <param>Information about the running application.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension.OnShutdown(Autodesk.Connectivity.Explorer.Extensibility.IApplication)">
+      <summary>OnShutdown() is called as the application begins to shutdown; shortly after the user selects "File/Exit".</summary>
+      <param>Information about the running application.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.IExplorerExtension.OnStartup(Autodesk.Connectivity.Explorer.Extensibility.IApplication)">
+      <summary>OnStartup() is called just before the user is given control for the first time. The "application" parameter can be used to add commands to the host
+application.</summary>
+      <param>Information about the running application.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ISelection.Id">
+      <summary>Gets an Id that can be used (along with the Web Service API) to get more information about the object.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ISelection.Label">
+      <summary>Gets a descriptive label for the object.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.ISelection.TypeId">
+      <summary>Gets a string that represents the Vault Explorer object type. Can be used to determine which service to use for processing of the object.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocationType">
+      <summary>The type of a command site location.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocationType.Toolbar">
+      <summary>Toolbar location.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.PaintStyle">
+      <summary>How a command item is presented in a toolbar</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.CommandBeginEventArgs">
+      <summary>Provides args to the CommandBegin event</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.CommandEndEventArgs">
+      <summary>Provides args to the CommandEnd event</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.CommandItem">
+      <summary>A CommandItem is the pull-right menu entry; CommandItems must be added to a CommandSite.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.CommandItemEventArgs">
+      <summary>The argument for the CommandItem.Execute event</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.CommandSite">
+      <summary>A command site is your top-level menu which is displayed in Vault Explorer's "Tools" menu. Individual commands are pull-rights off of this menu.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation">
+      <summary>Where a command site will be deployed in Vault Explorer</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.CustomEntityHandler">
+      <summary>A custom entity handler provides overrides for certian actions performed on a custom entity object.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab">
+      <summary>Describes a custom tab to be displayed in Vault Explorer</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.LocationContext">
+      <summary>LocationContext represents a location of a single entity within the Vault Explorer browser.</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.SelectionChangedEventArgs">
+      <summary>The argument for the DetailPaneTab.SelectionChanged event</summary>
+    </member>
+    <member name="T:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId">
+      <summary>The type of object that is selected.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandBeginEventArgs.CommandId">
+      <summary>Gets the Id of the Command to be executed</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandEndEventArgs.CommandId">
+      <summary>Gets the Id of the Command that was executed</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.#ctor(System.String,System.String)">
+      <summary>Creates a command item.</summary>
+      <param>Command-extension-supplied identifier. This id should be uniqueLabel presented to Vault Explorer users to identify the command</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.Description">
+      <summary>Gets or sets the descriptive text that displays for this command in a Customize dialog. It gives more detail about what the command does.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.Hint">
+      <summary>Gets or sets the text representing the tooltip contents for the command item</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.Id">
+      <summary>Gets the Guid for this CommandItem; each Guid must be unique</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.Image">
+      <summary>Gets or sets the image object to be used as the icon for this command. For best result provide a 32x32 image which still looks good when scaled down to 16x16.
+Having a transparent color is also suggested.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.Label">
+      <summary>Gets the text displayed in the menu</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.MultiSelectEnabled">
+      <summary>Gets or sets the value that enables multi-select. If true (the default), this command is enabled when multiple items are selected (subject to filtering by
+NavigationType). If false, this command is enabled only when a single item is selected.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.NavigationTypes">
+      <summary>Gets or sets the object types for which this command is available. If not specified, this command is always available.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.ToolbarPaintStyle">
+      <summary>Gets or sets the PaintStyle for this CommandItem when deployed on a toolbar.</summary>
+    </member>
+    <member name="E:Autodesk.Connectivity.Explorer.Extensibility.CommandItem.Execute">
+      <summary>The Execute event is fired when this command is activated; usually a result of the selecting this menu item.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandItemEventArgs.Context">
+      <summary>Gets information about the command currently executing.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.CommandSite.#ctor(System.String,System.String)">
+      <summary>Constructs a CommandSite object with the provided identifier and label</summary>
+      <param>A unique identifier for the site.The display text.</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.CommandSite.AddCommand(Autodesk.Connectivity.Explorer.Extensibility.CommandItem)">
+      <summary>Adds a command item to this command site</summary>
+      <param>CommandItem to add to this CommandSite</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSite.CommandItems">
+      <summary>Gets the commands contained in this command site.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSite.DeployAsPulldownMenu">
+      <summary>Gets or sets a boolean indicating whether this command site should appear as a pulldown menu when deployed to a toolbar.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSite.Id">
+      <summary>Gets the extension-supplied identifier associated with this command site.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSite.Label">
+      <summary>Gets the extension-supplied label associated with this command site.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSite.Location">
+      <summary>Gets or sets the CommandSiteLocation associated with this command site.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.#ctor(System.String,Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocationType)">
+      <summary>Creates a new CommandSiteLocation object.</summary>
+      <param>The name of the custom entity.The type of the command site location.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.EntityClassId">
+      <summary>Gets the entity class that this site is usually associated with. Value may be null.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.EntityClassSubType">
+      <summary>Gets the subtype, which, in the case of custom entities, has the system name of the entity definition. Value may be null.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.Name">
+      <summary>Gets the name of this location.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.Type">
+      <summary>Gets the type of site.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.ActionsMenu">
+      <summary>The top-level Actions menu.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.AdvancedToolbar">
+      <summary>The toolbar for advanced commands.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.BehaviorsToolbar">
+      <summary>The toolbar for commands related to Behaviors, such as lifecycle state and category.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.ChangeOrderContextMenu">
+      <summary>The Change Order context menu.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.CollaborateToolbar">
+      <summary>The toolbar for collaborate commands.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.EditMenu">
+      <summary>The top-level Edit menu.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.FileContextMenu">
+      <summary>The File context menu.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.FileMenu">
+      <summary>The top-level File menu.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.FolderContextMenu">
+      <summary>The Folder context menu.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.HelpMenu">
+      <summary>The top-level Help menu.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.ItemBomToolbar">
+      <summary>The toolbar for Item BOM commands.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.ItemContextMenu">
+      <summary>The Item context menu.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.StandardToolbar">
+      <summary>The toolbar for standard commands.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CommandSiteLocation.ToolsMenu">
+      <summary>The top-level Tools menu.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.CustomEntityHandler.#ctor(System.String)">
+      <summary>Creates a new handler for operations on entities of a specific custom type.</summary>
+      <param>The system name of the custom entity definition.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CustomEntityHandler.SupportsAdd">
+      <summary>Gets a value that tells if the handler supports a custom Add command.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.CustomEntityHandler.SupportsDelete">
+      <summary>Gets a value that tells if the handler supports a custom Delete command.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CustomEntityHandler.EntityTypeName">
+      <summary>Gets or sets name of the custom entity type.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.CustomEntityHandler.HideDefaultTabViews">
+      <summary>Gets or sets a value that indicates if default tab views should be hidden.</summary>
+    </member>
+    <member name="E:Autodesk.Connectivity.Explorer.Extensibility.CustomEntityHandler.AddCustomEntity">
+      <summary>The AddCustomEntity event is fired when the default New command for this custom entity type.</summary>
+    </member>
+    <member name="E:Autodesk.Connectivity.Explorer.Extensibility.CustomEntityHandler.DeleteCustomEntity">
+      <summary>The AddCustomEntity event is fired when the default Delete command for this custom entity type.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab.#ctor(System.String,System.String,Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId,System.Type)">
+      <summary>Creates a DetailPaneTab object</summary>
+      <param>Extension-supplied tab identifier. This id should be uniqueLabel presented to Vault Explorer users in the tab headerThe selection context determines when the tab is displayed.Type of UserControl-derived control for display in the tab</param>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab.SendSelectionChanged(Autodesk.Connectivity.Explorer.Extensibility.IDetailTabContext)">
+      <summary>Fires the SelectionChanged event. This is the method called when the user changes a selection while the tab is visible, or the tab is made newly visible.</summary>
+      <param>Tab context object</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab.Id">
+      <summary>Gets the extension-supplied id of this tab</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab.Label">
+      <summary>Gets the label of this tab</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab.Replaces">
+      <summary>Gets or sets the DetailPaneTabId of the tab to be replaced by this tab</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab.SelectionTypeId">
+      <summary>Gets the container that this tab is displayed in.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab.UserControlType">
+      <summary>Gets the extension-supplied user control type</summary>
+    </member>
+    <member name="E:Autodesk.Connectivity.Explorer.Extensibility.DetailPaneTab.SelectionChanged">
+      <summary>This event is triggerred when the selection changes.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.LocationContext.#ctor(Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId,System.String)">
+      <summary>Creates a reference to a location within Vault Explorer.</summary>
+      <param>The selection type.The unique name of the entity that the context points to. This value must be the full file path, the full folder path, the item number, the change order
+number, or the custom entity number.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.LocationContext.FullName">
+      <summary>The unique name of the entity that the context points to.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.LocationContext.SelectionTypeId">
+      <summary>The entitiy class that the context points to.</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.SelectionChangedEventArgs.#ctor(Autodesk.Connectivity.Explorer.Extensibility.IDetailTabContext)">
+      <summary>Creates SelectionChangedEventArgs object</summary>
+      <param>Current tab context</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.SelectionChangedEventArgs.Context">
+      <summary>Gets the detail pane tab context</summary>
+    </member>
+    <member name="M:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.#ctor(System.String)">
+      <summary>Constructs a selection type ID for a custom entity type.</summary>
+      <param>The system name of the custom entity definition.</param>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.EntityClassId">
+      <summary>Gets the entity class associated with this type.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.EntityClassSubType">
+      <summary>Gets the subtype, which, in the case of custom entities, has the system name of the entity definition.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.SelectionContext">
+      <summary>Gets the context of the selection.</summary>
+    </member>
+    <member name="P:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.SupportsTabViews">
+      <summary>Gets the value indicating if custom tab views can be used with this selection type.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.Bom">
+      <summary>A selection of an Item in a BOM.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.ChangeOrder">
+      <summary>A Change Order selection.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.File">
+      <summary>A File Master (version independent) selection.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.FileVersion">
+      <summary>A selection for a specific version of a File.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.Folder">
+      <summary>A Folder selection.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.Item">
+      <summary>A generic Item selection.</summary>
+    </member>
+    <member name="F:Autodesk.Connectivity.Explorer.Extensibility.SelectionTypeId.Other">
+      <summary>An unknown or unsupported selection.</summary>
+    </member>
+  </members>
+</doc>

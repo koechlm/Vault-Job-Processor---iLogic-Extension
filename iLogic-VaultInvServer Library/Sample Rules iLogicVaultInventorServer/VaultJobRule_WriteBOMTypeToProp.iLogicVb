@@ -1,0 +1,114 @@
+﻿Sub Main
+	Dim ex As Exception
+	
+	'do some pre-checks to ensure that the rules execution is possible	
+	Try
+		If mCheckLibraries  = True Then Exit Sub 'the rule can't apply changes to content center or library files
+		If mFileReadOnly = True Then
+			Logger.Error("The file is readonly. Run this rule only in context of files checked out before by the Vault job calling this rule. Exception thrown.")
+			Throw ex
+		End If
+	Catch
+	End Try
+	
+	Try
+		Dim oDoc As Inventor.Document
+		Dim oAssyDoc As Inventor.AssemblyDocument
+		Dim oPartDoc As Inventor.PartDocument
+		Dim oCompDef As Inventor.ComponentDefinition
+		Dim oAssyCompDef As Inventor.AssemblyComponentDefinition
+		Dim oPartCompDef As Inventor.PartComponentDefinition
+		Dim oBomType As Inventor.BOMStructureEnum
+		
+		Try
+			oDoc = ThisDoc.Document
+			If oDoc.DocumentType = kAssemblyDocumentObject Then			
+				oAssyDoc = oDoc
+				oAssyCompDef = oAssyDoc.ComponentDefinition
+				oBomType = oAssyCompDef.BOMStructure
+			End If
+			If oDoc.DocumentType = kPartDocumentObject Then
+				oPartDoc = oDoc
+				oPartCompDef = oDoc.ComponentDefinition
+				oBomType = oPartCompDef.BOMStructure
+			End If
+		Catch
+			Logger.Error("File: " + ThisDoc.FileName + " Error in Rule BOMTypeToProp reading the BOM Type; likely, that the component requires update, e.g. Screw Connection?. Exception thrown.")
+			Throw ex
+		End Try
+		
+		Select Case oBomType.value__.ToString
+		Case "51970"
+			Logger.Info(ThisDoc.FileName + " defines BomType: Normal.")
+			iProperties.Value("Custom", "BOMType") = "Normal"
+		Case "51974"
+			Logger.Info(ThisDoc.FileName + " defines BomType: Inseparable.")
+			iProperties.Value("Custom", "BOMType") = "Inseparable"
+		Case "51973"
+			Logger.Info(ThisDoc.FileName + " defines BomType: Purchased.")
+			iProperties.Value("Custom", "BOMType") = "Purchased"
+		Case "51972"
+			Logger.Info(ThisDoc.FileName + " defines BomType: Reference.")
+			iProperties.Value("Custom", "BOMType") = "Reference"
+		Case "51971"
+			Logger.Info(ThisDoc.FileName + " defines BomType: Phantom.")
+			iProperties.Value("Custom", "BOMType") = "Phantom"		
+		End Select
+	Catch
+		Logger.Error("File: " + ThisDoc.FileName + " Error in Rule BOMTypeToProp writing the BOM Type to Custom Prop. Exception thrown.")
+		Throw ex
+	End Try
+
+End Sub
+
+'function to validate that current file is not a Content Center or user Library file
+Function mCheckLibraries() As Boolean
+	
+	Dim mDirInfo As System.IO.DirectoryInfo
+	Dim mLibPath As Inventor.ProjectPath
+	Dim mTmpPath As String
+	Dim mCCPath As String 
+	Dim mIPJ As Inventor.DesignProject
+	Dim mIpjPath As String
+	
+	If (ThisDoc.Document.FileSaveCounter <> 0) Then
+		Try
+			mCCPath = ThisServer.DesignProjectManager.ActiveDesignProject.ContentCenterPath
+			mIPJ = ThisServer.DesignProjectManager.ActiveDesignProject
+			mIpjPath = mIPJ.FullFileName
+			mFileInfo = New System.IO.FileInfo(ThisDoc.Document.FullFileName)
+			If InStr(mFileInfo.FullName, mCCPath.ToString) Then Return True
+			For Each mLibPath In mIPJ.LibraryPaths
+			    'check relative/absolute paths
+			    If mLibPath.Path.StartsWith(".\") Then
+			        mDirInfo = New System.IO.DirectoryInfo(mIPJ.FullFileName)
+			        mTmpPath = mDirInfo.Root.ToString & mDirInfo.Parent.ToString & mLibPath.Path.ToString.Replace(".\", "\")
+			    End If
+			    If mFileInfo.FullName.StartsWith(mTmpPath) Then Return True
+			Next
+		Catch
+			Logger.Debug("Error in Function mCheckLibraries.")
+		End Try
+	Else
+		Logger.Info("File is not saved yet; readonly check skipped.")
+	End If
+End Function
+
+'Function to validate that the current file is editable.
+Function mFileReadOnly As Boolean
+	Dim mFileInfo As System.IO.FileInfo
+	'for new document, not saved yet the readonly check is not required
+	If (ThisDoc.Document.FileSaveCounter <> 0) Then
+	mFileInfo = New System.IO.FileInfo(ThisDoc.Document.FullFileName)	
+		Logger.Info(mFileInfo.DirectoryName)
+		If mFileInfo.IsReadOnly = False Then
+			Logger.Info("File " & ThisDoc.FileName & "  is Write Enabled")
+			Return False
+		Else
+			Logger.Warn("File " & ThisDoc.FileName & " is ReadOnly; rule " & " stops execution.")
+			Return True
+		End If
+	End If
+	Logger.Info("File is not saved yet; readonly check skipped.")
+End Function
+	

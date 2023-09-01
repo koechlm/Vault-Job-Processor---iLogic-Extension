@@ -1,0 +1,64 @@
+﻿AddReference "iLogicVaultInventorServerSample.dll"
+AddReference "Autodesk.Connectivity.WebServices.dll"
+AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
+'DISCLAIMER:
+'---------------------------------
+'In any case, code, templates, and snippets of this solution are of "work in progress" character.
+'Neither Markus Koechl, nor Autodesk represents that these samples are reliable, accurate, complete, or otherwise valid. 
+'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
+
+Sub Main()
+
+	break 'prepared for step by step debugging
+	'to enable iLogicVault commands reuse the job processor's user connection
+	Dim iLogicVault As New iLogicVaultInventorServerSample.iLogicVltInvSrvLibrary
+	Dim LoggedIn As Boolean
+	Dim FileStateName As String
+
+	dbServer = RuleArguments("ServerName")
+		fServer = RuleArguments("ServerName")
+		vltName = RuleArguments("VaultName")
+		userId = RuleArguments("UserId")
+		SessionId = RuleArguments("SessionId")
+		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, SessionId)
+		If LoggedIn = False Then
+			Dim ex As New Exception
+			Logger.Error("Rule could not re-use Job Processor's Vault Login.")
+			Throw ex
+			Exit Sub
+		End If
+		FileStateName = RuleArguments("File.State (Historical)")
+
+
+		'some insights on the job's iLogic settings
+		Logger.Info("----------------------- this job's iLogic settings ------------------------------------")
+	For Each mDir As String In iLogicVb.Automation.FileOptions.ExternalRuleDirectories
+		Logger.Info("iLogic External Rule Directories: " & mDir)
+	Next
+	Logger.Info("iLogic Addin DLLs Directory: " & iLogicVb.Automation.FileOptions.AddinDirectory)
+	Logger.Info("iLogic Loglevel set by Vault Job: " & iLogicVb.Automation.LogControl.Level)
+	Logger.Info("--------------------------------------------------------------------------------------------")
+
+	'insights on rule arguments that optionally may publish all Vault properties of the processed file
+	Logger.Info("----------------------- Rule Arguments published by Vault Job ----------------")
+	Dim mArgs As NameValueMap = RuleArguments.Arguments
+	If mArgs.Count > 0 Then
+		For i = 1 To mArgs.Count
+			Logger.Info(mArgs.Name(i) & ": " & mArgs.Value(mArgs.Name(i)))
+		Next
+	End If
+	Logger.Info("--------------------------------------------------------------------------------------------")
+
+	'Note - Vault Inventor Server uses a subset of the Inventor API. Use the Inventor Server object istead of Inventor Application.
+	Dim mInvSrv As InventorServer = ThisServer
+
+	'access the active document like you do in Inventor application rules
+	Dim oDoc As Document = ThisDoc.Document
+
+	'use known iLogic syntax and snippets in job processor rules like you do in Inventor application rules
+	iProperties.Value("Custom", "DateTimeStamp") = "JobProcessorTestRuleSuccess: " & DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
+
+End Sub
+
+
+

@@ -1,0 +1,83 @@
+﻿AddReference "iLogicVaultInventorServerSample.dll"
+AddReference "Autodesk.Connectivity.WebServices.dll"
+AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
+Sub Main
+	break
+	Dim ex As Exception
+
+	'the rule applies to part and assembly files only
+	If ThisDoc.Document.DocumentType <> Inventor.DocumentTypeEnum.kAssemblyDocumentObject And ThisDoc.Document.DocumentType <> Inventor.DocumentTypeEnum.kPartDocumentObject Then
+		Logger.Info("Rule iLogicVault_AddFileAndAttach applies to part and assembly documents only. Exited without action.")
+		Return
+	End If
+
+	'create camera object; note InventorServer does not provide document views
+	Dim camera As Inventor.Camera = ThisServer.TransientObjects.CreateCamera
+	camera.SceneObject = ThisDoc.Document.ComponentDefinition
+	'position the camera
+	camera.ViewOrientationType = Inventor.ViewOrientationTypeEnum.kIsoTopRightViewOrientation
+	camera.Fit()
+	camera.ApplyWithoutTransition()
+
+	Dim topClr As Color
+	topClr = ThisServer.TransientObjects.CreateColor(255, 255, 255)
+	Dim bottomClr As Color
+	bottomClr = ThisServer.TransientObjects.CreateColor(255, 255, 255)
+
+	'derive file name from source
+	Dim bitmapName As String = ThisDoc.ChangeExtension(".png")
+
+	'clean local working folder; existing files in Vault update a new iteration
+	success = mCleanWfFile(bitmapName)
+	If success = True Then
+		'save the image file
+		camera.SaveAsBitmap(bitmapName, 1280, 768, topClr, bottomClr)
+
+		'get the job processor's Vault connection (note - this is different from Inventor Application)
+		Dim iLogicVault As New iLogicVaultInventorServerSample.iLogicVltInvSrvLibrary
+		Dim LoggedIn As Boolean
+		Dim FileState As String
+		Try
+			dbServer = RuleArguments("ServerName")
+			fServer = RuleArguments("ServerName")
+			vltName = RuleArguments("VaultName")
+			userId = RuleArguments("UserId")
+			SessionId = RuleArguments("SessionId")
+			LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, SessionId)
+		Catch
+			Logger.Error("Failed Reading Rule Arguments.")
+			Throw ex
+		End Try
+
+		If LoggedIn = False
+			Logger.Error("Rule could not re-use Job Processor's Vault Login.")
+			Throw ex
+		End If
+
+		'upload file as new or incremental file iteration
+		Dim mVaultPath As String = iLogicVault.ConvertLocalPathToVaultPath(bitmapName)
+		success = iLogicVault.AddFile(bitmapName, mVaultPath, True)
+		If (success <> True)
+			Logger.Error("Failed to add/update image file to Vault")
+			Throw ex
+		End If
+	End If
+
+End Sub
+
+Private Function mCleanWfFile(mFile As String) As Boolean
+	'Delete existing file to avoid overwrite restrictions
+	Dim oFileInfo As New System.IO.FileInfo(mFile)
+	Try
+		If oFileInfo.Exists = True Then
+			If (oFileInfo.Attributes) Then
+				oFileInfo.Attributes = (oFileInfo.Attributes And Not oFileInfo.Attributes.ReadOnly)
+				System.IO.File.Delete(mFile)
+			End If
+		End If
+		Return True
+	Catch
+		Return False
+	End Try
+End Function
+

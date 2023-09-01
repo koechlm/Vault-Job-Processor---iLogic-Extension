@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Version>1</Version>
+  <Snippets>
+    <CodeSnippet>
+      <Category>iLogicVaultInventorServer</Category>
+      <Name>iLogic-VaultInventorServer Header</Name>
+      <ToolTip>Add required references</ToolTip>
+      <Index>6001</Index>
+      <Code>
+        <![CDATA[AddReference "iLogicVaultInventorServerSample.dll"
+AddReference "Autodesk.Connectivity.WebServices.dll"
+AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
+]]>
+      </Code>
+    </CodeSnippet>
+    <CodeSnippet>
+      <Category>iLogicVaultInventorServer</Category>
+      <Name>Re-Use Job Processor Connection</Name>
+      <ToolTip>get the job processor's Vault connection (note - this is different from Inventor Application)</ToolTip>
+      <Index>6002</Index>
+      <Code>
+        <![CDATA[	'get the job processor's Vault connection (note - this is different from Inventor Application)
+	Dim ex as Exception
+	Dim iLogicVault As New iLogicVaultInventorServerSample.iLogicVltInvSrvLibrary
+	Dim LoggedIn As Boolean
+	Dim FileState As String
+	Try
+		dbServer = RuleArguments("ServerName")
+		fServer = RuleArguments("ServerName")
+		vltName = RuleArguments("VaultName")
+		userId = RuleArguments("UserId")
+		SessionId = RuleArguments("SessionId")
+		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, SessionId)
+		If LoggedIn = False Then
+			Logger.Error("Rule could not re-use Job Processor's Vault Login.")
+			Throw ex
+		End If
+	Catch
+		Logger.Error("Failed Reading Rule Arguments.")
+		Throw ex
+	End Try
+
+]]>
+      </Code>
+    </CodeSnippet>
+    <CodeSnippet>
+      <Category>iLogicVaultInventorServer</Category>
+      <Name>Get Vault File by FullFilePath</Name>
+      <ToolTip>
+        Downloads Vault file Using full File Path, e.g. "$/Designs/Base.ipt". Returns full File name In local working folder (download enforces override, If local File exists),
+        Preset Options: Download Children (recursively) = Enabled, Enforce Overwrite = True'
+        Optionally check-out the file; preset: check-out = false
+      </ToolTip>
+      <Index>6003</Index>
+      <Code>
+        <![CDATA[Dim mVaultFile As String = iLogicVault.GetFileByFullFilePath("$/") 'add ..., True) to enable check-out of downloaded file.
+If mVaultFile Is Nothing Then
+	Logger.Error("Vault file not found - Please double check that file exists in Vault.")
+	ElseIf mVaultFile.Count > 0 Then
+		''add next action using the downloaded file here, e.g. Component.Replace("Part1:1", mVaultFile, True)
+		
+End If]]>
+      </Code>
+    </CodeSnippet>
+    <CodeSnippet>
+      <Category>iLogicVaultInventorServer</Category>
+      <Name>Get Vault File by Search</Name>
+      <ToolTip>Search Vault file using 1 to n property/value pairs; returns full local file name in working folder</ToolTip>
+      <Index>6004</Index>
+      <Code>
+        <![CDATA['Build one to many name/value pairs of Property/Value as search criteria
+	Dim mSearchParams As New System.Collections.Generic.Dictionary(Of String, String) 'add UDP.DisplayName, Value Pairs
+	mSearchParams.Add("Part Number", "001002")
+	mSearchParams.Add("Title", "Back Side Cover")
+	'...add as many as required to enable a unique search result
+
+	'returns full file name in local working folder (download enforces override, if local file exists)
+	mVaultFile = iLogicVault.GetFileBySearchCriteria(mSearchParams, True, False)
+
+	If mVaultFile Is Nothing Then
+		Logger.Error("Vault file search: File not found - Please double check that file can be found with search criteria applied.")
+	Else
+		Logger.Info("File " & mVaultFile & " found by search and downloaded to local workspace.")
+		'add next action using the downloaded file here, e.g. Component.Replace("Part1:1", mVaultFile, True)
+	End If]]>
+      </Code>
+    </CodeSnippet>
+    <CodeSnippet>
+      <Category>iLogicVaultInventorServer</Category>
+      <Name>Check Vault File(s) Exist by Search</Name>
+      <ToolTip>Search Vault files using 1 to n property/value pairs; returns list of file names and shares logger info</ToolTip>
+      <Index>6005</Index>
+      <Code>
+        <![CDATA['Build one to many name/value pairs of Property/Value as search criteria;
+Dim mSearchParams As New System.Collections.Generic.Dictionary(Of String, String) 'add UDP.DisplayName, Value Pairs
+mSearchParams.Add("Part Number", "001003")
+mSearchParams.Add("Title", "Back Side Cover")
+'...add as many as required to enable a unique search result
+
+Dim mVaultFiles As List(Of String)
+mVaultFiles = iLogicVault.CheckFilesExistBySearchCriteria(mSearchParams, False) 'returns file name(s)
+If mVaultFiles Is Nothing Then
+	Logger.Error("The file(s) searched was(were) not found. Please double check that the search criteria's relevance.") 
+ElseIf mVaultFiles.Count > 0 Then
+	Dim mFileList As String
+	For Each mFile As String In mVaultFiles
+		mFileList += mFile & vbCr
+	Next
+	Logger.Info("iLogic-Vault file search found: " & mFileList)
+End If]]>
+      </Code>
+    </CodeSnippet>
+    <CodeSnippet>
+      <Category>iLogicVaultInventorServer</Category>
+      <Name>Get Thumbnail from Vault by Search as Image File</Name>
+      <ToolTip>Searches for a source file to extract the thumbnail of and downloads it as JPG file</ToolTip>
+      <Index>6006</Index>
+      <Code>
+        <![CDATA['Build one to many name/value pairs of Property/Value as search criteria
+Dim mSearchParams As New System.Collections.Generic.Dictionary(Of String, String) 'add UDP.DisplayName, Value Pairs
+mSearchParams.Add("Part Number", "001002")	'applies to file 001002.ipt
+mSearchParams.Add("Title", "Back Side Cover") 	'applies to file 001002.ipt and to file 001068.iam
+'...add as many as required to enable a unique search result
+
+Dim mImageFile As String = iLogicVault.GetThumbnailFileBySearchCriteria(mSearchParams, True)
+If mImageFile Is Nothing Then
+	Logger.Error("Could not convert thumbnail to image file - Please double check that file exists in Vault including a thumbnail.")
+Else
+		''add next action using the downloaded file here...
+		
+End If]]>
+      </Code>
+    </CodeSnippet>
+    <CodeSnippet>
+      <Category>iLogicVaultInventorServer</Category>
+      <Name>Get Thumbnail from Vault by Full File Path as Image File</Name>
+      <ToolTip>Extracts thumbnail from source file and downloads it as JPG file</ToolTip>
+      <Index>6007</Index>
+      <Code>
+        <![CDATA[Dim mImageFile As String = iLogicVault.GetThumbnailFileByFullSourceFilePath("$/Designs/Inventor Sample Data/Fishing Rod Model/001002.ipt", 254, 254)
+If mImageFile Is Nothing Then
+	Logger.Error("Could not convert thumbnail to image file - Please double check that file exists in Vault including a thumbnail.")
+Else
+	''add next action using the downloaded file here...
+
+End If]]>
+      </Code>
+    </CodeSnippet>
+  </Snippets>
+</CodeSnippets>

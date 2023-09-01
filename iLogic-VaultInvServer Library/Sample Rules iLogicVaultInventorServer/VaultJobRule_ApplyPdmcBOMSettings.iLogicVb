@@ -1,0 +1,75 @@
+﻿AddReference "iLogicVaultInventorServerSample.dll"
+AddReference "Autodesk.Connectivity.WebServices.dll"
+AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
+'DISCLAIMER:
+'---------------------------------
+'In any case, code, templates, and snippets of this solution are of "work in progress" character.
+'Neither Markus Koechl, nor Autodesk represents that these samples are reliable, accurate, complete, or otherwise valid. 
+'Accordingly, those configuration samples are provided “as is” with no warranty of any kind and you use the applications at your own risk.
+
+Sub Main
+	break 'step debugging using Visual Studio
+	
+	'don't run rules for AnyCAD components.
+	If ThisDoc.Document.FullFileName.Contains("*LocalDocs*") = True Then
+		Exit Sub
+	End If
+
+	Dim oAssyDoc As Inventor.AssemblyDocument
+	Dim oAssyCompDef As Inventor.AssemblyComponentDefinition
+	Dim oBom As Inventor.BOM
+	Dim oBomView As Inventor.BOMView
+	Dim oBomRow As Inventor.BOMRow
+
+
+	oDoc = ThisDoc.Document
+	If oDoc.DocumentType = kAssemblyDocumentObject Then
+		oAssyDoc = oDoc
+		oAssyCompDef = oAssyDoc.ComponentDefinition
+	End If
+	oBom = oAssyCompDef.BOM
+	oBom.StructuredViewEnabled = True
+	oBom.StructuredViewFirstLevelOnly = False
+
+	'get the job processor's Vault connection (note - this is different from Inventor Application)
+	Dim ex As Exception
+	Dim iLogicVault As New iLogicVaultInventorServerSample.iLogicVltInvSrvLibrary
+	Dim LoggedIn As Boolean
+	Dim FileState As String
+	Try
+		dbServer = RuleArguments("ServerName")
+		fServer = RuleArguments("ServerName")
+		vltName = RuleArguments("VaultName")
+		userId = RuleArguments("UserId")
+		SessionId = RuleArguments("SessionId")
+		LoggedIn = iLogicVault.ReuseConnection(dbServer, fServer, vltName, userId, SessionId)
+		If LoggedIn = False
+			Logger.Error("Rule could not re-use Job Processor's Vault Login.")
+			Throw ex
+		End If
+	Catch ex
+		Logger.Error("Failed Reading Rule Arguments.")
+		Throw ex
+	End Try
+
+
+
+	Dim mInvBomSettings As String = iLogicVault.GetFileByFullFilePath("$/Templates/Settings/InventorBomSettingsPDMC-Sample.xml")
+	If mInvBomSettings Is Nothing Then
+		Logger.Error("Vaulted BOM settings file not found - Please double check that file exists in Vault.")
+		Throw ex
+	End If
+
+	Try
+		oBom.ImportBOMCustomization(mInvBomSettings)
+
+		oBomView = oBom.BOMViews.Item("Structured")
+		For Each oBomRow In oBomView.BOMRows
+			oBomRow.ItemNumberLocked = True
+		Next
+
+	Catch ex
+		Logger.Error("Something went wrong while enabling BOM Structured View.")
+		Throw ex 'for Job Processing: the rule should not return success in case of failure
+	End Try
+End Sub

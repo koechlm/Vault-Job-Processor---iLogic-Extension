@@ -1,0 +1,258 @@
+﻿Sub Main
+	'Vault job processed rules should return -1 in case of errors. Throw exceptions on errors to achieve.
+	Dim ex As Exception
+	
+	'do some pre-checks to ensure that the rules execution is possible
+	Try
+		'If mCheckLibraries  = True Then Exit Sub 'the rule can't apply changes to content center or library files
+		If mFileReadOnly = True Then 
+			Logger.Error("The file is readonly. Run this rule only in context of files checked out before by the Vault job calling this rule. Exception thrown.")
+			Throw ex
+		End If
+	Catch
+	End Try
+	
+		Dim oDoc As Inventor.Document
+		Dim oAssyDoc As Inventor.AssemblyDocument
+		Dim oPartDoc As Inventor.PartDocument
+		Dim oCompDef As Inventor.ComponentDefinition
+		Dim oAssyCompDef As Inventor.AssemblyComponentDefinition
+		Dim oPartCompDef As Inventor.PartComponentDefinition
+		Dim oBomType As Inventor.BOMStructureEnum
+		Dim oFlatExtent As Boolean = False
+		oDoc = ThisDoc.Document
+		
+	'Region "BOMType"	
+	Try
+		Try		
+			If oDoc.DocumentType = kAssemblyDocumentObject Then			
+				oAssyDoc = oDoc
+				oAssyCompDef = oAssyDoc.ComponentDefinition
+				oBomType = oAssyCompDef.BOMStructure
+			End If
+			If oDoc.DocumentType = kPartDocumentObject Then
+				oPartDoc = oDoc
+				oPartCompDef = oDoc.ComponentDefinition
+				oBomType = oPartCompDef.BOMStructure
+			End If
+		Catch
+			Logger.Error("File: " + ThisDoc.FileName + " Error in Rule BOMTypeToProp reading the BOM Type; likely, that the component requires update, e.g. Screw Connection?")
+			Throw ex
+		End Try
+		
+		Select Case oBomType.value__.ToString
+		Case "51970"
+			'Logger.Info(ThisDoc.FileName + " defines BomType: Normal.")
+			iProperties.Value("Custom", "BOMType") = "Normal"
+		Case "51974"
+			'Logger.Info(ThisDoc.FileName + " defines BomType: Inseparable.")
+			iProperties.Value("Custom", "BOMType") = "Inseparable"
+		Case "51973"
+			'Logger.Info(ThisDoc.FileName + " defines BomType: Purchased.")
+			iProperties.Value("Custom", "BOMType") = "Purchased"
+		Case "51972"
+			'Logger.Info(ThisDoc.FileName + " defines BomType: Reference.")
+			iProperties.Value("Custom", "BOMType") = "Reference"
+		Case "51971"
+			'Logger.Info(ThisDoc.FileName + " defines BomType: Phantom.")
+			iProperties.Value("Custom", "BOMType") = "Phantom"		
+		End Select
+	Catch
+		Logger.Error("File: " + ThisDoc.FileName + " Error in Rule BOMTypeToProp writing the BOM Type to Custom Prop. Exception thrown.")
+		Throw ex
+	End Try
+	'End Region
+	
+	'Region "Dimensions"
+	Try	
+		'set the length units string
+		Units = oDoc.UnitsOfMeasure.LengthUnits
+		Select Case Units
+		Case 11269
+			UnitString = "mm"
+		Case 11268
+			UnitString = "cm"
+		Case 11270
+			UnitString = "m"
+		Case 11272
+			UnitString = "in"
+		Case 11273
+			UnitString = "ft"
+		End Select
+		iProperties.Value("Custom", "Unit of Measure") = UnitString
+
+		If oDoc.DocumentType = kPartDocumentObject Then
+		    oPartDoc = oDoc
+			If oPartDoc.SubType = "{9C464203-9BAE-11D3-8BAD-0060B0CE6BB4}" Then 'sheet metal part
+					oCompDef = oPartDoc.ComponentDefinition
+					If oCompDef.HasFlatPattern = True Then
+						oFlatExtent = True
+					End If
+					If oFlatExtent = False Then
+						L = Round(Measure.ExtentsLength,1)
+						W = Round(Measure.ExtentsWidth, 1)
+						H = Round(Measure.ExtentsHeight, 1)
+						iProperties.Value("Custom", "Dimensions") = W & "x" & H & "x" & L & " " & UnitString
+						Exit Sub
+					Else 'no flat pattern
+						L = Round(SheetMetal.FlatExtentsLength, 1)
+						W = Round(SheetMetal.FlatExtentsWidth, 1)
+						iProperties.Value("Custom", "G_L") = W & "x" & L & " " & UnitString
+						iProperties.Value("Custom", "Thickness") = oCompDef.Thickness.Expression
+						'cross section unfolded model
+						L = Round(Measure.ExtentsLength,1)
+						W = Round(Measure.ExtentsWidth, 1)
+						H = Round(Measure.ExtentsHeight, 1)
+						iProperties.Value("Custom", "Dimensions") = W & "x" & H & "x" & L & " " & UnitString
+						Exit Sub
+					End If 'flat pattern
+			End If 'sheet metal part
+			
+			'check that default parameters beside G_L are used
+			'round bars, shafts
+			Try
+				If (Parameter("G_D") <> 0 And Parameter("G_L") <> 0) Then
+					Dia = Round(Parameter("G_D"), 1)
+					L = Round(Parameter("G_L"),1)
+					iProperties.Value("Custom", "Dimensions") = Dia & "x" & L & " " & UnitString
+					Exit Sub
+				End If
+			Catch
+			'Logger.Info("Could not retrieve parameters for round bar dimensions")	
+			End Try 
+			'other square or rectangle shaped components
+			Try
+				If (Parameter("G_W") <> 0 And Parameter("G_H") And Parameter("G_L") <> 0) Then
+					W = Round(Parameter("G_W"), 1)
+					H = Round(Parameter("G_H"), 1)
+					L = Round(Parameter("G_L"),1)
+					iProperties.Value("Custom", "Dimensions") = W & "x" & H & "x" & L & " " & UnitString
+					Exit Sub
+				End If
+			Catch
+				'Logger.Info("Could not retrieve parameters for square/rectangle bar dimensions")	
+			End Try
+		End If 'part document
+
+		'all others and assembly documents
+		L = Round(Measure.ExtentsLength,1)
+		W = Round(Measure.ExtentsWidth, 1)
+		H = Round(Measure.ExtentsHeight, 1)
+		iProperties.Value("Custom", "Dimensions") = W & "x" & H & "x" & L & " " & UnitString
+
+	Catch
+		Logger.Error("Error retrieving Custom Parameter 'Dimensions'! Exception thrown.")
+		Throw ex
+	End Try
+	'End Region
+	
+	'Region "phys.properties"
+	Try
+		If oDoc.DocumentType = kPartDocumentObject Then
+			oPartDoc = oDoc
+			If oPartDoc.SubType = "{9C464203-9BAE-11D3-8BAD-0060B0CE6BB4}" Then
+				oCompDef = oPartDoc.ComponentDefinition
+				oSheetMetal = True
+				If oCompDef.HasFlatPattern = True Then
+					oFlatExtent = True
+				End If
+			End If
+		End If
+		If oDoc.DocumentType = kAssemblyDocumentObject Then
+			oAssyDoc = oDoc
+			If oAssyDoc.SubType = "{28EC8354-9024-440F-A8A2-0E0E55D635B0}" Then
+				oCompDef = oAssyDoc.ComponentDefinition
+				If oCompDef.WeldBeadMaterial.DisplayName <> "" Then
+					oWeldment = True
+				End If
+			End If
+		End If
+		
+		'set the length units string
+		Units = oDoc.UnitsOfMeasure.MassUnits
+		Select Case Units
+		Case 11284
+			UnitString = "g"
+		Case 11283
+			UnitString = "kg"
+		Case 11286
+			UnitString = "lb"
+		Case 11287
+			UnitString = "oz"
+		End Select
+		
+		iProperties.Value("Custom", "Mass") = Round(iProperties.Mass,3) & " " & UnitString
+		If oSheetMetal = True Then
+			'Logger.Info("Sheet Metal Part, save SM Style for PDM raw material info ")
+			If iProperties.Value("Project", "Stock Number").Length = 0 Then
+				iProperties.Value("Custom", "Semi finished") = SheetMetal.GetActiveStyle()
+			End If
+		End If
+		
+	'	sync custom material property to enable read/write workflows for PDM
+		iProperties.Value("Custom", "VLT_Material") = iProperties.Material
+		
+		'write custom material property for weldments as Inventor default Material will not publish.
+		If (oWeldment = True) Then
+			'Logger.Info("Weldment, save Material property for PDM")
+			iProperties.Material = oCompDef.WeldBeadMaterial.DisplayName
+			iProperties.Value("Custom", "VLT_Material") = oCompDef.WeldBeadMaterial.DisplayName
+		End If
+		
+	Catch
+	End Try
+	'End Region
+
+
+End Sub
+
+
+'function to validate that current file is not a Content Center or user Library file
+Function mCheckLibraries() As Boolean
+	
+	Dim mDirInfo As System.IO.DirectoryInfo
+	Dim mLibPath As Inventor.ProjectPath
+	Dim mTmpPath As String
+	Dim mCCPath As String 
+	Dim mIPJ As Inventor.DesignProject
+	Dim mIpjPath As String
+	
+	If (ThisDoc.Document.FileSaveCounter <> 0) Then
+		Try
+			mCCPath = ThisServer.DesignProjectManager.ActiveDesignProject.ContentCenterPath
+			mIPJ = ThisServer.DesignProjectManager.ActiveDesignProject
+			mIpjPath = mIPJ.FullFileName
+			mFileInfo = New System.IO.FileInfo(ThisDoc.Document.FullFileName)
+			If InStr(mFileInfo.FullName, mCCPath.ToString) Then Return True
+			For Each mLibPath In mIPJ.LibraryPaths
+			    'check relative/absolute paths
+			    If mLibPath.Path.StartsWith(".\") Then
+			        mDirInfo = New System.IO.DirectoryInfo(mIPJ.FullFileName)
+			        mTmpPath = mDirInfo.Root.ToString & mDirInfo.Parent.ToString & mLibPath.Path.ToString.Replace(".\", "\")
+			    End If
+			    If mFileInfo.FullName.StartsWith(mTmpPath) Then Return True
+			Next
+		Catch
+			Logger.Debug("Error in Function mCheckLibraries.")
+		End Try
+	Else
+		'Logger.Info("File is not saved yet; readonly check skipped.")
+	End If
+End Function
+
+'Function to validate that the current file is editable.
+Function mFileReadOnly As Boolean
+	Dim mFileInfo As System.IO.FileInfo
+	'for new document, not saved yet the readonly check is not required
+	If (ThisDoc.Document.FileSaveCounter <> 0) Then
+	mFileInfo = New System.IO.FileInfo(ThisDoc.Document.FullFileName)	
+		'Logger.Info(mFileInfo.DirectoryName)
+		If mFileInfo.IsReadOnly = False Then
+			'Logger.Info("File " & ThisDoc.FileName & "  is Write Enabled")
+			Return False
+		Else
+			Logger.Warn("File " & ThisDoc.FileName & " is ReadOnly; rule " & " stops execution.")
+			Return True
+		End If
+	End If
+End Function

@@ -41,7 +41,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\x64\Debug\2023\</OutputPath>
+    <OutputPath>bin\x64\Debug\2024\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
@@ -222,14 +222,22 @@
     </Content>
     <Content Include="Resources\VLTM-2023.0.0.F-icon.ico" />
     <Content Include="SDK Refs\Autodesk.Connectivity.Explorer.Extensibility.dll" />
+    <Content Include="SDK Refs\Autodesk.Connectivity.Explorer.Extensibility.XML" />
     <Content Include="SDK Refs\Autodesk.Connectivity.Explorer.ExtensibilityTools.dll" />
+    <Content Include="SDK Refs\Autodesk.Connectivity.Explorer.ExtensibilityTools.XML" />
     <Content Include="SDK Refs\Autodesk.Connectivity.Extensibility.Framework.dll" />
+    <Content Include="SDK Refs\Autodesk.Connectivity.Extensibility.Framework.XML" />
     <Content Include="SDK Refs\Autodesk.Connectivity.JobProcessor.Extensibility.dll" />
+    <Content Include="SDK Refs\Autodesk.Connectivity.JobProcessor.Extensibility.XML" />
     <Content Include="SDK Refs\Autodesk.Connectivity.WebServices.dll" />
+    <Content Include="SDK Refs\Autodesk.Connectivity.WebServices.XML" />
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.dll" />
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Forms.dll" />
+    <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Forms.xml" />
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Vault.dll" />
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Vault.Forms.dll" />
+    <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Vault.xml" />
+    <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.xml" />
     <Content Include="SDK Refs\Autodesk.iLogic.Interfaces.dll" />
     <Content Include="SDK Refs\Autodesk.iLogic.Interfaces.xml" />
     <Content Include="SDK Refs\Autodesk.Inventor.Interop.dll" />
