@@ -236,6 +236,7 @@
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Forms.xml" />
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Vault.dll" />
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Vault.Forms.dll" />
+    <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Vault.Forms.xml" />
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.Vault.xml" />
     <Content Include="SDK Refs\Autodesk.DataManagement.Client.Framework.xml" />
     <Content Include="SDK Refs\Autodesk.iLogic.Interfaces.dll" />

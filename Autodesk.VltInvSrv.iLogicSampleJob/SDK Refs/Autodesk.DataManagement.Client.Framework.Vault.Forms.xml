@@ -1,0 +1,1647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Autodesk.DataManagement.Client.Framework.Vault.Forms</name>
+  </assembly>
+  <members>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library">
+      <summary>Provides a gateway to all features and services in Autodesk.DataManagement.Client.Framework.Vault.Forms</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.AcquireFiles(Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings)">
+      <summary>Downloads and/or checks out files from the vault with a modal progress dialog that is displayed during the operation</summary>
+      <param>The settings which determine the files to operate on and other options which determine how to handle the files with regards to fixing broken references,
+overriding existing files on disk, etc. The settings also contain delegates where custom handlers for progress and restrictions can be plugged in. If the
+settings are InteractiveAcquireFilesSettings, a dialog box will display that allows the user to modify and customize the file acquisition settings.</param>
+      <returns>An object describing the results of each file that was acted on.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.AcquireFilesAsync(Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings)">
+      <summary>Asynchronously downloads and/or checks out files from the vault with a modeless progress dialog that is displayed during the operation</summary>
+      <param>The settings which determing the files to operate on and other options which determine how to handle the files with regards to fixing broken references,
+overriding existing files on disk, etc. The settings also contain delegates where custom handlers for progress and restrictions can be plugged in.</param>
+      <returns>A Task which represents the background thread that is performing the operation. When the thread is complete, the task will contian the results of each file
+that was acted on.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.FocusCopyDesignDialog">
+      <summary>Bring to front Copy Design Dialog and Focus on it</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.Initialize">
+      <summary>Initializes the services in this assembly. This should be called on application startup.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.Login(Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings)">
+      <summary>Launches a gui workflow to log in to a vault</summary>
+      <param>Optional configuration options for the Login UI. Can be null.</param>
+      <returns>A vault Connection object if login was successful. Null if the user didn't login and cancelled the workflow</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.Logout(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LogoutSettings,Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings)">
+      <summary>Launches a gui workflow to log out of a vault. The workflow gives the user an opportuntiy to optionally login again</summary>
+      <param>The connection to log out ofOptional configuration options for the Log out UI. Can be nullOptional configuration options for the Login UI (if the user chooses to relogin after the log out). Can be null</param>
+      <returns>A vault Connection object if the user re-logs in after the log out</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.SelectEntity(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings)">
+      <summary>Launches a gui workflow to select an entity from the vault. This can be customized for any type of action (ie. Open, Save, Delete) and for any type of object
+(File, Item, etc...)</summary>
+      <param>A connection to a vault serverOptions which configure the behaviors and extensibility of the workflow</param>
+      <returns>An object describing the results of what was selected in the GUI, and what options were chosen. Null if returned if the GUI was cancelled</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.SetCulture(System.Globalization.CultureInfo)">
+      <summary>Sets the culture that this assembly and its dependencies will use when returning resources.</summary>
+      <param>The culture to set</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.ColumnSettings">
+      <summary>Gets a service which provides a mechanism to configure display characteristics for how a property definition is represented in a Grid or a Tree column</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.CopyDesignDialogExists">
+      <summary>Is Copy Design dialog exists</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.EntityStyleService">
+      <summary>Gets a service which provides mechanism to configure global Style characteristics for
+specific entities or for specific properties of entities. These styles will be respected by all UI elements in the Framework</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.CopyDesignDialogClosed">
+      <summary>On Copy Design dialoge close event</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.GetCheckoutDialog_OKButtonClicked">
+      <summary>For performance logging.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.GetCheckoutDialog_Shown">
+      <summary>For performance logging.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.LoginDialog_OKButtonClicked">
+      <summary>For performance logging.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.LoginDialogClosed">
+      <summary>For performance logging.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.LoginDialogShown">
+      <summary>For performance logging.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.LogoutDialogClosed">
+      <summary>For performance logging.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Library.LogoutDialogShown">
+      <summary>For performance logging.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.ViewStyle">
+      <summary>Identifies the various views available to the </summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.ViewStyle.DetailView">
+      <summary>A view which display entities as a row with configurable columns to display the various properties</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.ViewStyle.ListView">
+      <summary>A view which displays entities as a list oriented in multiple columns. The view displays a small icon and the entity name</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.ViewStyle.SmallThumbnailView">
+      <summary>A view which displays entities as a list of 32x32 thumbnail icons (and their entity name) flowing from left to right.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.ViewStyle.MediumThumbnailView">
+      <summary>A view which displays entities as a list of 64x64 thumbnail icons (and their entity name) flowing from left to right.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.ViewStyle.LargeThumbnailView">
+      <summary>A view which displays entities as a list of 128x128 thumbnail icons (and their entity name) flowing from left to right.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.VaultTreeControl.BehaviorOptions.ExpandBehaviorOptions">
+      <summary>Options for controlling expand behavior</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.VaultTreeControl.BehaviorOptions.ExpandBehaviorOptions.None">
+      <summary>Default Expand behavior</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.VaultTreeControl.BehaviorOptions.ExpandBehaviorOptions.MultiLevelExpandCausesRefresh">
+      <summary>When performing an "Expand N Levels" or "Expand All" operation on a node, the tree will remove all current children nodes from the specified node and
+re-request them from the IVaultTreeModel</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl">
+      <summary>A grid control which can display Vault Entities and their properties. Users can
+navigate the vault by drilling down on the Entities.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions">
+      <summary>Options which allows the user to configure various behaviors of the
+</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.Configuration">
+      <summary>This class provides configuration data for .</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.CustomizationOptions">
+      <summary>Options which allows the user to provide algorithms which customize various characteristics of the
+.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.DragDropOptions">
+      <summary>Options which allow the user to configure drag and drop behavior of the
+.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultNavigationPathComboboxControl">
+      <summary>A combobox control which shows a navigation path from an Entity all the way up to a Root object. Each entity in the path is a selectable in the combobox.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl">
+      <summary>A specialized combobox control which can a list of available Revisions/Versions for any Entity
+Entity.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.#ctor">
+      <summary>Creates an instance of the ClassicVaultBrowserControl object</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.LoadViewState">
+      <summary>Loads the grid settings from the persistent storage.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.ReEvaluateCustomFilters">
+      <summary>Forces the control to compute which entities should be displayed.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.SaveViewState">
+      <summary>Saves the grid settings to the persistent storage.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.ServerSortCriteriaNotify">
+      <summary>Notifies subscribers that server sort criteria has been changed</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.SetDataSource(Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.Configuration,Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel)">
+      <summary>Connects the user control to the data model that is used to supply entities to the control.</summary>
+      <param>Provides configuration data to this control, including the properties to display, sort order, etc...The model which is used navigate the vault and provide Entity objects to display</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.UpdateDataSourceAsync(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity},System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+      <summary>Forces the grid to recompute it's values for a list of properties on specific entities</summary>
+      <param>The entities whose properties should be recomputedThe system names of the property definitions to updateThe cancellation token. The cancellation token is checked on the ui thread prior to updating the ui</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.UpdateDataSource(System.Collections.Generic.IEnumerable{System.String},System.Threading.CancellationToken)">
+      <summary>Forces the grid to recompute it's values for a list of properties</summary>
+      <param>The system names of the property definitions to updateThe cancellation token. The cancellation token is checked on the ui thread prior to updating the ui</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.UpdateDataSource(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity},System.Collections.Generic.IEnumerable{System.String})">
+      <summary>Forces the grid to recompute it's values for a list of properties on specific entities</summary>
+      <param>The entities whose properties should be recomputedThe system names of the property definitions to update</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.OptionsBehavior">
+      <summary>Gets a set of options which allows the user to configure various behaviors of the control</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.OptionsDragDrop">
+      <summary>Gets a set of options which allows the user to configure drag and drop behavior of the control</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.EntityDoubleClick">
+      <summary>This event is fired when an entity is double clicked. If the entity is a folder or a other container, then the folder will be opened and the event will not be
+fired. Otherwise, this event is fired.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.Exception">
+      <summary>Event fired when an exception occurs</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.GetContextMenu">
+      <summary>This event is fired when a right click occurs in the grid. The handler of the event can provide a custom context menu to display. Otherwise, the default
+context menu will be shown.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.SelectionChanged">
+      <summary>Event fired when selection changed</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.ServerSortChanged">
+      <summary>Event fired when the sorted columns change. This only fires when the server properties have changes (ie. not the ones marked as calculated) since this is used
+to determine when we need to refresh the view.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.EnableAutoPreview(System.Boolean,System.String,System.Int32)">
+      <summary>Enables or disables the AutoPreview option in the .</summary>
+      <param>When enabled the AutoPreview option is displayed in the context menu.The property to display for AutoPreview.Number of lines to display for AutoPreview.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.AllowColumnChooser">
+      <summary>Gets or sets whether the  supports run time column configuration</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.AllowColumnScrolling">
+      <summary>Gets or sets whether the Detail
+View of the
+<see cref="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl" /> squeezes all of it's columns in the available horizontal real
+estate, or if it uses a horizontal scroll bar such that some columns display off screen.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.AllowOverrideSelections">
+      <summary>Gets or sets whether right clicking in the  replaces the existing
+selection, or temporarily overrides it. An override will highlight the clicked on row but when the context menu goes away, the original selection will be
+restored.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.AvailableViews">
+      <summary>Gets or sets the list of available views
+for this Vault Browser Control.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.DisplayAutoPreview">
+      <summary>Gets or sets whether the  displays the AutoPreview rows.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.EmptyGridMessage">
+      <summary>Gets or sets the text that displays in the  when it contains no
+data</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.LoadingMessage">
+      <summary>Gets or sets the text that displays in the  when it is loading the
+contents of a folder</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.MultiSelect">
+      <summary>Gets or sets whether the  supports single or multiple selection</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.SortData">
+      <summary>Gets the current sort data being used for the .</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.BehaviorOptions.View">
+      <summary>Gets or sets the type of view to display in the </summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.Configuration.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,System.String,Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinitionDictionary)">
+      <summary>Creates an instance of the Configuration class</summary>
+      <param>A connection to a vault serverA value which defines a unique namespace to persist the settings of this control. If two instances of the control share the same key, then they will share the
+same persisted state.A list of all of the Property Definitions that are available for
+display in this control. If null, all available Property Definitions will be used.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.Configuration.AddInitialGrouping(System.String,System.Boolean)">
+      <summary>Creates a Group specification for a property.</summary>
+      <param>The system name of the Property Definition that is being groupedTrue if the sort is in ascending order. False if it is in descending order</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.Configuration.UnhiddenColumns">
+      <summary>Gets and set the list of FieldName of columns that can't hidden in the
+.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.CustomizationOptions.RegisterHotCellHandler(System.String,Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IHotCellHandler)">
+      <summary>Associates a  with a specific column based on its
+<see cref="T:Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition" />'s system name.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.CustomizationOptions.CanDisplayEntityHandler">
+      <summary>Gets or sets a delegate which allows the implementor to control which entities are displayed</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.CustomizationOptions.GetCellStyleHandler">
+      <summary>Gets or sets a delegate which allows the implementor to provide a custom format for a particular cell in the
+</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.CustomizationOptions.GetCustomTooltipHandler">
+      <summary>Gets or sets a delegate which allows the implementor to provide a custom tooltip for any property values displayed in the
+</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.CustomizationOptions.GetRowStyleHandler">
+      <summary>Gets or sets a delegate which allows the implementor to provide a custom format for an entire row in the
+</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.DragDropOptions.DragDropEvent">
+      <summary>This Action is required if the control should act as a target for drag and drop operations. The implementor of this action is responsible for providing the
+drop functionality.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.DragDropOptions.DragEnterEvent">
+      <summary>This Action supports the controls ability to act as a target for drag and drop operations.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.DragDropOptions.DragLeaveEvent">
+      <summary>This Action supports the controls ability to act as a target for drag and drop operations.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.DragDropOptions.DragOverEvent">
+      <summary>This Action supports the controls ability to act as a target for drag and drop operations. The implementor of this action will typically set the Effects on the
+DragEventArgs.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.DragDropOptions.DragSource">
+      <summary>This Func is required if the control should act as a source for drag and drop operations. This Func is called when a drag operation has begun and the control
+needs to collect information about the drag object.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultBrowserControl.DragDropOptions.IsDropTarget">
+      <summary>Gets or sets if the associated control should be a drop target.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultNavigationPathComboboxControl.#ctor">
+      <summary>Constructs an instance of a VaultNavigationPathComboboxControl class</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultNavigationPathComboboxControl.SetDataSource(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel,Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.VaultNavigationPathSettings)">
+      <summary>Binds the control to a datasource which provides information about a Navigation Path and methods to modify the current entity</summary>
+      <param>A connection to a vault serverThe model that provides the business logic for a navigation workflowAn optional collection of settings that configure the characteristic and extensibility aspects of the control</param>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.ClassicVaultNavigationPathComboboxControl.Exception">
+      <summary>Event fired when an exception occurs</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.#ctor">
+      <summary>Creates an instance of the RevisionsDropdownControl</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.Clear">
+      <summary>Removes all Revision information from the control</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.GetSelectedEntity">
+      <summary>Gets the selected entity (representing the chosen version/revision) from the control. The entity will only be valid (non-null) when the combo box was loaded
+with LoadVersions or LoadRevisions</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.GetSelectedRevisionLabel">
+      <summary>Returns the selected Revision label.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.InitializeReadOnlyWithText(System.String)">
+      <summary>Initialize the revision control as readonly with the specified text. No revision information is loaded</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.IsLatestSelected">
+      <summary>Returns true if the currently selected revision/version is the special "Latest" revision/version.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.LoadHistoricalRevisionReadOnly(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.FileIteration,System.Boolean)">
+      <summary>Load this control to display the text for the specific revision of the specified file iteration and make the control read only. If date biased is true, then
+the text in the drop down will also show the specific version number of the file.</summary>
+      <param>The file to display revision forIf true, the text in the drop down will include the version number of the file</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.LoadHistoricalVersionReadOnly(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.FileIteration)">
+      <summary>Load this control with the specific version for the specified file iteration and make the control read only</summary>
+      <param>The file to display versions for</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.LoadReadOnly(System.Boolean)">
+      <summary>Load this control in the readonly state.</summary>
+      <param>If true, the combobox will have an extra line in it to identify the Latest Revision</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.LoadRevisions(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,System.Boolean,System.Boolean)">
+      <summary>Load this control with all of the revisions for an Entity object</summary>
+      <param>A connection to a Vault serverThe entity to display revisions forIf true, the combobox will have an extra line in it to identify the Latest Revision</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.LoadVersions(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.FileIteration,System.Boolean)">
+      <summary>Load this control with all of the versions for a file</summary>
+      <param>A connection to a Vault serverThe file to display versions forIf true, the combobox will have an extra line in it to identify the Latest Version</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.AutoHeight">
+      <summary>Gets or sets whether the combobox will adjust it's height based on it's contents</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.ErrorMessage">
+      <summary>Returns the current error message if the control has encountered an error loading revisions. Null if there is no error.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.RevisionsDropdownControl.SelectionChanged">
+      <summary>Occurs when the selected revision/version is changed through the drop-down menu.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.HAlignment">
+      <summary>Options for the horizontal alignment of content</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.HAlignment.Left">
+      <summary>Content is left aligned in it's display area</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.HAlignment.Center">
+      <summary>Content is horizontally centered within it's display area</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.HAlignment.Right">
+      <summary>Content is right aligned in it's display area</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.NavigationContext">
+      <summary>Describes the context of a navigation</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.NavigationContext.DrillDown">
+      <summary>A navigation is being performed by drilling down on existing content</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.NavigationContext.NewContext">
+      <summary>A navigation is being performed by viewing an entity that is not relative to the current content. For example, a GOTO or Shortcut workflow.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnImageList">
+      <summary>An image list that can be associated with a  object that is used to place
+icon-sized images into cells of grids.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings">
+      <summary>Defines display and formatting options for properties that can be displayed as columns in the
+ or any other grids.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSortData">
+      <summary>Sorting information for a single column (property). This class it typically used in a collection since sorting is typically a combination of multiple columns
+used for both sorting and grouping.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DragDropSourceArgs">
+      <summary>This class contains the data that will be used as the source of a drag and drop operation.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration">
+      <summary>This class provides base-configuration data for the  and the
+<see cref="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.VaultTreeControl" />.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.EntitiesEventArgs">
+      <summary>Event args that provide information about multiple Entities that were acted on</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.EntityEventArgs">
+      <summary>Event args that provide information about an Entity that was acted on</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ExceptionEventArgs">
+      <summary>Event args for an exception</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.FocusChangedEventArgs">
+      <summary>Event args that are sent when the focus changes in a view that displays a collection of entities</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs">
+      <summary>Event args that are fired when a workflow is requesting a context menu for a particular entity. The responder to this event should populate the
+ property in order to supply a custom menu.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.HelpIds">
+      <summary>A list of Help Ids for all of the Dialog boxes contained in the  assembly</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Prompts">
+      <summary>Contains references to the PromptDefinition's of all prompts used in UI workflows within this assembly.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.SelectionChangedEventArgs">
+      <summary>Event args that are sent when the selection changes in a view that displays a collection of entities</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ServerFilterConditionArgs">
+      <summary>Event args that are sent when the server filter condition changes. The 'server filter condition' is data that is dependent on information obtained from the
+server. Client filter data has no dependence on information from the server, it is completely generated from client information. This class does not contain
+'client sorting data'.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ServerSortDataArgs">
+      <summary>Event args that are sent when the server sorting data changes. The 'server sorting data' is data that is dependent on information obtained from the server.
+Client sorting data has no dependence on information from the server, it is completely generated from client information. This class does not contain 'client
+sorting data'.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style">
+      <summary>Represents the appearance of a visual element</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnImageList.#ctor">
+      <summary>Constructs an instance of a ColumnImageList class</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnImageList.Clear">
+      <summary>Removes all images from the image list</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnImageList.GetImage(System.Object)">
+      <summary>Gets the image associated with the specified tag</summary>
+      <param>The tag which uniquely identifies the image to retrieve</param>
+      <returns>An image object, or null if there is not an image associated with the tag. The image must be disposed when the caller is done consuming it</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnImageList.AssignImage(System.Func{System.Drawing.Image},System.Object,System.String,System.Boolean)">
+      <summary>Creates a mapping between an image and a value</summary>
+      <param>The function for getting an image to display for the specified tag valueA value associated with the image. This is the value that will be set as the property value in a data source bound to a grid.A human readable description of the image used when showing the name of the image in a list (i.e. Filters) or a tooltipIf true, then this image will overwrite an existing image with the same tag. If false, then we will ignore the specified image if another image exists with the
+same tag.</param>
+      <returns>The index in the image list</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnImageList.AssignImage(System.Drawing.Image,System.Object,System.String,System.Boolean)">
+      <summary>Creates a mapping between an image and a value</summary>
+      <param>The image to display for the specified tag valueA value associated with the image. This is the value that will be set as the property value in a data source bound to a grid.A human readable description of the image used when showing the name of the image in a list (i.e. Filters) or a tooltipIf true, then this image will overwrite an existing image with the same tag. If false, then we will ignore the specified image if another image exists with the
+same tag.</param>
+      <returns>The index in the image list</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnImageList.AllowDynamicAddingOfMissingImages">
+      <summary>Gets or sets whether images should be added to the image list when an image is identified as being missing from the list</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.#ctor">
+      <summary>Constructs a default instance of a ColumnSettings object</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings)">
+      <summary>Constructs a copy of a ColumnSettings object</summary>
+      <param>The object to copy</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition)">
+      <summary>Constructs an instance of a ColumnSettings object with settings based on a specific property definition</summary>
+      <param>The Property Definition to initialize the settings with</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.Alignment">
+      <summary>Gets or sets the horizontal alignment of text and/or images</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.CanBeFiltered">
+      <summary>Gets or sets whether this column should present a GUI which allows the user to enter a run-time filter to limit the entities that should be displayed.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.CanBeGrouped">
+      <summary>Gets or sets whether this column can be grouped within the grid</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.CanBeMoved">
+      <summary>Gets or sets whether this column can be moved to another position within the grid</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.CanBeSorted">
+      <summary>Gets or sets whether this column can be sorted</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.Caption">
+      <summary>Gets or sets the caption to display in a column header</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.FixedWidth">
+      <summary>Gets or sets a fixed width for this column. The column will not be resizable if this value is set</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.FormatProvider">
+      <summary>Gets or sets a provider which can be used to provide custom formatting for property values.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.FormatString">
+      <summary>Gets or sets the format string to use to display property values. If null or empty, the property values will be displayed with no formatting options</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.GettingHeaderImageFunction">
+      <summary>Gets or sets the logic for getting an optional image that is displaying as a column header. It can be used to update the image dynamically.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.GetToolTip">
+      <summary>Gets or sets a delegate which allows the implementor to provide a custom tooltip for values displayed in this column</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.HeaderImage">
+      <summary>Gets or sets an optional image to display as a column header</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.ImageList">
+      <summary>Gets or sets an Image List which can be used to associated images with various property values</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.InitialWidth">
+      <summary>Gets or sets the initial width for this column. The column will have this width the first time it is displayed. The user can resize the column after the
+initial display.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.MinimumWidth">
+      <summary>Gets or sets the minimum width for this column. The column will not be able to be resized to any size smaller than this value</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.ShowLinkOverlay">
+      <summary>Gets or sets if this column should display a link overlay icon if the entity is a
+Link</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings.ShowMultipleLines">
+      <summary>Gets or sets whether this column should show multiple lines</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSortData.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition,System.Boolean)">
+      <summary>Constructs a ColumnSortData object</summary>
+      <param>The property definition used for sortingTrue if sorting is ascending.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSortData.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSortData)">
+      <summary>Constructs a copy of a ColumnSortData object</summary>
+      <param>The object to copy</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSortData.Ascending">
+      <summary>True if this ColumnSortData is ascending, false if descending.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSortData.PropDef">
+      <summary>The property definition associated with this ColumnSortData.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DragDropSourceArgs.#ctor(System.Object,System.Windows.Forms.DragDropEffects)">
+      <summary>Constructs an instance of a DragDropSourceArgs class</summary>
+      <param>The object to provide as the source of a drag and drop operation.The allowed drag and drop effects.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DragDropSourceArgs.DragDropAllowedEffects">
+      <summary>The allowed drag and drop effects.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DragDropSourceArgs.DragDropData">
+      <summary>The object to provide as the source of a drag and drop operation.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,System.String,Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinitionDictionary)">
+      <summary>Creates an instance of the DynamicColumnConfiguration class</summary>
+      <param>A connection to a vault serverA value which defines a unique namespace to persist the settings of this control. If two instances of the control share the same key, then they will share the
+same persisted state.A list of all of the Property Definitions that are available for
+display in this control. If null, all available Property Definitions will be used.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.AddInitialColumn(System.String)">
+      <summary>Identifies a property as one that should be visible in the initial display of this control. The columns will be displayed in the order that they are added.</summary>
+      <param>The system name of the Property Definition that is being added</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.AddInitialQuickListColumn(System.String)">
+      <summary>Identifies a property as one that should be visible in the initial quicklist displayed in this control.</summary>
+      <param>The system name of the Property Definition that is being added to the quicklist</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.AddInitialSortCriteria(System.String,System.Boolean)">
+      <summary>Creates a sort specification for a property.</summary>
+      <param>The system name of the Property Definition that is being sortedTrue if the sort is in ascending order. False if it is in descending order</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.AddPropertyExtensionProvider(Autodesk.DataManagement.Client.Framework.Vault.Interfaces.IPropertyExtensionProvider)">
+      <summary>Registers a Property Provider which can be used to provide property
+values for custom Property Definitions or to modify the values that were computed by the framework.</summary>
+      <param>The provider which implements the custom property value algorithms</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.GetColumnSettings(System.String)">
+      <summary>Gets display and formatting information about a specific property that can be displayed as a column</summary>
+      <param>The system name of the requested Property Definitions</param>
+      <returns>The configuration information for the specified column.</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.DefaultSortPropertyId">
+      <summary>Gets or sets the system name of the property that is used to sort the grid rows by default. This will be used as the final sort column when sorting on other
+columns.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.FixedColumns">
+      <summary>Gets or sets the number of columns that should have their positions fixed on the left side of the control</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.IconPropertyId">
+      <summary>Gets or sets the system name of the property that is used to display the icon for entities in the List View</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.NamePropertyId">
+      <summary>Gets or sets the system name of the property that is used to display the name for entities in the List View or Icon Views</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.DynamicColumnConfiguration.ThumbnailPropertyId">
+      <summary>Gets or sets the system name of the property that is used to display the thumbnail image for entities in the Icon Views</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.EntitiesEventArgs.#ctor(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Constructs an instance of an EntityEventArgs class</summary>
+      <param>The entity that the event is related to</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.EntitiesEventArgs.Entities">
+      <summary>Gets the entity that the event is related to</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.EntityEventArgs.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Constructs an instance of an EntityEventArgs class</summary>
+      <param>The entity that the event is related to</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.EntityEventArgs.Entity">
+      <summary>Gets the entity that the event is related to</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ExceptionEventArgs.Exception">
+      <summary>The exception</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ExceptionEventArgs.Handled">
+      <summary>Indicates whether or no the exception is handled. Set to true when the exception is handled.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.FocusChangedEventArgs.#ctor(System.Object,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Constructs an instance of a FocusChangedEventArgs class</summary>
+      <param>The object or control that originated the eventThe entity that has focus</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.FocusChangedEventArgs.FocusedEntity">
+      <summary>Gets the entity that has focus</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.FocusChangedEventArgs.OriginatingControl">
+      <summary>Gets the object or control that originated the event</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity},Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition,System.Drawing.Point,System.Boolean)">
+      <summary>Constructs an instance of a GetContextMenuArgs class</summary>
+      <param>The entity that was clicked on. This may or may not be one of the selected entitiesA list of selected entities.The property associated with the column that was clicked on. This can be nullThe mouse coordinates of where the right-click occurredWhether or not the click that triggered the context menu was a click in white space or a part of the control content</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.#ctor(System.Drawing.Point,System.Boolean)">
+      <summary>Constructs an instance of a GetContextMenuArgs class</summary>
+      <param>The mouse coordinates of where the right-click occurredWhether or not the click that triggered the context menu was a click in white space or a part of the control content</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.AddMenu(Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem,System.Boolean)">
+      <summary>Adds a new menu item to the end of the current list of menu items</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.InsertMenu(Autodesk.DataManagement.Client.Framework.Forms.Currency.MenuItem,System.Boolean)">
+      <summary>Adds a new menu item to the top of the current list of menu items</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.ClickedEntity">
+      <summary>Gets the entity that was clicked on. This may or may not be one of the selected entities</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.InSelection">
+      <summary>Gets whether or not the click that triggered the context menu was a click on an object that was already selected</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.InWhiteSpace">
+      <summary>Gets whether or not the click that triggered the context menu was a click in white space or a part of the control content</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.MenuContents">
+      <summary>Gets or sets the current contents of the context menu. MenuItems can be added or removed
+from this list to customize the context menu.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.MouseLocation">
+      <summary>Gets the mouse coordinates of where the right-click occurred</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.PropDef">
+      <summary>Gets the property associated with the column that was clicked on. This can be null</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.ReplacementMenu">
+      <summary>Gets or sets a replacement menu. If a replacement menu is specified, it will be used instead of MenuContents. The replacement menu is only used if the event is
+not handled.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.SelectedEntities">
+      <summary>Gets the list of selected entities.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.Tag">
+      <summary>Custom information to include with the context menu. Used internally by the .</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.GetContextMenuArgs.Handled">
+      <summary>Gets or sets whether this event has been handled. If false, then the object that fired the event will perform the default functionality</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.HelpIds.AcquireFilesDialog">
+      <summary>Help ID for the Get/Checkout Dialog accessed via the
+
+api</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.HelpIds.CreateFolder">
+      <summary>Help ID for the Create Folder Dialog accessed via the
+
+api</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.HelpIds.LoginDialog">
+      <summary>Help ID for the Log In Dialog accessed via the
+ api</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.HelpIds.LogoutDialog">
+      <summary>Help ID for the Log Out Dialog accessed via the
+
+api</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.HelpIds.SelectEntityFromVaultDialog">
+      <summary>Help ID for the Select Entity Dialog accessed via the
+
+api</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.HelpIds.SelectVaultFolderDialog">
+      <summary>Help ID for the Select Vault Folder Dialog accessed via the
+
+api</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Prompts.DownloadConfirmReplaceCheckedOut">
+      <summary>The prompt displayed when attempting to download a file from Vault when the file is already checked out.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Prompts.DownloadConfirmReplaceLocalEdits">
+      <summary>The prompt displayed when attempting to download a file that will overwrite a file containing local edits.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Prompts.DownloadForceOverwrite">
+      <summary>The prompt displayed when attempting to download files in the Get/Checkout dialog using the "Working Folders - Force Overwrite" download location.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Prompts.GetRootFolderWarning">
+      <summary>The prompt displayed when attempting to download the entire vault.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Prompts.SyncWithRemoteSite">
+      <summary>The prompt displayed when attempting to download a file whos most recent version has not yet been replicated to the current site.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.SelectionChangedEventArgs.#ctor(System.Object,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Constructs an instance of a SelectionChangedEventArgs class</summary>
+      <param>The object or control that originated the eventA list of selected entities</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.SelectionChangedEventArgs.OriginatingControl">
+      <summary>Gets the object or control that originated the event</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.SelectionChangedEventArgs.SelectedEntities">
+      <summary>Gets the selected entities</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ServerFilterConditionArgs.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter)">
+      <summary>Constructs an instance of an ServerSearchConditionArgs class</summary>
+      <param>The list of ServerSearchConditionArgs for the event.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ServerFilterConditionArgs.EntityFilter">
+      <summary>Gets the Entity Filter that the event is related to.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ServerSortDataArgs.#ctor(System.Collections.Generic.List{Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSortData})">
+      <summary>Constructs an instance of an ServerSortDataArgs class</summary>
+      <param>The list of ColumnSortData for the event.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ServerSortDataArgs.SortData">
+      <summary>Gets the list of sort criteria that the event is related to.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.#ctor">
+      <summary>Constructs an instance of a Style object</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.#ctor(System.Drawing.Color,System.Drawing.Color,System.Drawing.Font)">
+      <summary>Constructs an instance of a Style object</summary>
+      <param>The foreground (or text) color of the dataThe background color of the dataThe font to display any text in</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style)">
+      <summary>Constructs a copy of an instance of a Style object</summary>
+      <param>The source object of the copy</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.BackColor">
+      <summary>Gets or sets the background color for a visual element</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.CHECK_OUT_BY_ME_COLOR">
+      <summary>Defines the color that will be used to mark files that have been checked out by the current user.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.CHECK_OUT_BY_ME_FONTSTYLE">
+      <summary>Defines the font that will be used to mark files that have been checked out by the current user.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.CHECK_OUT_BY_OTHER_COLOR">
+      <summary>Defines the color that will be used to mark files that have been checked out by other user.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.CHECK_OUT_BY_OTHER_FONTSTYLE">
+      <summary>Defines the font that will be used to mark files that have been checked out by other user.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.Font">
+      <summary>Gets or sets the font for a visual element</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.ForeColor">
+      <summary>Gets or sets the foreground color (or text color) for a visual element</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.Original_BackColor">
+      <summary>Gets the color original background color that this object was constructed with.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.Original_Font">
+      <summary>Gets the color original Font that this object was constructed with.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style.Original_ForeColor">
+      <summary>Gets the color original Foreground color that this object was constructed with.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.ICustomExportProvider">
+      <summary>Export Provider</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.ICustomGoToProvider">
+      <summary>GoTo Provider</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IHotCellHandler">
+      <summary>An interface for implementing hot cell behavior that can be assigned to a specific column in a
+ via its customization options.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IProgressiveLoadingVaultNavigationModel">
+      <summary>This interfaces extends  allowing ability to load more content on
+demand. Use this interface if you want to implement progressive loading approach for a view.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel">
+      <summary>This interfaces describes a model which encapsulates a workflow for navigating the contents of a vault. Navigation consists of a Parent entity and it's child
+content and methods to move up and down the content hierarchy</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.ICustomExportProvider.Export(Autodesk.DataManagement.Client.Framework.Vault.Forms.ICopyDesignMainViewHandler)">
+      <summary>Export grid to file</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.ICustomGoToProvider.GoToFileLocation(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.FileIteration)">
+      <summary>Opens Project Explorer and select file</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IHotCellHandler.GetHotCellToolTip(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition,System.Object,System.String)">
+      <summary>Get the tool tip to use when the HotCell is hovered over.</summary>
+      <param>The  of the row in question.The  of the column in question.The current value of the hot cell.The current tooltip.</param>
+      <returns>The string to use as the tooltip.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IHotCellHandler.IsHotCell(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition,System.Object)">
+      <summary>Tests if the specified cell can be CTRL-clicked.</summary>
+      <param>The  of the row in question.The  of column in question.The current value of the cell being tested.</param>
+      <returns>Whether or not the cell can be CTRL-clicked</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IHotCellHandler.OnHotCellClicked(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition,System.Object)">
+      <summary>Called when CTRL-click occurs on a hot cell.</summary>
+      <param>The  of the row in question.The  of the column in question.The current value of the hot cell.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IProgressiveLoadingVaultNavigationModel.LoadMoreContent">
+      <summary>Request to append more content in view control. Can be used for infinite scroll implementation.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IProgressiveLoadingVaultNavigationModel.CanLoadMoreContent">
+      <summary>Gets whether or not the model can request to append more content in view control.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.CanNavigate(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Tests if the specified entity can be navigated to (ie. it can have children)</summary>
+      <param>The entity to test if it can be navigated to</param>
+      <returns>True if the entity can have children (which doesn't necessarily mean it does have children).</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.MoveBack">
+      <summary>Navigates to the entity that was loaded prior to the current one</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.MoveUp">
+      <summary>Navigates to the current entities parent</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Reload">
+      <summary>Reloads the models </summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.SetFocusedContent(System.Object,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Sets the focused entity.</summary>
+      <param>The object that originated the focus changeThe entity that has focus</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.SetSelectedContent(System.Object,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Sets the selected entities.</summary>
+      <param>The object that originated the selection changeThe entities that are selected</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Navigate(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.NavigationContext)">
+      <summary>Changes the data in the model to represent a new entity. The 
+for the new entity will be loaded in a background thread.</summary>
+      <param>The entity that is being navigated toThe type of navigation being performed</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Navigate(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity},Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.NavigationContext)">
+      <summary>Changes the data in the model to represent a new entity. The 
+for the new entity is supplied and thus doesn't need to be loaded in a background thread.</summary>
+      <param>The entity that is being navigated toThe child content associated with the parent entityThe type of navigation being performed</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.CanMoveBack">
+      <summary>Gets whether or not the model can navigate back to the entity that was loaded prior to the current one.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.CanMoveUp">
+      <summary>Gets whether or not the model can navigate to the current entities parent.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Content">
+      <summary>Gets the child content for the  entity that was navigated to.
+The Content loads in the background and will be available after the
+<see cref="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.ContentLoaded" /> event is fired.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.EqualityComparer">
+      <summary>Gets the EqualityComparer used for the model. If null, then the default equality comparer is being used.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.FocusedContent">
+      <summary>Gets the entity that has Focus. An entity can be focused, but not selected.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.NavigationPath">
+      <summary>Gets the hierarchy of the current  all the way up to the root
+Navigation object. The NavigationPath loads in the background and will be available after the
+<see cref="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.NavigationPathLoaded" /> event is fired.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Parent">
+      <summary>Gets the Parent entity (ie. the Entity that was navigated to). The Parent is the container for the
+.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.SelectedContent">
+      <summary>Gets the selected entities.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.ContentAdded">
+      <summary>This event is fired when entities are added manually to the
+<see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Content" /> of the model.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.ContentLoaded">
+      <summary>After the  notification is sent as a result of a
+Navigate, the model will begin to load the child content associated with the
+<see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Parent" />. This event is fired when the
+<see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Content" /> is finished loading.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.ContentRemoved">
+      <summary>This event is fired when entities are removed manually from the
+<see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Content" /> of the model.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.ContentUpdated">
+      <summary>This event is fired when entities are update manually in the
+<see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Content" /> of the model. The event allows all views a chance to refresh
+their display to represent the new data.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.Exception">
+      <summary>This event is fired when an exception occurs</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.FocusedContentChanged">
+      <summary>This event is fired when the  property changes via the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.SetFocusedContent(System.Object,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)" />
+method.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.NavigationPathLoaded">
+      <summary>After the  notification is sent as a result of a
+Navigate, the model will begin to compute the <see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.NavigationPath" />. This
+event is fired when the computation is complete.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.ParentChanged">
+      <summary>This event is fired when the  changes as a result of navigating
+to a new entity (via Navigate).</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.SelectedContentChanged">
+      <summary>This event is fired when the  property changes via the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Interfaces.IVaultNavigationModel.SetSelectedContent(System.Object,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})" />
+method.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel">
+      <summary>An implementation of the  which is used to model a
+workflow for browsing and drilling down in a folder hierarchy of the Vault with ability to load more content on demand.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel">
+      <summary>An implementation of the  which is used to model a workflow for
+viewing a collection of Vault objects.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,System.Boolean,System.Boolean)">
+      <summary>Constructs an instance of the BrowseVaultNavigationModel class</summary>
+      <param>A connection to a vault serverWhether or not the model should load the  data when
+navigatingWhether or not the model should load the  data when
+navigating</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.AddEntitiesToContent(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Adds specified entities to existing </summary>
+      <param>Collection of new entities to add to the </param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.CanNavigate(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Tests if the specified entity can be navigated to (ie. it can have children)</summary>
+      <param>The entity to test if it can be navigated to</param>
+      <returns>True if the entity can have children (which doesn't necessarily mean it does have children).</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Clear">
+      <summary>Removes all of the  from the model</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.FindEntitiesNameStartsWith(System.String)">
+      <summary>Searches the  for all entities whose EntityName starts with
+the specified text</summary>
+      <param>The text to search for</param>
+      <returns>A list of all entities which have EntityNames that start with <paramref name="searchText" /></returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.LoadMoreContent">
+      <summary>Loads additional content that fall beyond previosly loaded bookmark</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.MoveBack">
+      <summary>Navigates to the entity that was loaded prior to the current one</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.MoveUp">
+      <summary>Navigates to the current entities parent</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Reload">
+      <summary>Reloads the models </summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.SetFocusedContent(System.Object,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Sets the focused entity.</summary>
+      <param>The object that originated the focus changeThe entity that has focus</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.SetSelectedContent(System.Object,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Sets the selected entities.</summary>
+      <param>The object that originated the selection changeThe entities that are selected. Cannot be null.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.SetSelectedContentByName(System.Object,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{System.String}@)">
+      <summary>Selects all  in the model whose EntityName matches a list of
+names.</summary>
+      <param>The object that originates the selectionThe Entity Names that should be seleced<paramref name="names" /></param>
+      <returns>True if all names were selected. False if there was no match, or a partial match.</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Update(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Updates entities contained in this model.</summary>
+      <param>The entities to be updated</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Navigate(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.NavigationContext)">
+      <summary>Changes the data in the model to represent a new entity. The 
+for the new entity will be loaded in a background thread.</summary>
+      <param>The entity that is being navigated toThe type of navigation being performed</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Navigate(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity},Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.NavigationContext)">
+      <summary>Changes the data in the model to represent a new entity. The 
+for the new entity is supplied and thus doesn't need to be loaded in a background thread.</summary>
+      <param>The entity that is being navigated toThe child content associated with the parent entityThe type of navigation being performed</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.CanLoadMoreContent">
+      <summary>Gets whether or not the model can request to append more content in view control.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.CanMoveBack">
+      <summary>Gets whether or not the model can navigate back to the entity that was loaded prior to the current one.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.CanMoveUp">
+      <summary>Gets whether or not the model can navigate to the current entities parent.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Content">
+      <summary>Gets the child content for the  entity that was navigated to.
+The Content loads in the background and will be available after the
+<see cref="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.ContentLoaded" /> event is fired.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.EqualityComparer">
+      <summary>Gets the EqualityComparer used for the model. Returns null if the default comparer is being used.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.FocusedContent">
+      <summary>Gets the entity that has Focus. An entity can be focused, but not selected.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.GetChildrenOverride">
+      <summary>Gets or sets a delagate that is called to get the children for an entity during the navigation process.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.LoadHiddenChildren">
+      <summary>Gets or sets whether or not to include hidden children when loading content.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.NavigationPath">
+      <summary>Gets the hierarchy of the current  all the way up to the root
+Navigation object. The NavigationPath loads in the background and will be available after the
+<see cref="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.NavigationPathLoaded" /> event is fired.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Parent">
+      <summary>Gets the Parent entity (ie. the Entity that we navigated to). The Parent is the container for the
+.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.RestrictNavigation">
+      <summary>Gets or sets if navigation should be restricted to the current entity.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.SelectedContent">
+      <summary>Gets the selected entities</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.ContentAdded">
+      <summary>This event is fired when entities are added manually to the
+<see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Content" /> of the model.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.ContentLoaded">
+      <summary>After the  notification is sent as a result of a
+Navigate, the model will begin to load the child content associated with the
+<see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Parent" />. This event is fired when the
+<see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Content" /> is finished loading.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.ContentRemoved">
+      <summary>Not implemented.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.ContentUpdated">
+      <summary>This event is fired when Entities managed by this model is updated via the
+
+method. The event allows all views a chance to refresh their display to represent the new data.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.Exception">
+      <summary>This event is fired when an exception occurs</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.FocusedContentChanged">
+      <summary>This event is fired when the  property changes via the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.SetFocusedContent(System.Object,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)" />
+method.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.MoreContentRequested">
+      <summary>This event is fired when the additional content is requested from view control. Event to call for Server and append more content.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.NavigationPathLoaded">
+      <summary>After the  notification is sent as a result of a
+Navigate, the model will begin to compute the <see cref="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.NavigationPath" />. This
+event is fired when the computation is complete.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.ParentChanged">
+      <summary>This event is fired when the  changes as a result of
+navigating to a new entity (via the Navigate method).</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.SelectedContentChanged">
+      <summary>This event is fired when the  property changes via
+the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.BrowseVaultNavigationModel.SetSelectedContent(System.Object,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})" />
+method.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.#ctor(System.Collections.Generic.IEqualityComparer{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Creates an instance of the ViewVaultNavigationModel object</summary>
+      <param>An optional equality comparer that will be used instead of the default when determining entity equality.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.AddContent(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Adds additional content to the model.</summary>
+      <param>The collection of entities to add.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.Reload">
+      <summary>Reloads the model's </summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.RemoveContent(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Removes content from the model.</summary>
+      <param>The collection of entities to remove.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.SetContent(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Sets the content of the model, which is the Vault entities you want to view.</summary>
+      <param>The collection of entities to view.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.SetContentLoading">
+      <summary>Clears the content and fires the ParentChanged notification</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.SetFocusedContent(System.Object,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Sets the focused entity.</summary>
+      <param>The object that originated the focus changeThe entity that has focus</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.SetSelectedContent(System.Object,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Sets the selected entities.</summary>
+      <param>The object that originated the selection changeThe entities that are selected</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.UpdateContent(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})">
+      <summary>Updates content in the model.</summary>
+      <param>The collection of entities to update.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.Content">
+      <summary>Gets the content that the model has been provided using
+</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.EqualityComparer">
+      <summary>Gets the EqualityComparer used for the model.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.FocusedContent">
+      <summary>Gets the entity that has Focus. An entity can be focused, but not selected.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.SelectedContent">
+      <summary>Gets the set of selected entities</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.ContentAdded">
+      <summary>This event is fired whenever additional  is added to the model
+via the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.AddContent(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})" />
+method. The event allows all views a chance to refresh their display to represent the new data.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.ContentLoaded">
+      <summary>This event is fired whenever the model's  has changed and is
+now ready for use.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.ContentRemoved">
+      <summary>This event is fired whenever  is removed from the model via the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.RemoveContent(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})" />
+method. The event allows all views a chance to refresh their display to represent the new data.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.ContentUpdated">
+      <summary>This event is fired whenever  is updated in the model via the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.UpdateContent(System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})" />
+method. The event allows all views a chance to refresh their display to represent the new data.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.Exception">
+      <summary>Event fired when an exception occurs</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.FocusedContentChanged">
+      <summary>This event is fired when the  property changes via the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.SetFocusedContent(System.Object,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)" />
+method.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.NavigationPathLoaded">
+      <summary>Not implemented.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.ParentChanged">
+      <summary>Not implemented.</summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.SelectedContentChanged">
+      <summary>This event is fired when the  property changes via the
+<see cref="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Models.ViewVaultNavigationModel.SetSelectedContent(System.Object,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity})" />
+method.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectEntityResults">
+      <summary>Return object of the
+
+workflow.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectVaultFolderResults">
+      <summary>Return object of the
+
+workflow.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectEntityResults.CurrentFilter">
+      <summary>Gets the  that was applied to the displayed entities in the
+dialog.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectEntityResults.IsLatest">
+      <summary>If  is enabled, and the user chooses the
+"Latest" option from the revisions dropdown, this will be true.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectEntityResults.ParentEntity">
+      <summary>Gets the parent entity that contains the .</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectEntityResults.ReleaseBiased">
+      <summary>Gets the state of the release biased button.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectEntityResults.SelectedButton">
+      <summary>Gets the button that was selected to accept the dialog. If
+ are specified, this will be which of those options
+the user chose. If no options are specified, this will be null.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectEntityResults.SelectedEntities">
+      <summary>Gets the list of entities selected in the dialog. If the user picked a specific revision, the
+ representing the appropriate revision is returned in this list.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectEntityResults.SelectionText">
+      <summary>Gets the contents of the edit control that normally contains the list of selected entity names.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectVaultFolderResults.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.Folder,System.String,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.Folder})">
+      <summary>Constructs an instance of this class</summary>
+      <param>The folder that was selected, or null if the workflow was cancelledThe folder path that was selected, or null if the workflow was cancelledA list of any new folders that were created during the selection process</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectVaultFolderResults.NewFolders">
+      <summary>Gets a list of any new folders that were (optionally) created during the selection process</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectVaultFolderResults.SelectedFolder">
+      <summary>Gets the folder that was selected, or null if the workflow was cancelled.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Results.SelectVaultFolderResults.SelectedFolderFullName">
+      <summary>The full path of the selected fodler</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IColumnSettingsService">
+      <summary>This service provides a mechanism to configure display characteristics for how a property definition is represented in a Grid or a Tree column</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IEntityStyleService">
+      <summary>This service provides a mechanism to configure global Style characteristics for
+specific entities or for specific properties of entities. These styles will be respected by all UI elements in the Framework</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IColumnSettingsService.GetColumnSettings(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,System.String)">
+      <summary>Gets the Column Setting Configuration associated with a particular <see cref="T:Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition">Property
+Definition</see></summary>
+      <param>A connection to a vault serverThe System Name of the property definition we are retrieving settings for</param>
+      <returns>The Column Settings associated with the specified property definition, or null if there is no association</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IColumnSettingsService.SetColumnSettings(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,System.String,Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.ColumnSettings)">
+      <summary>Associates a Column Setting Configuration with a <see cref="T:Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition">Property
+Definition</see></summary>
+      <param>A connection to a vault serverThe Column Settings to associate with the Property Definition</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IEntityStyleService.AddColumnStyleHandler(System.String,System.Action{Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity,Autodesk.DataManagement.Client.Framework.Vault.Currency.Properties.PropertyDefinition,System.Object},System.Boolean)">
+      <summary>Registers a delegate which will provide a Style for specific properties of an Entity</summary>
+      <param>The system name of the Property Definition to provide a style forThe delegate which implements the function to configure the styleTrue if the supplied delegate should replace all existing delegates for the same Property Definition, or if it should be appended to a list.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IEntityStyleService.AddEntityStyleHandler(System.Action{Autodesk.DataManagement.Client.Framework.Vault.Forms.Currency.Style,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity},System.Boolean)">
+      <summary>Registers a delegate which will provide a Style for all properties of an Entity</summary>
+      <param>The delegate which implements the function to configure the styleTrue if the supplied delegate should replace all existing delegates, or if it should be appended to a list.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IEntityStyleService.GetColumnStyleHandlers(System.String)">
+      <summary>Gets a list of all of the GetColumnStyle delegates registered for a particular Property Definition via the
+
+method.</summary>
+      <param>The system name of the Property Definition to retrieve the delegates for</param>
+      <returns>A list of all of the GetColumnStyle delegates associated with the specified Property Definition</returns>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IEntityStyleService.GetEntityStyleHandlers">
+      <summary>Gets a list of all of the GetEntityStyle delegates registered for via the
+
+method.</summary>
+      <returns>A list of all of the GetEntityStyle delegates</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IVaultApplicationConfigurationManager.CustomExportProvider">
+      <summary>Export Provider</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Services.IVaultApplicationConfigurationManager.CustomGoToProvider">
+      <summary>GoTo Provider</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.AutoLoginModeValues">
+      <summary>Options which determine the behavior of the Auto Login feature.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.AutoLoginModeValues.None">
+      <summary>The Auto Login feature is hidden from the UI and any prior persisted values are ignored.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.AutoLoginModeValues.Restore">
+      <summary>The Auto Login checkbox will be visible and it's value will be restored to it's last value.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.AutoLoginModeValues.RestoreAndExecute">
+      <summary>The Auto Login checekbox will be visible and it's value will be restored to it's last value. If the last value was the Checked state, then the Login dialog
+will be automatically committed</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.AutoLoginModeValues.RestoreAndExecuteOrDoNothing">
+      <summary>If the last state of the Auto Login checkbox was checked, then we will use the RestoreAndExecute strategy. Otherwise, no UI will pop up and the user will not
+be logged in.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonEnablementRules">
+      <summary>Describes the different rules available that determines when the action button is enabled to accept and close the dialog.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonEnablementRules.MustExist">
+      <summary>This rule checks if each entity named in the text box actually exists in the current browsing folder.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonEnablementRules.MustHaveValue">
+      <summary>This rule checks if the text box contans a value.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonEnablementRules.None">
+      <summary>This rule makes the action button always active</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter.MultiSelectFlag">
+      <summary>Describes the different flags to determine if the current filter should allow multiple entity selection</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter.MultiSelectFlag.Default">
+      <summary>If this flag is used, the filter inherits the multiple entity selection behavior of the dialog setting as defined in
+</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter.MultiSelectFlag.Enabled">
+      <summary>This flag enables multiple entity selection for current filter.</summary>
+    </member>
+    <member name="F:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter.MultiSelectFlag.Disabled">
+      <summary>This flag disables multiple entity selection for current filter.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.AcquireFileExtensibilityOptions">
+      <summary>This class provides handlers that can be configured to augment the functionality of the Acquire Files workflow</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.AcquireFileExtensibilityOptions.CanCheckoutFileEventArgs">
+      <summary>The event arguments for the CanCheckoutFile event</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings">
+      <summary>Settings which allow for customization of the features in the Create Vault Folder Dialog workflow.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings.CreateFolderExtensibilityOptions">
+      <summary>Contains extensibility delegates that allow you to extend the functionality of Create Folder.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.InteractiveAcquireFileSettings">
+      <summary>Configuration options for the interactive AcquireFiles workflow that is used to download and/or checkout files from the vault. This class derives off of
+</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings">
+      <summary>Settings which all for customization of the features in the Log In Dialog workflow.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LogoutSettings">
+      <summary>Settings which allow customization of the features in the Log Out Dialog workflow.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings">
+      <summary>Configuration options for the AcquireFiles workflow that is used to download and/or checkout files from the vault. This class derives off of the standard
+</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings">
+      <summary>Options for configuring the behavior for the
+
+workflow.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption">
+      <summary>This class represents a choice to be associated with the Action button. The choices will be presented in a button with a dropdown arrow which displays a menu
+when clicked.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter">
+      <summary>A filter which can be used to narrow down a list of entities.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityRegularExpressionFilter">
+      <summary>A  implementation which uses regular expressions to narrow
+down a list of entities.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.SelectEntityOptionsExtensibility">
+      <summary>Contains extensibility delegates that allow you to extend the functionalty of the dialog.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings">
+      <summary>Settings which allow for customization of the features in the Select Vault Folder Dialog workflow.</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.SelectVaultFolderExtensibilityOptions">
+      <summary>This class provides handlers that can be configured to augment the functionality of the Select Vault Folder workflow</summary>
+    </member>
+    <member name="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.VaultNavigationPathSettings">
+      <summary>Options to control display characteristics of the </summary>
+    </member>
+    <member name="E:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.AcquireFileExtensibilityOptions.CanCheckoutFile">
+      <summary>This event is fired to determine if a file can be checked out when using the interactive acquisition.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.AcquireFileExtensibilityOptions.CanCheckoutFileEventArgs.CanCheckoutFile">
+      <summary>Sets if the file can be checked out when using the interactive acquisition.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.AcquireFileExtensibilityOptions.CanCheckoutFileEventArgs.FileAssociations">
+      <summary>All the file associations that involve the FileIteration (as a child or a parent).</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.AcquireFileExtensibilityOptions.CanCheckoutFileEventArgs.FileIteration">
+      <summary>The File to evaluate whether or not it can be checked out.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.AcquireFileExtensibilityOptions.CanCheckoutFileEventArgs.ToolTip">
+      <summary>A string to use as a tooltip with the reason why the file cannot be checked out. Only used if the checkout is not allowed.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.Folder)">
+      <summary>Constructs an instance of this class</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings.Caption">
+      <summary>Gets or sets the caption for the Create Vault Folder dialog</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings.HelpContext">
+      <summary>Gets or sets an optional context that identifies this instance of a Create Folder dialog.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings.InitialFolderName">
+      <summary>Gets or sets the initial name of the new folder</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings.OptionsExtensibility">
+      <summary>Gets the Extensibility Options for the Create Folder workflow</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings.ParentFolder">
+      <summary>Gets the folder that will be the parent of the newly created folder</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.CreateVaultFolderSettings.VaultConnection">
+      <summary>Gets a connection to a vault server from which the files will be acquired</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.InteractiveAcquireFileSettings.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,System.IntPtr,System.String,System.Boolean)">
+      <summary>Constructs an instance of the AcquireFileSettings class</summary>
+      <param>A connection to a vault server from which the files will be acquiredThe handle of the window that will be used as the parent of the progress dialogThe caption of the progress dialogIf true, file references will be updated after files are downloaded from the vault server.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.InteractiveAcquireFileSettings.HistoricalMode">
+      <summary>Whether or not the dialog should display in Historical Mode or not.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.InteractiveAcquireFileSettings.OptionsExtensibility">
+      <summary>Gets an object which contains handlers that can be used to augment the functionality of the Acquire Files workflow</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.#ctor">
+      <summary>Creates an instance of a LoginSettings object</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.AllowAnonymousLogin">
+      <summary>Gets or sets whether the Anonymous Login feature is visible.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.AnonymousLoginCaption">
+      <summary>Gets or sets the text that displays for the anonymous login option. It can be modified to meet workflow requirements (ie. in Inventor it's changed to "Content
+Center");</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.AutoLoginMode">
+      <summary>Gets or sets the behavior for Auto Login</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.Caption">
+      <summary>Gets or sets the text that is displayed as the login dialog caption</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.HelpContext">
+      <summary>Gets or sets an optional context that identifies this instance of a Log In dialog.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.OptionsWindow">
+      <summary>Gets the options that can be used to configure the dialogs parent and location</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.PersistenceKey">
+      <summary>Gets or sets the key to retrieve the persisted login information</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.ServerName">
+      <summary>Gets or set the name of the server we are authenticating against.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LoginSettings.VaultName">
+      <summary>The name of the vault to log in to</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LogoutSettings.#ctor">
+      <summary>Creates an instance of the LogoutSettings class</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LogoutSettings.LogOutMessage">
+      <summary>Gets or sets the message that appears in the Log Out dialog. If null, then a default message will be displayed.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.LogoutSettings.OptionsWindow">
+      <summary>Gets the options that can be used to configure the dialogs parent and location</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection,System.IntPtr,System.String,System.Boolean)">
+      <summary>Constructs an instance of the AcquireFileSettings class</summary>
+      <param>A connection to a vault server from which the files will be acquiredThe handle of the window that will be used as the parent of the progress dialogThe caption of the progress dialogIf true, file references will be updated after files are downloaded from the vault server.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings.AllowLocalPathChanges">
+      <summary>Gets or sets whether or not the local path can be changed via the user interface.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings.Caption">
+      <summary>Gets the caption of the progress dialog</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings.HelpContext">
+      <summary>Gets or sets an optional context that identifies this instance of a Acquire Files dialog.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings.Parent">
+      <summary>Gets the handle of the window that will be used as the parent of the progress dialog</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.ProgressAcquireFilesSettings.PersistenceKey">
+      <summary>Gets or sets the key to retrieve persisted information about the state of the gui</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.#ctor">
+      <summary>Creates an instance of the SelectEntitySettings class</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ConfigureActionButtons(System.String,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption},Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption,System.Boolean)">
+      <summary>Configures the action button used to submit the dialog.</summary>
+      <param>Sets the text to display in the Action button. Typical values are "Open" or "Save".Sets a list of choices to be associated with the Action button. The choices will be presented in a button with a dropdown arrow which displays a menu when
+clicked.Sets the default choice from the list of options that is returned when the action button is clicked without using the dropdown menu.Sets if the dialog should remember which option was chosen by the user, to be used as the default next time the dialog is shown.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ConfigureFilters(System.String,System.Collections.Generic.IEnumerable{Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter},Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter)">
+      <summary>Configures options for the entity filters.</summary>
+      <param>Sets the label for the combobox that allows the user to filter the entities displayed by a configured list of
+.Sets a list of filters that can be used to narrow down the list of entities.Specifies which of the entityFilters should be used initally.</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ConfigureRevisions(System.Boolean,System.Boolean,System.Boolean)">
+      <summary>Configures options surrounding the revisions control.</summary>
+      <param>Sets whether or not a GUI should be present which allows the user to select a particular revision of the selected entity.Sets whether or not the Select Revision control should have an options for the user to select the "Latest Revision".Sets whether or not the Release Biased option will be available to configure how the selected revision should be interpreted.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionableEntityClassIds">
+      <summary>Gets or adds the Entity Class IDs which represent the entities that are
+being acted on. If empty, then every type of entity is actionable.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonEnablementRule">
+      <summary>Gets or sets the chosen rule from  that
+determines when the action button is enabled.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonNavigatesContainers">
+      <summary>Gets or sets if the Action Button should navigate into containers instead of opening them.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ClearTextBoxOnNonActionableEntity">
+      <summary>Gets or sets if the text box should clear its contents when an non-actionable entity is selected.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.DialogCaption">
+      <summary>Gets or sets the caption to display in the Select Entity dialog box</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntitiesToHide">
+      <summary>Gets or sets a list of entities that should not be displayed in the Select Entity dialog</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.HelpContext">
+      <summary>Gets or sets context-specified data that is sent to  when the help button is
+clicked</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.InitialBrowseLocation">
+      <summary>Gets or sets the initial entity that is being viewed when the Select Entity dialog is launched. If not specified, then the Vault Root ($) will be displayed</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.InitialSelectionText">
+      <summary>Gets or sets what the inital contents of the text box will be.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.MultipleSelect">
+      <summary>Gets or sets whether or not the grid which displays a list of entities to select supports single or multiple selection</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.NavigationPathSettings">
+      <summary>Gets or sets the settings used to configure the Navigation Path combobox. If null, a default configuration will be used.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.OptionsExtensibility">
+      <summary>Gets or sets the Extensibility Options for for the dialog.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.OptionsWindow">
+      <summary>Gets the options that can be used to configure the dialogs parent and location</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.PersistenceKey">
+      <summary>Gets or sets a key that uniquely defines an instance of a
+
+workflow. This key will be used to persist GUI settings</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.RestrictNavigation">
+      <summary>Gets or sets if navigation should be restricted to the
+.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.SelectionTextLabel">
+      <summary>Gets or sets the label for the text box that displays a list of the selected entities.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ShowFolderView">
+      <summary>Gets or sets whether or not to display folder tree view.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ShowHiddenChildren">
+      <summary>Gets or sets whether or not to display hidden entities in the grid.s</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption.#ctor(System.String,System.Object)">
+      <summary>Constructs an instance of an ActionButtonOption object</summary>
+      <param>The text that appears in the menu choice associated with this optionA value associated with this option that will be passed back in  if this
+option is chosen</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption)">
+      <summary>Constructs an instance of an ActionButtonOption by copying an existing ActionButtonOption.</summary>
+      <param>The ActionButtonOption to copy.</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption.DisplayText">
+      <summary>Gets or sets the text that appears in the menu item associated with this option</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption.IsEnabled">
+      <summary>Gets or sets the delegate that is called by the dialog to ask if the given
+ is enabled for use.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.ActionButtonOption.Tag">
+      <summary>Gets or sets a value association with this option that will be passed back in
+ if this option is chosen</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter.CanDisplayEntity(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Tests if an entity should be displayed</summary>
+      <param>The entity being evaluated</param>
+      <returns>True if the entity should be displayed. False otherwise</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter.DisplayName">
+      <summary>Gets the text that appears in the combobox which displays the list of Entity Filters</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter.MultipleSelectionFlag">
+      <summary>Gets the flag that determines if multiple selections should be allowed for current filtered list of Entities</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityRegularExpressionFilter.#ctor(System.String,System.String,System.String,Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityFilter.MultiSelectFlag)">
+      <summary>Constructs an instance of the EntityRegularExpressionFilter class</summary>
+      <param>The text that will appear in a GUI which displays a list of available filtersThe flag that determines whether the grid/list which shows the list of entites for selection supports single/multiple selection for the filterThe regular expression to use to filter the list of entities. The regular expression will be applied to the EntityName attribute of an IEntity objectThe Entity Class ID which represents the type of entities the regular
+expression should be applied to. If null or empty, then the regular expression will apply to all entities</param>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.EntityRegularExpressionFilter.CanDisplayEntity(Autodesk.DataManagement.Client.Framework.Vault.Currency.Entities.IEntity)">
+      <summary>Tests if an entity should be displayed</summary>
+      <param>The entity being evaluated</param>
+      <returns>True if the entity matches the regular expression and should be displayed. False otherwise</returns>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.SelectEntityOptionsExtensibility.CreateFolder">
+      <summary>Gets or sets the delegate that is called by the dialog to create a folder. If this is not provided, the create folder button is not shown.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.SelectEntityOptionsExtensibility.DoSearch">
+      <summary>Gets or sets the delegate that is called by the dialog to perform search. If this is not provided, the search button is not shown.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.SelectEntityOptionsExtensibility.GetChildren">
+      <summary>Gets or sets a delagate that is called to get the children for an entity during the navigation process</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.SelectEntityOptionsExtensibility.GetContextMenu">
+      <summary>Gets or sets the event handler for the  event on the
+<see cref="T:Autodesk.DataManagement.Client.Framework.Vault.Forms.Controls.VaultBrowserControl" /> contained within the dialog.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.SelectEntityOptionsExtensibility.GetGridConfiguration">
+      <summary>Gets or sets a delagate that is called to get the grid configuration that should be used for a particular folder. the configuration data for the
+ displayed in the dialog box.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectEntitySettings.SelectEntityOptionsExtensibility.Validate">
+      <summary>Gets or sets the validation delegate. If provided, this is called when the action button is clicked before the form is closed.</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.#ctor(Autodesk.DataManagement.Client.Framework.Vault.Currency.Connections.Connection)">
+      <summary>Constructs an instance of this class</summary>
+    </member>
+    <member name="M:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.AddFutureFolders(System.Collections.Generic.IEnumerable{System.String})">
+      <summary>When this is called, any new folders won't actually be created. Instead their information will be stored as a path to be created at a later time</summary>
+      <param>A list of folder paths that should always show in the tree, even if they do not exist in the vault. This could be other 'future folders'</param>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.AllowNewFolderCreation">
+      <summary>Gets or sets whether the Create New Folder button will be visible</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.Caption">
+      <summary>Gets or sets the caption of the dialog box. If not set, the default caption of "Select Vault Folder" will be used.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.HelpContext">
+      <summary>Gets or sets an optional context that identifies this instance of a Select Vault Folder dialog.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.InitialFolderNameForNewFolders">
+      <summary>Gets or sets the default name of any new folders that are created</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.InitialLevelsOfTreeExpansion">
+      <summary>Gets or sets the number of levels the tree should be expanded when it first comes up</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.InitialSelectedFolderPath">
+      <summary>Gets or sets the folder path for the folder that should be selected when the dialog launches. The path should be in the format of $/Folder A/Folder B/</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.OptionsExtensibility">
+      <summary>Gets an object which contains handlers that can be used to augment the functionality of the Select Vault Folder workflow</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.PersistenceKey">
+      <summary>Gets or sets the key to retrieve persisted information about the state of the gui. If null, then the default settings will be used.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.RestoreLastFolderPath">
+      <summary>Gets or sets whether the dialog should start up with the selection that was used in the prior dialog invocation.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.RootFolders">
+      <summary>Gets or sets the root folders in the navigation hierarchy. If null, then $ will be the root folder</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.ShowLinkedFolders">
+      <summary>Gets or sets the root folders in the navigation hierarchy. If null, then $ will be the root folder</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.VaultConnection">
+      <summary>Gets a connection to a vault server from which the files will be acquired</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.SelectVaultFolderExtensibilityOptions.CanSelectFolderHandler">
+      <summary>Gets or sets a Function that is called when the OK button is clicked in the Select Vault Folder workflow. This allows customizations which allow certain
+folders to be invalid choices.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.SelectVaultFolderSettings.SelectVaultFolderExtensibilityOptions.GetRowStyleHandler">
+      <summary>Gets or sets a Function that is called to change row style according to Entity properties This allows customizations which allow certain folders to be greyed
+out.</summary>
+    </member>
+    <member name="P:Autodesk.DataManagement.Client.Framework.Vault.Forms.Settings.VaultNavigationPathSettings.TopLevelEntities">
+      <summary>Gets or sets the fixed Top Level Entities of the combobox. This objects will always be displayed, in addition to the path of the current navigational element
+to the vault root.</summary>
+    </member>
+  </members>
+</doc>

@@ -365,16 +365,25 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         private void btnOpenJobRuleVault_Click(object sender, EventArgs e)
         {
             SelectFromVault selectFromVault = new SelectFromVault(Multiselect: false);
-            var returnval = selectFromVault.ShowDialog();
-            if (selectFromVault.DialogResult == DialogResult.OK)
+            try
             {
-                txtJobRuleVault.Text = selectFromVault.RetFullNames.FirstOrDefault();
-                
-                iLogicJobAdmin.mSettingsChanged = true;
-                btnSaveToVlt.Enabled = true;
-                
+                var returnval = selectFromVault.ShowDialog();
+                if (selectFromVault.DialogResult == DialogResult.OK)
+                {
+                    txtJobRuleVault.Text = selectFromVault.RetFullNames.FirstOrDefault();
+                    iLogicJobAdmin.mSettingsChanged = true;
+                    btnSaveToVlt.Enabled = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Autodesk.DataManagement.Client.Framework.Forms.Library.ShowError(ex.Message, "iLogic-Job Administration");
+            }
+            finally
+            {
                 selectFromVault.Dispose();
             }
+
         }
 
         private void btnAddUserRules_Click(object sender, EventArgs e)
@@ -392,9 +401,10 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
 
                 iLogicJobAdmin.mSettingsChanged = true;
                 btnSaveToVlt.Enabled = true;
-
-                selectFromVault.Dispose();
             }
+
+            selectFromVault.Dispose();
+
         }
 
         private void mnuUserRulesDelete_Click(object sender, EventArgs e)
@@ -633,7 +643,7 @@ namespace Autodesk.VltInvSrv.iLogicSampleJob
         {
             if (iLogicJobAdmin.mSettingsChanged == true)
             {
-                
+
                 DialogResult dialogResult = MessageBox.Show("There are unsaved changes;\n\rDo you want to save them to Vault?", "iLogic Job Administration", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult == DialogResult.Yes)
                 {

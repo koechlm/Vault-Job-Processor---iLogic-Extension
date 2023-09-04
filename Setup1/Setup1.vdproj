@@ -22,6 +22,12 @@
         "Entry"
         {
         "MsmKey" = "8:_130FAD30660AFD40A003B1AAF50948F0"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_130FAD30660AFD40A003B1AAF50948F0"
         "OwnerKey" = "8:_839FAA723C0A4CDDBE6F856FA92F8E74"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -29,6 +35,12 @@
         {
         "MsmKey" = "8:_17527C56CA11D65B62243F9228259141"
         "OwnerKey" = "8:_839FAA723C0A4CDDBE6F856FA92F8E74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_17527C56CA11D65B62243F9228259141"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -47,6 +59,12 @@
         {
         "MsmKey" = "8:_1B397EA139A80B8FCA7163FC79809B7B"
         "OwnerKey" = "8:_6D842EBE76AD4EFDDE8884C851E1F042"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1B397EA139A80B8FCA7163FC79809B7B"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,6 +106,12 @@
         "Entry"
         {
         "MsmKey" = "8:_25D4FC8A00A538FE9DD427B313E1A9EA"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_25D4FC8A00A538FE9DD427B313E1A9EA"
         "OwnerKey" = "8:_FFA8FC6BAEC57D407743DD04227C1169"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -105,8 +129,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2B7E69767A344ABF9ACD2D1B3F521C0C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2DF3D174E1548B991484EC6EBD3530F4"
         "OwnerKey" = "8:_25D4FC8A00A538FE9DD427B313E1A9EA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2DF3D174E1548B991484EC6EBD3530F4"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -137,6 +173,12 @@
         {
         "MsmKey" = "8:_34C58321C45ED430F1DC6B9709F387E5"
         "OwnerKey" = "8:_BEA9E5B8B30002970611E918A4C1ED59"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_34C58321C45ED430F1DC6B9709F387E5"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -201,7 +243,31 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3ACE5C8E5250463C9CFFCF60D0A90311"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3E4BD6B8AF7A42F397ED68D3C689CF7F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4095328F0E0B4C1DBF41E6F9B026A322"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_47F4998C2BB9460ABDB1E5F81ACE66E3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4A4BD456181A41829E16D6BF8F83829F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -220,6 +286,12 @@
         "Entry"
         {
         "MsmKey" = "8:_5DD7D10487C60B862C252527AFC8410E"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5DD7D10487C60B862C252527AFC8410E"
         "OwnerKey" = "8:_ED3224F5C845911D9C317054CDEFAD7A"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -233,6 +305,12 @@
         {
         "MsmKey" = "8:_5E96D51B0D38CF23AD0A8B012CC01584"
         "OwnerKey" = "8:_17527C56CA11D65B62243F9228259141"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5E96D51B0D38CF23AD0A8B012CC01584"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -268,19 +346,25 @@
         "Entry"
         {
         "MsmKey" = "8:_618BB0F2437AA419F0C8183C53FCE434"
-        "OwnerKey" = "8:_BEA9E5B8B30002970611E918A4C1ED59"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_62D3EE3983C6484BA49D3D964DAC95DE"
-        "OwnerKey" = "8:_UNDEFINED"
+        "MsmKey" = "8:_618BB0F2437AA419F0C8183C53FCE434"
+        "OwnerKey" = "8:_BEA9E5B8B30002970611E918A4C1ED59"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6410A8D23652810A46634D0909D174F3"
         "OwnerKey" = "8:_839FAA723C0A4CDDBE6F856FA92F8E74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6410A8D23652810A46634D0909D174F3"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -293,6 +377,12 @@
         {
         "MsmKey" = "8:_6A76E69C0FA2C482A3F96D2D8ECB92A0"
         "OwnerKey" = "8:_839FAA723C0A4CDDBE6F856FA92F8E74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6A76E69C0FA2C482A3F96D2D8ECB92A0"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -328,6 +418,12 @@
         "Entry"
         {
         "MsmKey" = "8:_783CD2411F477DFE905740F52FE1FB80"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_783CD2411F477DFE905740F52FE1FB80"
         "OwnerKey" = "8:_B169501F6E28845C4331A79BF1116D49"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -335,6 +431,18 @@
         {
         "MsmKey" = "8:_799852FEF35B07B11057EFFC1BFE2AF0"
         "OwnerKey" = "8:_B4B9473C4B58DFF4D3A4E0FFDC76AC05"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7C0A7640889B4A44B3C33CA8BE24692D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7C97CA93B26D4A7BB0BF76BE8200C46C"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -351,6 +459,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_89FDC29410374551829C0BACDC1FAB04"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8FB4F8120AF24DC8B3243C77378FA1CB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_99A93261BAFF466BB44477A700E8D8D7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -359,6 +479,12 @@
         {
         "MsmKey" = "8:_A3B9B4CB1A5BC66B2F0EA673A18F3889"
         "OwnerKey" = "8:_783CD2411F477DFE905740F52FE1FB80"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A3B9B4CB1A5BC66B2F0EA673A18F3889"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -430,6 +556,12 @@
         "Entry"
         {
         "MsmKey" = "8:_ACABCDC4068A343F4F79E6595A524148"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ACABCDC4068A343F4F79E6595A524148"
         "OwnerKey" = "8:_FFA8FC6BAEC57D407743DD04227C1169"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -454,6 +586,12 @@
         "Entry"
         {
         "MsmKey" = "8:_B169501F6E28845C4331A79BF1116D49"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B169501F6E28845C4331A79BF1116D49"
         "OwnerKey" = "8:_5DD7D10487C60B862C252527AFC8410E"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -461,6 +599,12 @@
         {
         "MsmKey" = "8:_B1939069E7DF944BF84A356A3ED58E39"
         "OwnerKey" = "8:_839FAA723C0A4CDDBE6F856FA92F8E74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B1939069E7DF944BF84A356A3ED58E39"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -489,7 +633,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_B59B20F5B1BB432B846DF50848CD0043"
+        "MsmKey" = "8:_B6DB0ADFC29E4654898A17B9FCF9AD6C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -497,6 +641,12 @@
         {
         "MsmKey" = "8:_BEA9E5B8B30002970611E918A4C1ED59"
         "OwnerKey" = "8:_B1939069E7DF944BF84A356A3ED58E39"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BEA9E5B8B30002970611E918A4C1ED59"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -549,14 +699,32 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C35732FE442E4D09A57CF54B0942CA74"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C62767976649783234B21EA2E8598813"
         "OwnerKey" = "8:_839FAA723C0A4CDDBE6F856FA92F8E74"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
+        "MsmKey" = "8:_C7EC44B2FD9542E1AF34B6313CF555B6"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CD8380ADB1DE5123282C7E0B4D9B7CF8"
         "OwnerKey" = "8:_25D4FC8A00A538FE9DD427B313E1A9EA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CD8380ADB1DE5123282C7E0B4D9B7CF8"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -579,8 +747,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EC543ADB88F34682A45BB907AFFC9F23"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_ED3224F5C845911D9C317054CDEFAD7A"
         "OwnerKey" = "8:_25D4FC8A00A538FE9DD427B313E1A9EA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_ED3224F5C845911D9C317054CDEFAD7A"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -599,6 +785,12 @@
         {
         "MsmKey" = "8:_EFE73B3617B2F5C238CB3A031F3CB758"
         "OwnerKey" = "8:_839FAA723C0A4CDDBE6F856FA92F8E74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EFE73B3617B2F5C238CB3A031F3CB758"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -657,8 +849,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F4DD981A03E147129C9A96A9CD3BE469"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FC0DCCF7BE2D6AA84FD974DA152B3D87"
         "OwnerKey" = "8:_783CD2411F477DFE905740F52FE1FB80"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FC0DCCF7BE2D6AA84FD974DA152B3D87"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -689,6 +893,12 @@
         {
         "MsmKey" = "8:_FC5BFE530D2F345AB159AF799F5C3E37"
         "OwnerKey" = "8:_EFE73B3617B2F5C238CB3A031F3CB758"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FC5BFE530D2F345AB159AF799F5C3E37"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -803,6 +1013,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_839FAA723C0A4CDDBE6F856FA92F8E74"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D959EFDED98C4F34B3A289B88D4B994E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -1019,7 +1235,7 @@
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\SetupVaultiLogicJobExtension.msi"
+        "OutputFilename" = "8:Release 2024.1\\SetupVaultiLogicJobExtension.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -1140,7 +1356,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.Extensibility.Framework, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.Extensibility.Framework, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_1B397EA139A80B8FCA7163FC79809B7B"
@@ -1171,7 +1387,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.DataManagement.Client.Framework.Vault, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.DataManagement.Client.Framework.Vault, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_25D4FC8A00A538FE9DD427B313E1A9EA"
@@ -1198,11 +1414,31 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2B7E69767A344ABF9ACD2D1B3F521C0C"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_IdwPrint.iLogicVb"
+            "TargetName" = "8:VaultJobRule_IdwPrint.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2DF3D174E1548B991484EC6EBD3530F4"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.DataManagement.Client.Framework, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.DataManagement.Client.Framework, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_2DF3D174E1548B991484EC6EBD3530F4"
@@ -1300,6 +1536,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3ACE5C8E5250463C9CFFCF60D0A90311"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_MasterSample-1.iLogicVb"
+            "TargetName" = "8:VaultJobRule_MasterSample-1.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3E4BD6B8AF7A42F397ED68D3C689CF7F"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule.iLogicVb"
+            "TargetName" = "8:VaultJobRule.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4095328F0E0B4C1DBF41E6F9B026A322"
             {
             "SourcePath" = "8:..\\Autodesk.VltInvSrv.iLogicSampleJob\\Resources\\iLogicConfiguration.ico"
@@ -1320,11 +1596,51 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_47F4998C2BB9460ABDB1E5F81ACE66E3"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRuleConnected.iLogicVb"
+            "TargetName" = "8:VaultJobRuleConnected.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4A4BD456181A41829E16D6BF8F83829F"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_ObsoleteDrawing.iLogicVb"
+            "TargetName" = "8:VaultJobRule_ObsoleteDrawing.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_59CF246F293F1E4EB868F7188958035D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.Explorer.ExtensibilityTools, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.Explorer.ExtensibilityTools, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_59CF246F293F1E4EB868F7188958035D"
@@ -1444,26 +1760,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_62D3EE3983C6484BA49D3D964DAC95DE"
-            {
-            "SourcePath" = "8:..\\Autodesk.VltInvSrv.iLogicSampleJob\\VaultJobRule.iLogicVb"
-            "TargetName" = "8:VaultJobRule.iLogicVb"
-            "Tag" = "8:"
-            "Folder" = "8:_82DFAA786EAF42B8B444014ADD0F8A21"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6410A8D23652810A46634D0909D174F3"
             {
             "AssemblyRegister" = "3:1"
@@ -1499,7 +1795,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.iLogic.Interfaces, Version=27.20.27100.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.iLogic.Interfaces, Version=28.10.20900.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6741FF23CB9999007DFF8A953F8C24A6"
@@ -1561,7 +1857,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.Explorer.Extensibility, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.Explorer.Extensibility, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6D842EBE76AD4EFDDE8884C851E1F042"
@@ -1650,12 +1946,92 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C0A7640889B4A44B3C33CA8BE24692D"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_Save3D.iLogicVb"
+            "TargetName" = "8:VaultJobRule_Save3D.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7C97CA93B26D4A7BB0BF76BE8200C46C"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_SavePNG.iLogicVb"
+            "TargetName" = "8:VaultJobRule_SavePNG.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_81BFDB4B132549D98DFE1417F4E5348D"
             {
             "SourcePath" = "8:..\\Autodesk.VltInvSrv.iLogicSampleJob\\Autodesk.VltInvSrv.iLogicSampleJob.vcet.config"
             "TargetName" = "8:Autodesk.VltInvSrv.iLogicSampleJob.vcet.config"
             "Tag" = "8:"
             "Folder" = "8:_82DFAA786EAF42B8B444014ADD0F8A21"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_89FDC29410374551829C0BACDC1FAB04"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_Save2D.iLogicVb"
+            "TargetName" = "8:VaultJobRule_Save2D.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8FB4F8120AF24DC8B3243C77378FA1CB"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_UidToiProp.ilogicvb"
+            "TargetName" = "8:VaultJobRule_UidToiProp.ilogicvb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1818,7 +2194,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.Inventor.Interop, Version=27.2.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.Inventor.Interop, Version=28.1.0.0, Culture=neutral, PublicKeyToken=d84147f8b4276564, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_B4B9473C4B58DFF4D3A4E0FFDC76AC05"
@@ -1845,10 +2221,10 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B59B20F5B1BB432B846DF50848CD0043"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B6DB0ADFC29E4654898A17B9FCF9AD6C"
             {
-            "SourcePath" = "8:..\\Autodesk.VltInvSrv.iLogicSampleJob\\VaultJobRuleConnected.iLogicVb"
-            "TargetName" = "8:VaultJobRuleConnected.iLogicVb"
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\iLogicVaultInventorServerSample.xml"
+            "TargetName" = "8:iLogicVaultInventorServerSample.xml"
             "Tag" = "8:"
             "Folder" = "8:_82DFAA786EAF42B8B444014ADD0F8A21"
             "Condition" = "8:"
@@ -1896,11 +2272,31 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C35732FE442E4D09A57CF54B0942CA74"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_SavePNGandAttach.iLogicVb"
+            "TargetName" = "8:VaultJobRule_SavePNGandAttach.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C62767976649783234B21EA2E8598813"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.JobProcessor.Extensibility, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.JobProcessor.Extensibility, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C62767976649783234B21EA2E8598813"
@@ -1927,11 +2323,31 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C7EC44B2FD9542E1AF34B6313CF555B6"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_WriteBOMTypeToProp.iLogicVb"
+            "TargetName" = "8:VaultJobRule_WriteBOMTypeToProp.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CD8380ADB1DE5123282C7E0B4D9B7CF8"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.WebServices, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.Connectivity.WebServices, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_CD8380ADB1DE5123282C7E0B4D9B7CF8"
@@ -1958,11 +2374,31 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EC543ADB88F34682A45BB907AFFC9F23"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Rule Snippets\\UserSnippets_iLogicVaultInventorServer.xml"
+            "TargetName" = "8:UserSnippets_iLogicVaultInventorServer.xml"
+            "Tag" = "8:"
+            "Folder" = "8:_13ADBE891F01417A9E43A316916CC2AD"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ED3224F5C845911D9C317054CDEFAD7A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.DataManagement.Client.Framework.Forms, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.DataManagement.Client.Framework.Forms, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_ED3224F5C845911D9C317054CDEFAD7A"
@@ -2026,6 +2462,26 @@
             "TargetName" = "8:iLogicJobSettings.xml"
             "Tag" = "8:"
             "Folder" = "8:_82DFAA786EAF42B8B444014ADD0F8A21"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F4DD981A03E147129C9A96A9CD3BE469"
+            {
+            "SourcePath" = "8:..\\Solution Output\\x64\\Release\\2024\\Sample Rules iLogicVaultInventorServer\\VaultJobRule_ApplyPdmcBOMSettings.iLogicVb"
+            "TargetName" = "8:VaultJobRule_ApplyPdmcBOMSettings.iLogicVb"
+            "Tag" = "8:"
+            "Folder" = "8:_41B45153F2F24C5AAD6473A1DFCE2F17"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2106,7 +2562,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Autodesk.DataManagement.Client.Framework.Vault.Forms, Version=28.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Autodesk.DataManagement.Client.Framework.Vault.Forms, Version=29.0.0.0, Culture=neutral, PublicKeyToken=215b0879a7566597, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_FFA8FC6BAEC57D407743DD04227C1169"
@@ -2152,7 +2608,7 @@
             }
             "{994432C3-9487-495D-8656-3E829A8DBDDE}:_653B9EE89D9B4230BB5D6F5DD4EA7492"
             {
-            "DefaultLocation" = "8:[ProgramFiles64Folder]\\Autodesk\\Vault Client 2023\\Explorer\\VaultInventorServer"
+            "DefaultLocation" = "8:[ProgramFiles64Folder]\\Autodesk\\Vault Client 2024\\Explorer\\VaultInventorServer"
             "Name" = "8:VaultInventorServer"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -2175,7 +2631,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_82DFAA786EAF42B8B444014ADD0F8A21"
             {
-            "DefaultLocation" = "8:C:\\ProgramData\\Autodesk\\Vault 2023\\Extensions\\Autodesk.VltInvSrv.iLogicSampleJob"
+            "DefaultLocation" = "8:C:\\ProgramData\\Autodesk\\Vault 2024\\Extensions\\Autodesk.VltInvSrv.iLogicSampleJob"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -2183,6 +2639,28 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_13ADBE891F01417A9E43A316916CC2AD"
+                    {
+                    "Name" = "8:Rule Snippets"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_01F614CC2EA04098BEB117C76B5FB0F1"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_41B45153F2F24C5AAD6473A1DFCE2F17"
+                    {
+                    "Name" = "8:Sample Rules"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_F7A099C620764CA9AF316FF73E6C7D58"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
         }
@@ -2215,20 +2693,20 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Autodesk Vault iLogicJobExtension SampleApp 2023"
-        "ProductCode" = "8:{995758D3-39FD-4292-88B7-79159C6CE1E0}"
-        "PackageCode" = "8:{5A916F80-E6BB-48BA-B7DB-98E20313D587}"
+        "ProductName" = "8:Autodesk Vault iLogicJobExtension SampleApp 2024.1"
+        "ProductCode" = "8:{090B1E61-D8CC-4932-B68D-188C8F79E83D}"
+        "PackageCode" = "8:{E0D7CB03-12A1-4DF7-9F3A-4A1802C6BB2B}"
         "UpgradeCode" = "8:{99F32B73-324F-4D8B-B249-BC735D036446}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.1.2023"
+        "ProductVersion" = "8:0.1.2024"
         "Manufacturer" = "8:Markus Koechl, Autodesk"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://github.com/koechlm/Vault-Job-Processor---iLogic-Extension/issues"
-        "Title" = "8:Setup iLogicJobExtension Sample 2023"
+        "Title" = "8:Setup iLogicJobExtension Sample 2024.1"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Markus Koechl"
         "Keywords" = "8:"
@@ -2703,6 +3181,34 @@
             "OutputConfiguration" = "8:Release|x64"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{4D95A809-1C6A-4E1E-B885-7F5F69E94C7D}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D959EFDED98C4F34B3A289B88D4B994E"
+            {
+            "SourcePath" = "8:..\\iLogic-VaultInvServer Library\\obj\\x64\\Release\\iLogicVaultInventorServerSample.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_82DFAA786EAF42B8B444014ADD0F8A21"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{D52A41BF-F382-4D83-A3AC-1FF171C5056B}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
