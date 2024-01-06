@@ -115,11 +115,19 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>SDK Refs\Autodesk.Inventor.Interop.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Data.Desktop.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v21.1.Core, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\OneDrive - Autodesk\Vault Customization\SDK References 2023\Autodesk Vault 2023 SDK\bin\x64\DevExpress.Utils.v21.1.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraBars.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v21.1, Version=21.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -143,6 +151,12 @@
     </Compile>
     <Compile Include="iLogicJobAdminForm.Designer.cs">
       <DependentUpon>iLogicJobAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="iLogicJobAdminXtraForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="iLogicJobAdminXtraForm.Designer.cs">
+      <DependentUpon>iLogicJobAdminXtraForm.cs</DependentUpon>
     </Compile>
     <Compile Include="iLogicJobExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -204,6 +218,10 @@
     <EmbeddedResource Include="iLogicJobAdminForm.resx">
       <DependentUpon>iLogicJobAdminForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="iLogicJobAdminXtraForm.resx">
+      <DependentUpon>iLogicJobAdminXtraForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -220,6 +238,7 @@
     <Content Include="iLogicJobSettings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Dark\Add_Generic_32.png" />
     <Content Include="Resources\VLTM-2023.0.0.F-icon.ico" />
     <Content Include="SDK Refs\Autodesk.Connectivity.Explorer.Extensibility.dll" />
     <Content Include="SDK Refs\Autodesk.Connectivity.Explorer.Extensibility.XML" />
