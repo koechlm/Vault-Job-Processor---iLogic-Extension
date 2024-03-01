@@ -58,6 +58,7 @@ relationship are not supported.
 
 VERSION HISTORY / RELEASE NOTES:
 ---------------------------------
+2024.1.0.0 / 2024.2.0.0 - updated to support Inventor/Vault 2024 Updates respectively
 2024.0.0.0 - updated for Vault Client / Job Processor 2024. NEW - the iLogic-VaultInventorServer library sample moved from the iLogic-Vault project into this solution.
 2023.0.1.x - updated for Vault Client / Job Processor 2023. New detailed restriction dialog info for non-Configuration Admins trying to access iLogic Configuration
 2022.3.0.0 - updated for Vault Client / Job Processor 2022.3
