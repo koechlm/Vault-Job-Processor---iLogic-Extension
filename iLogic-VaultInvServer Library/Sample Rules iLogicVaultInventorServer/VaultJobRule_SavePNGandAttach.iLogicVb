@@ -1,4 +1,4 @@
-﻿AddReference "iLogicVaultInventorServerSample.dll"
+﻿AddReference "iLogicVaultInventorServerSample.dll" 'non-ADSK
 AddReference "Autodesk.Connectivity.WebServices.dll"
 AddReference "Autodesk.DataManagement.Client.Framework.Vault.dll"
 'DISCLAIMER:
